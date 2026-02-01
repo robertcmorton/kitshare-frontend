@@ -1,0 +1,20 @@
+<div class="PolicyDetails">
+  <div class="infoBox">
+      <span class="tag" *ngIf="address.is_default">Default</span>
+    <div class="row">
+      <span *ngIf="address.street_address_line1" class="street_address_line1">{{ address.street_address_line1 }}/</span><span class="street_address_line2">{{ address.street_address_line2 }} </span>
+      <span class="route"> {{ address.route }}</span>,
+      <span class="suburb_name"> {{ address.suburb_name }}</span>
+      <span class="postcode"> {{ address.postcode }}</span>
+    </div>
+    <div class="row">
+      <span class="ks_state_name">{{ address.ks_state_name }}</span>,
+      <span class="ks_country_name">{{ address.ks_country_name }}</span>
+    </div>
+  </div>
+  <div class="cancelBlock">
+      <div class="cancelBlock" *ngIf="!address.is_default">
+    <mat-icon class="mat-icon material-icons" (click)="onDeleteAddress()">close</mat-icon>
+    <button (click)="makeAddressDefault()">Make as Default Address</button>
+  </div>
+</div>

@@ -1,0 +1,38 @@
+.dashboard_bodynew {
+    margin-top: 115px;
+    margin-bottom: 50px;
+}
+
+img.img-responsive.error {
+    width: 60%;
+    margin: 0 auto;
+}
+
+.error_text {
+    margin-top: 140px;
+    text-align: left;
+}
+
+.button {
+    font-weight: 300;
+    color: #0747A6;
+    font-size: 1.5rem;
+    text-decoration: none;
+    border: 2px solid #0072ee;
+    padding: 11px 23px;
+    border-radius: 40px;
+    margin: 2em 0 0 0px;
+    position: relative;
+    display: inline-block;
+    -webkit-transition: all .3s linear;
+    transition: all .3s linear;
+    font-family: cursive;
+}
+
+p {
+    font-size: 2rem;
+    font-weight: 100;
+    color: #0f62b1;
+    margin-top: 10px;
+    font-family: cursive;
+}

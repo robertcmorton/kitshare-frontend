@@ -1,0 +1,38 @@
+:host {
+  width: 100%;
+  display: block;
+  input {
+    width: 100%;
+    height: 40px;
+    border: none;
+    // border-bottom: 3px solid #e3e3e3 !important;
+    // padding: 1rem;
+    box-sizing: border-box;
+    padding-left: 10px;
+    &:focus {
+      border: 1px solid #0065FF !important;
+    }
+  }
+}
+
+.address_block {
+  display: flex;
+}
+
+.form-block {
+  // margin-left: 40px;
+    // max-width: 150px;
+    position: relative;
+    visibility: hidden;
+    width: 0;
+    label {
+      position: absolute;
+    color: #aeacac;
+    top: -30px;
+    font-weight: 200;
+    font-size: 14px;
+    }
+    input {
+      color: #8b8888;
+    }
+}

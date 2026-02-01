@@ -1,0 +1,17 @@
+<div class="map-container" #container [ngClass]="{visible: mapVisible}">
+  <agm-map (mapReady)="mapReady($event)" [clickableIcons]="false" (boundsChange)="boundsChange($event)" (mapClick)="dropItemsSelection()" maxZoom="13" minZoom="3" [fitBounds]="bounds$ | async" (idle)="idle()" [style.height.px]="container.offsetHeight" [gestureHandling]="mapVisible ? 'greedy' : 'none'">
+    <ng-container *ngIf="searchResults$ | async as results">
+      <agm-marker-cluster *ngIf="searchResults$ | async as results" imagePath="../../assets/images/mapIcons/clusterNew" maxZoom="8" [calculator]="calculateMarker">
+        <agm-marker *ngFor="let address of results.addresses; let i = index" [latitude]="address.lat" [longitude]="address.lng" [iconUrl]="{url: getIcon(i), labelOrigin:{x:25, y:15}}" [zIndex]="getMarkerZIndex(i)" [label]="{
+                              fontSize: '11px',
+                              fontWeight: 'bold',
+                              text: getLabelText(address)
+                            }" (mouseOut)="onMouseOut()" (mouseOver)="onMouseOver(i)" (markerClick)="onSelectItem(address, i)">
+          <agm-info-window [isOpen]="isInfoWindowOpen(i)" (infoWindowClose)="dropItemsSelection()">
+            <kit-info-window [address]="address"></kit-info-window>
+          </agm-info-window>
+        </agm-marker>
+      </agm-marker-cluster>
+    </ng-container>
+  </agm-map>
+</div>

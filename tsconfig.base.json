@@ -1,0 +1,26 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "outDir": "./dist/out-tsc",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "experimentalDecorators": true,
+    "target": "es5",
+    "downlevelIteration": true,
+    "skipLibCheck": true,
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "lib": [
+      "es2017",
+      "dom"
+    ],
+    "module": "es2015",
+    "baseUrl": "./",
+    "paths": {
+      "@angular/*": ["../node_modules/@angular/*"],
+      "core-js/es7/reflect": ["../node_modules/core-js/proposals/reflect-metadata"]
+    }
+  }
+}

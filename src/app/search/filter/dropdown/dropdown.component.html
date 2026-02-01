@@ -1,0 +1,31 @@
+<div class="dropdown-container">
+  <div class="btn-group" dropdown #dropdown="bs-dropdown" [insideClick]="multiple"
+       (onHidden)="onClose()"
+       (onShown)="onShown()" [isDisabled]="disabled">
+    <button id="dropdown-button" dropdownToggle type="button" class="dropdown-button"
+            [ngClass]="{ opened: opened, disabled: disabled, 'in-use': inUse }" aria-controls="dropdown-basic">
+      {{displayString}}
+    </button>
+    <ul id="dropdown" *dropdownMenu class="dropdown-menu select-dropdown"
+        role="menu" aria-labelledby="dropdown-button-limit">
+      <li class="menu-item close-menu hiding-close">
+        <button mat-icon-button (click)="dropdown.hide()">
+          <mat-icon class="icon-close">close</mat-icon>
+        </button>
+      </li>
+      <li class="divider dropdown-divider close-menu hiding-close"></li>
+      <li role="menuitem" *ngIf="defaultValue" class="menu-item">
+        <a (click)="select(defaultValue.id)" class="menu-link">
+          <input type="checkbox" [checked]="selectedItems[defaultValue.id]" *ngIf="multiple">&nbsp;
+          {{defaultValue.name}}
+        </a>
+      </li>
+        <li role="menuitem" *ngFor="let item of items" class="menu-item">
+          <a (click)="select(itemIdGetter(item))" class="menu-link">
+            <input type="checkbox" [checked]="selectedItems[itemIdGetter(item)]" *ngIf="multiple">&nbsp;
+            {{itemNameGetter(item)}}
+          </a>
+        </li>
+    </ul>
+  </div>
+</div>

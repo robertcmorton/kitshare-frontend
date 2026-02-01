@@ -1,0 +1,51 @@
+<section class="sign_background login_background">
+    <div class="container">
+        <div class="auth-box">
+            <form class="sign_up" name="login" id="panel">
+                <h2>Sign in</h2>
+                <div class="group">
+                    <input name="email" type="email" [(ngModel)]="loginData.primary_email_address" required>
+                    <!-- <span class="highlight"></span>
+                    <span class="bar"></span> -->
+                    <label class="input-label" [class.Active]="('email')">Email</label>
+                </div>
+                <div class="group group1">
+                    <input name="password" [(ngModel)]="loginData.app_password" type="password" required>
+                    <!-- <span class="highlight"></span>
+                    <span class="bar"></span> -->
+                    <label class="input-label">Password</label>
+                </div>
+                <div class="group group1 remember">
+                    <input name="signed_in" [(ngModel)]="loginData.keep_me_signed_in" type="checkbox"
+                        (change)="loginData.keep_me_signed_in = +$event.target.checked">
+                    <label>Keep Me Signed In</label>
+                </div>
+                <div class="clearfix"></div>
+                <button class="btn signin-btn" (click)="submitForm()" type="submit" [disabled]="disableLoginSubmit">Sign
+                    in</button>
+                <div class="clearfix"></div>
+                <div class="or-social">OR</div>
+                <app-social-login></app-social-login>
+                <div class="clearfix"></div>
+
+                <div class="group group1">
+                    <div class="text-center">
+                        <p>Forgot Password ?
+                            <a routerLink="/forgot-password" class="text-info m-l-5">
+                                <b class="link-text">Reset It</b>
+                            </a>
+                        </p>
+
+                        <p>Don't have an account?
+                            <a routerLink="/sign-up" class="text-info m-l-5">
+                                <b class="link-text">Join Now</b>
+                            </a>
+                        </p>
+                    </div>
+                </div>
+
+
+            </form>
+        </div>
+    </div>
+</section>

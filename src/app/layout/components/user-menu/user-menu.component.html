@@ -1,0 +1,92 @@
+<ng-container *ngIf="!loggedIn">
+  <ul class="notuser">
+    <li class="login" routerLink="/login">Sign In</li>
+    <li class="signup" routerLink="/sign-up">Join Now</li>
+  </ul>
+</ng-container>
+
+          <ng-container *ngIf="loggedIn">
+          <button mat-icon-button [matMenuTriggerFor]="usermenu">
+            <img [attr.src]="avatar" alt="">
+          </button>
+          <mat-menu #usermenu="matMenu" panelClass="usermenu">
+
+
+            <a [routerLink]="['rentals']">
+              <button mat-menu-item>
+                  <mat-icon>dashboard</mat-icon>
+                  Dashboard
+               </button>
+             </a>
+
+            <a [routerLink]="['gear/gear-list']">
+              <button mat-menu-item>
+                  <mat-icon>add_circle</mat-icon>
+                  List Your Gear
+              </button>
+            </a>
+
+          <!-- <button mat-menu-item>
+            <a [routerLink]="['search']">
+            <mat-icon>search</mat-icon>                      
+            Search Equipment</a>
+          </button>           -->
+          
+          
+          <a [routerLink]="['profile/edit']">
+            <button mat-menu-item>          
+              <mat-icon>settings</mat-icon>
+              Settings
+            </button>
+          </a>
+
+          
+          <a [routerLink]="['my_favourites']">
+            <button mat-menu-item>
+              <mat-icon>favorite</mat-icon>
+              My Favourites
+            </button>
+          </a>
+          
+         
+          <a [routerLink]="['profile']">
+            <button mat-menu-item>             
+              <mat-icon>account_box</mat-icon> 
+              Profile
+            </button>
+          </a>
+        
+
+          <!--logout for desktop-->
+          <a (click)="logout()">
+            <button mat-menu-item>           
+              <mat-icon>exit_to_app</mat-icon>
+              Sign Out
+            </button>
+          </a>
+
+          
+  <!--
+  <button mat-menu-item>
+  <a [routerLink]="['rentals-dashboard']">Dashboard</a>
+    </button>
+    <button mat-menu-item class="hide-on-desktop">
+    <a [routerLink]="['gear-list']">List Your Gear</a>
+  </button>
+  <button mat-menu-item>
+    <a [routerLink]="['profile/edit']">Settings</a>
+  </button>
+  <button mat-menu-item>
+    <a [routerLink]="['profile']">Profile</a>
+  </button>
+  <button mat-menu-item>
+    <a [routerLink]="['my_favourites']">My Favourites</a>
+  </button>
+  <button mat-menu-item>
+    <a (click)="logout()">Sign Out</a>
+  </button> -->
+</mat-menu>
+</ng-container>
+
+
+

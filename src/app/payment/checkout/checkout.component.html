@@ -1,0 +1,128 @@
+<div class="cart_sec">
+    <div class="check_out_page">
+        <div class="container">
+            <div class="payment_heading">Checkout ({{cart_item_sentence}})</div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-sm-8">
+                <div class="payment_sec">
+                    <!-- <div class="grey-divider first"></div> -->
+                    <div class="step_1 payment_btn_new">
+                        <div class="clearfix"></div>
+                        <div class="payment_btn">
+                            <p><span><i class="fa fa-dot-circle-o" aria-hidden="true"></i>
+                                </span>Your information is sent over a secured connection and stored securely
+                            </p>
+                            <p><span><i class="fa fa-dot-circle-o" aria-hidden="true"></i>
+                                </span>Your Card will not be charged until the owner accepts the request
+                            </p>
+                            <p><span><i class="fa fa-dot-circle-o" aria-hidden="true"></i>
+                                </span>Your Card details are not stored on kitshare
+                            </p>
+                        </div>
+                    </div>
+                    <!---- <div class="step_heading">Step 1 of 2 Choose Payment Method</div>---->
+                    <div class="step_2">
+                        <div class="please_wait" *ngIf="!paymentFormLoaded">
+                            <h4 style="color: green;">Please wait for the payment form to be loaded ...</h4>
+                        </div>
+                        <div id="dropincontainer" *ngIf="!paymentcompleted"></div>
+                        <div class="payment_success" *ngIf="paymentcompleted">
+                            <h4 style="color: green;">Payment successful.</h4>
+                            <!-- <h3>Transaction ID : {{transaction_id}}</h3> -->
+                        </div>
+
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="grey-divider first"></div>
+                    <div class="process_order" *ngIf="is_payment_going_on">
+                        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+                        <p style="color: green;margin: 12px 0;">Processing your Order</p>
+                        <h4 style="color: green;">Please do not refresh the page or press the back button ...</h4>
+                    </div>
+                    <!----- <div class="step_heading">Step 1 of 2 Choose Payment Method</div>-------->
+                    <h4>Rental Period: {{rental_date_from | date}} - {{rental_date_to | date}}</h4>
+                    <div class="step_one" *ngFor="let cart of cartArr.cart">
+                        <!-- <h2>Rental Period: {{cart.gear_rent_request_from_date | date}} - {{cart.gear_rent_request_to_date | date}}</h2> -->
+                        <div class="card">
+                            <img *ngIf="cart.gear_display_image == ''" src="/assets/images/default_product.jpg" class="img-responsive">
+                            <img *ngIf="cart.gear_display_image != ''" src="{{cart.gear_display_image}}" class="img-responsive">
+                        </div>
+                        <div class="card_info">
+                            <h1>{{cart.gear_name}}</h1>
+                            <!--<p>canon 90cm TS-E kit</p>-->
+                        </div>
+                    </div>
+                    <br>
+                    <div class="checkbox_sec" *ngIf="total_insurance_security_amount">
+                        <div class="security_text">Security Deposit</div>
+                        <p>A Deposit of {{total_insurance_security_amount | currency }} inc GST will be Authorised separately on your card. It will not be charged unless the owner makes a claim.</p>
+                        <!--<p>order. The Renter is responsible for the amount of the Security Deposite,</p>
+                        <p>but it will not be charged unless the Owner makes a claim</p>-->
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-4">
+                <div class="row-with-divider request-summary request-summary1">
+                    <div class="col-m-12">
+                        <div class="title">
+                            <div class="text-part">Order Summary</div>
+                        </div>
+                        <div class="">
+                            <div class="col-12">
+                                <div class="detail">
+                                    <div class="field">
+                                        <!-- <div class="field-name text-right"> {{total_cost_per_day_exc_gst | currency}} x {{total_no_of_shoot_days}} rented days </div> -->
+                                        <div class="field-name text-right"> Subtotal </div>
+                                        <div class="field-value">{{total_cost_day_exc_gst | currency}}</div>
+                                    </div>
+                                    <div class="field">
+                                        <div class="field-name text-right">Discount (15%)</div>
+                                        <div class="field-value">- ( {{beta_discount | currency}} )</div>
+                                    </div>
+                                    <div class="field">
+                                        <div class="field-name text-right">Insurance Fee</div>
+                                        <div class="field-value">{{insurance_fee | currency}}</div>
+                                    </div>
+                                    <div class="field">
+                                        <div class="field-name text-right">Owner Insurance Fee</div>
+                                        <div class="field-value">{{cartArr?.cart_summary?.owner_insurance_amount | currency}}</div>
+                                    </div>
+                                    <div class="field">
+                                        <div class="field-name text-right">Community Fee</div>
+                                        <div class="field-value">{{community_fee | currency}}</div>
+                                    </div>
+                                    <!-- <div class="field">
+                                        <div class="field-name text-right"><a href="#" target="_blank"> Security Deposit</a></div>
+                                        <div class="field-value">${{security_deposit}}</div>
+                                    </div> -->
+                                    <div class="field">
+                                        <div class="field-name text-right">Total ex GST</div>
+                                        <div class="field-value"> {{sub_total | currency}}</div>
+                                    </div>
+                                    <div class="field">
+                                        <div class="field-name text-right">GST (10%) </div>
+                                        <div class="field-value">{{gst_amount | currency}}</div>
+                                    </div>
+                                    <div class="field">
+                                        <div class="field-name text-right text-bold">Total inc GST </div>
+                                        <div class="field-value text-bold">{{total_rent_amount | currency}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+                <!-- <button class="book-button `button-processing` top-10 inline-display" id="submit-rental-request" rel="nofollow" (click)="requestBooking()"> -->
+                <button class="book-button `button-processing` top-10 inline-display" id="submit-rental-request" rel="nofollow" [disabled]="is_payment_going_on" (click)="pay()">
+                    <div class="content">Request Booking</div>
+                </button>
+
+            </div>
+        </div>
+    </div>
+</div>

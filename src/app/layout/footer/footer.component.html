@@ -1,0 +1,110 @@
+<footer *ngIf="global.showFooter" class="application-footer">
+    <div class="container">
+        <div class="row">
+
+
+            <!-- <div class="col-md-12 footer-container"> -->
+            <div class="col-sm-3 col-xs-6">
+                <ul class="footer_link">
+                    <li>
+                        <h4 class="footer-header">ABOUT KITSHARE</h4>
+                    </li>
+                    <li>
+                        <a class="footer-link" [routerLink]="[ '/cms/about-us']">About Us</a>
+                    </li>
+                    <li>
+                        <a class="footer-link" [routerLink]="[ '/cms/what-is-kitshare']">What is kitshare?</a>
+                    </li>
+                    <!--<li>
+                        <a class="footer-link" [routerLink]="[ '/cms/how-we-work']">How We Work</a>
+                    </li>-->
+                    <li>
+                        <a class="footer-link" [routerLink]="[ '/cms/cms/trust-and-safety']">Trust and Safety</a>
+                    </li>
+                    <li>
+                        <a class="footer-link" [routerLink]="[ '/cms/terms-and-conditions']">Terms and Conditions</a>
+                    </li>
+                    <li>
+                        <a class="footer-link" [routerLink]="[ '/cms/privacy-policy']">Privacy Policy</a>
+                    </li>
+                    <li>
+                        <a class="footer-link" [routerLink]="[ '/cms/customer-damage-waiver']">Insurance Policy</a>
+                    </li>
+                    <li>
+                        <a class="footer-link" [routerLink]="[ '/cms/contact-us']">Contact Us</a>
+                    </li>
+                    <br>
+                </ul>
+            </div>
+
+            <!-- <div class="col-md-12 footer-container"> -->
+            <div class="col-sm-3 col-xs-6">
+                <ul class="footer_link">
+                    <li>
+                        <h4 class="footer-header">TOP CITIES</h4>
+                    </li>
+                    <li *ngFor="let city of topCities">
+                        <a class="footer-link" href="javascript:void(0);" (click)="goToSearchPageWithAddress(city)">{{city}}</a>
+                    </li>
+                    <br>
+                </ul>
+            </div>
+
+
+            <!-- <div class="col-md-12 footer-container"> -->
+            <div class="col-sm-3 col-xs-6">
+                <ul class="footer_link">
+                    <li>
+                        <h4 class="footer-header">POPULAR GEAR</h4>
+                    </li>
+                    <li style="cursor:pointer;" *ngFor="let category of topCategories">
+                        <a class="footer-link" (click)="goToSearchPage(category.id)">{{category.name}}</a>
+                    </li>
+                    <br>
+                </ul>
+            </div>
+
+
+            <!-- <div class="col-md-12 footer-container"> -->
+            <div class="col-sm-3 col-xs-6">
+                <ul class="footer_link">
+                    <li>
+                        <h4 class="footer-header">CONNECT</h4>
+                    </li>
+                    <!-- <li class="social">
+                            <a class="footer-link" href="{{fb}}" target="_blank"><i class="fa fa-facebook-square" aria-hidden="true"></i></a>
+                        </li> -->
+                    <li class="social">
+                        <a class="footer-link" href="https://www.facebook.com/KitshareAU" target="_blank"><i class="fa fa-facebook-square" aria-hidden="true"></i></a>
+                    </li>
+                    <!-- <li class="social">
+                            <a class="footer-link" href="{{twitt}}" target="_blank"><i class="fa fa-twitter-square" aria-hidden="true"></i></a>
+                        </li> -->
+                    <li class="social">
+                        <a class="footer-link" href="https://twitter.com/KitshareAU" target="_blank"><i class="fa fa-twitter-square" aria-hidden="true"></i></a>
+                    </li>
+                    <!-- <li class="social">
+                            <a class="footer-link text-white" href="{{insta}}" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                        </li> -->
+                    <li class="social">
+                        <a class="footer-link text-white" href="https://www.instagram.com/kitshareau/" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                    </li>
+                    <li class="social">
+                        <a class="footer-link text-white" href="https://www.linkedin.com/company/kitshareAU" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-12">
+                <p class="footer-text">©2022 Kitshare.
+                    <span>All rights reserved 2.0.0322</span>
+                </p>
+            </div>
+        </div>
+
+
+    </div>
+</footer>

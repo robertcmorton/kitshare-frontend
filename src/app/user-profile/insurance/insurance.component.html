@@ -1,0 +1,159 @@
+<section class="dashboard_bodynew">
+  <div class="top_bresdcum fixed-pos">
+    <div class="container">
+      <div class="col-md-12 right-column">
+        <div class="profileSettings">
+          Profile Settings
+          <button *ngIf="show_insurance_cerificate" class="btn btn-default SaveProfile" type="submit"
+            (keydown.enter)="$event.preventDefault()" [disabled]="add_policy_disable" (click)="onSubmit()">Save
+            Policy</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="contact_form_list">
+    <div class="container">
+      <div class="row insurance_box">
+        <app-left-sidebar></app-left-sidebar>
+
+        <div class="insurance_wrapper">
+          <div class="headline_area">
+            <h2>Add Insurance Policy</h2>
+          </div>
+          <hr />
+          <div class="instructions">
+            <p class="inst_text">Kitshare provides insurance for most listings up to the value of $20,000. For listings
+              that exceed our policy limit, the equipment owner or renter can upload a policy to provide coverage on the
+              rental.</p>
+
+            <p class="headline">Add an insurance policy for:</p>
+            <ul>
+              <li *ngFor="let text of instruction_text">{{ text }}</li>
+            </ul>
+            <p class="inst_text">Verification with your insurance provider typically takes 24-48 hours.</p>
+
+            <p class="inst_text">Kitshare has partnered with Modern Risk Solutions and SURA to provide insurance
+              coverage. Contact enquiry@modernrisksolutions.com and mention 'KIT21' to get a quote. </p>
+          </div>
+          <button type="button" class="button" (click)="addInsuranceCertificate()"
+            *ngIf="!show_insurance_cerificate">Add Insurance Certificate</button>
+
+          <form [formGroup]="insurance_form" *ngIf="show_insurance_cerificate">
+            <div class="form_group"
+              [ngClass]="{'has-error': fetchValidityStatus(insurance_form.controls.insurance_description)}">
+              <label for="">Certificate of Insurance</label>
+              <input type="text" formControlName="insurance_description" placeholder="My Insurance Certificate" />
+              <show-errors [control]="insurance_form.controls.insurance_description"></show-errors>
+            </div>
+
+            <section class="form-row split-two">
+              <div class="form_group"
+                [ngClass]="{'has-error': fetchValidityStatus(insurance_form.controls.start_date)}">
+                <label for="">Starting Date</label>
+                <kit-expiration-date formControlName="start_date" (click)="setCurrentControl('start_date')"
+                  [initiator]="'start_date'" [isStart]="true"></kit-expiration-date>
+                <show-errors [control]="insurance_form.controls.start_date"></show-errors>
+                <span class="custom-err" *ngIf="insurance_form.controls.start_date.value === 'Invalid date'">Please
+                  Enter Correct Date Format</span>
+              </div>
+
+              <div class="form_group"
+                [ngClass]="{'has-error': fetchValidityStatus(insurance_form.controls.expire_date)}">
+                <label for="">Expiration Date</label>
+                <kit-expiration-date formControlName="expire_date" (click)="setCurrentControl('expire_date')"
+                  [initiator]="'expire_date'" [isStart]="false"></kit-expiration-date>
+                <show-errors [control]="insurance_form.controls.expire_date"></show-errors>
+                <span class="custom-err" *ngIf="insurance_form.controls.expire_date.value === 'Invalid date'">Please
+                  Enter Correct Date Format</span>
+              </div>
+            </section>
+
+
+            <div class="form_group">
+              <label for="">Certificate of Currency</label>
+              <p>Add a PDF or JPEG of your Insurance policy. Details will be verified with your Insurance provider.</p>
+              <kit-image-upload formControlName="snapshot"></kit-image-upload>
+              <div class="imageBox" *ngIf="insurance_form.value.insurance_image_url">
+                <img [src]="insurance_form.value.insurance_image_url" alt="">
+              </div>
+            </div>
+
+            <!-- Renter Insurance Block -->
+            <section class="renter_insurance_block no-form-bg"
+              [ngClass]="{'has-error': fetchValidityStatus(insurance_form.controls.renter_insurance_amount)}">
+              <div class="form_box two-parts">
+                <mat-slide-toggle formControlName="renter_insurance_provided"></mat-slide-toggle>
+                <div class="desc">
+                  <label for="">Renter provided Insurance</label>
+                  <p>Use your existing insurance policy at checkout to save on the cost of a rental</p>
+                </div>
+              </div>
+
+              <div class="form_box" *ngIf="insurance_form.value.renter_insurance_provided">
+                <label for="">Total Sum Insured (ex GST)</label>
+                <input type="number" formControlName="renter_insurance_amount" />
+                <show-errors [control]="insurance_form.controls.renter_insurance_amount"></show-errors>
+              </div>
+            </section>
+
+
+            <!--Owner Insurance-->
+            <section class="renter_insurance_block no-form-bg"
+              [ngClass]="{'has-error': fetchValidityStatus(insurance_form.controls.owner_insurance_amount)}">
+              <div class="form_box two-parts">
+                <mat-slide-toggle formControlName="owner_insurance_provided"></mat-slide-toggle>
+                <div class="desc">
+                  <label for="">Owner provided Insurance</label>
+                  <p>Renters are covered under your insurance policy for loss or damage on your listings.</p>
+                </div>
+                <p class="desc_strip">As an Owner you can add an Insurance fee to your listings which the renter can
+                  select at checkout. The fee is calculated as a percentage of the daily rate.</p>
+              </div>
+
+              <div class="form_box two-parts jc-sb" *ngIf="insurance_form.value.owner_insurance_provided">
+                <div class="part1">
+                  <label for="">Total Sum Insured (ex GST)</label>
+                  <input type="number" formControlName="owner_insurance_amount" />
+                  <show-errors [control]="insurance_form.controls.owner__insurance_amount"></show-errors>
+                </div>
+                <div class="part2">
+                  <label for="">Insurance Fee - <strong>{{ insurance_form.value.owner_insurance_percentage }}
+                      %</strong></label>
+                  <mat-slider formControlName="owner_insurance_percentage" min="1" max="15" step="1"></mat-slider>
+                </div>
+              </div>
+            </section>
+            <div class="warning">
+
+            </div>
+
+          </form>
+          <kit-insurance-list *ngIf="available_insurance.length>0"
+            (deleteInsuranceParent)="deleteInsuranceParent($event)" [list]="available_insurance"></kit-insurance-list>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="confirmdeleteinsurancemodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog public_confirm" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Delete your Insurance Policy</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Deleting a policy may prevent the rental of certain listings?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn modal-dangerButton Policy-Cancel" data-dismiss="modal">Cancel</button>
+        <button type="button" class="modal-primaryButton Policy-Delete" (click)="nowDeleteInsurance()"
+          data-dismiss="modal">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>

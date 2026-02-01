@@ -1,0 +1,9 @@
+:host {
+  display: flex;
+    flex-flow: column wrap;
+    margin: 1rem 0;
+
+    .wrapper {
+      width: 100%;
+    }
+}

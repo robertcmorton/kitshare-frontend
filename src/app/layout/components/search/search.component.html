@@ -1,0 +1,76 @@
+<ng-container *ngIf="currentSize <= desktop">
+  <button mat-icon-button class="only-icon" (click)="openSearch()">
+    <mat-icon class="icon-white">search</mat-icon>
+  </button>
+
+
+  <div class="search_wrapper" *ngIf="isSearchOpen" (click)="closeSearch()">
+    <header>
+      <span class="title">Search</span>
+      <button mat-icon-button class="only-icon" (click)="$event.stopPropagation();closeSearch()">
+        <mat-icon class="icon-white">close</mat-icon>
+      </button>
+    </header>
+
+    <div class="search_content" (click)="$event.stopPropagation()">
+      <div class="row withdrop">
+        <div class="triggers">
+          <div class="menu-trigger" (click)="toggleNestedMenu()">
+            <button mat-icon-button>
+              <mat-icon class="icon-blue">list</mat-icon>
+            </button>
+          </div>
+          <div class="wrapper">
+            <button mat-icon-button>
+              <mat-icon class="icon-blue">search</mat-icon>
+            </button>
+            <input class="search_input" type="text" placeholder="I'm looking for..." (input)="searchTextChanged($event)"
+              [value]="key_word">
+          </div>
+        </div>
+        <kit-nested-drop *ngIf="showNestedMenu" (categorySelected)="onCategorySelected($event)"></kit-nested-drop>
+      </div>
+      <div class="row">
+        <kit-location-search (locationSelect)="onLocationSelect($event)"
+          (locationAdded)="closeSearchOnLocationtext($event)"></kit-location-search>
+      </div>
+
+      <button class="search" (click)="goToSearchPage()">
+        <!-- <mat-icon>search</mat-icon> -->
+        Search
+      </button>
+
+      <button class="btn_clear" (click)="resetSearchParams()">
+        <!-- <mat-icon>close</mat-icon> -->
+        Clear filter
+      </button>
+    </div>
+  </div>
+</ng-container>
+
+<!-- Desktop Search-->
+<ng-container *ngIf="currentSize > desktop">
+  <div class="search_block">
+
+    <div class="menu-trigger" (click)="toggleNestedMenu()">
+      <button mat-icon-button>
+        <mat-icon class="icon-black">list</mat-icon>
+      </button>
+    </div>
+    <kit-nested-drop (categorySelected)="onCategorySelected($event)" *ngIf="showNestedMenu"></kit-nested-drop>
+    <div class="looking_for">
+      <button mat-icon-button disabled class="btn_disabled_solid">
+        <mat-icon class="icon-blue">search</mat-icon>
+      </button>
+      <input type="text" class="search_input" placeholder="I'm looking for..." (input)="searchTextChanged($event)"
+        (keydown.enter)="goToSearchPage()" [value]="key_word">
+    </div>
+    <kit-location-search (locationSelect)="onLocationSelect($event)"></kit-location-search>
+    <button mat-icon-button (click)="resetSearchParams()">
+      <mat-icon class="icon-gray">close</mat-icon>
+    </button>
+    <button class="search" (click)="goToSearchPage()">
+      <mat-icon>search</mat-icon>
+    </button>
+  </div>
+</ng-container>

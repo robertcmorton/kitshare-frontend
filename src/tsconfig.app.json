@@ -1,0 +1,20 @@
+{
+  "extends": "./../tsconfig.base.json",
+  "compilerOptions": {
+    "outDir": "../out-tsc/app",
+    "baseUrl": "./",
+    "module": "es2015",
+    "types": []
+  },
+  "exclude": ["test.ts", "**/*.spec.ts"],
+  "files": [
+    "main.ts",
+    "polyfills.ts",
+    "app/faq/faq.module.ts",
+    "app/user-profile/user-profile.module.ts"
+  ],
+  "types": ["googlemaps"],
+  "angularCompilerOptions": {
+    "enableIvy": false
+  }
+}

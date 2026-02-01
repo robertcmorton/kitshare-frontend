@@ -1,0 +1,152 @@
+.Page-container {
+    width: 100% !important;
+    max-width: 1170px;
+    margin-bottom: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.container {
+    width: 100%;
+    max-width: 1170px;
+}
+
+.Fav-Header {
+    font-size: 24px;
+}
+
+@media screen and (max-width:691px) {
+    .Fav-Header {
+    }
+    h3 {
+      font-size: 18px;
+    }
+}   
+
+.listing-owner-info-container {
+    overflow: auto;
+
+}
+
+.fa.fa-times {
+    cursor: pointer;
+
+}
+
+.listing-btn-name {
+    font-size: 18px;
+    line-height: 1;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+    font-weight: 600;
+    margin-bottom: 0px;
+    color: #222222;
+    line-height: normal;
+    overflow: hidden;
+    font-family: sans-serif;
+}
+
+.listing-owner-name {
+    color: #0747A6;
+
+}
+
+.gear-info-container-link {
+    cursor: pointer;
+}
+
+.listing-btn-price {
+    color: #222222;
+    font-weight: 800;
+    font-size: 16px !important;
+    line-height: 24px !important;
+    font-family: sans-serif;
+    -webkit-font-smoothing: antialiased;
+    margin-top: 0px;
+}
+
+.per-day {
+    color: #8993A4;
+    font-size: 12px !important;
+    line-height: 24px !important;
+    font-family: sans-serif;
+    -webkit-font-smoothing: antialiased;
+    margin-top: 2px;
+}
+
+.gear-info-container {
+    padding: 10px 15px 5px 15px;
+}
+
+.delete-fav {
+    color: #232323;
+    width: 15px;
+    height: 15px;
+    font-size: 15px;
+    align-self: flex-end;
+    border-radius: 50%;
+    position: absolute;
+    padding: 5px 0px 0px 0px;
+    right: -10px;
+    top: -10px;
+    font-size: 12px;
+    color: white;
+    cursor: pointer;
+    width: 22px;
+    height: 22px;
+    background-color: black;
+    border-radius: 15px;
+    text-align: center;
+}
+
+
+.Fav-AddtoCart {
+    padding: 10px 10px;
+    background-color: #0747A6;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    position: absolute;
+    margin: 10px;
+    width: 130px;
+    z-index: 1;
+    &:hover {
+        background-color: #0065FF;
+    }
+}
+
+.Fav-AddedtoCart {
+    padding: 10px 10px;
+    background-color: red;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    position: absolute;
+    margin: 10px;
+    width: 130px;
+    z-index: 1;
+    opacity: 0.5;
+}
+
+.FavHeader {
+    font-family: sans-serif;
+    font-size: 30px;
+    color: black;
+    text-align: center;
+    line-height: 0;
+}
+
+.FavText {
+    font-family: sans-serif;
+    font-size: 24px;
+    color: grey;
+    text-align: center;
+    line-height: 0;
+}
+
+.mat-icon {
+    vertical-align: text-bottom;
+}

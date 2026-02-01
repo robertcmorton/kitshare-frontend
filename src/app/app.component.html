@@ -1,0 +1,22 @@
+<div *ngIf="loaderState" class="loader">
+    <img width="150px" src="assets/images/loader-new.svg" />
+
+</div>
+<div *ngIf="verifyUserState" class="congrats_msg">
+    <div class="congrats-image">
+        <img style="width: 100%;height: 100%;" src="assets/images/congratulations.jpg" />
+    </div>
+    <div class="congrats-text">Welcome to Kitshare! Australia's largest Camera Sharing Community. Rent Professional equipment locally. Build your Profile. Grow your Community.</div>
+    <div class="abs_div" (click)="loginNow()">
+        Login Now
+    </div>
+</div>
+
+<app-kit-header></app-kit-header>
+
+<div class="content_area">
+    <router-outlet></router-outlet>
+</div>
+
+<kit-save-bar [config]="saveBarConfig" *ngIf="saveBarConfig?.status == 'show'" [@slideInOut]></kit-save-bar>
+<app-footer></app-footer>

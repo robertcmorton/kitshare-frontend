@@ -1,0 +1,7 @@
+<input [disabled]="isDisabled" type="text" [name]="name" (keyup)="filterSuggestionList($event)" [(ngModel)]="selectedValue" (blur)="newValueSelected()"
+  [placeholder]="placeHolder" class="input100">
+  <span class="highlight-input"></span>
+<ul *ngIf="showSuggestionList" class="suggestion-list">
+  <!-- <li value="" (click)="updateTextFieldValue()">Not Anyone</li> -->
+  <li *ngFor="let eachSuggestion of suggestionListOptions" (click)="updateTextFieldValue(eachSuggestion.value)" [innerHTML]='eachSuggestion.label'></li>
+</ul>

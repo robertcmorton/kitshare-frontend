@@ -1,0 +1,94 @@
+<ng-container *ngIf="!loggedIn">
+    <ul class="notuser">
+        <li class="login" routerLink="/login">Sign In</li>
+        <li routerLink="/sign-up">Join Now</li>
+      </ul>
+</ng-container>
+
+<ng-container *ngIf="loggedIn">
+    <ul>
+        <li>
+          <button mat-icon-button class="only-icon" (click)="goToMessage()">
+            <mat-icon class="icon-white">chat_bubble</mat-icon>
+            <span class="count" *ngIf="no_of_unread_messages > '0'">{{no_of_unread_messages}}</span>
+          </button>
+        </li>
+
+
+        <li class="cart-item">
+          <button mat-icon-button class="only-icon" (click)="goToCart()">
+            <mat-icon class="icon-white">shopping_cart</mat-icon>
+            <span class="count" *ngIf="no_of_cart_items > '0'">{{no_of_cart_items}}</span>
+          </button>
+        </li>
+
+
+          <li>
+              <ng-container>
+                  <button mat-icon-button [matMenuTriggerFor]="usermenu">
+                    <img [attr.src]="avatar" alt="">
+                  </button>
+                  <mat-menu #usermenu="matMenu" yPosition="below" xPosition="before" panelClass="usermenu">
+                    
+                    
+                    <a [routerLink]="['rentals']">
+                    <button mat-menu-item>
+                        
+                        <mat-icon>dashboard</mat-icon>
+                        Dashboard
+                    </button>
+                  </a>
+
+                    
+                  <a [routerLink]="['profile/edit']">
+                    <button mat-menu-item>
+                      
+                      <mat-icon>settings</mat-icon>
+                      Settings
+                    </button>
+                  </a>
+
+                    
+                    <!-- <button mat-menu-item>
+                      <a [routerLink]="['search']">
+                      <mat-icon>search</mat-icon>                      
+                      Search Gear</a>
+                    </button> -->
+
+                    
+                    <a [routerLink]="['my_favourites']">
+                    <button mat-menu-item>
+                      
+                      <mat-icon>favorite</mat-icon>
+                      My Favourites
+                    </button>
+                  </a>
+
+                    
+                   
+                  <a [routerLink]="['profile']">
+                    <button mat-menu-item>
+                        
+                        <mat-icon>account_box</mat-icon> 
+                        Profile
+                    </button>
+                  </a>
+                  
+
+                    <!--logout for desktop-->
+                    <a (click)="logout()">
+                    <button mat-menu-item>
+                      
+                      <mat-icon>exit_to_app</mat-icon>
+                      Sign Out
+                    </button>
+                  </a>
+
+
+                  </mat-menu>
+                  </ng-container>
+          </li>
+      </ul>
+</ng-container>
+
+<!-- <app-kit-primary-nav (clickOutside)="onClickedOutsidePrimaryNav($event)" [closeMenu]="closeMenu"></app-kit-primary-nav> -->

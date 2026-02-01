@@ -1,0 +1,164 @@
+<section class="dashboard_bodynew">
+    <div class="top_bresdcum fixed-pos">
+        <div class="container">
+            <div class="col-md-12 right-column">
+                <div class="profileSettings">Profile Settings</div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="contact_form_list">
+        <div class="container">
+            <div class="row acc-setting">
+                <app-left-sidebar></app-left-sidebar>
+
+                <div class="col-md-9 col-sm-9">
+                    <div class="Profile_RightColumn">
+                        <div class="wrap-contact100">
+                            <form class="contact100-form validate-form">
+                                <div class="col-md-12 right_column">
+
+
+                                    <div class="contact_info_heading">
+                                        <h2>Accounts Settings</h2>
+                                        <hr />
+                                        <div class="wrap-contact100">
+                                            <div class="accounts_text">
+                                                <h3>Email addresses</h3>
+                                            </div>
+                                            <table class="table table-list-search">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Verified Email Address</th>
+                                                        <!-- <th style="text-align:center">Confirmation</th>
+                                        <th>Notification</th>
+                                        <th></th> -->
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="email_details" style="padding-left:10px">
+                                                            {{primary_email_address}}</td>
+                                                        <!-- <td align="center" class="no-padding">Confirmed</td>
+                                        <td class="no-padding">
+                                            <div class="checkbox checkbox-primary">
+                                                <input id="checkbox2" type="checkbox" checked="">
+                                                <label for="checkbox2"></label>
+                                            </div>
+                                        </td>
+                                        <td class="no-padding"><i class="fa fa-times" aria-hidden="true"></i></td> -->
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <!-- <div class="reenter_email">
+                            <a href="#"><span><i class="fa fa-plus" aria-hidden="true"></i></span> Add new Email address</a>
+                        </div> -->
+                                        <!--    <button class="btn cart_btns55">Save</button> -->
+                                    </div>
+
+
+                                    <div class="container-contact100 box_shadow_form">
+                                        <div class="accounts_text">
+                                            <h3>Phone Number Verifcation</h3>
+                                        </div>
+                                        <!-- <div class="checkbox checkbox-primary checkbox50">
+                            <input id="checkbox5" type="checkbox" checked="">
+                            <label for="checkbox5">
+                           My contact number is different from the one used in ID verification.
+                        </label>
+                        </div> -->
+                                        <p class="notifications_text">In order to protect the security of your account,
+                                            please add your phone number. We will send you a text message with a code
+                                            that you'll need to verify</p>
+                                        <h3 class="notification_heading">
+                                            <!--    Notification  -->
+                                        </h3>
+                                        <div class="col-md-4 col-sm-4 form-details">
+                                            <div class="wrap-input100 validate-input" data-validate="Name is required">
+                                                <span class="label-input100">Enter Phone Number</span>
+                                                <input class="input100 account-input" name="phone_no" style="padding-left:10px" placeholder="Enter Phone Number" type="text" [disabled]="is_mobile_verified" [(ngModel)]="phone_no">
+                                                <!-- <span class="focus-input100"></span> -->
+                                            </div>
+                                        </div>
+                                        <ng-container *ngIf="!is_mobile_verified">
+                                            <div class="col-md-4 col-sm-4 form-details" *ngIf="has_verification_code_been_requested">
+                                                <div class="wrap-input100 validate-input" data-validate="Name is required">
+                                                    <span class="label-input100">Enter code sent to your mobile</span>
+                                                    <input class="input100" name="otp" placeholder="Enter code sent to your mobile" type="text" [(ngModel)]="otp">
+                                                    <!-- <span class="focus-input100"></span> -->
+                                                </div>
+                                            </div>
+                                        </ng-container>
+
+                                        <div class="col-md-4 col-sm-4 form-details" *ngIf="!is_mobile_verified">
+                                            <button class="account-btn" *ngIf="otp_came" (click)="sendOTP()">Save</button>
+                                            <button class="account-btn" *ngIf="has_verification_code_been_requested" (click)="resendOtp()">Resend</button>
+                                            <button class="account-btn" *ngIf="!has_verification_code_been_requested" (click)="verifyPhone()">Verify Phone Number</button>
+                                        </div>
+                                    </div>
+
+
+                                    <!-- <div class="container-contact100 box_shadow_form">
+                        <div class="accounts_text">
+                            <h3>Change your Password</h3>
+                        </div>
+                        <div class="col-md-5 col-sm-5 no_padding">
+                            <div class="wrap-input100 validate-input" data-validate="Name is required">
+                                <span class="label-input100">Password</span>
+                                <input class="input100" name="name" placeholder="*********" type="text">
+                                <span class="focus-input100"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-1 col-sm-1 no_padding">
+                            <p class="change_text"><a href="#" data-toggle="modal" data-target=".bs-example-modal-sm">
+                              Change
+                           </a>
+                            </p>
+                        </div>
+                        <div class="clearfix"></div>
+                        <button class="btn cart_btns55">Save</button>
+                    </div> -->
+
+
+                                    <div class="container-contact100 box_shadow_form">
+                                        <div class="accounts_text">
+                                            <h3>Unavailable mode</h3>
+                                        </div>
+                                        <p class="select_text">Make all of your listing(s) unavailable for a set period
+                                            of time</p>
+                                        <span class="label-input100">Select Unavailable Dates</span>
+                                        <div class="row account-input">
+                                            <div class="col-md-6 col-sm-6" *ngFor="let unAvailableIndex of unAvailableCount;let i = index;">
+                                                <div class="wrap-input100 validate-input geardate">
+                                                    <input name="unAvailavleDate{{i}}" [owlDateTime]="dt3" [(ngModel)]="unAvailableDates[i]" [selectMode]="'range'" [min]="minDate" [owlDateTimeTrigger]="dt3" placeholder=" Date Time">
+                                                    <owl-date-time [pickerType]="'calendar'" [pickerMode]="'popup'" #dt3></owl-date-time>
+                                                    <span class="focus-input100"></span>
+                                                    <span title="Remove dates" class="cross-abs unset-date" (click)="removeDateFunction(i)">X</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                        <div class="row">
+                                            <div class="account-newdate col-md-6 col-sm-6">
+                                                <button class="newdate-btn" (click)="addNewUnavailableDate()">New
+                                                    unavailable date</button>
+                                            </div>
+                                            <div class="account-save col-md-6 col-sm-6">
+                                                <button class="account-btn" (click)="savedate()">Save</button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </form>
+                            <div id="dropDownSelect1"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

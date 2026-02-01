@@ -1,0 +1,225 @@
+<section class="dashboard_bodynew">
+  <div class="top_bresdcum fixed-pos">
+    <div class="container">
+      <div class="col-md-12 right-column">
+        <div class="profileSettings">
+          Profile Settings
+          <button type="button" (click)="updateProfile()" class="btn btn-default SaveProfile">Save
+            Profile</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="contact_form_list">
+    <div class="container">
+      <div class="row m-t-90">
+        <app-left-sidebar></app-left-sidebar>
+        <div class="col-md-9 col-sm-9 right-column">
+          <div class="col-md-12 profile-information">
+            <div class="contact_info_heading">
+              <h2>Profile Information</h2>
+              <hr />
+            </div>
+          </div>
+
+
+          <div class="container-contact100 box_shadow_form">
+            <div class="wrap-contact100">
+              <form name="edit-profile-form" class="contact100-form validate-form">
+                <div class="col-md-12 profile-description">
+                  <p class="photo_info">This information will be visible to kitshare users on your
+                    <a [routerLink]="['/profile']">profile page</a>
+                  </p>
+                </div>
+                <div class="col-md-12 profile-image">
+                  <label for="image_header">Profile image</label>
+                  <div class="photo_panel">
+                    <div class="photo_frame">
+                      <div class="space-2">
+                        <img [src]="imageUrl?imageUrl:''" class="img-responsive">
+                      </div>
+                    </div>
+                      
+                    <div class="upload_btns btn">
+                      <span class="material-icons ProfileImage-Upload">
+                        file_upload
+                        </span>
+                        Upload Photo
+                      <input type="file" name="avatar" id="avatar" (change)="onFileChange($event)" class="">
+                    </div>
+                  </div>
+                </div>
+
+
+                <div class="row ctrl-2">
+                  <div class="form-group">
+                    <label for="">First Name</label>
+                    <input class="form-control" [(ngModel)]="userProfileData.app_user_first_name"
+                      name="app_user_first_name" placeholder="First Name" type="text" required>
+                    <!-- <span class="highlight-input"></span> -->
+                  </div>
+                  <div class="form-group">
+                    <label for="">Last Name</label>
+                    <input class="form-control" name="app_user_last_name" placeholder="Last Name"
+                      [(ngModel)]="userProfileData.app_user_last_name" required type="text">
+                    <!-- <span class="highlight-input"></span> -->
+                  </div>
+                </div>
+
+                <div class="row ctrl-3">
+                  <div class="form-group">
+                    <label for="">Username</label>
+                    <input class="form-control" type="text" name="app_username" placeholder="Username"
+                      [(ngModel)]="userProfileData.app_username" (keyup)="onKeyUpCheckUnique($event)" required>
+                    <!-- <span class="highlight-input"></span> -->
+                  </div>
+                  <div class="form-group">
+                    <label for="">Date of Birth</label>
+                    <input class="form-control" placeholder="Choose Dob" name="dob" [(ngModel)]="dob"
+                      [owlDateTimeTrigger]="dt5" [max]="max" [owlDateTime]="dt5">
+                    <owl-date-time [pickerType]="'calendar'" [pickerMode]="'popup'" #dt5></owl-date-time>
+                  </div>
+                  <div class="form-group">
+                    <label for="">I am a</label>
+                    <ngx-select optionValueField="ks_renter_type_id" optionTextField="ks_renter_type"
+                      name="ks_renter_type_id" [items]="rentalType" [(ngModel)]="userProfileData.ks_renter_type_id"
+                      placeholder="--select--"></ngx-select>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="form-group row-wrap">
+                    <input id="registered" class="form-control" name="show_business_name" type="checkbox"
+                      [checked]="show_business_name" (change)="showBusinessName($event)">
+                    <label for="">Do you have a registered Business name?</label>
+                  </div>
+                </div>
+
+                <div class="row" *ngIf="show_business_name">
+                  <div class="form-group">
+                    <label for="">Business Name</label>
+                    <input class="form-control" name="name" placeholder="Buisness Name" type="text"
+                      [(ngModel)]="userProfileData.app_business_name" required>
+                    <!-- <span class="highlight-input"></span> -->
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="form-group">
+                    <label for="">Australian Business Number</label>
+                    <input class="form-control" name="australian_business_number"
+                      placeholder="Australian Business Number" type="text"
+                      [(ngModel)]="userProfileData.australian_business_number" required>
+                    <!-- <span class="highlight-input"></span> -->
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="form-group row-wrap">
+                    <input id="GST" class="form-control" name="registered_for_gst" type="checkbox"
+                      [checked]="is_registered_for_gst" (change)="registeredForGst($event)">
+                    <label for="GST">Are you registered for GST?</label>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="form-group">
+                    <label for="">About me</label>
+                    <textarea class="form-control" [(ngModel)]="userProfileData.user_description"
+                      name="user_description" rows="5" id="comment"
+                      placeholder="Enter your Profession or type 'other'"></textarea>
+                    <!-- <span class="highlight-input"></span> -->
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="form-group">
+                    <label for="">Profession</label>
+                    <ngx-select optionValueField="profession_type_id" (selectionChanges)="selectOnChanged($event)"
+                      optionTextField="profession_name" name="profession_type_id" [items]="professionType"
+                      [(ngModel)]="userProfileData.profession_type_id" placeholder="-- Select Profession --">
+                    </ngx-select>
+                  </div>
+                </div>
+
+                <div class="row" *ngIf="mentionOtherProfession">
+                  <label for="">Please specify profession</label>
+                  <input class="form-control" [(ngModel)]="userProfileData.other_profession" name="other_profession"
+                    placeholder="Please specify profession" type="text">
+                  <!-- <span class="highlight-input"></span> -->
+                </div>
+
+
+                <div class="row ctrl-2">
+                  <div class="form-group">
+                    <label for="">Website</label>
+                    <input class="form-control" name="website" placeholder="Insert link to your personal/portfolio site"
+                      [(ngModel)]="userProfileData.website_link" required type="text">
+                    <!-- <span class="highlight-input"></span> -->
+                  </div>
+                  <div class="form-group">
+                    <label for="">Facebook</label>
+                    <input class="form-control" name="facebook_link" placeholder=""
+                      [(ngModel)]="userProfileData.facebook_link" type="text">
+                    <!-- <span class="highlight-input"></span> -->
+                  </div>
+                </div>
+
+                <div class="row ctrl-2">
+                  <div class="form-group">
+                    <label for="">Twitter</label>
+                    <input class="form-control" name="twitter_link" placeholder=""
+                      [(ngModel)]="userProfileData.twitter_link" required type="text">
+                    <!-- <span class="highlight-input"></span> -->
+                  </div>
+                  <div class="form-group">
+                    <label for="">Youtube</label>
+                    <input class="form-control" name="youtube_link" placeholder=""
+                      [(ngModel)]="userProfileData.youtube_link" required type="text">
+                    <!-- <span class="highlight-input"></span> -->
+                  </div>
+                </div>
+
+                <div class="row  ctrl-2">
+                  <div class="form-group">
+                    <label for="">IMDb</label>
+                    <input class="form-control" name="imdb_link" placeholder="" [(ngModel)]="userProfileData.imdb_link"
+                      required type="text">
+                    <!-- <span class="highlight-input"></span> -->
+                  </div>
+                  <div class="form-group">
+                    <label for="">Vimeo</label>
+                    <input class="form-control" name="imdb_link" placeholder="" [(ngModel)]="userProfileData.vimeo_link"
+                      required type="text">
+                    <!-- <span class="highlight-input"></span> -->
+                  </div>
+                </div>
+
+                <div class="row  ctrl-2">
+                  <div class="form-group">
+                    <label for="">Instagram</label>
+                    <input class="form-control" name="instagram_link" placeholder=""
+                      [(ngModel)]="userProfileData.instagram_link" required type="text">
+                    <!-- <span class="highlight-input"></span> -->
+                  </div>
+                  <div class="form-group">
+                    <label for="">Linkedin</label>
+                    <input class="form-control" name="linkedin_link" placeholder=""
+                      [(ngModel)]="userProfileData.linkedin_link" required type="text">
+                    <!-- <span class="highlight-input"></span> -->
+                  </div>
+                </div>
+
+                <div class="row">
+                  <!-- <button type="button" (click)="updateProfile()" class="btn btn-default unavailable_btn1">Save
+                    Profile</button> -->
+                </div>
+
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

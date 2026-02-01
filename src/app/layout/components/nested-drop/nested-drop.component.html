@@ -1,0 +1,23 @@
+
+
+<ul class="header_cat">
+    <li>
+        <a class="cat_icon" (click)="chooseHeaderCat(null)">
+            <mat-icon>list</mat-icon> All Categories
+        </a>
+    </li>
+    <li class="dropdown-submenu" *ngFor="let header_cat of categories$ | async" (click)="toggleClass(header_cat)"
+        [ngClass]="{'open': header_cat.open}">
+        <a class="sub_show cat_icon">
+            <span (click)="chooseHeaderCat(header_cat.gear_category_id)">{{header_cat.gear_category_name}}</span>
+            <i aria-hidden="true" class="fa fa-angle-down"></i>
+        </a>
+        <ul class="dropdown-menu sub_drop">
+            <li *ngFor="let sub_cat of header_cat.gear_sub_category">
+                <a
+                  (click)="chooseHeaderSubCat(header_cat.gear_category_id, sub_cat.gear_sub_category_id)">{{sub_cat.gear_sub_category_name}}</a>
+            </li>
+        </ul>
+    </li>
+
+</ul>

@@ -1,0 +1,423 @@
+<section class="dashboard_bodynew">
+  <div class="top_bresdcum">
+    <div class="container">
+      <h4>Update Your Listing</h4>
+    </div>
+  </div>
+
+  <div id="contact_form_list">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 col-sm-8">
+          <div class="container-contact100">
+            <div class="wrap-contact100">
+              <form class="contact100-form validate-form" name="list_of_gear_form">
+
+                <div class="row">
+                  <div class="form-group">
+                    <label for="">Listing Title</label>
+                    <input class="form-ctrl" [(ngModel)]="gearListData.gearName" autocomplete="off" type="text" name="gear_name" placeholder="Blackmagic Ursa Mini Pro 4.6K G2 w/ Miller Tripod" />
+                    <span class="highlight-input"></span>
+                  </div>
+                </div>
+
+
+                <div class="row">
+                  <div class="form-group">
+                    <label for="">Listing Type</label>
+                    <select class="selection-2" name="category" (change)="selectGearType($event.target.value)" placeholder="Please select a category">
+                      <option [value]="1" [selected]="gearListData.gearTypeId == '1'">Creative Space</option>
+                      <option [value]="2" [selected]="gearListData.gearTypeId == '2'">Kit</option>
+                      <option [value]="4" [selected]="gearListData.gearTypeId == '4'">Equipment</option>
+                    </select>
+                  </div>
+                </div>
+
+                <!-- <div class="row ctrl-2">
+          <div  class="form-group" id="brand-label">
+            <label>Manufacturer</label>
+            <input name="gear_brand_name" [(ngModel)]="gearListData.gear_brand_name" type="text" (keyup)="filterSuggestionList($event)"
+              [placeholder]="'Arri'" class="input100" autocomplete="off">
+            <ul *ngIf="showSuggestionList" class="suggestion-list ">
+              <li *ngFor="let eachSuggestion of suggestionListOptions" (click)="updateTextFieldValue(eachSuggestion.manufacturer_name)"> {{ eachSuggestion.manufacturer_name }}</li>
+              <span class="highlight-input"></span>
+            </ul> -->
+
+                <!--AAKASH <pre> {{ suggestionListOptions | json }} </pre> -->
+                <!-- <app-suggestion-box
+              class="form-ctrl"
+                [name]="'gearBrandList'"
+                [selectedValue]="gearListData.gear_brand_name"
+                (updatedSuggestionValue)="gearBrandSelected($event)"
+                [optionValueField]="'manufacturer_name'"
+                [optionLabelField]="'manufacturer_name'"
+                [placeHolder]="'e.g Arri'"
+                [suggestions]="gearBrandList"
+              ></app-suggestion-box> AAKASH-->
+                <!--
+            <div class="desc" *ngIf="is_generic_barnd_selection_available">
+              <p class="input_typing_text">If you have a "generic" brand?
+                <a href="javascript:void(0);" (click)="setVariousBrans()">Click here</a>
+              </p>
+            </div>
+          </div> -->
+
+                <div class="row ctrl-2">
+                  <div class="form-group" id="brand-label">
+                    <label for="">Manufacturer</label>
+                    <app-suggestion-box *ngIf="isGearBrandSelected" class="form-ctrl" [name]="'gearBrandList'" [selectedValue]="gearListData.gear_brand_name" (updatedSuggestionValue)="gearBrandSelected($event)" (showSuggestionListOutput)="isAnySuggestion($event)" [optionValueField]="'manufacturer_name'" [optionLabelField]="'manufacturer_name'" [placeHolder]="'Arri'" [suggestions]="gearBrandList">
+                    </app-suggestion-box>
+                    <span class="highlight-input"></span>
+                    <div class="conditionBox" *ngIf="is_generic_barnd_selection_available">
+                      <p class="input_typing_text">If you have a "generic" brand?
+                        <a (click)="setVariousBrans()">Click here</a>
+                      </p>
+                    </div>
+                  </div>
+
+                  <div class="form-group" id="model-label">
+                    <label for="">Model</label>
+                    <app-suggestion-box *ngIf="flage" class="form-ctrl" [name]="'gearModelId'" [selectedValue]="gearListData.gear_model_name" (updatedSuggestionValue)="gearModelSelected($event)" [optionValueField]="'model_name'" [optionLabelField]="'model_name'" [placeHolder]="'Alexa Mini LF'" [suggestions]="gearModelList">
+                    </app-suggestion-box>
+
+                  </div>
+                </div>
+
+                <!-- <div class="form-group" id="model-label">
+            <label>Model</label>
+            <app-suggestion-box [name]="'gearModelId'" [selectedValue]="gearListData.gear_model_name" (updatedSuggestionValue)="gearModelSelected($event)" [optionValueField]="'model_name'" [optionLabelField]="'model_name'" [placeHolder]="'Alexa Mini LF'" [suggestions]="gearModelList"></app-suggestion-box>
+            <span class="focus-input100"></span>
+          </div>
+        </div> -->
+
+                <div class="row ctrl-2">
+                  <div class="form-group">
+                    <label for="">Category</label>
+                    <select class="form-ctrl" name="category" (change)="onCatChange($event.target.value)" placeholder="Please select a category">
+                      <option value=""> Select a Category </option>
+                      <option [value]="cat.gear_category_name" [selected]="
+                  cat.gear_category_name === model_gear_category_name
+                " *ngFor="let cat of gearCategoryList">{{ cat.gear_category_name }}</option>
+                    </select>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="">Subcategory</label>
+                    <select class="form-ctrl" name="subcategory" (change)="onSubcatCatChange($event.target.value)" placeholder="Please select a sub-category">
+                      <option value=""> Select a subcategory </option>
+                      <option [value]="subcat.gear_category_name" [selected]="
+                  subcat.gear_category_name == model_gear_sub_category_name
+                " *ngFor="let subcat of gearSubCategoryList">{{ subcat.gear_category_name }}</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="form-group masked">
+                    <label for="">Replacement value</label>
+                    <span class="description">
+                      The maximum claimable for repair or replacement when insurance
+                      cover is selected at checkout. Kitshare will insure up to
+                      $20,000 for applicable listings. Any listing with a replacement
+                      value higher than $20,000 will require the owner or renter to upload an
+                      insurance certificate.</span>
+
+                    <div class="masked-group incGST-block">
+                      <input class="form-ctrl" (ngModelChange)="calculteReplacementValue($event)" [(ngModel)]="gearListData.replacement_value_aud_ex_gst" name="replacement_value_aud_ex_gst" autocomplete="off" placeholder="2959.00" type="number" min="0" />
+                      <span class="highlight-input"></span>
+                      <i class="default_value">$</i>
+                    </div>
+
+                    <span class="incGST-calc" *ngIf="gearListData.replacement_value_aud_inc_gst > '0' ">{{gearListData.replacement_value_aud_inc_gst
+                      | currency}} inc GST</span>
+
+                    <span class="Note" *ngIf="has_security_deposite">Note - This listing type is not covered by
+                      Kitshare's Insurance, any renter provided insurance must be verified manually by you</span>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="form-group">
+                    <label for="">Photo</label>
+                    <span class="description">Listings with appealing images get more views and more rentals</span>
+                    <div class="photo_gelary">
+                      <!-- <ng-container *ngFor="let eachImage of gearImageList; let i = index">
+                        <div class="upload_img">
+                          <img [src]="eachImage.src" class="img-responsive" />
+                          <span (click)="removeImage(i,eachImage.type, eachImage.user_gear_image_id, )">
+                            <i class="fa fa-times-circle" aria-hidden="true"></i>
+                          </span>
+                        </div>
+                      </ng-container> -->
+                      <!-- <ng-container *ngIf="gearImageList && gearImageList.length"> -->
+                      <kit-drag-drop [list]="gearImageList" (removeImage)="removeImage($event)" (onFileChange)="onFileChange($event)" (sortImage)="moveImages($event)" [isEdit]="1">
+                      </kit-drag-drop>
+                      <!-- </ng-container> -->
+                      <!-- <div class="upload_img img_view">
+                        <img width="50px" height="50px" src="assets/images/add_img.svg" />
+                        <input type="file" name="gearImageUpload" (change)="onFileChange($event)" class="filt_upload" />
+                      </div> -->
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="form-group">
+                    <label for="">Product Description</label>
+                    <!-- <textarea class="listing" name="model_description"
+                      [(ngModel)]="gearListData.model_description"></textarea> -->
+                    <p>{{gearListData.model_description}}</p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="form-group">
+                    <label for="">Additional notes about your Listing</label>
+                    <ckeditor *ngIf="showEditor" [data]="editorData" [editor]="Editor" (change)="onChange($event)" [config]="{ toolbar: [ 'bold', 'italic', 'link', 'bulletedList']}"></ckeditor>
+                  </div>
+                </div>
+
+
+                <div class="row ctrl-2">
+                  <div class="form-group">
+                    <label for="">Condition</label>
+                    <select class="selection-2" name="conditionlist " (change)="selectConditionType($event.target.value)" placeholder="Select Condition">
+                      <option value="New" [selected]="gearListData.gearCondition == 'New'">New</option>
+                      <option value="Like New" [selected]="gearListData.gearCondition == 'Like New'">Like New</option>
+                      <option value="Slightly Worn" [selected]="gearListData.gearCondition == 'Slightly Worn'">Slightly
+                        Worn</option>
+                      <option value="Worn" [selected]="gearListData.gearCondition == 'Worn'">Worn</option>
+                    </select>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="">Serial Number</label>
+                    <input [(ngModel)]="gearListData.serialNumber" class="form-ctrl" name="serial_number" placeholder="Optional" autocomplete="off" type="text" />
+                    <span class="highlight-input"></span>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <ng-container *ngIf="gearListData.gearTypeId == '1'">
+                    <div class="form-group">
+                      <label for="">Google 360 Image Link</label>
+                      <input class="form-ctrl" [(ngModel)]="gearListData.image360Link" autocomplete="off" type="text" name="image360Link" placeholder="https://www.google.com/place-name">
+                      <!--span class="focus-input100"></span-->
+                      <span class="highlight-input"></span>
+                    </div>
+                  </ng-container>
+                </div>
+
+                <div class="row">
+                  <div class="form-group masked incGST-block">
+                    <label for="">Price Per Day</label>
+                    <span class="description">There is a fee charged for each rental. You will make 85% of
+                      your listed price.</span>
+                    <div class="masked-group">
+                      <input autocomplete="off" (ngModelChange)="calcultePerdayValue($event)" class="form-ctrl" [(ngModel)]="gearListData.per_day_cost_aud_ex_gst" name="per_day_cost_aud_ex_gst" placeholder="700.00" type="number" min="0" />
+                      <span class="highlight-input"></span>
+                      <i class="default_value">$</i>
+                    </div>
+
+                  </div>
+                  <span class="incGST-calc" *ngIf="gearListData.per_day_cost_aud_inc_gst > '0'">{{gearListData.per_day_cost_aud_inc_gst |
+                    currency}} inc GST</span>
+
+
+                  <div class="security-depositblock" *ngIf="has_security_deposite">
+                    <input type="checkbox" [checked]="checkSecurity" name="checkSecurity" (change)='securityRequiredCheckbox($event)' /> Require a Security Deposit (Optional)
+
+                    <div class="wrap-input100 validate-input Replacement_value incGST-block form-group masked" *ngIf="checkSecurity">
+                      <span class="label-input100">Security Deposit</span>
+                      <div class="masked-group">
+                        <input [(ngModel)]="gearListData.security_deposite" (ngModelChange)="calculteSecurityIncGst($event)" class="input100" name="security_deposite" placeholder="100.00" autocomplete="off" type="text">
+                        <span class="highlight-input"></span>
+                        <i class="default_value">$</i>
+                      </div>
+
+                    </div>
+                    <span class="incGST-calc" *ngIf="security_deposite_inc_gst > 0">{{security_deposite_inc_gst |
+                      currency}} inc GST</span>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="form-group">
+                    <label for="">Available at these locations</label>
+                    <span class="description">Select where your listing will be available for pickup / return
+                      (this information is kept private)</span>
+                    <ng-container *ngFor="
+                  let address of allAddress;
+                  let i = index;
+                  let lastItem = last
+                ">
+                      <div class="">
+                        <div>
+                          <div class="checkbox checkbox listCheck" *ngIf="address">
+                            <input [checked]="address.selected" class="form-ctrl" name="address[]" (change)="
+                          addressSelectHandler(
+                            address.user_address_id,
+                            $event.target.checked
+                          )
+                        " id="{{ i }}_address" type="checkbox" />
+                            <label for="{{ i }}_address" class="checkbox5">
+                              {{address.street_address_line2}} {{address.route}}<br />
+                              {{address.suburb_name}}<br />{{address.ks_state_name}}<br />
+                              {{address.postcode}}
+                            </label>
+                            <!-- <a>
+                        <app-address
+                          [isDisabled]="true"
+                          [defaultValue]="address"
+                          [index]="i"
+                          (updatedValue)="addressUpdateHandler($event)"
+                        ></app-address>
+                      </a> -->
+                          </div>
+                          <div class="checkbox checkbox" *ngIf="!address">
+                            No Address found. Go to
+                            <a [routerLink]="['/profile/address-details']">address details</a>
+                            page to set your address before creating a listing.
+                          </div>
+                        </div>
+                      </div>
+                    </ng-container>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="form-group">
+                    <label for="">Listing Status</label>
+                    <div class="radio">
+                      <label>
+                        <input class="form-ctrl" type="radio" value="listed" [(ngModel)]="gearListData.listing_option" name="listing_option" />
+                        <div class="listing-radio">Public (default - searchable and visible on your profile)</div>
+                      </label>
+                    </div>
+                    <div class="radio">
+                      <label>
+                        <input class="form-ctrl" type="radio" value="not_listed" [(ngModel)]="gearListData.listing_option" name="listing_option" />
+                        <div class="listing-radio">Private</div>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-4 col-sm-4 hidden-xs1" *ngIf="techSpace">
+                    <div class="right_panel" *ngIf="hasFeatures">
+                      <p class="tech-spec">Tech Specs</p>
+                      <div *ngFor="let item_feature of feature">
+                        <p class="spec-name">{{item_feature.feature_name}}</p>
+                        <div class="dropdown">
+                          <button class="dropdown-toggle spec-btn" type="button" data-toggle="dropdown">{{item_feature.selected_text}}
+                            <span class="caret"></span>
+                          </button>
+                          <ul class="dropdown-menu techspecs-drop">
+                            <li *ngFor="let item of item_feature.feature_details">
+                              <div class="radio">
+                                <label>
+                                  <input type="checkbox" [checked]="item.is_selected" [value]="item.feature_details_id" (change)="onFeatureChange(item, $event)" name="item_feature.feature_name">
+                                  {{item.feature_values}}
+                                </label>
+                              </div>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="form-group">
+                    <label for="">Availability Settings</label>
+                    <span class="description light">Tip: Avoid cancelling or declining renters by blocking dates that
+                      are unavailable.</span>
+                    <div *ngFor="let unAvailableIndex of unAvailableCount;let i = index;">
+                      <div class="validate-input geardate">
+                        <input class="form-ctrl" name="unAvailavleDate{{i}}" [owlDateTime]="dt3" [(ngModel)]="unAvailableDates[i]" [selectMode]="'range'" [min]="minDate" [owlDateTimeTrigger]="dt3" placeholder="Date Time">
+                        <owl-date-time [pickerType]="'calendar'" [pickerMode]="'popup'" #dt3>
+                        </owl-date-time>
+                        <span class="focus-input100"></span>
+                        <span title="Remove dates" class="cross-abs unset-date" (click)="unsetUnavailableDate(i)">X</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="form-group">
+                    <button type="button" (click)="addNewUnavailableDate()" class="unavailable-button">New unavailable
+                      date</button>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="form-group">
+                    <strong><a [routerLink]="[ '/profile/account-settings']">Heading away or on a longform
+                        job?</a></strong>
+                    <p>Hide all of your listings for a set period of time.</p>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <button type="button" (click)="updateGearData()" class="save-button">Update Listing</button>
+                </div>
+
+
+              </form>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <div id="dropDownSelect1"></div>
+        <div class="col-md-4 col-sm-4 hidden-xs1" *ngIf="deskSpace">
+          <div class="right_panel" *ngIf="hasFeatures">
+            <p class="tech-spec">Tech Specs</p>
+            <div *ngFor="let item_feature of feature">
+              <p class="spec-name">{{item_feature.feature_name}}</p>
+              <div class="dropdown">
+                <button class="dropdown-toggle spec-btn" type="button" data-toggle="dropdown">{{item_feature.selected_text}}
+                  <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu techspecs-drop">
+                  <li *ngFor="let item of item_feature.feature_details">
+                    <div class="radio">
+                      <label>
+                        <input type="checkbox" [checked]="item.is_selected" [value]="item.feature_details_id" (change)="onFeatureChange(item, $event)" name="item_feature.feature_name">
+                        {{item.feature_values}}
+                      </label>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- Modal -->
+<div id="openurl" class="modal fade my_modal" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <button type="button" class="close" data-dismiss="modal">&times;</button>
+      <div class="modal-body url_button">
+        <div class="form-group">
+          <p>Submit your URL</p>
+          <textarea placeholder="Submit your URL" rows="3" class="form-control"></textarea>
+        </div>
+        <button class="btn btn-info" type="button">Submit</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,53 @@
+<section class="dashboard_bodynew">
+    <div class="top_bresdcum fixed-pos">
+        <div class="container">
+            <div class="col-md-12">
+                <div class="profileSettings">Profile Settings</div> 
+            </div>
+        </div>
+    </div>
+
+
+    <div id="contact_form_list">
+        <div class="container">
+            <div class="row m-t-90">
+                <app-left-sidebar></app-left-sidebar>
+
+                <div class="col-md-9 col-sm-9">
+                    <div class="container-contact100 box_shadow_form">
+                        
+                            <div class="digitalid_text">
+                                <h2>Australia Post Digital ID</h2>
+                                <hr/>
+                                <p class="verify_details">Australia Post Digital ID lets you verify your identity online. Every Kitshare member is required to verify their email, phone number and Digital ID before finalising or accepting their first rental.</p>
+
+                                <p class="verify_details">To complete your Digital ID, you will be required to verify two documents which can include: Australian Drivers licence, Australian Passport, Foreign passport with Australian Visa, Medicare card, Australian citizenship certificate, ImmiCard or Concession Card.</p>
+
+                                <p class="verify_details">Your information will be forwarded and stored securely with Australia Post and not shared with anyone.</p>
+
+                                <p class="verify_details">Your First name, Last name and DOB will be provided to Kitshare to verify the details on your Profile.</p>
+                            </div>
+
+                            <ng-container *ngIf="!is_digital_verified">
+                                <div id="digitalid-verify"></div>
+                            </ng-container>
+
+                            <br>
+                            <div class="digitalid-verified" *ngIf="is_digital_verified">
+                                <img src="assets/images/check.png" class="img-responsive" alt="">
+                                <br>
+                                <h3>Digital ID verified</h3>
+                            </div>
+                            <div id="hidden-verified" style="display:none;">
+                                <img src="assets/images/check.png" class="img-responsive" alt="">
+                                <br>     
+                                <h3>Digital ID verified</h3>
+                            </div>
+                        
+                    </div>
+                </div>
+                <div id="dropDownSelect1"></div>
+            </div>
+        </div>
+    </div>
+</section>

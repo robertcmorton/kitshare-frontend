@@ -1,0 +1,73 @@
+.btn-facebook {
+    -webkit-box-align: baseline;
+    align-items: baseline;
+    box-sizing: border-box;
+    display: inline-flex;
+    font-size: inherit;
+    font-style: normal;
+    max-width: 100%;
+    text-align: center;
+    white-space: nowrap;
+    cursor: pointer;
+    vertical-align: middle;
+    width: 100%;
+    font-weight: bold;
+    color: rgb(66, 82, 110) !important;
+    height: 40px !important;
+    line-height: 40px !important;
+    box-shadow: rgba(0, 0, 0, 0.2) 1px 1px 5px 0px !important;
+    border-width: 0px;
+    text-decoration: none;
+    border-radius: 3px;
+    padding: 0px 8px;
+    transition: background 0.1s ease-out 0s, box-shadow 0.15s cubic-bezier(0.47, 0.03, 0.49, 1.38) 0s;
+    outline: none !important;
+    background: rgb(255, 255, 255);
+    justify-content: center;
+    &:hover {
+        background: rgb(248, 248, 248);
+    }
+}
+
+.btn-google-plus {
+    -webkit-box-align: baseline;
+    align-items: baseline;
+    box-sizing: border-box;
+    display: inline-flex;
+    font-size: inherit;
+    font-style: normal;
+    max-width: 100%;
+    text-align: center;
+    white-space: nowrap;
+    cursor: pointer;
+    vertical-align: middle;
+    width: 100%;
+    font-weight: bold;
+    color: rgb(66, 82, 110) !important;
+    height: 40px !important;
+    line-height: 40px !important;
+    box-shadow: rgba(0, 0, 0, 0.2) 1px 1px 5px 0px !important;
+    border-width: 0px;
+    text-decoration: none;
+    border-radius: 3px;
+    padding: 0px 8px;
+    transition: background 0.1s ease-out 0s, box-shadow 0.15s cubic-bezier(0.47, 0.03, 0.49, 1.38) 0s;
+    outline: none !important;
+    background: rgb(255, 255, 255);
+    justify-content: center;
+    &:hover {
+        background: rgb(248, 248, 248);
+    }
+}
+
+.logo-image {
+    margin: 0 0 0 0;
+}
+
+.login-text {
+    font-weight: 500;
+}
+
+img {
+    margin: 0 0 3px 0;
+}

@@ -1,0 +1,58 @@
+:host {
+  background: #fff !important;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 5rem;
+  z-index: 8;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-top: 2px solid #e3e3e3;
+  -webkit-box-shadow: 0px 0px 14px rgba(158, 158, 158, 0.92);
+  -moz-box-shadow: 0px 0px 14px rgba(158, 158, 158, 0.92);
+  box-shadow: 0px 0px 14px rgba(158, 158, 158, 0.92);
+  .container {
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 0;
+  }
+  @media only screen and (min-width: 1186px) {
+    top:6rem;
+    height: 75px;
+  }
+}
+
+.btn-save {
+  margin-right: 20px;
+}
+
+.wrapper {
+  width: 99%;
+}
+
+.btn-save {
+  min-width: 100px;
+  background-color: #0052CC;
+  border-color: #0052CC;
+  color: #fff !important;
+  border-radius: 4px;
+  transition: background 0.3s ease;
+    &:hover {
+      background: #0065FF !important;
+    }
+}
+
+.btn-cancel {
+  border-radius: 0;
+  border: 1px solid #0747A6;
+  color: #0747A6;
+  min-width: 100px;
+  border-radius: 4px;
+  transition: background 0.3s ease;
+    &:hover {
+      background: #f6f6f6 !important;
+      color:#0747A6;
+    }
+}

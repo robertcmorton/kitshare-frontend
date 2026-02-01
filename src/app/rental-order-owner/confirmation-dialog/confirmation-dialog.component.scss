@@ -1,0 +1,53 @@
+.modal-dangerButton {
+    height: 40px;
+    width: 100px;
+    // width: 49%;
+    // float: left;
+    // background: white !important;
+    // border: 1px solid grey !important;
+    // border-radius: 4px;
+    // color: grey;
+    color: black;
+    background: none;
+    box-shadow: none;
+    // &:active {
+    // outline: 0;
+    // box-shadow: inset 0 3px 5px rgba(0,0,0,.125);
+    // border: 1px solid grey !important;
+    // border-radius: 4px;
+    // }
+    // &:hover {
+    // background-color: #f0f0f0 !important;
+    // color: grey !important;
+    // border: 1px solid grey !important;
+    // border-radius: 4px;
+    // }
+    // &:focus {
+    // color: grey !important;
+    // border: 1px solid grey !important;
+    // border-radius: 4px;
+    // }
+    &:hover {
+        background-color: #DFE1E6;
+    }
+}
+
+.modal-primaryButton {
+    height: 40px;
+    width: 160px;
+    // width: 49%;
+    float: right;
+    background: #0747A6 !important;
+    border: none !important;
+    &:active {
+    outline: 0;
+    box-shadow: inset 0 3px 5px rgba(0,0,0,.125);
+    }
+    &:hover {
+    background-color: #f0f0f0;
+    color: white !important;
+    }
+    &:focus {
+    color: white !important;
+    }
+}

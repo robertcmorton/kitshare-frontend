@@ -1,0 +1,8 @@
+<div class="search-footer">
+  <div class="pagination" *ngIf="totalItems">
+    <pagination [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" [maxSize]="5"
+                (pageChanged)="pageChanged($event)" nextText=">" previousText="<" lastText=">>"
+                firstText="<<" ></pagination>
+    <div class="visible-items">{{visibleItemsString}}</div>
+  </div>
+</div>

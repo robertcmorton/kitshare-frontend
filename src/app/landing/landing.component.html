@@ -1,0 +1,314 @@
+<section class="banner">
+  <div class="landing_image" style="background-image:url(assets/images/banner2.jpg);">
+    <div class="text_info">
+      <h1>The easy way to rent camera gear</h1>
+      <p class="sub-headline">Rent from trusted creatives in your local community</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- <section class="our_service_area">
+  <div class="section-container">
+    <div class="service_title">
+      <h1>How Kitshare Works</h1>
+    </div>
+    <div class="service_inner row m0">
+      <div class="col-lg-4 col-md-4 col-sm-4 click-compare">
+        <div class="media">
+          <div class="media-left">
+            <img src="assets/images/camera.png">
+          </div>
+          <div class="media-body">
+            <h4>CLICK AND COMPARE</h4>
+            <p>Search for gear directly from local professionals and/or rental houses to find the right kit for your next shoot.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-4 col-sm-4 book-insure">
+        <div class="media">
+          <div class="media-left">
+            <img src="assets/images/clander.png">
+          </div>
+          <div class="media-body media-body12">
+            <h4>Book</h4>
+            <p>Select your shoot dates and request a rental</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 meet-shoot">
+        <div class="media">
+          <div class="media-left">
+            <img src="assets/images/securyty.png">
+          </div>
+          <div class="media-body media-body12">
+            <h4>MEET AND SHOOT</h4>
+            <p>Pick up your gear at a mutually convenient place and time. Everyone on kitshare is verified using Australia Post’s Digital ID making kitshare secure, safe and simple.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+
+<section class="rental_c">
+  <div class="section-container">
+    <div class="service_title">
+      <h1>Rent a camera. Rent a lens. Rent all the equipment you need for your next shoot.</h1>
+      <p class="landing-subheader">All the options in one place: search rental houses, production companies, and owner-operators to find the best option near you.
+      </p>
+    </div>
+
+    <!-- Desktop Owl Carousel -->
+    <div class="row hidden-xs landing-carousel">
+      <div class="large-12 colums">
+        <owl-carousel [options]="{
+                        singleItem:true, 
+                        items: 4, 
+                        dots: true, 
+                        loop: true, 
+                        nav: false, 
+                        margin: 10, 
+                        autoplay: false, 
+                        autoplayHoverPause: true, 
+                        autoplayTimeout:3000, 
+                        navigation: true,
+                        lazyLoad: true,
+                        mouseDrag:true }" [items]="random_products" [carouselClasses]="['owl-theme']" #owlElement>
+
+          <div class="item" *ngFor="let image of random_products">
+            <div class="listing-btn-container">
+              <div class="listing-btn listing-154231">
+                <div class="fill">
+                  <a [routerLink]="['/gear/view-gear/' + image.gear_slug_name]">
+                    <img class="listing-btn-image center-block " alt="{{image.gear_name}}" src="{{image.gear_display_image}}">
+                  </a>
+                </div>
+
+                <div class="listing-btn-info">
+                  <a class="gear-info-container-link" [routerLink]="['/gear/view-gear/' + image.gear_slug_name]">
+                    <div class="gear-info-container">
+                      <h4 class="listing-btn-name"> {{image.gear_name}} </h4>
+                      <h5 class="listing-btn-price"> {{image.per_day_cost_aud_inc_gst | currency}}
+                        <span class="per-day">day{{image.ks_gear_type_id !== '1' ? '/wknd' : ''}}</span>
+
+                      </h5>
+                    </div>
+                  </a>
+
+                  <div class="user-info-container">
+                    <a [routerLink]="['/profile/' + image.app_username ]">
+                      <img class="listing-owner-img" alt="{{image.app_user_first_name}}" src="{{image.user_profile_picture_link}}">
+                    </a>
+
+                    <div class="listing-owner-info-container">
+                      <p class="listing-owner-name">
+                        <a [routerLink]="['/profile/' + image.app_username ]">
+                          {{image.app_user_first_name}} {{image.app_user_last_name}}
+                        </a>
+                      </p>
+                      <kit-rating-decimal [currentRate]="image.rating" [disabled]="true"></kit-rating-decimal>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </owl-carousel>
+      </div>
+    </div>
+
+    <!-- Mobile Owl Carousel -->
+    <div class="row hidden-sm hidden-md hidden-lg">
+      <div class="col-xs-12">
+        <owl-carousel [options]="{
+                      singleItem:true, 
+                      items: 1, 
+                      dots: true, 
+                      loop: true, 
+                      nav: false, 
+                      autoWidth: true, 
+                      autoHeight: true, 
+                      margin: 10, 
+                      autoPlay: false, 
+                      autoplayTimeout: 3000, 
+                      autoplayHoverPause: false, 
+                      navigation: true,
+                      lazyLoad: true,
+                      mouseDrag:true }" [items]="random_products" [carouselClasses]="['owl-theme']" #owlElement>
+
+          <div class="item" *ngFor="let image of random_products">
+            <div class="listing-btn-container">
+              <div class="listing-btn listing-154231">
+                <div class="fill">
+                  <a [routerLink]="['/gear/view-gear/' + image.gear_slug_name]">
+                    <img class="listing-btn-image center-block " alt="{{image.gear_name}}" src="{{image.gear_display_image}}">
+                  </a>
+                </div>
+
+                <div class="listing-btn-info">
+                  <a class="gear-info-container-link" [routerLink]="['/gear/view-gear/' + image.gear_slug_name]">
+                    <div class="gear-info-container">
+                      <h4 class="listing-btn-name"> {{image.gear_name}} </h4>
+                      <h5 class="listing-btn-price"> {{image.per_day_cost_aud_inc_gst | currency}}
+                        <span class="per-day">day{{image.ks_gear_type_id !== '1' ? '/wknd' : ''}}</span>
+                      </h5>
+                    </div>
+                  </a>
+
+                  <div class="user-info-container">
+                    <a [routerLink]="['/profile/' + image.app_username ]">
+                      <img class="listing-owner-img" alt="{{image.app_user_first_name}}" src="{{image.user_profile_picture_link}}">
+                    </a>
+
+                    <div class="listing-owner-info-container">
+                      <p class="listing-owner-name">
+                        <a [routerLink]="['/profile/' + image.app_username ]">
+                          {{image.app_user_first_name}} {{image.app_user_last_name}}
+                        </a>
+                      </p>
+                      <kit-rating-decimal [currentRate]="image.rating" [disabled]="true"></kit-rating-decimal>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </owl-carousel>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="inventory">
+  <div class="section-container">
+    <div class="service_title">
+      <h1>OUR INVENTORY IS CONTINUALLY GROWING TO PROVIDE YOU WITH THE WIDEST CHOICE OF GEAR</h1>
+      <p class="landing-subheader">At Kitshare, we believe in the power of collaboration and making the most out of every shoot
+        whether you have the greatest or the smallest of budgets. kitshare provides you access to the widest choice of
+        gear to help you make the right choice
+        whether it be cameras, lenses, lights, grip, sound or more.</p>
+    </div>
+
+    <!-- For mobile -->
+    <div class="row hidden-sm hidden-md hidden-lg inventory-row">
+      <div *ngFor="let kitType of kitTypes" class="col-lg-4 col-md-4 col-sm-6 col-xs-12 inventory-container" (click)="goToSearchPageWithKitType(kitType.id)">
+        <figure>
+          <img src="{{kitType.image}}" alt="Thumb" class="img-responsive landing image" />
+          <figcaption class="figer_caption">
+            <div class="info1 info3">
+              {{kitType.name}}
+            </div>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+    <!-- mobile end -->
+
+    <div class="row hidden-xs">
+      <div *ngFor="let kitType of kitTypes" class="col-lg-4 col-md-4 col-sm-6 col-xs-12" (click)="goToSearchPageWithKitType(kitType.id)">
+        <figure>
+          <img src="{{kitType.image}}" alt="Thumb" class="img-responsive landing-image" />
+          <figcaption>
+            <div class="info1">
+              {{kitType.name}}
+            </div>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="icon_panel">
+  <div class="section-container">
+    <div class="row">
+      <ul>
+        <li *ngFor="let category of topCategories" [ngClass]="{more_img: !category.id}">
+          <a (click)="goToSearchPage(category.id)" class="category-link">
+            <img src="{{category.icon}}" class="img-responsive">
+            <span>{{category.name}}</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+
+<section class="filmmaker">
+  <div class="section-container">
+    <div class="service_title">
+      <h1>A COMMUNITY OF FILMMAKERS AND CREATIVE PROFESSIONALS</h1>
+      <p class="landing-subheader">Meet and network with other professionals in your area and help each other. Owners can earn extra income while
+        they aren’t using their gear and as a renter, you can save on the cost of gear. If you’re curious, have a read
+        of the reviews. We’re
+        so happy to say they speak for themselves!</p>
+    </div>
+
+
+    <div class="row hidden-lg hidden-md hidden-sm">
+      <div class="col-md-3 col-sm-6" *ngFor="let random_user of random_users">
+        <figure>
+          <img (click)="gotoUserPage(random_user.app_user_id)" *ngIf="random_user.user_profile_picture_link != null" src="{{random_user.user_profile_picture_link}}" alt="{{random_user.app_user_first_name}}" class="img-responsive" />
+          <img (click)="gotoUserPage(random_user.app_user_id)" *ngIf="random_user.user_profile_picture_link == null" src="assets/images/flimmaker.jpg" alt="{{random_user.app_user_first_name}}" class="img-responsive" />
+          <figcaption class="figer_caption">
+            <div class="info1 info2">
+              <h4>
+                <a [routerLink]="['/profile', {id : random_user.app_username} ]">
+                  {{random_user.app_user_first_name}}&nbsp;{{random_user.app_user_last_name}}
+                </a>
+              </h4>
+              <kit-rating-decimal [currentRate]="random_user.rating" [disabled]="true"></kit-rating-decimal>
+              <p>{{random_user.review}} Reviews</p>
+            </div>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+
+
+    <div class="row hidden-xs filmmaker-row">
+      <div class="col-md-3 col-sm-6 filmmaker-container" *ngFor="let random_user of random_users">
+        <figure>
+          <img *ngIf="random_user.user_profile_picture_link != null" src="{{random_user.user_profile_picture_link}}" alt="{{random_user.app_user_first_name}}" class="img-responsive landing-image" />
+          <img *ngIf="random_user.user_profile_picture_link == null" src="assets/images/flimmaker.jpg" alt="{{random_user.app_user_first_name}}" class="img-responsive" />
+          <figcaption>
+            <div class="info1">
+              <h4>
+                <a [routerLink]="['/profile', {id : random_user.app_username} ]">
+                  {{random_user.app_user_first_name}}&nbsp;{{random_user.app_user_last_name}}
+                </a>
+              </h4>
+              <kit-rating-decimal [currentRate]="random_user.rating" [disabled]="true"></kit-rating-decimal>
+              <p>{{random_user.review}} Reviews</p>
+
+            </div>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+
+
+    <div class="row splash-btn-section">
+      <div class="col-xs-12 col-sm-4 col-sm-offset-4 text-center service_title" *ngIf="!auth.isLoggedIn">
+        <p class="landing-subheader get-started">Ready to get started?</p>
+
+        <p class="landing-subheader">Save time and money. It’s easy and free to sign up. It’s also free to list your gear.
+        </p>
+      </div>
+      <div class="col-xs-12 col-sm-4 col-sm-offset-4 text-center" *ngIf="!auth.isLoggedIn">
+        <div class="btn-group text-center" role="group" aria-label="...">
+          <a class="splash-link" [routerLink]="['/sign-up']">
+            <button type="button" class="btn btn-splash"> JOIN NOW FOR FREE</button>
+          </a>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

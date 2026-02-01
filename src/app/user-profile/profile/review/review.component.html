@@ -1,0 +1,46 @@
+<div class="media comment-author" *ngIf="eachReview.parent_gear_review_id == 0">
+
+  <div class="main_review_wpr">
+    <a class="media-left pull-left flip">
+      <img class=" img-responsive" src="{{ eachReview.user_profile_picture_link }}" alt="">
+    </a>
+
+    <div class="review-body">
+      <div class="review-name">{{ eachReview.reviewer_fname }}
+        <!-- {{ eachReview.reviewer_lname }} -->
+      </div>
+
+      <div class="Star-RatingWrap">
+        <kit-rating-decimal [currentRate]="eachReview.star_rating" [disabled]="true"></kit-rating-decimal>
+
+      </div>
+
+      <div class="comment-date">{{ eachReview.cust_gear_review_date | date }}</div>
+      <div class="clearfix"></div>
+    </div>
+
+    <div class="review-desc main-review" [innerHTML]="eachReview.cust_gear_review_desc"></div>
+
+  </div>
+
+
+  <div class="response_wpr" *ngIf="eachReview.responses.length>0">
+    <div class="main_review_wpr" *ngFor="let reply of eachReview.responses">
+      <a class="media-left pull-left flip">
+        <img class=" img-responsive" src="{{ reply.user_profile_picture_link }}" alt="">
+      </a>
+
+      <div class="review-body">
+        <div class="review-name">Response from {{ reply.reviewer_fname }}:
+          <!-- {{ reply.reviewer_lname }} -->
+        </div>
+        <div class="review-desc" [innerHTML]="reply.cust_gear_review_desc"></div>
+        <div class="comment-date">{{ reply.cust_gear_review_date | date }}</div>
+        <div class="clearfix"></div>
+        <!-- </div>
+
+        <div class="review-desc" [innerHTML]="reply.cust_gear_review_desc"></div> 
+        <div class="comment-date">{{ reply.cust_gear_review_date | date }}</div>
+      </div>       -->
+      </div>
+    </div>

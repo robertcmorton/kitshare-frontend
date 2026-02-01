@@ -1,0 +1,35 @@
+<div class="modal-header">
+    <h4 class="modal-title">{{ title }}</h4>
+      <button type="button" class="close" aria-label="Close" (click)="dismiss()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <ul class="list-unstyled space-3" title="Verified info">
+        <li *ngIf="!digital_id_found">
+            <a (click)="checkUserVerification('/profile/digital-id')">
+                <span class="ID-VerifyType">Digital ID</span>
+                <span class="pull-right"></span>
+                <div class="Info-Verified">Australia Post Digital ID lets you verify your identity online</div>
+            </a>
+        </li>
+        <li *ngIf="!mobile_number_verfiy">                   
+            <a (click)="checkUserVerification('/profile/account-settings')">
+                <span class="ID-VerifyType">Phone Number</span>
+                <span class="pull-right"></span>
+                <div class="Info-Verified">To protect the security of your account, please add your phone number</div>
+            </a>
+        </li>
+        <li *ngIf="!address_found">
+            <a (click)="checkUserVerification('/profile/address-details')">
+                <span class="ID-VerifyType">Address</span>
+                <span class="pull-right"></span>
+                <div class="Info-Verified">Add an address to your profile</div>
+            </a>
+        </li>
+    </ul>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-primary modal-primaryButton" (click)="decline()">{{ btnOkText }}</button>
+      <!-- <button type="button" class="btn btn-primary" (click)="accept()">{{ btnOkText }}</button> -->
+    </div>

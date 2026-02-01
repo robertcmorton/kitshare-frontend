@@ -1,0 +1,328 @@
+<section class="dashboard_body bckd_c">
+    <div class="tabbable-line1">
+        <div class="container">
+            <ul class="nav nav-tabs">
+                <li>
+                    <a [routerLink]="['/rentals']" routerLinkActive="active">Rentals</a>
+                </li>
+                <li>
+                    <a [routerLink]="['/rentals/messaging']" routerLinkActive="active">Messaging</a>
+                </li>
+                <li class="active">
+                    <a [routerLink]="['/rentals/manage-listing']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Manage listing</a>
+                </li>
+                <li>
+                    <a [routerLink]="['/rentals/reviews']" routerLinkActive="active">Reviews</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 Dashboard-container">
+                <div class="tabbable-panel">
+                    <div class="tabbable-line">
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="tab_default_3">
+                                <div class="row">
+                                    <div class="col-md-12 col-sm-12">
+                                        <div class="listing">
+                                            <label class="check ">
+                                                <span *ngIf="is_any_item_checked">{{no_of_manage_list_item_checked}}
+                                                    Listing Selected</span>
+                                                <span *ngIf="!is_any_item_checked">Select All Listings</span>
+                                                <input type="checkbox" name="is_name" (change)="selectDeselectAll($event)">
+                                                <span class="checkmark"></span>
+                                            </label>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-md-12 col-sm-12">
+                                        <div class="search_rental search_rentalnew">
+                                            <div class="all_btns">
+                                                <button type="button" [disabled]="!is_any_item_checked" class="btn btn-secondary category-btn calander_btn"> <input name="date" class="input100 input1000" [owlDateTime]="dt5" (dateTimeInput)="emitValue()" [(ngModel)]="date" [selectMode]="'range'" [min]="minDate" [owlDateTimeTrigger]="dt5" placeholder="New unavailable date">
+                                                    <owl-date-time (afterPickerClosed)="afterCloseCalender()" [pickerType]="'calendar'" [pickerMode]="'popup'" #dt5>
+                                                    </owl-date-time>
+                                                </button>
+                                                <button type="button" [disabled]="!is_any_item_checked" class="btn btn-secondary category-btn" data-toggle="modal" data-target="#deactivatemodal">Make Private</button>
+                                                <button type="button" [disabled]="!is_any_item_checked" class="btn btn-secondary category-btn" data-toggle="modal" data-target="#makepublicmodal">Make Public</button>
+                                                <button type="button" [disabled]="!is_any_item_checked" (click)="openAddressList()" class="btn btn-secondary category-btn">Change address</button>
+                                                <button type="button" [disabled]="!is_any_item_checked" class="btn btn-secondary category-btn" data-toggle="modal" data-target="#deletemodal">Delete</button>
+                                            </div>
+
+
+                                            <div class="Manage-Dropdown">
+                                                <select name="button_dropdown" class="Sort-Priv" (change)="select_public_private_all_listing($event)">
+                                                    <option value="all">All</option>
+                                                    <option value="public">Public</option>
+                                                    <option value="private">Private</option>
+                                                </select>
+
+                                                <select name="button_dropdown" class="Sort-Num" (change)="onChange($event.target.value)">
+                                                    <option value="25" selected="selected">25</option>
+                                                    <option value="50">50</option>
+                                                    <option value="100">100</option>
+                                                    <option value="all">All</option>
+                                                </select>
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--  START MOBILE VERSION OF MANAGE LISTINGS -->
+                                <div class="clearfix"></div>
+                                <div class="row">
+                                    <div class="col-md-12 hidden-md hidden-sm hidden-lg Manage_Border">
+                                        <div class="table-responsive points_table1">
+                                            <table summary="This table shows how to create responsive tables using Bootstrap's default functionality" class="table table-hover">
+                                                <tbody class="new_panel1">
+
+                                                    <tr *ngFor="let manage_item of manage_list_data">
+                                                        <td style="vertical-align: top; padding:0px" width="50px">
+                                                            <label class="check ">
+                                                                <input type="checkbox" checked="checked" name="is_name" [checked]="manage_item.is_selected" (change)="selectDeselectItem($event, manage_item.user_gear_desc_id)">
+                                                                <span class="checkmark checkmark1"></span>
+                                                            </label>
+                                                        </td>
+                                                        <td class="image-details">
+                                                            <a [routerLink]="['/gear/view-gear/' + manage_item.gear_slug_name]"><img src="{{manage_item.gear_display_image}}" class="image_with"></a>
+
+                                                        </td>
+                                                        <td class="manage-details">
+                                                            <p class="manage-gearname manageGearname-spacing">
+                                                             <a [routerLink]="['/gear/view-gear/' + manage_item.gear_slug_name]">{{manage_item.gear_name}}</a></p>
+                                                            <p class="value margin_new manageDay-spacing">
+                                                                ${{manage_item.per_day_cost_aud_inc_gst}} per day</p>
+                                                            <p class="value margin_new manageWeek-spacing">
+                                                                ${{manage_item.per_weekend_cost_aud_inc_gst}} per week
+                                                            </p>
+                                                            <p class="manage_address manageAddress-spacing" *ngFor="let address of manage_item.address">
+                                                                {{address.suburb_name}}, {{address.ks_state_name}}</p>
+                                                            <p>
+                                                                <button *ngIf="manage_item.gear_hide_search_results == 'Y'" type="button" class="btn-pubpriv make-pubpriv" (click)="makePublicPrivate(manage_item.user_gear_desc_id, 'N')" data-toggle="tooltip" data-placement="top" title="Make private">PUBLIC</button>
+                                                                <button *ngIf="manage_item.gear_hide_search_results == 'N'" type="button" class="btn-pubpriv make-privpub" (click)="makePublicPrivate(manage_item.user_gear_desc_id, 'Y')" data-toggle="tooltip" data-placement="top" title="Make public">PRIVATE</button>
+                                                            </p>
+                                                        </td>
+                                                        <td style="vertical-align:top;">
+                                                            <a href="javascript:void(0);" aria-haspopup="true" aria-expanded="false" role="button" data-toggle="dropdown"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span></a>
+                                                            <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
+                                                                <!-- <li class="active"><a href="#">Available</a></li> -->
+                                                                <li><a [routerLink]="['/gear/view-gear/' + manage_item.gear_slug_name]">View
+                                                                        listing</a></li>
+                                                                <li><a [routerLink]="['/gear/edit-gear/' + manage_item.user_gear_desc_id]">Edit
+                                                                        listing</a></li>
+                                                                <!-- <li><a href="#">New unavailable date</a></li> -->
+                                                                <li><a href="javascript:void(0);" (click)="individualItemDeactivate(manage_item.user_gear_desc_id)" data-toggle="modal" data-target="#deactivatemodal">Make Private</a>
+                                                                </li>
+                                                                <li><a href="javascript:void(0);" (click)="individualItemDelete(manage_item.user_gear_desc_id)" data-toggle="modal" data-target="#deletemodal">Delete listing</a>
+                                                                </li>
+                                                            </ul>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <ng-container>
+                                                <pagination [totalItems]="totalItems" [itemsPerPage]="limit" [maxSize]="5" [(ngModel)]="currentPage" (pageChanged)="pageChanged($event)" nextText=">" previousText="<" lastText=">>" firstText="<<"></pagination>
+                                            </ng-container>
+                                        </div>
+                                    </div>
+                                    <!-- START DESKTOP VERSION MANAGE LISTINGS -->
+                                    <div class="col-md-12 hidden-xs">
+                                        <div class="table-responsive points_table">
+                                            <table summary="This table shows how to create responsive tables using Bootstrap's default functionality" class="table table-hover">
+                                                <thead class="new_panel">
+                                                    <tr>
+                                                        <th></th>
+                                                        <th></th>
+                                                        <th>Listing Title</th>
+                                                        <th>Cost</th>
+                                                        <th>Listing Locations</th>
+                                                        <th>Type</th>
+                                                        <th>Settings</th>
+                                                        <th></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody class="new_panel1" *ngIf="manage_list_data && manage_list_data.length">
+                                                    <!-- Loop start -->
+                                                    <tr *ngFor="let manage_item of manage_list_data">
+                                                        <td style="vertical-align: top; padding:0px" width="50px">
+                                                            <label class="check ">
+                                                                <input type="checkbox" name="is_name" [checked]="manage_item.is_selected" (change)="selectDeselectItem($event, manage_item.user_gear_desc_id)">
+                                                                <span class="checkmark checkmark1"></span>
+                                                            </label>
+                                                        </td>
+                                                        <td><img src="{{manage_item.gear_display_image}}" class="image_with"></td>
+                                                        <td>{{manage_item.gear_name}}</td>
+                                                        <td>
+                                                            {{manage_item.per_day_cost_aud_inc_gst | currency}} per day
+                                                            <p class="value" *ngIf="manage_item.ks_gear_type_id !='1'">
+                                                                {{manage_item.per_weekend_cost_aud_inc_gst | currency}}
+                                                                per week</p>
+                                                        </td>
+                                                        <td>
+                                                            <p *ngFor="let address of manage_item.address">
+                                                                {{address.suburb_name}}, {{address.ks_state_name}}</p>
+                                                            <!-- <p>111 Address St,My City,State,900</p> -->
+                                                        </td>
+                                                        <td>{{manage_item.gear_category_name}}</td>
+                                                        <td>
+                                                            <button *ngIf="manage_item.gear_hide_search_results == 'Y'" type="button" class="btn btn-privpub make-pubpriv" (click)="makePublicPrivate(manage_item.user_gear_desc_id, 'N')" data-toggle="tooltip" data-placement="top" title="Make private">PUBLIC</button>
+                                                            <button *ngIf="manage_item.gear_hide_search_results == 'N'" type="button" class="btn btn-privpub make-privpub" (click)="makePublicPrivate(manage_item.user_gear_desc_id, 'Y')" data-toggle="tooltip" data-placement="top" title="Make public">PRIVATE</button>
+                                                        </td>
+                                                        <td>
+                                                            <a href="javascript:void(0);" aria-haspopup="true" aria-expanded="false" role="button" data-toggle="dropdown"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span></a>
+                                                            <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
+                                                                <!-- <li class="active"><a href="#">Available</a></li> -->
+                                                                <li><a [routerLink]="['/gear/view-gear/' + manage_item.gear_slug_name]">View
+                                                                        listing</a></li>
+                                                                <!-- <li><a [routerLink]="[ '/edit-gear', {{manage_item.user_gear_desc_id}} ]">Edit Listing</a></li> -->
+                                                                <li><a [routerLink]="['/gear/edit-gear/' + manage_item.user_gear_desc_id]">Edit
+                                                                        Listing</a></li>
+                                                                <!-- <li><a href="#">New unavailable date</a></li> -->
+                                                                <li><a href="javascript:void(0);" (click)="individualItemDeactivate(manage_item.user_gear_desc_id)" data-toggle="modal" data-target="#deactivatemodal">Make Private</a>
+                                                                </li>
+                                                                <li><a href="javascript:void(0);" (click)="individualItemDelete(manage_item.user_gear_desc_id)" data-toggle="modal" data-target="#deletemodal">Delete listing</a>
+                                                                </li>
+                                                            </ul>
+                                                        </td>
+                                                    </tr>
+                                                    <!-- Loop ends -->
+                                                </tbody>
+                                            </table>
+                                            <ng-container *ngIf="manage_list_data && manage_list_data.length">
+                                                <pagination [totalItems]="totalItems" [itemsPerPage]="limit" [maxSize]="5" [(ngModel)]="currentPage" (pageChanged)="pageChanged($event)" nextText=">" previousText="<" lastText=">>" firstText="<<"></pagination>
+                                            </ng-container>
+                                            <div *ngIf="manage_list_data && !manage_list_data.length" style="text-align:center">
+                                                <p>No Data Available</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Modal deactivate-->
+<div class="modal fade" id="deactivatemodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Make your Listing(s) private</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Private listings will not be visible in on your profile or search. You can still rent out these items by
+                providing the renter with a private link.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn modal-CancelButton" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary modal-primaryButton" (click)="deactivateItems()" data-dismiss="modal">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal for making item(s) public -->
+<div class="modal fade" id="makepublicmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog public_confirm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Make your Listing(s) public</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Listings will be visible in search and on your profile
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn modal-CancelButton" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary modal-primaryButton" (click)="makeItemsPublic()" data-dismiss="modal">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal confirm delete -->
+<div class="modal fade" id="deletemodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Delete your Listing(s)</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Deleted listings are removed from your profile permanently
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn modal-CancelButton" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-danger modal-primaryButton" (click)="deleteItems()" data-dismiss="modal">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- address modal -->
+<div id="address" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+
+                <h4 class="modal-title">Change Address</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body" style="max-height: 250px;overflow-y: auto;" *ngIf="is_address_rendered">
+                <div class="address_list" *ngFor="let address of user_address_array">
+                    <div class="address_checkbox">
+                        <input *ngIf="address.assigned" name="address" type="checkbox" checked="true" (change)="onChekedAddress($event, address.user_address_id)">
+
+                        <input *ngIf="!address.assigned" name="address" type="checkbox" (change)="onChekedAddress($event, address.user_address_id)">
+                        <label class="checkbox5" for="1_is_default_address">{{address.street_address_line1}}
+                            {{address.street_address_line2}} {{address.route}} {{address.suburb_name}},
+                            {{address.ks_state_name}} {{address.postcode}}</label>
+                    </div>
+                </div>
+                <!-- <div class="address_list">
+                <div class="address_checkbox">
+                    <input name="" type="checkbox" id="1_is_default_address1">
+                    <label class="checkbox5" for="1_is_default_address1">There are many variations of passages of Lorem Ipsum available, but
+                the majority have suffered alteration in some form, by injected humour</label>
+                </div>
+                </div> -->
+            </div>
+            <div class="modal-footer">
+                <!-- <button *ngIf="is_any_item_checked" type="button" class="btn modal-CancelButton" (click)="deleteAddress()" data-dismiss="modal">Remove Address</button> -->
+                <button *ngIf="is_any_item_checked" type="button" class="btn btn-primary modal-primaryButton" (click)="updateAddress()" data-dismiss="modal">Update Address</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!------------------------------reference modal start------------------->
+<div class="modal fade reference_modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="reffrence_text">
+                <h3>Write a reference for Alexx Thompson</h3>
+                <p>Tell us about how you know Thompson and why they'd be a great renter or owner on kitshare.</p>
+                <form>
+                    <div class="form-group">
+                        <textarea class="form-control" rows="5" id="comment" placeholder="Write your reference here"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-default send_btn pull-right">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

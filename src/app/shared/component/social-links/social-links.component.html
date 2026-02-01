@@ -1,0 +1,35 @@
+<!-- <div class="profile_icon_info">
+    <a *ngIf="data.facebook_link != ''" href="{{ data.facebook_link | fixSocial }}" target="_blank" class="btn btn-social-icon social_btns">
+        <i class="fa fa-facebook"></i>
+    </a>
+    <a *ngIf="data.twitter_link != ''" href="{{ data.twitter_link | fixSocial }}" target="_blank" class="btn btn-social-icon btn-twitter social_btns">
+        <i class="fa fa-twitter"></i>
+    </a>
+    <a *ngIf="data.youtube_link != ''" href="{{ data.youtube_link | fixSocial }}" target="_blank" class="btn btn-social-icon btn-youtube social_btns">
+        <i class=" fa fa-youtube"></i>
+    </a>
+    <a *ngIf="data.linkedin_link != ''" href="{{ data.linkedin_link | fixSocial }}" target="_blank" class="btn btn-social-icon btn-linkedin social_btns">
+        <i class="fa fa-linkedin"></i>
+    </a>
+    <a *ngIf="data.instagram_link != ''" href="{{ data.instagram_link | fixSocial }}" target="_blank" class="btn btn-social-icon btn-instagram social_btns">
+        <i class="fa fa-instagram"></i>
+    </a>
+    <a *ngIf="data.user_website != ''" href="{{ data.user_website | fixSocial }}" class="btn btn-social-icon btn-website social_btns">
+        <i class="fa fa-globe" aria-hidden="true"></i>
+    </a>
+    <a *ngIf="data.imdb_link != ''" href="{{ data.imdb_link | fixSocial }}" class="btn btn-social-icon btn-imbb social_btns">
+        <img src="assets/images/imdb.png">
+    </a>
+    <a *ngIf="data.vimeo_link != ''" href="{{ data.vimeo_link | fixSocial }}" class="btn btn-social-icon social_btns">
+        <i class="fa fa-vimeo" aria-hidden="true"></i>
+    </a>
+</div> -->
+
+<div>
+  <a href="{{item.link | fixSocial}}" *ngFor="let item of socialLinks" class="btn btn-social-icon social_btns btn-{{item.label}}">
+
+    <i class="fa fa-{{item.label}}" *ngIf="item.label !== 'imdb' && item.label !== 'user'"></i>
+    <img src="assets/images/imdb.svg" alt="" *ngIf="item.label == 'imdb'">
+    <img src="assets/images/website.png" alt="" *ngIf="item.label == 'user'">
+  </a>
+</div>

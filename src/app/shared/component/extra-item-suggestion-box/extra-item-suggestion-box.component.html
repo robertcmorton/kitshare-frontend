@@ -1,0 +1,7 @@
+<input [disabled]="isDisabled" type="text" [name]="name" (keyup)="filterSuggestionList($event)" [(ngModel)]="selectedValue.gear_name" (blur)="newValueSelected()"
+  [placeholder]="placeHolder" class="input100">
+<ul *ngIf="showSuggestionList" class="suggestion-list ">
+  <li *ngFor="let eachSuggestion of suggestionListOptions" (click)="updateTextFieldValue(eachSuggestion.value)"> {{ eachSuggestion.label
+    }}
+  </li>
+</ul>

@@ -1,0 +1,38 @@
+<!-- {{data?.address?.app_user_id}}
+<br>
+{{data?.app_user_first_name}}
+<br>
+{{ data?.app_user_last_name }}
+<br>
+{{ data?.user_profile_picture_link }}
+<br>
+{{ data?.user_description }}-->
+
+
+
+<div class="card_content">
+  <div class="header">
+
+    <div class="avatar">
+      <img [src]="data?.user_profile_picture_link" alt="">
+    </div>
+    <div class="user_info">
+      <h3 class="full_name">
+        <a [routerLink]="['/profile/' + data?.app_username]">{{ data?.app_user_first_name }} {{ data?.app_user_last_name }} </a>
+      </h3>
+      <div class="rating_slab">
+        <!-- <strong>Rating:</strong> -->
+        <kit-rating-decimal [currentRate]="+data?.rating" [disabled]="true"></kit-rating-decimal>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- <div class="desc">{{ data?.user_description }}</div> -->
+  <div class="owner-description" [innerHTML]="data?.user_description"></div>
+
+  <footer *ngIf="!my_gear">
+    <button class="contact-owner" (click)="contactAuthorClickSubject.next()">Contact the Owner</button>
+  </footer>
+</div>

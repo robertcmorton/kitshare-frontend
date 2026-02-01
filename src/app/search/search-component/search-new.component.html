@@ -1,0 +1,18 @@
+<section>
+  <div class="container-fluid search">
+    <div class="results-wrapper" [ngClass]="{'map-visible': mapVisible}">
+      <div>
+        <span class="map-toggle" (click)="toggleMap()">
+          <mat-icon class="icon-white map-toggle-icon">{{mapVisible ? 'list' : 'map'}}</mat-icon>
+        </span>
+        <div>
+          <kit-items-list [mapVisible]="mapVisible"></kit-items-list>
+          <kit-search-footer></kit-search-footer>
+        </div>
+      </div>
+      <div *ngIf="mapVisible">
+        <kit-map [mapVisible]="mapVisible"></kit-map>
+      </div>
+    </div>
+  </div>
+</section>

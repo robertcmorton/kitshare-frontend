@@ -1,0 +1,212 @@
+<ng-container *ngIf="!isDisabled">
+  <div class="row">
+  <div class="col-md-12 col-sm-12">
+    <div class="address_checkbox">
+    <!-- <input name="is_default[]" [checked]="defaultValue.is_default == 'true'" [(ngModel)]="defaultValue.is_default" id="{{index}}_is_default_address" (ngModelChange)="updatevalue($event)" type="checkbox"> -->
+    <input name="is_default[]" [checked]="defaultValue.is_default == 'true'" id="{{index}}_is_default_address" (change)="updatePrimaryAddress($event)" type="checkbox">
+      <label for="{{index}}_is_default_address" class="checkbox5">Primary Address</label>
+    </div>
+  </div>
+
+  <br/>
+
+  <div class="col-md-6 col-sm-6">
+
+    <div class="wrap-input100 validate-input" data-validate="Name is required">
+
+      <span class="label-input100">Suite or Apartment Number *</span>
+
+      <input [disabled]="isDisabled" class="input100" (ngModelChange)="updatevalue($event)" name="street_address_line1" [(ngModel)]="defaultValue.street_address_line1" autocomplete="off" placeholder="Street" type="text">
+
+      <span class="focus-input100"></span>
+
+    </div>
+
+  </div>
+
+
+
+  <div class="col-md-6 col-sm-6">
+
+
+
+    <div class="wrap-input100 validate-input" data-validate="Name is required">
+
+
+
+      <span class="label-input100">Street Address *</span>
+
+
+
+      <input [disabled]="isDisabled" class="input100" (ngModelChange)="updatevalue($event)" name="street_address_line2"
+
+
+
+        [(ngModel)]="defaultValue.street_address_line2" autocomplete="off" placeholder="Street" type="text">
+
+
+
+      <span class="focus-input100"></span>
+
+
+
+    </div>
+
+
+
+  </div>
+
+
+
+  <div class="col-md-12 col-sm-12">
+
+
+
+    <div class="wrap-input100 validate-input" data-validate="Name is required">
+
+
+
+      <span class="label-input100">Country</span>
+
+
+
+      <input [disabled]="isDisabled" class="input100" name="country1" placeholder="Country" type="text" value="Australia"
+
+
+
+        readonly="readonly">
+
+
+
+      <span class="focus-input100"></span>
+
+
+
+    </div>
+
+
+
+  </div>
+
+
+
+  <div class="col-md-5 col-sm-5">
+
+
+
+    <div class="wrap-input100 validate-input" data-validate="Name is required">
+
+
+
+      <span class="label-input100">State *</span>
+
+
+
+      <ngx-select name="ks_state_id" [disabled]="isDisabled" (select)="stateChangeHandler($event)" optionValueField="state_id"
+
+
+
+        optionTextField="ks_state_name" (ngModelChange)="updatevalue($event)" [items]="stateList" [(ngModel)]="defaultValue.ks_state_id"
+
+
+
+        placeholder="No State selected"></ngx-select>
+
+
+
+      <span class="focus-input100"></span>
+
+
+
+    </div>
+
+
+
+  </div>
+
+
+
+
+
+
+
+  <div class="col-md-5 col-sm-5">
+
+
+
+    <div class="wrap-input100 validate-input" data-validate="Name is required">
+
+
+
+      <span class="label-input100">Town/Suburb *</span>
+
+
+
+      <ngx-select name="ks_suburb_id" [disabled]="isDisabled" (select)="suburbChangeHandler($event)" optionValueField="ks_suburb_id"
+
+
+
+        optionTextField="suburb_name" (ngModelChange)="updatevalue($event)" [items]="suburbList" [(ngModel)]="defaultValue.ks_suburb_id"
+
+
+
+        placeholder="No Suburb selected"></ngx-select>
+
+
+
+      <span class="focus-input100"></span>
+
+
+
+    </div>
+
+
+
+  </div>
+
+
+
+  <div class="col-md-2 col-sm-2">
+
+
+
+    <div class="wrap-input100 validate-input" data-validate="Name is required">
+
+
+
+      <span class="label-input100">POST CODE *</span>
+
+
+
+      <input class="input100" [disabled]="isDisabled" (ngModelChange)="updatevalue($event)" name="postcode" [(ngModel)]="defaultValue.postcode"
+
+
+
+        autocomplete="off" placeholder="Zipcode" type="text">
+
+
+
+      <span class="focus-input100"></span>
+
+
+
+    </div>
+
+
+
+  </div>
+
+
+
+  </div>
+
+
+
+</ng-container>
+
+
+
+<app-address-readonly [suburbList]="suburbList" [stateList]="stateList" [defaultValue]="defaultValue" *ngIf="isDisabled"></app-address-readonly>
+
+
+

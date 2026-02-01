@@ -1,0 +1,51 @@
+<!--slider-nav bar-->
+
+<section class="dashboard_bodynew">
+    <div class="top_bresdcum">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    Ask for References
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <form method="post" action="/send-ask-for-references" id="ask-for-references-form" class="invite-form">
+                    <p>
+                        You can request references from colleagues and friends in your network, and those references will appear publicly on your Kitshare profile. Kitshare is built on community and trust, and getting references will help you get noticed and get more rentals!
+                    </p>
+                    <p>
+                    </p>
+                    <div id="submit_error" class="msg-error noDisplay"> </div>
+                    <p></p>
+                    <div class="form-group">
+                        <div style="height: 1em; margin-bottom: 25px">
+                            <label class="font_size_normal">
+                Import your contacts from:
+                <a href="#" class="gmail-contacts" style="margin-left: 5px">
+                  <img style="height: 110%; margin-right: 5px; margin-bottom: 3px" src="assets/images/gmail-icon-32x32.png"
+                    alt="Gmail icon 32x32">Gmail
+                </a>
+              </label>
+                        </div>
+                        <label class="font_size_normal">Or enter email addresses below:</label>
+                        <textarea name="" id="invite-friends-emails" class="form-control" rows="6" onfocus=""></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label class="font_size_normal">Personal message</label>
+                        <textarea name="" id="personal-message" class="form-control" rows="6">
+Hi,
+
+Would you write me a reference so other users on Kitshare will be more likely to rent to or from me?
+
+Thanks!</textarea>
+                    </div>
+                    <button type="submit" class="btn btn-default send_btn">Send</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,149 @@
+<section class="dashboard_body bckd_c">
+    <div class="tabbable-line1">
+        <div class="container">
+            <ul class="nav nav-tabs">
+                <li>
+                    <a [routerLink]="['/rentals']" routerLinkActive="active">Rentals</a>
+                </li>
+                <li class="active">
+                    <a [routerLink]="['/rentals/messaging']" routerLinkActive="active">Messaging</a>
+                </li>
+                <li>
+                    <a [routerLink]="['/rentals/manage-listing']" routerLinkActive="active">Manage listing</a>
+                </li>
+                <li>
+                    <a [routerLink]="['/rentals/reviews']" routerLinkActive="active">Reviews</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+
+
+
+
+    <div class="container" *ngIf="current_chat_id">
+        <!-- JUGAL ADD AN NGFOR EXPRESSION HERE SO THAT IT SHOWS MESSAGE IF NOTHING - SAME WITH RENTALS, MANAGE LISTINGS AND REVIEWS -->
+        <div class="row">
+            <div class="col-md-12 Dashboard-container">
+                <div class="tabbable-panel">
+                    <div class="tabbable-line">
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="tab_default_5">
+                                <!-- *******************************************************************************-->
+                                <!-- **************************** Desktop Chat start *******************************-->
+                                <!-- *******************************************************************************-->
+                                <div class="row justify-content-center">
+                                    <div id="" class="chat_wrap">
+                                        <!-- chat left list -->
+                                        <div class="chat_left">
+                                            <div #scrollContact class="user_contact hidden-xs">
+                                                <ul>
+                                                    <li #items (click)="startChatting(contact.renter_id, contact.user_gear_desc_id, contact.user_details[0].user_profile_picture_link, contact.user_details[0].app_user_first_name, contact.order_id, contact.project_name, contact.order_status, contact.chat_id, contact.message_type, contact.sender_id,indexOfelement)" class="contact" [ngClass]="[contact.chat_id == current_chat_id ? 'active_chat' : '']" *ngFor="let contact of message_contact_list;let indexOfelement=index;">
+                                                        <div class="wrap">
+                                                            <img *ngIf="contact.user_details[0].user_profile_picture_link != null" src="{{contact.user_details[0].user_profile_picture_link}}" alt="{{contact.user_details[0].app_user_first_name}}" />
+                                                            <img *ngIf="contact.user_details[0].user_profile_picture_link == null" src="{{default_profile_pic_link}}" alt="{{contact.user_details[0].app_user_first_name}}" />
+                                                            <div class="meta">
+                                                                <p class="name">
+                                                                    {{contact.user_details[0].app_user_first_name}}
+                                                                    <span title="Order" class="user_o" *ngIf="contact.message_type == 'Order'">O</span>
+                                                                    <span title="Contact" class="user_c" *ngIf="contact.message_type == 'Contact'">C</span>
+                                                                </p>
+                                                                <p class="preview">{{contact.project_name}}</p>
+                                                                <p class="hidden">{{contact.chat_id}}</p>
+                                                                <div class="unread-messages" *ngIf="contact.unseen_message > '0'">
+                                                                    <ng-container>{{contact.unseen_message}}
+                                                                    </ng-container>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div #scrollContact class="user_contact hidden-lg hidden-md hidden-sm">
+                                                <ul>
+                                                    <li #items (click)="startChatting(contact.renter_id, contact.user_gear_desc_id, contact.user_details[0].user_profile_picture_link, contact.user_details[0].app_user_first_name, contact.order_id, contact.project_name, contact.order_status, contact.chat_id, contact.message_type, contact.sender_id, indexOfelement)" class="contact" [ngClass]="[contact.chat_id == current_chat_id ? 'active_chat' : '']" *ngFor="let contact of message_contact_list;let indexOfelement=index;">
+                                                        <div class="wrap">
+                                                            <span class="unread-messages" *ngIf="contact.unseen_message > '0'">
+                                                                <ng-container>{{contact.unseen_message}}</ng-container>
+                                                            </span>
+                                                            <img *ngIf="contact.user_details[0].user_profile_picture_link != null" src="{{contact.user_details[0].user_profile_picture_link}}" alt="{{contact.user_details[0].app_user_first_name}}" />
+                                                            <img *ngIf="contact.user_details[0].user_profile_picture_link == null" src="{{default_profile_pic_link}}" alt="{{contact.user_details[0].app_user_first_name}}" />
+                                                            <div class="meta">
+                                                                <p class="name">
+                                                                    {{contact.user_details[0].app_user_first_name}} </p>
+                                                                <p class="preview">{{contact.project_name}}</p>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="chat_right">
+                                            <div class="contact-profile">
+                                                <div class="contact-image">
+                                                    <img src="{{current_chat_profile_pics}}" alt="{{current_chat_name}}" />
+                                                </div>
+                                                <div class="text">
+                                                    <p class="chat-name"> {{current_chat_name}} </p>
+                                                    <p class="project-name"> {{current_chat_project_name}} </p>
+                                                </div>
+                                                <div class="btns_panel msg_btn_wpr">
+                                                    <button type="accept" class="accept_rental_btns" *ngIf="is_accept_rental_available && renter_or_owner=='owner'" (click)="acceptRental()">Accept Rental</button>
+                                                    <button type="decline" class="decline_rental_btns" *ngIf="is_decline_rental_available && renter_or_owner=='owner'" (click)="declineRental()">Decline Rental</button>
+                                                    <button type="cancel" class="cancel_rental_btns" *ngIf="is_cancel_rental_available" (click)="cancelRental()">Cancel Rental</button>
+                                                    <button type="end-rental" class="end_rental_btns" *ngIf="is_end_rental_available && renter_or_owner=='owner'" (click)="endRental()">End Rental</button>
+                                                </div>
+                                            </div>
+                                            <div #scrollMe class="messages_ desktop">
+                                                <ul *ngIf="is_msg_loaded">
+                                                    <li *ngFor="let chat of current_chat_messages; let i = index" [ngClass]="[chat.sender_id == app_user_id ? 'replies' : 'sent']">
+                                                        <img class="not_null" *ngIf="chat.sender_details.user_profile_picture_link" [src]="chat.sender_details.user_profile_picture_link" alt="" />
+                                                        <img class="this_null" *ngIf="!chat.sender_details.user_profile_picture_link" [src]="default_profile_pic_link" alt="" />
+
+                                                        <a [routerLink]="['/order-summary/'+current_chat_id+'/'+renter_or_owner]" *ngIf="i==0 && message_type=='Order'">
+                                                            <p>{{chat.message}}
+                                                                <span>{{ chat.create_date | date}}</span>
+                                                            </p>
+                                                        </a>
+                                                        <p *ngIf="message_type=='Order' && i>0">{{chat.message}}
+                                                            <span>{{ chat.create_date | date}}</span>
+                                                        </p>
+                                                        <p *ngIf="message_type!='Order'">{{chat.message}}
+                                                            <span>{{ chat.create_date | date}}</span>
+                                                        </p>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="message-input" *ngIf="isChattingAvailable">
+                                                <div class="wrap usermessage-input">
+                                                    <input type="message-inputtext" placeholder="Write your message..." name="message" [(ngModel)]="message" (keydown)="sendMessageOnKeyDown($event)" />
+                                                    <button class="submit" (click)="sendMessage()"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+                                                </div>
+                                            </div>
+                                            <div class="chat_closed" *ngIf="!isChattingAvailable">
+                                                <h3>This chat is closed</h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ******************************************************************************-->
+    <!-- **************************** Chat Ends ***************************************-->
+    <!-- ******************************************************************************-->
+
+    <div *ngIf="!current_chat_id" class="noMessage-Containter">
+        <img src="assets/images/nomessages.png" class="empty-img">
+        <div class="nomessage-head">No Messages Yet</div>
+        <div class="nomessage-details">When you have messages you'll see them here</div>
+    </div>
+
+
+</section>

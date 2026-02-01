@@ -1,0 +1,22 @@
+
+li.dropdown-submenu > a {
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    font-size: 14px;
+    & > span {
+      flex: 1 1 auto;
+    display: block;
+    }
+    i {
+      width: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+}
+
+.menu-trigger {
+  width: 70px;
+  height: 55px;
+}

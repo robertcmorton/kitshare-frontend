@@ -1,0 +1,6526 @@
+<section class="rental_listing_sec">
+
+   <div class="back_cartpage">
+
+      <div class="container">
+
+         <div class="col-md-12">
+
+            <div class="rental_cart row">{{ gearDetails.gear_name }}</div>
+
+         </div>
+
+      </div>
+
+   </div>
+
+
+
+   <div class="container">
+
+      <div class="row listing-page space-above-20">
+
+         <div class="col-md-6">
+
+            <div class="request-panel ">
+
+               <!-- Image Carousel -->
+
+               <div id="carousel-example-generic" class="carousel private-listing-slider slide carousel20"
+                  data-ride="carousel">
+
+                  <div class="carousel-inner">
+
+                     <div *ngFor="let eachImage of gearDetails.images; let i = index"
+                        class="item {{ i==0 ? 'active' : ''}} reduce_image">
+
+                        <img src="{{ eachImage.gear_display_image }}" class="img-responsive" alt="...">
+
+                     </div>
+
+                  </div>
+
+                  <ol class="carousel-indicators">
+
+
+
+                     <li *ngFor="let eachImage of gearDetails.images; let i = index"
+                        data-target="#carousel-example-generic" [attr.data-slide-to]="i"
+                        ngClass="i == 0 ? 'active' : ''">
+
+
+
+                        <img src="{{ eachImage.gear_display_image }}" class="img-responsive" alt="...">
+
+
+
+                     </li>
+
+
+
+                  </ol>
+
+
+
+                  <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+
+
+
+                     <span class="glyphicon glyphicon-chevron-left"></span>
+
+
+
+                  </a>
+
+
+
+                  <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+
+
+
+                     <span class="glyphicon glyphicon-chevron-right"></span>
+
+
+
+                  </a>
+
+
+
+               </div>
+
+
+
+               <div class="fb-share-button left share-btn fb_iframe_widget">
+
+
+
+                  <a href="#" class="btn btn-xs btn-default facebook">
+
+
+
+                     <i class="fa fa-facebook-square" aria-hidden="true"></i> Share</a>
+
+
+
+                  <a href="#" class="btn btn-xs btn-default tweeter">
+
+
+
+                     <i class="fa fa-twitter-square" aria-hidden="true"></i> Tweet</a>
+
+
+
+               </div>
+
+
+
+               <div class="sk-split-button-wrapper favorite-listing-button">
+
+
+
+                  <button
+                     class="sk-button--outline----color-ink--split--left add-to-favorites-button top_to_btn button_design"
+                     id="add-to-favorites">
+
+
+
+                     <div class="favorite-heart">
+
+
+
+                        <span class="fav-heart-icon">
+
+
+
+                           <i class="fa fa-heart-o"></i>
+
+
+
+                        </span>
+
+
+
+                        <span class="within-lists-count__btn hidden">0</span>
+
+
+
+                     </div>
+
+
+
+                     <span id="fav-text"> Favorite </span>
+
+
+
+                  </button>
+
+
+
+                  <button
+                     class="sk-button--outline--color-ink--split--right--dropdown favorite-dropdown-toggle top_to_btn"
+                     id="favorites-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+
+
+
+                     <span class="caret"></span>
+
+
+
+                  </button>
+
+
+
+                  <ul class="dropdown-menu user-favorites-menu dropdown-menu50" aria-labelledby="favorites-dropdown">
+
+
+
+                     <div class="user-lists" id="user-lists">
+
+
+
+                        <div class="fav-item">
+
+
+
+                           <a class="list-name" href="#">Favorites</a>
+
+
+
+                           <a id="favorite-link" class="pull-right">
+
+
+
+                              <i class="fa fa-heart-o"></i>
+
+
+
+                           </a>
+
+
+
+                        </div>
+
+
+
+                     </div>
+
+
+
+                     <label class="sk-form__input-wrapper create-new-list-container">
+
+
+
+                        <input name="list_name" id="list_name" placeholder="My New List"
+                           class="sk-form__text-input new-list-name" type="text">
+
+
+
+                        <span class="sk-form__input-label">Add to a new Kit list</span>
+
+
+
+                        <button class="create-new-list-btn" id="save-to-new-list">+</button>
+
+
+
+                     </label>
+
+
+
+                  </ul>
+
+
+
+               </div>
+
+
+
+               <div class="clearfix"></div>
+
+
+
+               <div class="panel panel-default panel-prices hidden-lg hidden-md">
+
+
+
+                  <div class="prices-section">
+
+
+
+                     <div class="price-per-day-btn-container">
+
+
+
+                        <div class="row">
+
+
+
+                           <div class="col-xs-6 col-sm-6">
+
+
+
+                              <span class="bold-price"> $30.00 </span>
+
+
+
+                              <span>inc GST</span>
+
+
+
+                              <p>
+
+
+
+                                 <span class="smaller"> per day or/ weekend</span>
+
+
+
+                                 <span class="glyphicon glyphicon-info-sign smaller" data-toggle="tooltip"
+                                    data-placement="bottom" title=""></span>
+
+
+
+                              </p>
+
+
+
+                           </div>
+
+
+
+                           <div class="col-xs-6 col-sm-6">
+
+
+
+                              <span class="bold-price"> $90.00 </span>
+
+
+
+                              <span>inc GST</span>
+
+
+
+                              <p>
+
+
+
+                                 <span class="smaller">/ week</span>
+
+
+
+                                 <span class="glyphicon glyphicon-info-sign smaller" data-toggle="tooltip"
+                                    data-placement="bottom" title=""
+                                    data-original-title="This owner offers a 3-day week rate for a 7-day rental."></span>
+
+
+
+                              </p>
+
+
+
+                           </div>
+
+
+
+                        </div>
+
+
+
+                     </div>
+
+
+
+                  </div>
+
+
+
+                  <!-- Modal -->
+
+
+
+                  <!-- This if/else statement wont show calendar IF and only if the listing belongs to the owner -->
+
+
+
+                  <div class="info calendar-section" *ngIf="!is_my_gear">
+
+
+
+                     <div class="calendar-input-container">
+
+
+
+                        <form action="#" id="listing_rental_request_form">
+
+
+
+                           <div class="relative" id="from_date_picker">
+
+
+
+                              <div class="datepicker" data-picker="#from_date">
+
+
+
+                                 <div class="prefix">Pick-up afternoon1</div>
+
+
+
+                                 <input id="from_date" value="03/28/18" readonly class="picker__input"
+                                    aria-haspopup="true" aria-expanded="false" aria-readonly="false"
+                                    aria-owns="from_date_root" type="text">
+
+
+
+                                 <div class="surfix">
+
+
+
+                                    <i class="fa fa-caret-down"></i>
+
+
+
+                                 </div>
+
+
+
+                              </div>
+
+
+
+                           </div>
+
+
+
+                           <div class="relative" id="to_date_picker">
+
+
+
+                              <div class="datepicker" data-picker="#to_date">
+
+
+
+                                 <div class="prefix">Return morning</div>
+
+
+
+                                 <input id="to_date" value="03/29/18" readonly class="picker__input"
+                                    aria-haspopup="true" aria-expanded="false" aria-readonly="false"
+                                    aria-owns="to_date_root" type="text">
+
+
+
+                                 <div class="surfix">
+
+
+
+                                    <i class="fa fa-caret-down"></i>
+
+
+
+                                 </div>
+
+
+
+                              </div>
+
+
+
+                           </div>
+
+
+
+                        </form>
+
+
+
+                        <div class="row">
+
+
+
+                           <div class="col-xs-12 text-center">
+
+
+
+                              <input name="commit" value="Add To Cart" class="btn btn category-btn top_to_btn"
+                                 type="submit">
+
+
+
+                           </div>
+
+
+
+                        </div>
+
+
+
+                     </div>
+
+
+
+                  </div>
+
+
+
+               </div>
+
+
+
+            </div>
+
+
+
+            <div class="info_text">
+               <p>
+                  <strong>Description:</strong>
+               </p>
+               <p>
+                  {{ gearDetails.gear_description_1 }}
+               </p>
+               <br>
+               <strong>Owner Note:</strong>
+               <p>{{ gearDetails.owners_remark }}<br>
+
+               <p class="condation_text">
+                  <strong>Condition:</strong> {{ gearDetails.ks_user_gear_condition }}
+               </p>
+
+               <p class="condation_text">
+
+                  <strong>Replacement value:</strong> {{ gearDetails.replacement_value_aud_inc_gst | currency }}
+
+               </p>
+
+
+
+               <div class="col-12 cancel_text">
+
+
+
+                  <b>Cancellations</b>
+
+
+
+                  <p class="rule-description">Cancel before a request is accepted, or within 2 hours of making the
+                     request and your cancellation is FREE. Cancel within 48 hours of your rental start date and you
+                     will receive a 50% refund. Cancel within 24 hours of your rental
+
+
+
+                     start date and the rental may be non-refundable.
+
+
+
+                     <strong>Cancellation fees are imposed at owner's discretion.</strong>
+
+
+
+                  </p>
+
+
+
+                  <div class="calendar-section">
+
+
+
+                     <ul>
+
+
+
+                        <li><span><i class="fa fa-calendar-check-o" aria-hidden="true"></i></span>Listing Created {{
+                           gearDetails.create_date | date }}</li>
+
+
+
+                        <li><span><i class="fa fa-eye" aria-hidden="true"></i></span>0 Views</li>
+
+
+
+                     </ul>
+
+
+
+                  </div>
+
+
+
+               </div>
+
+
+
+            </div>
+
+
+
+            <div class="panel panel-default profile-owner-section hidden-lg hidden-md">
+
+
+
+               <div class="info space-above">
+
+
+
+                  <div class="profile-img">
+
+
+
+                     <a href="#">
+
+
+
+                        <img class="img-circle center-block res-listing-img" alt="Amg, Llc Avatar"
+                           src="https://s3.amazonaws.com/kitsplit/users/avatars/000/022/862/thumb/picture?1520268673">
+
+
+
+                     </a>
+
+
+
+                  </div>
+
+
+
+                  <div class="owner-info">
+
+
+
+                     <h3>
+
+
+
+                        <a class="res-font-size-3" href="#">AMG, LLC</a>
+
+
+
+                     </h3>
+
+
+
+                     <div class="text-primary">
+
+
+
+                        <span class="user-average-rating res-font-size-3">
+
+
+
+                           <strong> Rating: </strong>
+
+
+
+                           <div class="rating-stars">
+
+
+
+                              <span class="dont-wrap">
+
+
+
+                                 <span class="glyphicon glyphicon-star rating-stars" aria-hidden="true"></span>
+
+
+
+                                 <span class="glyphicon glyphicon-star rating-stars" aria-hidden="true"></span>
+
+
+
+                                 <span class="glyphicon glyphicon-star rating-stars" aria-hidden="true"></span>
+
+
+
+                                 <span class="glyphicon glyphicon-star rating-stars" aria-hidden="true"></span>
+
+
+
+                                 <span class="glyphicon glyphicon-star rating-stars" aria-hidden="true"></span>
+
+
+
+                              </span>
+
+
+
+                           </div>
+
+
+
+                        </span>
+
+
+
+                     </div>
+
+
+
+                  </div>
+
+
+
+                  <div class=" about-me profile-about-me res-font-size-3">
+
+
+
+                     <div class="short-profile is-truncated" style="overflow-wrap: break-word;">Lorem Ipsum is simply
+                        dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
+                        standard dummy text ever since the 1500s, when an unknown
+
+
+
+                        <a class="readmore" target="_blank" href="#" style="display: inline;">Read more »</a>
+
+
+
+                     </div>
+
+
+
+                  </div>
+
+
+
+                  <div id="contact-owner-user-id" data-userid="26878"></div>
+
+
+
+                  <div class="contact-owner">
+
+
+
+                     <!-- Form to send message that is shown when button above is clicked -->
+
+
+
+                     <button type="button" class="btn btn-sm category-btn top_to_btn" data-toggle="modal"
+                        data-target="#contactOwnerModal">Contact the owner</button>
+
+
+
+                  </div>
+
+
+
+                  <div class="panel-body info_panel">
+
+
+
+                     <h2>Availabilty and Use</h2>
+
+
+
+                     <p> 24 hrs Response time
+
+
+
+                        <br> 100% Acceptance Rate
+
+
+
+                        <br> 59 Reviewa
+
+
+
+                        <br> 3 References
+
+
+
+                     </p>
+
+
+
+                  </div>
+
+
+
+               </div>
+
+
+
+               <div class="info">
+
+
+
+                  <div id="map-canvas">
+
+
+
+                     <!--<img src="assets/images/map.png" class="img-responsive"> -->
+
+
+
+
+
+                  </div>
+
+
+
+               </div>
+
+
+
+            </div>
+
+
+
+            <div class="info row related-listings col-md-12">
+
+
+
+               <h4 class="listing_headings">Related Listings:</h4>
+
+
+
+               <div class="items-wrapper hidden-sm hidden-lg hidden-md">
+
+
+
+                  <div id="testimonial-slider" class="owl-carousel">
+
+
+
+                     <div class="item listing-btn-container">
+
+
+
+                        <div class="listing-btn listing-157278">
+
+
+
+                           <!-- Image Container -->
+
+
+
+                           <div class="fill">
+
+
+
+                              <a target="_self" href="#">
+
+
+
+                                 <img class="listing-btn-image center-block " alt="Rent GoPro Hero 4 with accesories"
+                                    src=""> </a>
+
+
+
+                           </div>
+
+
+
+                           <!-- END Image Container -->
+
+
+
+                           <!-- Info Bar -->
+
+
+
+                           <div class="listing-btn-info">
+
+
+
+                              <!-- Gear Info Container Link -->
+
+
+
+                              <a class="gear-info-container-link" target="_self" href="#">
+
+
+
+                                 <!-- Gear Info Container -->
+
+
+
+                                 <div class="gear-info-container">
+
+
+
+                                    <!-- Item Name -->
+
+
+
+                                    <h4 class="listing-btn-name"> GoPro Hero 4 with accesories </h4>
+
+
+
+                                    <!-- Distance -->
+
+
+
+                                    <!--    -->
+
+
+
+                                    <!-- Price -->
+
+
+
+                                    <h5 class="listing-btn-price"> $40.00/ per day or weekend</h5>
+
+
+
+                                 </div>
+
+
+
+                                 <!-- END Gear Info Container -->
+
+
+
+                              </a>
+
+
+
+                              <!-- END Gear Info Container Link -->
+
+
+
+                              <!-- User Info Container -->
+
+
+
+                              <div class="user-info-container">
+
+
+
+                                 <!-- Owner Image -->
+
+
+
+                                 <a target="_self" href="#">
+
+
+
+                                    <img class="listing-owner-img" alt="William Baker Avatar" src=""> </a>
+
+
+
+                                 <!-- Owner Info Container -->
+
+
+
+                                 <div class="listing-owner-info-container">
+
+
+
+                                    <!-- Owner Name -->
+
+
+
+                                    <p class="listing-owner-name">
+
+
+
+                                       <a target="_self" href="#">William B</a>
+
+
+
+                                    </p>
+
+
+
+                                    <!-- Stars -->
+
+
+
+                                    <div class="listing-owner-rating">
+
+
+
+                                       <div class="rating-stars"> </div>
+
+
+
+                                    </div>
+
+
+
+                                 </div>
+
+
+
+                                 <!-- END Owner Info Container -->
+
+
+
+                                 <!-- Favorite -->
+
+
+
+                                 <div class="fave-listing-container">
+
+
+
+                                    <div class="favorites-shortcut-icons" data-listing-id="157278">
+
+
+
+                                       <div class="favorite-heart">
+
+
+
+                                          <a class="listing-fav-icon-link">
+
+
+
+                                             <i class="fa fa-heart-o"></i>
+
+
+
+                                             <span class="within-lists-count hidden">0</span>
+
+
+
+                                          </a>
+
+
+
+                                       </div>
+
+
+
+                                       <a class="listing-fav-dropdown-toggle" id="user-lists-dropdown"
+                                          data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+
+
+
+                                          <span class="caret"></span>
+
+
+
+                                       </a>
+
+
+
+                                       <ul class="dropdown-menu listing-faves-menu"
+                                          aria-labelledby="user-lists-dropdown">
+
+
+
+                                          <div class="user-lists" id="user-lists">
+
+
+
+                                             <div class="fav-item" data-list-id="26832">
+
+
+
+                                                <a class="list-name" href="#">Favorites</a>
+
+
+
+                                                <a id="favorite-link">
+
+
+
+                                                   <i class="fa fa-heart-o"></i>
+
+
+
+                                                </a>
+
+
+
+                                             </div>
+
+
+
+                                          </div>
+
+
+
+                                          <label class="sk-form__input-wrapper create-new-list-container">
+
+
+
+                                             <input name="list_name" id="list_name" placeholder="My New List"
+                                                class="sk-form__text-input new-list-name" type="text">
+
+
+
+                                             <span class="sk-form__input-label">Add to a new Kit list</span>
+
+
+
+                                             <button class="create-new-list-btn" id="save-to-new-list">+</button>
+
+
+
+                                          </label>
+
+
+
+                                       </ul>
+
+
+
+                                    </div>
+
+
+
+                                 </div>
+
+
+
+                              </div>
+
+
+
+                              <!-- END User Info Container -->
+
+
+
+                           </div>
+
+
+
+                           <!-- END Bottom Info Bar -->
+
+
+
+                        </div>
+
+
+
+                     </div>
+
+
+
+                     <div class="item listing-btn-container">
+
+
+
+                        <div class="listing-btn listing-157278">
+
+
+
+                           <!-- Image Container -->
+
+
+
+                           <div class="fill">
+
+
+
+                              <a target="_self" href="#">
+
+
+
+                                 <img class="listing-btn-image center-block " alt="Rent GoPro Hero 4 with accesories"
+                                    src=""> </a>
+
+
+
+                           </div>
+
+
+
+                           <!-- END Image Container -->
+
+
+
+                           <!-- Info Bar -->
+
+
+
+                           <div class="listing-btn-info">
+
+
+
+                              <!-- Gear Info Container Link -->
+
+
+
+                              <a class="gear-info-container-link" target="_self" href="#">
+
+
+
+                                 <!-- Gear Info Container -->
+
+
+
+                                 <div class="gear-info-container">
+
+
+
+                                    <!-- Item Name -->
+
+
+
+                                    <h4 class="listing-btn-name"> GoPro Hero 4 with accesories </h4>
+
+
+
+                                    <!-- Distance -->
+
+
+
+                                    <!--    -->
+
+
+
+                                    <!-- Price -->
+
+
+
+                                    <h5 class="listing-btn-price"> $40.00/ per day or weekend</h5>
+
+
+
+                                 </div>
+
+
+
+                                 <!-- END Gear Info Container -->
+
+
+
+                              </a>
+
+
+
+                              <!-- END Gear Info Container Link -->
+
+
+
+                              <!-- User Info Container -->
+
+
+
+                              <div class="user-info-container">
+
+
+
+                                 <!-- Owner Image -->
+
+
+
+                                 <a target="_self" href="#">
+
+
+
+                                    <img class="listing-owner-img" alt="William Baker Avatar" src=""> </a>
+
+
+
+                                 <!-- Owner Info Container -->
+
+
+
+                                 <div class="listing-owner-info-container">
+
+
+
+                                    <!-- Owner Name -->
+
+
+
+                                    <p class="listing-owner-name">
+
+
+
+                                       <a target="_self" href="#">William B</a>
+
+
+
+                                    </p>
+
+
+
+                                    <!-- Stars -->
+
+
+
+                                    <div class="listing-owner-rating">
+
+
+
+                                       <div class="rating-stars"> </div>
+
+
+
+                                    </div>
+
+
+
+                                 </div>
+
+
+
+                                 <!-- END Owner Info Container -->
+
+
+
+                                 <!-- Favorite -->
+
+
+
+                                 <div class="fave-listing-container">
+
+
+
+                                    <div class="favorites-shortcut-icons" data-listing-id="157278">
+
+
+
+                                       <div class="favorite-heart">
+
+
+
+                                          <a class="listing-fav-icon-link">
+
+
+
+                                             <i class="fa fa-heart-o"></i>
+
+
+
+                                             <span class="within-lists-count hidden">0</span>
+
+
+
+                                          </a>
+
+
+
+                                       </div>
+
+
+
+                                       <a class="listing-fav-dropdown-toggle" id="user-lists-dropdown"
+                                          data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+
+
+
+                                          <span class="caret"></span>
+
+
+
+                                       </a>
+
+
+
+                                       <ul class="dropdown-menu listing-faves-menu"
+                                          aria-labelledby="user-lists-dropdown">
+
+
+
+                                          <div class="user-lists" id="user-lists">
+
+
+
+                                             <div class="fav-item" data-list-id="26832">
+
+
+
+                                                <a class="list-name" href="#">Favorites</a>
+
+
+
+                                                <a id="favorite-link">
+
+
+
+                                                   <i class="fa fa-heart-o"></i>
+
+
+
+                                                </a>
+
+
+
+                                             </div>
+
+
+
+                                          </div>
+
+
+
+                                          <label class="sk-form__input-wrapper create-new-list-container">
+
+
+
+                                             <input name="list_name" id="list_name" placeholder="My New List"
+                                                class="sk-form__text-input new-list-name" type="text">
+
+
+
+                                             <span class="sk-form__input-label">Add to a new Kit list</span>
+
+
+
+                                             <button class="create-new-list-btn" id="save-to-new-list">+</button>
+
+
+
+                                          </label>
+
+
+
+                                       </ul>
+
+
+
+                                    </div>
+
+
+
+                                 </div>
+
+
+
+                              </div>
+
+
+
+                              <!-- END User Info Container -->
+
+
+
+                           </div>
+
+
+
+                           <!-- END Bottom Info Bar -->
+
+
+
+                        </div>
+
+
+
+                        <!-- Consider additional listings -->
+
+
+
+                     </div>
+
+
+
+                     <div class="item listing-btn-container">
+
+
+
+                        <div class="listing-btn listing-157278">
+
+
+
+                           <!-- Image Container -->
+
+
+
+                           <div class="fill">
+
+
+
+                              <a target="_self" href="#">
+
+
+
+                                 <img class="listing-btn-image center-block " alt="Rent GoPro Hero 4 with accesories"
+                                    src=""> </a>
+
+
+
+                           </div>
+
+
+
+                           <!-- END Image Container -->
+
+
+
+                           <!-- Info Bar -->
+
+
+
+                           <div class="listing-btn-info">
+
+
+
+                              <!-- Gear Info Container Link -->
+
+
+
+                              <a class="gear-info-container-link" target="_self" href="#">
+
+
+
+                                 <!-- Gear Info Container -->
+
+
+
+                                 <div class="gear-info-container">
+
+
+
+                                    <!-- Item Name -->
+
+
+
+                                    <h4 class="listing-btn-name"> GoPro Hero 4 with accesories </h4>
+
+
+
+                                    <!-- Distance -->
+
+
+
+                                    <!--    -->
+
+
+
+                                    <!-- Price -->
+
+
+
+                                    <h5 class="listing-btn-price"> $40.00/ per day or weekend</h5>
+
+
+
+                                 </div>
+
+
+
+                                 <!-- END Gear Info Container -->
+
+
+
+                              </a>
+
+
+
+                              <!-- END Gear Info Container Link -->
+
+
+
+                              <!-- User Info Container -->
+
+
+
+                              <div class="user-info-container">
+
+
+
+                                 <!-- Owner Image -->
+
+
+
+                                 <a target="_self" href="#">
+
+
+
+                                    <img class="listing-owner-img" alt="William Baker Avatar" src=""> </a>
+
+
+
+                                 <!-- Owner Info Container -->
+
+
+
+                                 <div class="listing-owner-info-container">
+
+
+
+                                    <!-- Owner Name -->
+
+
+
+                                    <p class="listing-owner-name">
+
+
+
+                                       <a target="_self" href="#">William B</a>
+
+
+
+                                    </p>
+
+
+
+                                    <!-- Stars -->
+
+
+
+                                    <div class="listing-owner-rating">
+
+
+
+                                       <div class="rating-stars"> </div>
+
+
+
+                                    </div>
+
+
+
+                                 </div>
+
+
+
+                                 <!-- END Owner Info Container -->
+
+
+
+                                 <!-- Favorite -->
+
+
+
+                                 <div class="fave-listing-container">
+
+
+
+                                    <div class="favorites-shortcut-icons" data-listing-id="157278">
+
+
+
+                                       <div class="favorite-heart">
+
+
+
+                                          <a class="listing-fav-icon-link">
+
+
+
+                                             <i class="fa fa-heart-o"></i>
+
+
+
+                                             <span class="within-lists-count hidden">0</span>
+
+
+
+                                          </a>
+
+
+
+                                       </div>
+
+
+
+                                       <a class="listing-fav-dropdown-toggle" id="user-lists-dropdown"
+                                          data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+
+
+
+                                          <span class="caret"></span>
+
+
+
+                                       </a>
+
+
+
+                                       <ul class="dropdown-menu listing-faves-menu"
+                                          aria-labelledby="user-lists-dropdown">
+
+
+
+                                          <div class="user-lists" id="user-lists">
+
+
+
+                                             <div class="fav-item" data-list-id="26832">
+
+
+
+                                                <a class="list-name" href="#">Favorites</a>
+
+
+
+                                                <a id="favorite-link">
+
+
+
+                                                   <i class="fa fa-heart-o"></i>
+
+
+
+                                                </a>
+
+
+
+                                             </div>
+
+
+
+                                          </div>
+
+
+
+                                          <label class="sk-form__input-wrapper create-new-list-container">
+
+
+
+                                             <input name="list_name" id="list_name" placeholder="My New List"
+                                                class="sk-form__text-input new-list-name" type="text">
+
+
+
+                                             <span class="sk-form__input-label">Add to a new Kit list</span>
+
+
+
+                                             <button class="create-new-list-btn" id="save-to-new-list">+</button>
+
+
+
+                                          </label>
+
+
+
+                                       </ul>
+
+
+
+                                    </div>
+
+
+
+                                 </div>
+
+
+
+                              </div>
+
+
+
+                              <!-- END User Info Container -->
+
+
+
+                           </div>
+
+
+
+                           <!-- END Bottom Info Bar -->
+
+
+
+                        </div>
+
+
+
+                        <!-- Consider additional listings -->
+
+
+
+                     </div>
+
+
+
+                     <div class="item listing-btn-container">
+
+
+
+                        <div class="listing-btn listing-157278">
+
+
+
+                           <!-- Image Container -->
+
+
+
+                           <div class="fill">
+
+
+
+                              <a target="_self" href="#">
+
+
+
+                                 <img class="listing-btn-image center-block " alt="Rent GoPro Hero 4 with accesories"
+                                    src=""> </a>
+
+
+
+                           </div>
+
+
+
+                           <!-- END Image Container -->
+
+
+
+                           <!-- Info Bar -->
+
+
+
+                           <div class="listing-btn-info">
+
+
+
+                              <!-- Gear Info Container Link -->
+
+
+
+                              <a class="gear-info-container-link" target="_self" href="#">
+
+
+
+                                 <!-- Gear Info Container -->
+
+
+
+                                 <div class="gear-info-container">
+
+
+
+                                    <!-- Item Name -->
+
+
+
+                                    <h4 class="listing-btn-name"> GoPro Hero 4 with accesories </h4>
+
+
+
+                                    <!-- Distance -->
+
+
+
+                                    <!--    -->
+
+
+
+                                    <!-- Price -->
+
+
+
+                                    <h5 class="listing-btn-price"> $40.00/ per day or weekend</h5>
+
+
+
+                                 </div>
+
+
+
+                                 <!-- END Gear Info Container -->
+
+
+
+                              </a>
+
+
+
+                              <!-- END Gear Info Container Link -->
+
+
+
+                              <!-- User Info Container -->
+
+
+
+                              <div class="user-info-container">
+
+
+
+                                 <!-- Owner Image -->
+
+
+
+                                 <a target="_self" href="#">
+
+
+
+                                    <img class="listing-owner-img" alt="William Baker Avatar" src=""> </a>
+
+
+
+                                 <!-- Owner Info Container -->
+
+
+
+                                 <div class="listing-owner-info-container">
+
+
+
+                                    <!-- Owner Name -->
+
+
+
+                                    <p class="listing-owner-name">
+
+
+
+                                       <a target="_self" href="#">William B</a>
+
+
+
+                                    </p>
+
+
+
+                                    <!-- Stars -->
+
+
+
+                                    <div class="listing-owner-rating">
+
+
+
+                                       <div class="rating-stars"> </div>
+
+
+
+                                    </div>
+
+
+
+                                 </div>
+
+
+
+                                 <!-- END Owner Info Container -->
+
+
+
+                                 <!-- Favorite -->
+
+
+
+                                 <div class="fave-listing-container">
+
+
+
+                                    <div class="favorites-shortcut-icons" data-listing-id="157278">
+
+
+
+                                       <div class="favorite-heart">
+
+
+
+                                          <a class="listing-fav-icon-link">
+
+
+
+                                             <i class="fa fa-heart-o"></i>
+
+
+
+                                             <span class="within-lists-count hidden">0</span>
+
+
+
+                                          </a>
+
+
+
+                                       </div>
+
+
+
+                                       <a class="listing-fav-dropdown-toggle" id="user-lists-dropdown"
+                                          data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+
+
+
+                                          <span class="caret"></span>
+
+
+
+                                       </a>
+
+
+
+                                       <ul class="dropdown-menu listing-faves-menu"
+                                          aria-labelledby="user-lists-dropdown">
+
+
+
+                                          <div class="user-lists" id="user-lists">
+
+
+
+                                             <div class="fav-item" data-list-id="26832">
+
+
+
+                                                <a class="list-name" href="#">Favorites</a>
+
+
+
+                                                <a id="favorite-link">
+
+
+
+                                                   <i class="fa fa-heart-o"></i>
+
+
+
+                                                </a>
+
+
+
+                                             </div>
+
+
+
+                                          </div>
+
+
+
+                                          <label class="sk-form__input-wrapper create-new-list-container">
+
+
+
+                                             <input name="list_name" id="list_name" placeholder="My New List"
+                                                class="sk-form__text-input new-list-name" type="text">
+
+
+
+                                             <span class="sk-form__input-label">Add to a new Kit list</span>
+
+
+
+                                             <button class="create-new-list-btn" id="save-to-new-list">+</button>
+
+
+
+                                          </label>
+
+
+
+                                       </ul>
+
+
+
+                                    </div>
+
+
+
+                                 </div>
+
+
+
+                              </div>
+
+
+
+                              <!-- END User Info Container -->
+
+
+
+                           </div>
+
+
+
+                           <!-- END Bottom Info Bar -->
+
+
+
+                        </div>
+
+
+
+                        <!-- Consider additional listings -->
+
+
+
+                     </div>
+
+
+
+                     <div class="item listing-btn-container">
+
+
+
+                        <div class="listing-btn listing-157278">
+
+
+
+                           <!-- Image Container -->
+
+
+
+                           <div class="fill">
+
+
+
+                              <a target="_self" href="#">
+
+
+
+                                 <img class="listing-btn-image center-block " alt="Rent GoPro Hero 4 with accesories"
+                                    src=""> </a>
+
+
+
+                           </div>
+
+
+
+                           <!-- END Image Container -->
+
+
+
+                           <!-- Info Bar -->
+
+
+
+                           <div class="listing-btn-info">
+
+
+
+                              <!-- Gear Info Container Link -->
+
+
+
+                              <a class="gear-info-container-link" target="_self" href="#">
+
+
+
+                                 <!-- Gear Info Container -->
+
+
+
+                                 <div class="gear-info-container">
+
+
+
+                                    <!-- Item Name -->
+
+
+
+                                    <h4 class="listing-btn-name"> GoPro Hero 4 with accesories </h4>
+
+
+
+                                    <!-- Distance -->
+
+
+
+                                    <!--    -->
+
+
+
+                                    <!-- Price -->
+
+
+
+                                    <h5 class="listing-btn-price"> $40.00/ per day or weekend</h5>
+
+
+
+                                 </div>
+
+
+
+                                 <!-- END Gear Info Container -->
+
+
+
+                              </a>
+
+
+
+                              <!-- END Gear Info Container Link -->
+
+
+
+                              <!-- User Info Container -->
+
+
+
+                              <div class="user-info-container">
+
+
+
+                                 <!-- Owner Image -->
+
+
+
+                                 <a target="_self" href="#">
+
+
+
+                                    <img class="listing-owner-img" alt="William Baker Avatar" src=""> </a>
+
+
+
+                                 <!-- Owner Info Container -->
+
+
+
+                                 <div class="listing-owner-info-container">
+
+
+
+                                    <!-- Owner Name -->
+
+
+
+                                    <p class="listing-owner-name">
+
+
+
+                                       <a target="_self" href="#">William B</a>
+
+
+
+                                    </p>
+
+
+
+                                    <!-- Stars -->
+
+
+
+                                    <div class="listing-owner-rating">
+
+
+
+                                       <div class="rating-stars"> </div>
+
+
+
+                                    </div>
+
+
+
+                                 </div>
+
+
+
+                                 <!-- END Owner Info Container -->
+
+
+
+                                 <!-- Favorite -->
+
+
+
+                                 <div class="fave-listing-container">
+
+
+
+                                    <div class="favorites-shortcut-icons" data-listing-id="157278">
+
+
+
+                                       <div class="favorite-heart">
+
+
+
+                                          <a class="listing-fav-icon-link">
+
+
+
+                                             <i class="fa fa-heart-o"></i>
+
+
+
+                                             <span class="within-lists-count hidden">0</span>
+
+
+
+                                          </a>
+
+
+
+                                       </div>
+
+
+
+                                       <a class="listing-fav-dropdown-toggle" id="user-lists-dropdown"
+                                          data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+
+
+
+                                          <span class="caret"></span>
+
+
+
+                                       </a>
+
+
+
+                                       <ul class="dropdown-menu listing-faves-menu"
+                                          aria-labelledby="user-lists-dropdown">
+
+
+
+                                          <div class="user-lists" id="user-lists">
+
+
+
+                                             <div class="fav-item" data-list-id="26832">
+
+
+
+                                                <a class="list-name" href="#">Favorites</a>
+
+
+
+                                                <a id="favorite-link">
+
+
+
+                                                   <i class="fa fa-heart-o"></i>
+
+
+
+                                                </a>
+
+
+
+                                             </div>
+
+
+
+                                          </div>
+
+
+
+                                          <label class="sk-form__input-wrapper create-new-list-container">
+
+
+
+                                             <input name="list_name" id="list_name" placeholder="My New List"
+                                                class="sk-form__text-input new-list-name" type="text">
+
+
+
+                                             <span class="sk-form__input-label">Add to a new Kit list</span>
+
+
+
+                                             <button class="create-new-list-btn" id="save-to-new-list">+</button>
+
+
+
+                                          </label>
+
+
+
+                                       </ul>
+
+
+
+                                    </div>
+
+
+
+                                 </div>
+
+
+
+                              </div>
+
+
+
+                              <!-- END User Info Container -->
+
+
+
+                           </div>
+
+
+
+                           <!-- END Bottom Info Bar -->
+
+
+
+                        </div>
+
+
+
+                        <!-- Consider additional listings -->
+
+
+
+                     </div>
+
+
+
+                     <div class="item listing-btn-container">
+
+
+
+                        <div class="listing-btn listing-157278">
+
+
+
+                           <!-- Image Container -->
+
+
+
+                           <div class="fill">
+
+
+
+                              <a target="_self" href="#">
+
+
+
+                                 <img class="listing-btn-image center-block " alt="Rent GoPro Hero 4 with accesories"
+                                    src=""> </a>
+
+
+
+                           </div>
+
+
+
+                           <!-- END Image Container -->
+
+
+
+                           <!-- Info Bar -->
+
+
+
+                           <div class="listing-btn-info">
+
+
+
+                              <!-- Gear Info Container Link -->
+
+
+
+                              <a class="gear-info-container-link" target="_self" href="#">
+
+
+
+                                 <!-- Gear Info Container -->
+
+
+
+                                 <div class="gear-info-container">
+
+
+
+                                    <!-- Item Name -->
+
+
+
+                                    <h4 class="listing-btn-name"> GoPro Hero 4 with accesories </h4>
+
+
+
+                                    <!-- Distance -->
+
+
+
+                                    <!--    -->
+
+
+
+                                    <!-- Price -->
+
+
+
+                                    <h5 class="listing-btn-price"> $40.00/ per day or weekend</h5>
+
+
+
+                                 </div>
+
+
+
+                                 <!-- END Gear Info Container -->
+
+
+
+                              </a>
+
+
+
+                              <!-- END Gear Info Container Link -->
+
+
+
+                              <!-- User Info Container -->
+
+
+
+                              <div class="user-info-container">
+
+
+
+                                 <!-- Owner Image -->
+
+
+
+                                 <a target="_self" href="#">
+
+
+
+                                    <img class="listing-owner-img" alt="William Baker Avatar" src=""> </a>
+
+
+
+                                 <!-- Owner Info Container -->
+
+
+
+                                 <div class="listing-owner-info-container">
+
+
+
+                                    <!-- Owner Name -->
+
+
+
+                                    <p class="listing-owner-name">
+
+
+
+                                       <a target="_self" href="#">William B</a>
+
+
+
+                                    </p>
+
+
+
+                                    <!-- Stars -->
+
+
+
+                                    <div class="listing-owner-rating">
+
+
+
+                                       <div class="rating-stars"> </div>
+
+
+
+                                    </div>
+
+
+
+                                 </div>
+
+
+
+                                 <!-- END Owner Info Container -->
+
+
+
+                                 <!-- Favorite -->
+
+
+
+                                 <div class="fave-listing-container">
+
+
+
+                                    <div class="favorites-shortcut-icons" data-listing-id="157278">
+
+
+
+                                       <div class="favorite-heart">
+
+
+
+                                          <a class="listing-fav-icon-link">
+
+
+
+                                             <i class="fa fa-heart-o"></i>
+
+
+
+                                             <span class="within-lists-count hidden">0</span>
+
+
+
+                                          </a>
+
+
+
+                                       </div>
+
+
+
+                                       <a class="listing-fav-dropdown-toggle" id="user-lists-dropdown"
+                                          data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+
+
+
+                                          <span class="caret"></span>
+
+
+
+                                       </a>
+
+
+
+                                       <ul class="dropdown-menu listing-faves-menu"
+                                          aria-labelledby="user-lists-dropdown">
+
+
+
+                                          <div class="user-lists" id="user-lists">
+
+
+
+                                             <div class="fav-item" data-list-id="26832">
+
+
+
+                                                <a class="list-name" href="#">Favorites</a>
+
+
+
+                                                <a id="favorite-link">
+
+
+
+                                                   <i class="fa fa-heart-o"></i>
+
+
+
+                                                </a>
+
+
+
+                                             </div>
+
+
+
+                                          </div>
+
+
+
+                                          <label class="sk-form__input-wrapper create-new-list-container">
+
+
+
+                                             <input name="list_name" id="list_name" placeholder="My New List"
+                                                class="sk-form__text-input new-list-name" type="text">
+
+
+
+                                             <span class="sk-form__input-label">Add to a new Kit list</span>
+
+
+
+                                             <button class="create-new-list-btn" id="save-to-new-list">+</button>
+
+
+
+                                          </label>
+
+
+
+                                       </ul>
+
+
+
+                                    </div>
+
+
+
+                                 </div>
+
+
+
+                              </div>
+
+
+
+                              <!-- END User Info Container -->
+
+
+
+                           </div>
+
+
+
+                           <!-- END Bottom Info Bar -->
+
+
+
+                        </div>
+
+
+
+                        <!-- Consider additional listings -->
+
+
+
+                     </div>
+
+
+
+                  </div>
+
+
+
+               </div>
+
+
+
+               <div class="items-wrapper hidden-xs">
+
+
+
+                  <div class="item listing-btn-container">
+
+
+
+                     <div class="listing-btn listing-157278">
+
+
+
+                        <!-- Image Container -->
+
+
+
+                        <div class="fill">
+
+
+
+                           <a target="_self" href="#">
+
+
+
+                              <img class="listing-btn-image center-block " alt="Rent GoPro Hero 4 with accesories"
+                                 src=""> </a>
+
+
+
+                        </div>
+
+
+
+                        <!-- END Image Container -->
+
+
+
+                        <!-- Info Bar -->
+
+
+
+                        <div class="listing-btn-info">
+
+
+
+                           <!-- Gear Info Container Link -->
+
+
+
+                           <a class="gear-info-container-link" target="_self" href="#">
+
+
+
+                              <!-- Gear Info Container -->
+
+
+
+                              <div class="gear-info-container">
+
+
+
+                                 <!-- Item Name -->
+
+
+
+                                 <h4 class="listing-btn-name"> GoPro Hero 4 with accesories </h4>
+
+
+
+                                 <!-- Distance -->
+
+
+
+                                 <!--    -->
+
+
+
+                                 <!-- Price -->
+
+
+
+                                 <h5 class="listing-btn-price"> $40.00/ per day or weekend</h5>
+
+
+
+                              </div>
+
+
+
+                              <!-- END Gear Info Container -->
+
+
+
+                           </a>
+
+
+
+                           <!-- END Gear Info Container Link -->
+
+
+
+                           <!-- User Info Container -->
+
+
+
+                           <div class="user-info-container">
+
+
+
+                              <!-- Owner Image -->
+
+
+
+                              <a target="_self" href="#">
+
+
+
+                                 <img class="listing-owner-img" alt="William Baker Avatar" src=""> </a>
+
+
+
+                              <!-- Owner Info Container -->
+
+
+
+                              <div class="listing-owner-info-container">
+
+
+
+                                 <!-- Owner Name -->
+
+
+
+                                 <p class="listing-owner-name">
+
+
+
+                                    <a target="_self" href="#">William B</a>
+
+
+
+                                 </p>
+
+
+
+                                 <!-- Stars -->
+
+
+
+                                 <div class="listing-owner-rating">
+
+
+
+                                    <div class="rating-stars"> </div>
+
+
+
+                                 </div>
+
+
+
+                              </div>
+
+
+
+                              <!-- END Owner Info Container -->
+
+
+
+                              <!-- Favorite -->
+
+
+
+                              <div class="fave-listing-container">
+
+
+
+                                 <div class="favorites-shortcut-icons" data-listing-id="157278">
+
+
+
+                                    <div class="favorite-heart">
+
+
+
+                                       <a class="listing-fav-icon-link">
+
+
+
+                                          <i class="fa fa-heart-o"></i>
+
+
+
+                                          <span class="within-lists-count hidden">0</span>
+
+
+
+                                       </a>
+
+
+
+                                    </div>
+
+
+
+                                    <a class="listing-fav-dropdown-toggle" id="user-lists-dropdown"
+                                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+
+
+
+                                       <span class="caret"></span>
+
+
+
+                                    </a>
+
+
+
+                                    <ul class="dropdown-menu listing-faves-menu" aria-labelledby="user-lists-dropdown">
+
+
+
+                                       <div class="user-lists" id="user-lists">
+
+
+
+                                          <div class="fav-item" data-list-id="26832">
+
+
+
+                                             <a class="list-name" href="#">Favorites</a>
+
+
+
+                                             <a id="favorite-link">
+
+
+
+                                                <i class="fa fa-heart-o"></i>
+
+
+
+                                             </a>
+
+
+
+                                          </div>
+
+
+
+                                       </div>
+
+
+
+                                       <label class="sk-form__input-wrapper create-new-list-container">
+
+
+
+                                          <input name="list_name" id="list_name" placeholder="My New List"
+                                             class="sk-form__text-input new-list-name" type="text">
+
+
+
+                                          <span class="sk-form__input-label">Add to a new Kit list</span>
+
+
+
+                                          <button class="create-new-list-btn" id="save-to-new-list">+</button>
+
+
+
+                                       </label>
+
+
+
+                                    </ul>
+
+
+
+                                 </div>
+
+
+
+                              </div>
+
+
+
+                           </div>
+
+
+
+                           <!-- END User Info Container -->
+
+
+
+                        </div>
+
+
+
+                        <!-- END Bottom Info Bar -->
+
+
+
+                     </div>
+
+
+
+                     <!-- Consider additional listings -->
+
+
+
+                  </div>
+
+
+
+                  <div class="item listing-btn-container">
+
+
+
+                     <div class="listing-btn listing-146568">
+
+
+
+                        <!-- Image Container -->
+
+
+
+                        <div class="fill">
+
+
+
+                           <a target="_self" href="#">
+
+
+
+                              <img class="listing-btn-image center-block " alt="Rent GoPro Hero 4 Black" src=""> </a>
+
+
+
+                        </div>
+
+
+
+                        <!-- END Image Container -->
+
+
+
+                        <!-- Info Bar -->
+
+
+
+                        <div class="listing-btn-info">
+
+
+
+                           <!-- Gear Info Container Link -->
+
+
+
+                           <a class="gear-info-container-link" target="_self" href="#">
+
+
+
+                              <!-- Gear Info Container -->
+
+
+
+                              <div class="gear-info-container">
+
+
+
+                                 <!-- Item Name -->
+
+
+
+                                 <h4 class="listing-btn-name"> GoPro Hero 4 Black </h4>
+
+
+
+                                 <!-- Distance -->
+
+
+
+                                 <!--    -->
+
+
+
+                                 <!-- Price -->
+
+
+
+                                 <h5 class="listing-btn-price"> $25.00/ per day or weekend</h5>
+
+
+
+                              </div>
+
+
+
+                              <!-- END Gear Info Container -->
+
+
+
+                           </a>
+
+
+
+                           <!-- END Gear Info Container Link -->
+
+
+
+                           <!-- User Info Container -->
+
+
+
+                           <div class="user-info-container">
+
+
+
+                              <!-- Owner Image -->
+
+
+
+                              <a target="_self" href="#">
+
+
+
+                                 <img class="listing-owner-img" alt="Viktor Bogun Avatar" src=""> </a>
+
+
+
+                              <!-- Owner Info Container -->
+
+
+
+                              <div class="listing-owner-info-container">
+
+
+
+                                 <!-- Owner Name -->
+
+
+
+                                 <p class="listing-owner-name">
+
+
+
+                                    <a target="_self" href="#">Viktor B</a>
+
+
+
+                                 </p>
+
+
+
+                                 <!-- Stars -->
+
+
+
+                                 <div class="listing-owner-rating">
+
+
+
+                                    <div class="rating-stars"> </div>
+
+
+
+                                 </div>
+
+
+
+                              </div>
+
+
+
+                              <!-- END Owner Info Container -->
+
+
+
+                              <!-- Favorite -->
+
+
+
+                              <div class="fave-listing-container">
+
+
+
+                                 <div class="favorites-shortcut-icons" data-listing-id="146568">
+
+
+
+                                    <div class="favorite-heart">
+
+
+
+                                       <a class="listing-fav-icon-link">
+
+
+
+                                          <i class="fa fa-heart-o"></i>
+
+
+
+                                          <span class="within-lists-count hidden">0</span>
+
+
+
+                                       </a>
+
+
+
+                                    </div>
+
+
+
+                                    <a class="listing-fav-dropdown-toggle" id="user-lists-dropdown"
+                                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+
+
+
+                                       <span class="caret"></span>
+
+
+
+                                    </a>
+
+
+
+                                    <ul class="dropdown-menu listing-faves-menu" aria-labelledby="user-lists-dropdown">
+
+
+
+                                       <div class="user-lists" id="user-lists">
+
+
+
+                                          <div class="fav-item" data-list-id="26832">
+
+
+
+                                             <a class="list-name" href="#">Favorites</a>
+
+
+
+                                             <a id="favorite-link">
+
+
+
+                                                <i class="fa fa-heart-o"></i>
+
+
+
+                                             </a>
+
+
+
+                                          </div>
+
+
+
+                                       </div>
+
+
+
+                                       <label class="sk-form__input-wrapper create-new-list-container">
+
+
+
+                                          <input name="list_name" id="list_name" placeholder="My New List"
+                                             class="sk-form__text-input new-list-name" type="text">
+
+
+
+                                          <span class="sk-form__input-label">Add to a new Kit list</span>
+
+
+
+                                          <button class="create-new-list-btn" id="save-to-new-list">+</button>
+
+
+
+                                       </label>
+
+
+
+                                    </ul>
+
+
+
+                                 </div>
+
+
+
+                              </div>
+
+
+
+                           </div>
+
+
+
+                           <!-- END User Info Container -->
+
+
+
+                        </div>
+
+
+
+                        <!-- END Bottom Info Bar -->
+
+
+
+                     </div>
+
+
+
+                     <!-- Consider additional listings -->
+
+
+
+                  </div>
+
+
+
+               </div>
+
+
+
+            </div>
+
+
+
+            <div class="col-md-12 info row related-listings">
+
+
+
+               <h4 class="listing_headings">Other listings from AMG, LLC:</h4>
+
+
+
+               <div class="items-wrapper hidden-sm hidden-lg hidden-md">
+
+
+
+                  <div id="testimonial-slider2" class="owl-carousel">
+
+
+
+                     <div class="item listing-btn-container">
+
+
+
+                        <div class="listing-btn listing-157278">
+
+
+
+                           <!-- Image Container -->
+
+
+
+                           <div class="fill">
+
+
+
+                              <a target="_self" href="#">
+
+
+
+                                 <img class="listing-btn-image center-block " alt="Rent GoPro Hero 4 with accesories"
+                                    src=""> </a>
+
+
+
+                           </div>
+
+
+
+                           <!-- END Image Container -->
+
+
+
+                           <!-- Info Bar -->
+
+
+
+                           <div class="listing-btn-info">
+
+
+
+                              <!-- Gear Info Container Link -->
+
+
+
+                              <a class="gear-info-container-link" target="_self" href="#">
+
+
+
+                                 <!-- Gear Info Container -->
+
+
+
+                                 <div class="gear-info-container">
+
+
+
+                                    <!-- Item Name -->
+
+
+
+                                    <h4 class="listing-btn-name"> GoPro Hero 4 with accesories </h4>
+
+
+
+                                    <!-- Distance -->
+
+
+
+                                    <!--    -->
+
+
+
+                                    <!-- Price -->
+
+
+
+                                    <h5 class="listing-btn-price"> $40.00/ per day or weekend</h5>
+
+
+
+                                 </div>
+
+
+
+                                 <!-- END Gear Info Container -->
+
+
+
+                              </a>
+
+
+
+                              <!-- END Gear Info Container Link -->
+
+
+
+                              <!-- User Info Container -->
+
+
+
+                              <div class="user-info-container">
+
+
+
+                                 <!-- Owner Image -->
+
+
+
+                                 <a target="_self" href="#">
+
+
+
+                                    <img class="listing-owner-img" alt="William Baker Avatar" src=""> </a>
+
+
+
+                                 <!-- Owner Info Container -->
+
+
+
+                                 <div class="listing-owner-info-container">
+
+
+
+                                    <!-- Owner Name -->
+
+
+
+                                    <p class="listing-owner-name">
+
+
+
+                                       <a target="_self" href="#">William B</a>
+
+
+
+                                    </p>
+
+
+
+                                    <!-- Stars -->
+
+
+
+                                    <div class="listing-owner-rating">
+
+
+
+                                       <div class="rating-stars"> </div>
+
+
+
+                                    </div>
+
+
+
+                                 </div>
+
+
+
+                                 <!-- END Owner Info Container -->
+
+
+
+                                 <!-- Favorite -->
+
+
+
+                                 <div class="fave-listing-container">
+
+
+
+                                    <div class="favorites-shortcut-icons" data-listing-id="157278">
+
+
+
+                                       <div class="favorite-heart">
+
+
+
+                                          <a class="listing-fav-icon-link">
+
+
+
+                                             <i class="fa fa-heart-o"></i>
+
+
+
+                                             <span class="within-lists-count hidden">0</span>
+
+
+
+                                          </a>
+
+
+
+                                       </div>
+
+
+
+                                       <a class="listing-fav-dropdown-toggle" id="user-lists-dropdown"
+                                          data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+
+
+
+                                          <span class="caret"></span>
+
+
+
+                                       </a>
+
+
+
+                                       <ul class="dropdown-menu listing-faves-menu"
+                                          aria-labelledby="user-lists-dropdown">
+
+
+
+                                          <div class="user-lists" id="user-lists">
+
+
+
+                                             <div class="fav-item" data-list-id="26832">
+
+
+
+                                                <a class="list-name" href="#">Favorites</a>
+
+
+
+                                                <a id="favorite-link">
+
+
+
+                                                   <i class="fa fa-heart-o"></i>
+
+
+
+                                                </a>
+
+
+
+                                             </div>
+
+
+
+                                          </div>
+
+
+
+                                          <label class="sk-form__input-wrapper create-new-list-container">
+
+
+
+                                             <input name="list_name" id="list_name" placeholder="My New List"
+                                                class="sk-form__text-input new-list-name" type="text">
+
+
+
+                                             <span class="sk-form__input-label">Add to a new Kit list</span>
+
+
+
+                                             <button class="create-new-list-btn" id="save-to-new-list">+</button>
+
+
+
+                                          </label>
+
+
+
+                                       </ul>
+
+
+
+                                    </div>
+
+
+
+                                 </div>
+
+
+
+                              </div>
+
+
+
+                              <!-- END User Info Container -->
+
+
+
+                           </div>
+
+
+
+                           <!-- END Bottom Info Bar -->
+
+
+
+                        </div>
+
+
+
+                        <!-- Consider additional listings -->
+
+
+
+                     </div>
+
+
+
+                     <div class="item listing-btn-container">
+
+
+
+                        <div class="listing-btn listing-157278">
+
+
+
+                           <!-- Image Container -->
+
+
+
+                           <div class="fill">
+
+
+
+                              <a target="_self" href="#">
+
+
+
+                                 <img class="listing-btn-image center-block " alt="Rent GoPro Hero 4 with accesories"
+                                    src=""> </a>
+
+
+
+                           </div>
+
+
+
+                           <!-- END Image Container -->
+
+
+
+                           <!-- Info Bar -->
+
+
+
+                           <div class="listing-btn-info">
+
+
+
+                              <!-- Gear Info Container Link -->
+
+
+
+                              <a class="gear-info-container-link" target="_self" href="#">
+
+
+
+                                 <!-- Gear Info Container -->
+
+
+
+                                 <div class="gear-info-container">
+
+
+
+                                    <!-- Item Name -->
+
+
+
+                                    <h4 class="listing-btn-name"> GoPro Hero 4 with accesories </h4>
+
+
+
+                                    <!-- Distance -->
+
+
+
+                                    <!--    -->
+
+
+
+                                    <!-- Price -->
+
+
+
+                                    <h5 class="listing-btn-price"> $40.00/ per day or weekend</h5>
+
+
+
+                                 </div>
+
+
+
+                                 <!-- END Gear Info Container -->
+
+
+
+                              </a>
+
+
+
+                              <!-- END Gear Info Container Link -->
+
+
+
+                              <!-- User Info Container -->
+
+
+
+                              <div class="user-info-container">
+
+
+
+                                 <!-- Owner Image -->
+
+
+
+                                 <a target="_self" href="#">
+
+
+
+                                    <img class="listing-owner-img" alt="William Baker Avatar" src=""> </a>
+
+
+
+                                 <!-- Owner Info Container -->
+
+
+
+                                 <div class="listing-owner-info-container">
+
+
+
+                                    <!-- Owner Name -->
+
+
+
+                                    <p class="listing-owner-name">
+
+
+
+                                       <a target="_self" href="#">William B</a>
+
+
+
+                                    </p>
+
+
+
+                                    <!-- Stars -->
+
+
+
+                                    <div class="listing-owner-rating">
+
+
+
+                                       <div class="rating-stars"> </div>
+
+
+
+                                    </div>
+
+
+
+                                 </div>
+
+
+
+                                 <!-- END Owner Info Container -->
+
+
+
+                                 <!-- Favorite -->
+
+
+
+                                 <div class="fave-listing-container">
+
+
+
+                                    <div class="favorites-shortcut-icons" data-listing-id="157278">
+
+
+
+                                       <div class="favorite-heart">
+
+
+
+                                          <a class="listing-fav-icon-link">
+
+
+
+                                             <i class="fa fa-heart-o"></i>
+
+
+
+                                             <span class="within-lists-count hidden">0</span>
+
+
+
+                                          </a>
+
+
+
+                                       </div>
+
+
+
+                                       <a class="listing-fav-dropdown-toggle" id="user-lists-dropdown"
+                                          data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+
+
+
+                                          <span class="caret"></span>
+
+
+
+                                       </a>
+
+
+
+                                       <ul class="dropdown-menu listing-faves-menu"
+                                          aria-labelledby="user-lists-dropdown">
+
+
+
+                                          <div class="user-lists" id="user-lists">
+
+
+
+                                             <div class="fav-item" data-list-id="26832">
+
+
+
+                                                <a class="list-name" href="#">Favorites</a>
+
+
+
+                                                <a id="favorite-link">
+
+
+
+                                                   <i class="fa fa-heart-o"></i>
+
+
+
+                                                </a>
+
+
+
+                                             </div>
+
+
+
+                                          </div>
+
+
+
+                                          <label class="sk-form__input-wrapper create-new-list-container">
+
+
+
+                                             <input name="list_name" id="list_name" placeholder="My New List"
+                                                class="sk-form__text-input new-list-name" type="text">
+
+
+
+                                             <span class="sk-form__input-label">Add to a new Kit list</span>
+
+
+
+                                             <button class="create-new-list-btn" id="save-to-new-list">+</button>
+
+
+
+                                          </label>
+
+
+
+                                       </ul>
+
+
+
+                                    </div>
+
+
+
+                                 </div>
+
+
+
+                              </div>
+
+
+
+                              <!-- END User Info Container -->
+
+
+
+                           </div>
+
+
+
+                           <!-- END Bottom Info Bar -->
+
+
+
+                        </div>
+
+
+
+                        <!-- Consider additional listings -->
+
+
+
+                     </div>
+
+
+
+                     <div class="item listing-btn-container">
+
+
+
+                        <div class="listing-btn listing-157278">
+
+
+
+                           <!-- Image Container -->
+
+
+
+                           <div class="fill">
+
+
+
+                              <a target="_self" href="#">
+
+
+
+                                 <img class="listing-btn-image center-block " alt="Rent GoPro Hero 4 with accesories"
+                                    src=""> </a>
+
+
+
+                           </div>
+
+
+
+                           <!-- END Image Container -->
+
+
+
+                           <!-- Info Bar -->
+
+
+
+                           <div class="listing-btn-info">
+
+
+
+                              <!-- Gear Info Container Link -->
+
+
+
+                              <a class="gear-info-container-link" target="_self" href="#">
+
+
+
+                                 <!-- Gear Info Container -->
+
+
+
+                                 <div class="gear-info-container">
+
+
+
+                                    <!-- Item Name -->
+
+
+
+                                    <h4 class="listing-btn-name"> GoPro Hero 4 with accesories </h4>
+
+
+
+                                    <!-- Distance -->
+
+
+
+                                    <!--    -->
+
+
+
+                                    <!-- Price -->
+
+
+
+                                    <h5 class="listing-btn-price"> $40.00/ per day or weekend</h5>
+
+
+
+                                 </div>
+
+
+
+                                 <!-- END Gear Info Container -->
+
+
+
+                              </a>
+
+
+
+                              <!-- END Gear Info Container Link -->
+
+
+
+                              <!-- User Info Container -->
+
+
+
+                              <div class="user-info-container">
+
+
+
+                                 <!-- Owner Image -->
+
+
+
+                                 <a target="_self" href="#">
+
+
+
+                                    <img class="listing-owner-img" alt="William Baker Avatar" src=""> </a>
+
+
+
+                                 <!-- Owner Info Container -->
+
+
+
+                                 <div class="listing-owner-info-container">
+
+
+
+                                    <!-- Owner Name -->
+
+
+
+                                    <p class="listing-owner-name">
+
+
+
+                                       <a target="_self" href="#">William B</a>
+
+
+
+                                    </p>
+
+
+
+                                    <!-- Stars -->
+
+
+
+                                    <div class="listing-owner-rating">
+
+
+
+                                       <div class="rating-stars"> </div>
+
+
+
+                                    </div>
+
+
+
+                                 </div>
+
+
+
+                                 <!-- END Owner Info Container -->
+
+
+
+                                 <!-- Favorite -->
+
+
+
+                                 <div class="fave-listing-container">
+
+
+
+                                    <div class="favorites-shortcut-icons" data-listing-id="157278">
+
+
+
+                                       <div class="favorite-heart">
+
+
+
+                                          <a class="listing-fav-icon-link">
+
+
+
+                                             <i class="fa fa-heart-o"></i>
+
+
+
+                                             <span class="within-lists-count hidden">0</span>
+
+
+
+                                          </a>
+
+
+
+                                       </div>
+
+
+
+                                       <a class="listing-fav-dropdown-toggle" id="user-lists-dropdown"
+                                          data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+
+
+
+                                          <span class="caret"></span>
+
+
+
+                                       </a>
+
+
+
+                                       <ul class="dropdown-menu listing-faves-menu"
+                                          aria-labelledby="user-lists-dropdown">
+
+
+
+                                          <div class="user-lists" id="user-lists">
+
+
+
+                                             <div class="fav-item" data-list-id="26832">
+
+
+
+                                                <a class="list-name" href="#">Favorites</a>
+
+
+
+                                                <a id="favorite-link">
+
+
+
+                                                   <i class="fa fa-heart-o"></i>
+
+
+
+                                                </a>
+
+
+
+                                             </div>
+
+
+
+                                          </div>
+
+
+
+                                          <label class="sk-form__input-wrapper create-new-list-container">
+
+
+
+                                             <input name="list_name" id="list_name" placeholder="My New List"
+                                                class="sk-form__text-input new-list-name" type="text">
+
+
+
+                                             <span class="sk-form__input-label">Add to a new Kit list</span>
+
+
+
+                                             <button class="create-new-list-btn" id="save-to-new-list">+</button>
+
+
+
+                                          </label>
+
+
+
+                                       </ul>
+
+
+
+                                    </div>
+
+
+
+                                 </div>
+
+
+
+                              </div>
+
+
+
+                              <!-- END User Info Container -->
+
+
+
+                           </div>
+
+
+
+                           <!-- END Bottom Info Bar -->
+
+
+
+                        </div>
+
+
+
+                        <!-- Consider additional listings -->
+
+
+
+                     </div>
+
+
+
+                     <div class="item listing-btn-container">
+
+
+
+                        <div class="listing-btn listing-157278">
+
+
+
+                           <!-- Image Container -->
+
+
+
+                           <div class="fill">
+
+
+
+                              <a target="_self" href="#">
+
+
+
+                                 <img class="listing-btn-image center-block " alt="Rent GoPro Hero 4 with accesories"
+                                    src=""> </a>
+
+
+
+                           </div>
+
+
+
+                           <!-- END Image Container -->
+
+
+
+                           <!-- Info Bar -->
+
+
+
+                           <div class="listing-btn-info">
+
+
+
+                              <!-- Gear Info Container Link -->
+
+
+
+                              <a class="gear-info-container-link" target="_self" href="#">
+
+
+
+                                 <!-- Gear Info Container -->
+
+
+
+                                 <div class="gear-info-container">
+
+
+
+                                    <!-- Item Name -->
+
+
+
+                                    <h4 class="listing-btn-name"> GoPro Hero 4 with accesories </h4>
+
+
+
+                                    <!-- Distance -->
+
+
+
+                                    <!--    -->
+
+
+
+                                    <!-- Price -->
+
+
+
+                                    <h5 class="listing-btn-price"> $40.00/ per day or weekend</h5>
+
+
+
+                                 </div>
+
+
+
+                                 <!-- END Gear Info Container -->
+
+
+
+                              </a>
+
+
+
+                              <!-- END Gear Info Container Link -->
+
+
+
+                              <!-- User Info Container -->
+
+
+
+                              <div class="user-info-container">
+
+
+
+                                 <!-- Owner Image -->
+
+
+
+                                 <a target="_self" href="#">
+
+
+
+                                    <img class="listing-owner-img" alt="William Baker Avatar" src=""> </a>
+
+
+
+                                 <!-- Owner Info Container -->
+
+
+
+                                 <div class="listing-owner-info-container">
+
+
+
+                                    <!-- Owner Name -->
+
+
+
+                                    <p class="listing-owner-name">
+
+
+
+                                       <a target="_self" href="#">William B</a>
+
+
+
+                                    </p>
+
+
+
+                                    <!-- Stars -->
+
+
+
+                                    <div class="listing-owner-rating">
+
+
+
+                                       <div class="rating-stars"> </div>
+
+
+
+                                    </div>
+
+
+
+                                 </div>
+
+
+
+                                 <!-- END Owner Info Container -->
+
+
+
+                                 <!-- Favorite -->
+
+
+
+                                 <div class="fave-listing-container">
+
+
+
+                                    <div class="favorites-shortcut-icons" data-listing-id="157278">
+
+
+
+                                       <div class="favorite-heart">
+
+
+
+                                          <a class="listing-fav-icon-link">
+
+
+
+                                             <i class="fa fa-heart-o"></i>
+
+
+
+                                             <span class="within-lists-count hidden">0</span>
+
+
+
+                                          </a>
+
+
+
+                                       </div>
+
+
+
+                                       <a class="listing-fav-dropdown-toggle" id="user-lists-dropdown"
+                                          data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+
+
+
+                                          <span class="caret"></span>
+
+
+
+                                       </a>
+
+
+
+                                       <ul class="dropdown-menu listing-faves-menu"
+                                          aria-labelledby="user-lists-dropdown">
+
+
+
+                                          <div class="user-lists" id="user-lists">
+
+
+
+                                             <div class="fav-item" data-list-id="26832">
+
+
+
+                                                <a class="list-name" href="#">Favorites</a>
+
+
+
+                                                <a id="favorite-link">
+
+
+
+                                                   <i class="fa fa-heart-o"></i>
+
+
+
+                                                </a>
+
+
+
+                                             </div>
+
+
+
+                                          </div>
+
+
+
+                                          <label class="sk-form__input-wrapper create-new-list-container">
+
+
+
+                                             <input name="list_name" id="list_name" placeholder="My New List"
+                                                class="sk-form__text-input new-list-name" type="text">
+
+
+
+                                             <span class="sk-form__input-label">Add to a new Kit list</span>
+
+
+
+                                             <button class="create-new-list-btn" id="save-to-new-list">+</button>
+
+
+
+                                          </label>
+
+
+
+                                       </ul>
+
+
+
+                                    </div>
+
+
+
+                                 </div>
+
+
+
+                              </div>
+
+
+
+                              <!-- END User Info Container -->
+
+
+
+                           </div>
+
+
+
+                           <!-- END Bottom Info Bar -->
+
+
+
+                        </div>
+
+
+
+                        <!-- Consider additional listings -->
+
+
+
+                     </div>
+
+
+
+                     <div class="item listing-btn-container">
+
+
+
+                        <div class="listing-btn listing-157278">
+
+
+
+                           <!-- Image Container -->
+
+
+
+                           <div class="fill">
+
+
+
+                              <a target="_self" href="#">
+
+
+
+                                 <img class="listing-btn-image center-block " alt="Rent GoPro Hero 4 with accesories"
+                                    src=""> </a>
+
+
+
+                           </div>
+
+
+
+                           <!-- END Image Container -->
+
+
+
+                           <!-- Info Bar -->
+
+
+
+                           <div class="listing-btn-info">
+
+
+
+                              <!-- Gear Info Container Link -->
+
+
+
+                              <a class="gear-info-container-link" target="_self" href="#">
+
+
+
+                                 <!-- Gear Info Container -->
+
+
+
+                                 <div class="gear-info-container">
+
+
+
+                                    <!-- Item Name -->
+
+
+
+                                    <h4 class="listing-btn-name"> GoPro Hero 4 with accesories </h4>
+
+
+
+                                    <!-- Distance -->
+
+
+
+                                    <!--    -->
+
+
+
+                                    <!-- Price -->
+
+
+
+                                    <h5 class="listing-btn-price"> $40.00/ per day or weekend</h5>
+
+
+
+                                 </div>
+
+
+
+                                 <!-- END Gear Info Container -->
+
+
+
+                              </a>
+
+
+
+                              <!-- END Gear Info Container Link -->
+
+
+
+                              <!-- User Info Container -->
+
+
+
+                              <div class="user-info-container">
+
+
+
+                                 <!-- Owner Image -->
+
+
+
+                                 <a target="_self" href="#">
+
+
+
+                                    <img class="listing-owner-img" alt="William Baker Avatar" src=""> </a>
+
+
+
+                                 <!-- Owner Info Container -->
+
+
+
+                                 <div class="listing-owner-info-container">
+
+
+
+                                    <!-- Owner Name -->
+
+
+
+                                    <p class="listing-owner-name">
+
+
+
+                                       <a target="_self" href="#">William B</a>
+
+
+
+                                    </p>
+
+
+
+                                    <!-- Stars -->
+
+
+
+                                    <div class="listing-owner-rating">
+
+
+
+                                       <div class="rating-stars"> </div>
+
+
+
+                                    </div>
+
+
+
+                                 </div>
+
+
+
+                                 <!-- END Owner Info Container -->
+
+
+
+                                 <!-- Favorite -->
+
+
+
+                                 <div class="fave-listing-container">
+
+
+
+                                    <div class="favorites-shortcut-icons" data-listing-id="157278">
+
+
+
+                                       <div class="favorite-heart">
+
+
+
+                                          <a class="listing-fav-icon-link">
+
+
+
+                                             <i class="fa fa-heart-o"></i>
+
+
+
+                                             <span class="within-lists-count hidden">0</span>
+
+
+
+                                          </a>
+
+
+
+                                       </div>
+
+
+
+                                       <a class="listing-fav-dropdown-toggle" id="user-lists-dropdown"
+                                          data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+
+
+
+                                          <span class="caret"></span>
+
+
+
+                                       </a>
+
+
+
+                                       <ul class="dropdown-menu listing-faves-menu"
+                                          aria-labelledby="user-lists-dropdown">
+
+
+
+                                          <div class="user-lists" id="user-lists">
+
+
+
+                                             <div class="fav-item" data-list-id="26832">
+
+
+
+                                                <a class="list-name" href="#">Favorites</a>
+
+
+
+                                                <a id="favorite-link">
+
+
+
+                                                   <i class="fa fa-heart-o"></i>
+
+
+
+                                                </a>
+
+
+
+                                             </div>
+
+
+
+                                          </div>
+
+
+
+                                          <label class="sk-form__input-wrapper create-new-list-container">
+
+
+
+                                             <input name="list_name" id="list_name" placeholder="My New List"
+                                                class="sk-form__text-input new-list-name" type="text">
+
+
+
+                                             <span class="sk-form__input-label">Add to a new Kit list</span>
+
+
+
+                                             <button class="create-new-list-btn" id="save-to-new-list">+</button>
+
+
+
+                                          </label>
+
+
+
+                                       </ul>
+
+
+
+                                    </div>
+
+
+
+                                 </div>
+
+
+
+                              </div>
+
+
+
+                              <!-- END User Info Container -->
+
+
+
+                           </div>
+
+
+
+                           <!-- END Bottom Info Bar -->
+
+
+
+                        </div>
+
+
+
+                        <!-- Consider additional listings -->
+
+
+
+                     </div>
+
+
+
+                     <div class="item listing-btn-container">
+
+
+
+                        <div class="listing-btn listing-157278">
+
+
+
+                           <!-- Image Container -->
+
+
+
+                           <div class="fill">
+
+
+
+                              <a target="_self" href="#">
+
+
+
+                                 <img class="listing-btn-image center-block " alt="Rent GoPro Hero 4 with accesories"
+                                    src=""> </a>
+
+
+
+                           </div>
+
+
+
+                           <!-- END Image Container -->
+
+
+
+                           <!-- Info Bar -->
+
+
+
+                           <div class="listing-btn-info">
+
+
+
+                              <!-- Gear Info Container Link -->
+
+
+
+                              <a class="gear-info-container-link" target="_self" href="#">
+
+
+
+                                 <!-- Gear Info Container -->
+
+
+
+                                 <div class="gear-info-container">
+
+
+
+                                    <!-- Item Name -->
+
+
+
+                                    <h4 class="listing-btn-name"> GoPro Hero 4 with accesories </h4>
+
+
+
+                                    <!-- Distance -->
+
+
+
+                                    <!--    -->
+
+
+
+                                    <!-- Price -->
+
+
+
+                                    <h5 class="listing-btn-price"> $40.00/ per day or weekend</h5>
+
+
+
+                                 </div>
+
+
+
+                                 <!-- END Gear Info Container -->
+
+
+
+                              </a>
+
+
+
+                              <!-- END Gear Info Container Link -->
+
+
+
+                              <!-- User Info Container -->
+
+
+
+                              <div class="user-info-container">
+
+
+
+                                 <!-- Owner Image -->
+
+
+
+                                 <a target="_self" href="#">
+
+
+
+                                    <img class="listing-owner-img" alt="William Baker Avatar" src=""> </a>
+
+
+
+                                 <!-- Owner Info Container -->
+
+
+
+                                 <div class="listing-owner-info-container">
+
+
+
+                                    <!-- Owner Name -->
+
+
+
+                                    <p class="listing-owner-name">
+
+
+
+                                       <a target="_self" href="#">William B</a>
+
+
+
+                                    </p>
+
+
+
+                                    <!-- Stars -->
+
+
+
+                                    <div class="listing-owner-rating">
+
+
+
+                                       <div class="rating-stars"> </div>
+
+
+
+                                    </div>
+
+
+
+                                 </div>
+
+
+
+                                 <!-- END Owner Info Container -->
+
+
+
+                                 <!-- Favorite -->
+
+
+
+                                 <div class="fave-listing-container">
+
+
+
+                                    <div class="favorites-shortcut-icons" data-listing-id="157278">
+
+
+
+                                       <div class="favorite-heart">
+
+
+
+                                          <a class="listing-fav-icon-link">
+
+
+
+                                             <i class="fa fa-heart-o"></i>
+
+
+
+                                             <span class="within-lists-count hidden">0</span>
+
+
+
+                                          </a>
+
+
+
+                                       </div>
+
+
+
+                                       <a class="listing-fav-dropdown-toggle" id="user-lists-dropdown"
+                                          data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+
+
+
+                                          <span class="caret"></span>
+
+
+
+                                       </a>
+
+
+
+                                       <ul class="dropdown-menu listing-faves-menu"
+                                          aria-labelledby="user-lists-dropdown">
+
+
+
+                                          <div class="user-lists" id="user-lists">
+
+
+
+                                             <div class="fav-item" data-list-id="26832">
+
+
+
+                                                <a class="list-name" href="#">Favorites</a>
+
+
+
+                                                <a id="favorite-link">
+
+
+
+                                                   <i class="fa fa-heart-o"></i>
+
+
+
+                                                </a>
+
+
+
+                                             </div>
+
+
+
+                                          </div>
+
+
+
+                                          <label class="sk-form__input-wrapper create-new-list-container">
+
+
+
+                                             <input name="list_name" id="list_name" placeholder="My New List"
+                                                class="sk-form__text-input new-list-name" type="text">
+
+
+
+                                             <span class="sk-form__input-label">Add to a new Kit list</span>
+
+
+
+                                             <button class="create-new-list-btn" id="save-to-new-list">+</button>
+
+
+
+                                          </label>
+
+
+
+                                       </ul>
+
+
+
+                                    </div>
+
+
+
+                                 </div>
+
+
+
+                              </div>
+
+
+
+                              <!-- END User Info Container -->
+
+
+
+                           </div>
+
+
+
+                           <!-- END Bottom Info Bar -->
+
+
+
+                        </div>
+
+
+
+                        <!-- Consider additional listings -->
+
+
+
+                     </div>
+
+
+
+                  </div>
+
+
+
+                  <div class="show-all-button-container">
+
+
+
+                     <!--<a class="sk-button top_to_btn" href="#"> See all listings (6) </a>-->
+
+
+
+                  </div>
+
+
+
+               </div>
+
+
+
+               <div class="items-wrapper hidden-xs">
+
+
+
+                  <div class="item listing-btn-container">
+
+
+
+                     <div class="listing-btn listing-159803">
+
+
+
+                        <!-- Image Container -->
+
+
+
+                        <div class="fill">
+
+
+
+                           <a target="_self" href="#">
+
+
+
+                              <img class="listing-btn-image center-block " alt="Rent RED Scarlet-W Kit" src=""> </a>
+
+
+
+                        </div>
+
+
+
+                        <!-- END Image Container -->
+
+
+
+                        <!-- Info Bar -->
+
+
+
+                        <div class="listing-btn-info">
+
+
+
+                           <!-- Gear Info Container Link -->
+
+
+
+                           <a class="gear-info-container-link" target="_self" href="#">
+
+
+
+                              <!-- Gear Info Container -->
+
+
+
+                              <div class="gear-info-container">
+
+
+
+                                 <!-- Item Name -->
+
+
+
+                                 <h4 class="listing-btn-name"> RED Scarlet-W Kit </h4>
+
+
+
+                                 <!-- Distance -->
+
+
+
+                                 <!--    -->
+
+
+
+                                 <!-- Price -->
+
+
+
+                                 <h5 class="listing-btn-price"> $400.00/ per day or weekend</h5>
+
+
+
+                              </div>
+
+
+
+                              <!-- END Gear Info Container -->
+
+
+
+                           </a>
+
+
+
+                           <!-- END Gear Info Container Link -->
+
+
+
+                           <!-- User Info Container -->
+
+
+
+                           <div class="user-info-container">
+
+
+
+                              <!-- Owner Image -->
+
+
+
+                              <a target="_self" href="#">
+
+
+
+                                 <img class="listing-owner-img" alt="AMG, LLC Avatar" src=""> </a>
+
+
+
+                              <!-- Owner Info Container -->
+
+
+
+                              <div class="listing-owner-info-container">
+
+
+
+                                 <!-- Owner Name -->
+
+
+
+                                 <p class="listing-owner-name">
+
+
+
+                                    <a target="_self" href="#">AMG, LLC</a>
+
+
+
+                                 </p>
+
+
+
+                                 <!-- Stars -->
+
+
+
+                                 <div class="listing-owner-rating">
+
+
+
+                                    <div class="rating-stars">
+
+
+
+                                       <span class="dont-wrap">
+
+
+
+                                          <span class="glyphicon glyphicon-star rating-stars" aria-hidden="true"></span>
+
+
+
+                                          <span class="glyphicon glyphicon-star rating-stars" aria-hidden="true"></span>
+
+
+
+                                          <span class="glyphicon glyphicon-star rating-stars" aria-hidden="true"></span>
+
+
+
+                                          <span class="glyphicon glyphicon-star rating-stars" aria-hidden="true"></span>
+
+
+
+                                          <span class="glyphicon glyphicon-star rating-stars" aria-hidden="true"></span>
+
+
+
+                                       </span>
+
+
+
+                                    </div>
+
+
+
+                                 </div>
+
+
+
+                              </div>
+
+
+
+                              <!-- END Owner Info Container -->
+
+
+
+                              <!-- Favorite -->
+
+
+
+                              <div class="fave-listing-container">
+
+
+
+                                 <div class="favorites-shortcut-icons" data-listing-id="159803">
+
+
+
+                                    <div class="favorite-heart">
+
+
+
+                                       <a class="listing-fav-icon-link">
+
+
+
+                                          <i class="fa fa-heart-o"></i>
+
+
+
+                                          <span class="within-lists-count hidden">0</span>
+
+
+
+                                       </a>
+
+
+
+                                    </div>
+
+
+
+                                    <a class="listing-fav-dropdown-toggle" id="user-lists-dropdown"
+                                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+
+
+
+                                       <span class="caret"></span>
+
+
+
+                                    </a>
+
+
+
+                                    <ul class="dropdown-menu listing-faves-menu" aria-labelledby="user-lists-dropdown">
+
+
+
+                                       <div class="user-lists" id="user-lists">
+
+
+
+                                          <div class="fav-item" data-list-id="26832">
+
+
+
+                                             <a class="list-name" href="#">Favorites</a>
+
+
+
+                                             <a id="favorite-link">
+
+
+
+                                                <i class="fa fa-heart-o"></i>
+
+
+
+                                             </a>
+
+
+
+                                          </div>
+
+
+
+                                       </div>
+
+
+
+                                       <label class="sk-form__input-wrapper create-new-list-container">
+
+
+
+                                          <input name="list_name" id="list_name" placeholder="My New List"
+                                             class="sk-form__text-input new-list-name" type="text">
+
+
+
+                                          <span class="sk-form__input-label">Add to a new Kit list</span>
+
+
+
+                                          <button class="create-new-list-btn" id="save-to-new-list">+</button>
+
+
+
+                                       </label>
+
+
+
+                                    </ul>
+
+
+
+                                 </div>
+
+
+
+                              </div>
+
+
+
+                           </div>
+
+
+
+                           <!-- END User Info Container -->
+
+
+
+                        </div>
+
+
+
+                        <!-- END Bottom Info Bar -->
+
+
+
+                     </div>
+
+
+
+                     <!-- Consider additional listings -->
+
+
+
+                  </div>
+
+
+
+                  <div class="item listing-btn-container">
+
+
+
+                     <div class="listing-btn listing-159806">
+
+
+
+                        <!-- Image Container -->
+
+
+
+                        <div class="fill">
+
+
+
+                           <a target="_self" href="#">
+
+
+
+                              <img class="listing-btn-image center-block " alt="Rent Lowel GO All Pro Kit" src=""> </a>
+
+
+
+                        </div>
+
+
+
+                        <!-- END Image Container -->
+
+
+
+                        <!-- Info Bar -->
+
+
+
+                        <div class="listing-btn-info">
+
+
+
+                           <!-- Gear Info Container Link -->
+
+
+
+                           <a class="gear-info-container-link" target="_self" href="#">
+
+
+
+                              <!-- Gear Info Container -->
+
+
+
+                              <div class="gear-info-container">
+
+
+
+                                 <!-- Item Name -->
+
+
+
+                                 <h4 class="listing-btn-name"> Lowel GO All Pro Kit </h4>
+
+
+
+                                 <!-- Distance -->
+
+
+
+                                 <!--    -->
+
+
+
+                                 <!-- Price -->
+
+
+
+                                 <h5 class="listing-btn-price"> $40.00/ per day or weekend</h5>
+
+
+
+                              </div>
+
+
+
+                              <!-- END Gear Info Container -->
+
+
+
+                           </a>
+
+
+
+                           <!-- END Gear Info Container Link -->
+
+
+
+                           <!-- User Info Container -->
+
+
+
+                           <div class="user-info-container">
+
+
+
+                              <!-- Owner Image -->
+
+
+
+                              <a target="_self" href="/jvieira1980">
+
+
+
+                                 <img class="listing-owner-img" alt="AMG, LLC Avatar" src="assets/images/picture20.jpg">
+                              </a>
+
+
+
+                              <!-- Owner Info Container -->
+
+
+
+                              <div class="listing-owner-info-container">
+
+
+
+                                 <!-- Owner Name -->
+
+
+
+                                 <p class="listing-owner-name">
+
+
+
+                                    <a target="_self" href="/jvieira1980">AMG, LLC</a>
+
+
+
+                                 </p>
+
+
+
+                                 <!-- Stars -->
+
+
+
+                                 <div class="listing-owner-rating">
+
+
+
+                                    <div class="rating-stars">
+
+
+
+                                       <span class="dont-wrap">
+
+
+
+                                          <span class="glyphicon glyphicon-star rating-stars" aria-hidden="true"></span>
+
+
+
+                                          <span class="glyphicon glyphicon-star rating-stars" aria-hidden="true"></span>
+
+
+
+                                          <span class="glyphicon glyphicon-star rating-stars" aria-hidden="true"></span>
+
+
+
+                                          <span class="glyphicon glyphicon-star rating-stars" aria-hidden="true"></span>
+
+
+
+                                          <span class="glyphicon glyphicon-star rating-stars" aria-hidden="true"></span>
+
+
+
+                                       </span>
+
+
+
+                                    </div>
+
+
+
+                                 </div>
+
+
+
+                              </div>
+
+
+
+                              <!-- END Owner Info Container -->
+
+
+
+                              <!-- Favorite -->
+
+
+
+                              <div class="fave-listing-container">
+
+
+
+                                 <div class="favorites-shortcut-icons" data-listing-id="159806">
+
+
+
+                                    <div class="favorite-heart">
+
+
+
+                                       <a class="listing-fav-icon-link">
+
+
+
+                                          <i class="fa fa-heart-o"></i>
+
+
+
+                                          <span class="within-lists-count hidden">0</span>
+
+
+
+                                       </a>
+
+
+
+                                    </div>
+
+
+
+                                    <a class="listing-fav-dropdown-toggle" id="user-lists-dropdown"
+                                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+
+
+
+                                       <span class="caret"></span>
+
+
+
+                                    </a>
+
+
+
+                                    <ul class="dropdown-menu listing-faves-menu" aria-labelledby="user-lists-dropdown">
+
+
+
+                                       <div class="user-lists" id="user-lists">
+
+
+
+                                          <div class="fav-item" data-list-id="26832">
+
+
+
+                                             <a class="list-name" href="#">Favorites</a>
+
+
+
+                                             <a id="favorite-link">
+
+
+
+                                                <i class="fa fa-heart-o"></i>
+
+
+
+                                             </a>
+
+
+
+                                          </div>
+
+
+
+                                       </div>
+
+
+
+                                       <label class="sk-form__input-wrapper create-new-list-container">
+
+
+
+                                          <input name="list_name" id="list_name" placeholder="My New List"
+                                             class="sk-form__text-input new-list-name" type="text">
+
+
+
+                                          <span class="sk-form__input-label">Add to a new Kit list</span>
+
+
+
+                                          <button class="create-new-list-btn" id="save-to-new-list">+</button>
+
+
+
+                                       </label>
+
+
+
+                                    </ul>
+
+
+
+                                 </div>
+
+
+
+                              </div>
+
+
+
+                           </div>
+
+
+
+                           <!-- END User Info Container -->
+
+
+
+                        </div>
+
+
+
+                        <!-- END Bottom Info Bar -->
+
+
+
+                     </div>
+
+
+
+                     <!-- Consider additional listings -->
+
+
+
+                  </div>
+
+
+
+                  <div class="show-all-button-container" style="width:100%">
+
+                     <a class="sk-button top_to_btn" href="#"> See all listings (6) </a>
+
+                     <!-- Google map was here -->
+
+
+                  </div>
+
+
+
+               </div>
+
+
+
+            </div>
+
+
+
+         </div>
+
+
+
+         <div class="col-md-6">
+
+
+
+            <div class="panel panel-default panel-prices hidden-xs hidden-sm">
+
+
+
+               <div class="prices-section">
+
+
+
+                  <div class="price-per-day-btn-container">
+
+
+
+                     <div class="row">
+
+
+
+                        <div class="col-xs-6 col-sm-6">
+
+
+
+                           <span class="bold-price"> {{ gearDetails.per_day_cost_aud_inc_gst | currency }} </span>
+
+
+
+                           <span>inc GST</span>
+
+
+
+                           <p>
+
+
+
+                              <span class="smaller">/ per day or weekend</span>
+
+
+
+                              <span class="glyphicon glyphicon-info-sign smaller" data-toggle="tooltip"
+                                 data-placement="bottom" title=""></span>
+
+
+
+                           </p>
+
+
+
+                        </div>
+
+
+
+                        <div class="col-xs-6 col-sm-6">
+
+
+
+                           <span class="bold-price"> {{ gearDetails.per_week_cost_aud_inc_gst | currency }} </span>
+
+
+
+                           <span>inc GST</span>
+
+
+
+                           <p>
+
+
+
+                              <span class="smaller">/ week</span>
+
+
+
+                              <span class="glyphicon glyphicon-info-sign smaller" data-toggle="tooltip"
+                                 data-placement="bottom" title=""
+                                 data-original-title="This owner offers a 3-day week rate for a 7-day rental."></span>
+
+
+
+                           </p>
+
+
+
+                        </div>
+
+
+
+                     </div>
+
+
+
+                  </div>
+
+
+
+               </div>
+
+
+
+               <!-- Modal -->
+
+
+
+               <div class="info calendar-section">
+
+                  <div class="icon_box">
+
+                     <ul>
+                        <li (click)="goToEditPage(gearDetails.user_gear_desc_id)"><span><i class="fa fa-pencil"
+                                 aria-hidden="true"></i></span>Edit Listing</li>
+
+                        <li data-toggle="modal" data-target="#edit_privet"><span><i class="fa fa-lock"
+                                 aria-hidden="true"></i></span>Close Listing</li>
+
+                        <li data-toggle="modal" data-target="#edit_privet"><span><i class="fa fa-users"
+                                 aria-hidden="true"></i></span>Make Public</li>
+                     </ul>
+
+                  </div>
+
+
+               </div>
+
+
+
+               <!-- This if/else statement wont show calendar IF and only if the listing belongs to the owner -->
+
+
+
+               <div class="info calendar-section" *ngIf="!is_my_gear">
+
+
+
+                  <div class="calendar-input-container">
+
+
+
+                     <!--<form action="#" id="listing_rental_request_form">-->
+
+
+
+                     <div class="relative" id="from_date_picker">
+
+
+
+                        <div class="datepicker" data-picker="#from_date">
+
+
+
+                           <div class="prefix">Pick-up afternoon</div>
+
+
+
+                           <!--<input id="from_date" value="03/28/18" readonly class="picker__input" aria-haspopup="true" aria-expanded="false" aria-readonly="false" aria-owns="from_date_root" type="text">-->
+
+
+
+                           <input id="from_date" readonly class="picker__input" aria-haspopup="true"
+                              aria-expanded="false" aria-readonly="false" [min]="todayDate" aria-owns="from_date_root"
+                              placeholder="Date:" [(ngModel)]="from_date" [owlDateTimeTrigger]="dt1" [owlDateTime]="dt1"
+                              type="text">
+
+                           <owl-date-time [pickerType]="'calendar'" #dt1></owl-date-time>
+
+
+
+                           <div class="surfix">
+
+
+
+                              <i class="fa fa-caret-down"></i>
+
+
+
+                           </div>
+
+
+
+                        </div>
+
+
+
+                     </div>
+
+
+
+                     <div class="relative" id="to_date_picker">
+
+
+
+                        <div class="datepicker" data-picker="#to_date">
+
+
+
+                           <div class="prefix">Return morning</div>
+
+
+
+                           <!--<input id="to_date" value="03/29/18" readonly class="picker__input" aria-haspopup="true" aria-expanded="false" aria-readonly="false" aria-owns="to_date_root" type="text">-->
+
+                           <input id="to_date" readonly class="picker__input" aria-haspopup="true" aria-expanded="false"
+                              aria-readonly="false" [min]="todayDate" aria-owns="to_date_root" placeholder="Date:"
+                              [(ngModel)]="to_date" [owlDateTimeTrigger]="dt2" [owlDateTime]="dt2" type="text">
+
+                           <owl-date-time [pickerType]="'calendar'" #dt2></owl-date-time>
+
+
+
+                           <div class="surfix">
+
+
+
+                              <i class="fa fa-caret-down"></i>
+
+
+
+                           </div>
+
+
+
+                        </div>
+
+
+
+                     </div>
+
+
+
+                     <!--</form>-->
+
+
+                     <!--   
+                     <div class="row">
+
+
+
+                        <div class="col-xs-12 text-center">
+
+                           <input name="commit" value="Added to your cart" class="btn btn category-btn top_to_btn" type="button" disabled >
+
+
+                        </div>
+
+
+
+                     </div>-->
+
+
+
+                  </div>
+
+
+
+               </div>
+
+
+
+            </div>
+
+
+
+            <div class="panel panel-default profile-owner-section hidden-sm hidden-xs">
+
+
+
+               <div class="info space-above">
+
+
+
+                  <div class="profile-img">
+
+
+
+                     <a href="#">
+
+
+
+                        <img class="img-circle center-block res-listing-img"
+                           alt="{{ gearDetails.app_user_first_name + ' ' + gearDetails.app_user_last_name }} Avatar"
+                           src="{{ gearDetails.user_profile_picture_link}}">
+
+
+
+                     </a>
+
+
+
+                  </div>
+
+
+
+                  <div class="owner-info">
+
+
+
+                     <h3>
+
+
+
+                        <a class="res-font-size-3" href="/jvieira1980">{{ gearDetails.app_user_first_name + ' ' +
+                           gearDetails.app_user_last_name }}</a>
+
+
+
+                     </h3>
+
+
+
+                     <div class="text-primary">
+
+
+
+                        <span class="user-average-rating res-font-size-3">
+
+
+
+                           <strong> Rating: </strong>
+
+
+
+                           <div class="rating-stars">
+
+
+
+                              <span class="dont-wrap">
+
+
+
+                                 <span *ngFor="let item of gearDetailsAvgRating"
+                                    class="glyphicon glyphicon-star rating-stars" aria-hidden="true"></span>
+
+
+
+                              </span>
+
+
+
+                           </div>
+
+
+
+                        </span>
+
+
+
+                     </div>
+
+
+
+                  </div>
+
+
+
+                  <div class="text-center about-me profile-about-me res-font-size-3">
+
+
+
+                     <div class="short-profile is-truncated" style="overflow-wrap: break-word;">
+
+
+
+                        {{ gearDetails.user_description }}
+
+
+
+                     </div>
+
+
+
+                  </div>
+
+
+
+                  <div id="contact-owner-user-id" data-userid="26878"></div>
+
+
+
+                  <div class="text-center contact-owner">
+
+
+
+                     <!-- Form to send message that is shown when button above is clicked -->
+
+
+
+                     <button type="button" class="btn btn-sm category-btn top_to_btn" data-toggle="modal"
+                        data-target="#contactOwnerModal">Contact the owner</button>
+
+
+
+                  </div>
+
+
+
+                  <div class="panel-body info_panel">
+
+
+
+                     <h2>Availabilty and Use</h2>
+
+
+
+                     <p> 24 hrs Response time
+
+
+
+                        <br> 100% Acceptance Rate
+
+
+
+                        <br> 59 Reviewa
+
+
+
+                        <br> 3 References
+
+
+
+                     </p>
+
+
+
+                  </div>
+
+
+
+               </div>
+
+
+
+               <div class="info">
+
+
+
+
+
+                  <div id="map-canvas">
+
+
+
+                     <!--<img src="assets/images/map.png" class="img-responsive">-->
+
+                     <div #gmap style="height:300px; width: 100%"></div>
+
+
+
+                  </div>
+
+
+
+               </div>
+
+
+
+            </div>
+
+
+
+            <div class="calendar-section">
+
+
+
+               <ul>
+
+
+
+                  <li><span><i class="fa fa-calendar-check-o" aria-hidden="true"></i></span>Listing Created {{
+                     gearDetails.create_date | date }}</li>
+
+
+
+                  <li><span><i class="fa fa-eye" aria-hidden="true"></i></span>0 Views</li>
+
+
+
+               </ul>
+
+
+
+            </div>
+
+
+
+
+
+
+
+         </div>
+
+
+
+      </div>
+
+
+
+   </div>
+
+
+
+</section>
+
+
+
+
+
+
+
+<!-- global  Modal -->
+
+
+
+<div id="edit_privet" class="modal fade" role="dialog">
+
+
+
+   <div class="modal-dialog">
+
+
+
+
+
+
+
+      <!-- Modal content-->
+
+
+
+      <div class="modal-content">
+
+
+
+         <div class="modal-header">
+
+
+
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+
+
+            <h4 class="modal-title">Edit Listing</h4>
+
+
+
+         </div>
+
+
+
+         <div class="modal-body">
+
+
+
+            <div class="col-md-8 col-md-offset-2">
+
+
+
+               <form>
+
+
+
+                  <div class="form-group">
+
+
+
+                     <label>Name</label>
+
+
+
+                     <input type="text" class="form-control" placeholder="enter you keyword">
+
+
+
+                  </div>
+
+
+
+                  <div class="form-group">
+
+
+
+                     <button class="sk-button top_to_btn" type="button">Save</button>
+
+
+
+                  </div>
+
+
+
+               </form>
+
+
+
+            </div>
+
+
+
+         </div>
+
+
+
+         <div class="clearfix"></div>
+
+
+
+      </div>
+
+
+
+
+
+
+
+   </div>
+
+
+
+</div>

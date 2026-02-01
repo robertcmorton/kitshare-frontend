@@ -1,0 +1,4 @@
+<kit-dropdown [items]="items" [itemIdGetter]="getItemId.bind(this)" [itemNameGetter]="getItemName.bind(this)"
+              [multiple]="true" [displayString]="getDisplayString()" [selectedItems]="selectedItems"
+              (valueChanged)="onValueChange($event)" [inUse]="isInUse()"></kit-dropdown>
+

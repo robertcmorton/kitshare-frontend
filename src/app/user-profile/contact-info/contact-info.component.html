@@ -1,0 +1,54 @@
+<section class="dashboard_bodynew">
+    <div class="top_bresdcum fixed-pos">
+        <div class="container">
+            <div class="col-md-12 right_column">
+                <div class="profileSettings">Profile Settings</div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="contact_form_list">
+        <div class="container">
+            <div class="row m-t-90">
+                <app-left-sidebar></app-left-sidebar>
+                <div class="col-md-9 col-sm-9 address_settings">
+                    <div class="contact_info_heading">
+                        <h2>Address Settings</h2>
+                        <hr />
+                        <p>Select a 'default' address as your billing address. If you are a buisness or rental house,
+                            add another address to make your listings visible at those locations too (this information
+                            is kept private)</p>
+                    </div>
+                    <kit-google-places-typeahead (placeSelect)="onPlaceSelect($event)"></kit-google-places-typeahead>
+                    <kit-address-list (make_default)="makeAddressDefault($event)" [list]="addressList"
+                        (select)="onDeleteAddress($event)"></kit-address-list>
+                    <div *ngIf="hasaddress">
+                        <kit-address-map [list]="addressList"></kit-address-map>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="modal fade" id="confirmdeleteaddressmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog public_confirm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Delete this address?</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Before deleting, re-assign all listings associated with this address in 'Manage Listings'.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn modal-dangerButton Address-Cancel" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn modal-primaryButton Address-Delete" (click)="nowDeleteAddress()"
+                    data-dismiss="modal">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>

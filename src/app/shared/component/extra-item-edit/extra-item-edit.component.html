@@ -1,0 +1,34 @@
+<!-- <div class="wrap-input100 validate-input">
+
+  <input class="input100" (ngModelChange)="updatevalue($event)" [(ngModel)]="defaultValue" name="item_{{ index }}" autocomplete="off"
+    placeholder="Add more items" type="text">
+
+  <div class="add_img">
+    <img (click)="clickHandler()" src="assets/images/{{ actionType }}.png">
+  </div>
+  <span class="focus-input100"></span>
+</div> -->
+
+<div class="row  add_item_input validate-input">
+  <div class="col-md-6">
+    <div class="wrap-input100">
+      <!-- <input class="input100" (ngModelChange)="updatevalue($event)" [(ngModel)]="defaultValue" name="item_{{ index }}"
+        autocomplete="off" placeholder="Add more items" type="text"> -->
+      <app-extra-item-suggestion-box [name]="'itemName'+index" [selectedValue]="defaultValue" (updatedSuggestionValue)="updatevalue($event)" [optionValueField]="'gear_name'"
+        [optionLabelField]="'gear_name'" [placeHolder]="'Enter Item Name'" [suggestions]="optionList"></app-extra-item-suggestion-box>
+
+      <!-- <app-suggestion-box [name]="'itemName'+index" [selectedValue]="defaultValue" (updatedSuggestionValue)="updatevalue($event)" [optionValueField]="'gear_name'"
+        [optionLabelField]="'gear_name'" [placeHolder]="'Enter Item Name'" [suggestions]="optionList"></app-suggestion-box> -->
+
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="wrap-input100">
+      <input class="input100" [(ngModel)]="defaultValue.serial_numbe" (ngModelChange)="updatevalue($event)" name="serial_{{ index }}" autocomplete="off"
+        placeholder="Main Item Serial Number (OPTIONAL)" type="text">
+    </div>
+  </div>
+  <div class="add_img">
+    <img (click)="clickHandler()" src="assets/images/{{ actionType }}.png">
+  </div>
+</div>

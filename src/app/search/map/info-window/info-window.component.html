@@ -1,0 +1,31 @@
+<div class="info-window">
+  <div class="item" *ngFor="let item of address.gears; let i = index">
+    <div class="item-inner">
+      <a class="gear-link" [routerLink]="['/gear/view-gear/' + item.gear_slug_name]">
+        <div class="item-img-container" [ngStyle]=getBackgroundStyle(item)>
+          <!--            <img alt="{{item.gear_name}}"-->
+          <!--                 [src]="item.gear_display_image" class="item-img">-->
+        </div>
+        <div class="item-name">
+          {{item.gear_name}}
+        </div>
+        <div class="item-price-container">
+          <span class="item-price">{{item.per_day_cost_aud_inc_gst | currency}}</span>
+          <span class="gst-perday">day{{item.ks_gear_type_id !== '1' ? '/wknd' : ''}}</span>
+        </div>
+      </a>
+      <hr class="hr-item">
+      <a class="user-link" [routerLink]="['/profile/' + item.app_username ]">
+        <div class="user-container">
+          <div class="user-img-container">
+            <img class="user-img" alt="{{item.app_user_last_name}}" src="{{item.user_profile_picture_link}}">
+          </div>
+          <div class="user-name">
+            {{item.app_user_first_name}}&nbsp;{{item.app_user_last_name}}<br>
+            <kit-rating-decimal [currentRate]="item.rating" [disabled]="true"></kit-rating-decimal>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>

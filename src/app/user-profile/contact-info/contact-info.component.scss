@@ -1,0 +1,112 @@
+.container {
+    width: 100%;
+    // padding: 0 0 0 0;
+    }
+.fixed-pos {
+  position: fixed;
+  width: 100%;
+  z-index: 1;
+}
+// .contact_info_heading {
+//   margin-top: 72px;
+// }
+.profileSettings {
+    padding-left: 30px;
+    margin: auto;
+    max-width: 1200px;
+}
+
+// .top_bresdcum {
+//   padding: 21px 0;
+// }
+
+@media screen and (max-width:691px) {
+    .profileSettings {
+        // padding-left: 0px !important;
+        // width: none;
+        // margin: auto;
+        // text-align: center;
+    }
+    .contact_info_heading {
+      margin-top: -10px;
+    }
+    h3 {
+      font-size: 18px;
+    }
+}    
+
+.right_column {
+    padding: 0 0 0 0;
+    // margin: 0 0 0 0;
+}
+
+.contact_info_heading h2 {
+    font-size: 30px;
+    /* border-bottom: 2px solid; */
+    padding: 15px 0px !important;
+    margin-bottom: 6px;
+  }
+
+.Category_full_width_btn {
+    width: 100%;
+    margin-bottom: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  
+.pac-container{
+    position: relative !important;
+  //   position: absolute !important;
+    box-shadow: rgba(0, 0, 0, 0.20) 0 10px 30px;
+    border-radius: 10px;
+    padding: 5px 0 5px 0;
+}
+
+  // @media (min-width: 768px) {
+//     .container {
+//     width: 100%;
+//     }
+// }
+
+// .address_settings {
+//     padding: 0px 0px 0px 0px;
+// }
+
+// .contact_info_heading {
+//     padding: 0 10px 0 10px;
+// }
+
+.Address-Delete {
+  width: 160px;
+  height: 40px;
+  background: red;
+  text-transform: capitalize;
+  color: white;
+  background-image: none !important;
+  border: none !important;
+  text-shadow: none !important;
+  border-radius: 5px;
+  &:hover {
+    background: maroon;
+    text-transform: capitalize;
+    color: white;
+    background-image: none !important;
+    border: none !important;
+    text-shadow: none !important;
+  }
+}
+
+.Address-Cancel {
+  margin: 0 10px 0 0px;
+  width: 100px;
+  height: 40px;
+  background-color: #EBECF0;
+  box-shadow: none;
+  &:hover {
+    background-color: #DFE1E6;
+  }
+}
+.row {
+  margin-bottom: 2rem;
+  margin-top: 90px;
+}

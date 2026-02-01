@@ -1,0 +1,351 @@
+<section class="dashboard_body bckd_c">
+    <div class="tabbable-line1">
+        <div class="container">
+            <ul class="nav nav-tabs">
+                <li>
+                    <a [routerLink]="['/rentals']" routerLinkActive="active">Rentals</a>
+                </li>
+                <li>
+                    <a [routerLink]="['/rentals/messaging']" routerLinkActive="active">Messaging</a>
+                </li>
+                <li>
+                    <a [routerLink]="['/rentals/manage-listing']" routerLinkActive="active">Manage listing</a>
+                </li>
+                <li class="active">
+                    <a [routerLink]="['/rentals/reviews']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Reviews</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 Dashboard-container">
+                <div class="tabbable-panel">
+                    <div class="tabbable-line">
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="tab_default_4">
+                                <div class="row">
+                                    <div class="tab_review">
+                                        <button class="tablinks" [ngClass]="{'active': isTabActive}" (click)="openTab()">Reviews to
+                                            Write</button>
+                                        <button class="tablinks" [ngClass]="{'active': !isTabActive}" (click)="openTab()">Completed
+                                            Reviews</button>
+                                    </div>
+                                    <div class="review_tab" *ngIf="isTabActive">
+                                        <div class="Reviews-Container" *ngIf="reviewsOrderList.length">
+
+                                            <div class="review_templ" *ngFor="let item of reviewsOrderList">
+                                                <img class=" img-responsive" [src]="item.user_profile_picture_link" alt="">
+                                                <div class="writereview-notifcation">
+                                                    <p>
+                                                        <a class="Project-name-review" [routerLink]="[ '/order-summary', item.order_id, 'renter' ]">{{item.project_name}}</a>
+                                                    </p>
+                                                    <a class="Review-Details" data-toggle="modal" data-target="#reviewModal" (click)="openGiveReviewModal(item.order_id, item.app_user_id)">Write
+                                                        a review</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="Review-Response">
+                                            <div class="prof-user-listings__heading reviews_sec">
+                                                <h2>Reviews ({{reviews_count}})</h2>
+                                            </div>
+                                            <!-- <div class="text_reviews">Reviews From Renters</div> -->
+                                            <div class="text_reviews">Reviews From Renters</div>
+                                            <div *ngIf="reviewsByRenter.length == 0">
+                                                <img src="../../../assets/images/no_data_found.png" alt="nodata" width="250" />
+                                                <p class="noreview"> No Reviews found </p>
+                                            </div>
+                                            <ng-container *ngFor="let reviewsByOwner of reviewsByRenter">
+                                                <div class="reviewWrap" *ngIf="reviewsByOwner.parent_gear_review_id == 0">
+                                                    <div class="media comment-author">
+
+                                                        <div class="review-response">
+                                                            <a class="media-left pull-left flip">
+                                                                <img class="img-responsive" [src]="reviewsByOwner.user_profile_picture_link_given_by" alt="">
+                                                            </a>
+
+                                                            <div class="media-body">
+                                                                <div class="review-project">
+                                                                    {{reviewsByOwner.project_name}}
+                                                                </div>
+                                                                <div class="review-name">
+                                                                    {{reviewsByOwner.app_user_first_name_given_by}}
+                                                                    {{reviewsByOwner.app_user_last_name_given_by}}</div>
+
+                                                                <kit-rating-decimal [currentRate]="reviewsByOwner.star_rating" [disabled]="true"></kit-rating-decimal>
+
+                                                                <br />
+                                                                <div class="clearfix"></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="clearfix"></div>
+                                                        <div class="owner-descdate">
+                                                            <div class="reviewdesc" [innerHTML]="reviewsByOwner.cust_gear_review_desc">
+                                                            </div>
+                                                            <div class="comment-date">
+                                                                {{reviewsByOwner.cust_gear_review_date
+                                                                | date}} </div>
+                                                        </div>
+
+
+                                                        <!-- WHEN REVIEW FROM AN OWNER HAS A REPLY -->
+                                                        <div class="replyForm" *ngIf="!reviewsByOwner.has_reply">
+                                                            <form class="row" role="search">
+                                                                <div class="col-md-9 submitresponse-container">
+                                                                    <div class="form-group write-reviewbox">
+                                                                        <textarea rows="3" class="form-control" name="replyReviewText" (keyup)="replyReviewTextKeyUp($event)" placeholder="Write a response..."></textarea>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-3 review-submit" [ngClass]="[reviewsByOwner.order_id == current_order_id ? 'hidden' : '']">
+                                                                    <button type="submit" class="btn sk-button--size-lg btn-block" (click)="replyToReview(reviewsByOwner.order_id, reviewsByOwner.app_user_id, reviewsByOwner.ks_cust_gear_review_id )">Submit
+                                                                        Response</button>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+
+
+                                                        <!-- SHOW ALL RENTER REPLY - WHEN REVIEW FROM A HAS A REPLY -->
+                                                        <ng-container *ngFor="let reply of reviewsByRenterReplies">
+                                                            <div class="replyReview2" *ngIf="reply.parent_gear_review_id == reviewsByOwner.ks_cust_gear_review_id">
+                                                                <div class="media2 comment-author2">
+
+                                                                    <!-- <a class="media-left pull-left flip">
+                                                                    <img class=" img-responsive"
+                                                                        [src]="reply.user_profile_picture_link_given_by"
+                                                                        alt=""> {{reply.app_user_first_name_given_by}}
+                                                                    {{reply.app_user_last_name_given_by}} says
+                                                                </a>
+
+                                                                <div class="media-body">
+                                                                    <p [innerHTML]="reply.cust_gear_review_desc"></p>
+                                                                    <div class="comment-date">
+                                                                        {{reply.cust_gear_review_date | date}} </div>
+                                                                    <div class="clearfix"></div>
+                                                                </div> -->
+
+                                                                    <div class="user-response">
+                                                                        <img class=" img-responsive" [src]="reply.user_profile_picture_link_given_by" alt="">
+                                                                        <div class="writereview-notifcation">
+                                                                            <p>
+                                                                                <a class="user-responsename">
+                                                                                    Response from
+                                                                                    {{reply.app_user_first_name_given_by}}:
+                                                                                    <!-- {{reply.app_user_last_name_given_by}} -->
+                                                                                </a>
+                                                                            </p>
+
+                                                                            <div class="media-body">
+                                                                                <p class="response-description" [innerHTML]="reply.cust_gear_review_desc">
+                                                                                </p>
+                                                                                <div class="comment-date">
+                                                                                    {{reply.cust_gear_review_date |
+                                                                                    date}}
+                                                                                </div>
+                                                                                <div class="clearfix"></div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+
+                                                                </div>
+                                                            </div>
+                                                        </ng-container>
+                                                    </div>
+                                                </div>
+                                            </ng-container>
+                                            <!-- Reviews from guest ends here -->
+
+                                            <!-- REVIEWS FROM OWNERS -->
+                                            <div class="text_reviews">Reviews From Owners</div>
+                                            <div *ngIf="reviewsByOwner.length == 0">
+                                                <img src="../../../assets/images/no_data_found.png" alt="nodata" width="250" />
+                                                <p class="noreview"> No Reviews found </p>
+                                            </div>
+                                            <ng-container *ngFor="let reviewsByOwner of reviewsByOwner">
+                                                <div class="reviewWrap" *ngIf="reviewsByOwner.parent_gear_review_id == 0">
+                                                    <div class="media comment-author">
+
+                                                        <div class="review-response">
+                                                            <a class="media-left pull-left flip">
+                                                                <img class="img-responsive" [src]="reviewsByOwner.user_profile_picture_link_given_by" alt="">
+                                                            </a>
+                                                            <div class="media-body">
+                                                                <div class="review-project">
+                                                                    {{reviewsByOwner.project_name}}
+                                                                </div>
+                                                                <div class="review-name">
+                                                                    {{reviewsByOwner.app_user_first_name_given_by}}
+                                                                    {{reviewsByOwner.app_user_last_name_given_by}}
+                                                                </div>
+                                                                <kit-rating-decimal [currentRate]="reviewsByOwner.star_rating" [disabled]="true"></kit-rating-decimal>
+
+                                                                <br />
+                                                                <div class="clearfix"></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="clearfix"></div>
+                                                        <div class="owner-descdate">
+                                                            <div class="reviewdesc" [innerHTML]="reviewsByOwner.cust_gear_review_desc">
+                                                            </div>
+                                                            <div class="comment-date">
+                                                                {{reviewsByOwner.cust_gear_review_date
+                                                                | date}} </div>
+                                                        </div>
+
+
+                                                        <!-- WHEN REVIEW FROM AN OWNER HAS A REPLY -->
+                                                        <div class="replyForm" *ngIf="!reviewsByOwner.has_reply">
+                                                            <form class="row" role="search">
+                                                                <div class="col-md-9 submitresponse-container">
+                                                                    <div class="form-group write-reviewbox">
+                                                                        <textarea rows="3" class="form-control" name="replyReviewText" (keyup)="replyReviewTextKeyUp($event)" placeholder="Write a response..."></textarea>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-3 review-submit" [ngClass]="[reviewsByOwner.order_id == current_order_id ? 'hidden' : '']">
+                                                                    <button type="submit" class="btn sk-button--size-lg btn-block" (click)="replyToReview(reviewsByOwner.order_id, reviewsByOwner.app_user_id, reviewsByOwner.ks_cust_gear_review_id )">Submit
+                                                                        Response</button>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+
+
+                                                        <!-- SHOW ALL OWNER REPLY - WHEN REVIEW FROM A HAS A REPLY-->
+                                                        <ng-container *ngFor="let reply of reviewsByOwnerReplies">
+                                                            <div class="replyReview2" *ngIf="reply.parent_gear_review_id == reviewsByOwner.ks_cust_gear_review_id">
+
+                                                                <!-- <div class="media comment-author">
+                                                                <a class="media-left pull-left flip">
+                                                                    <img class=" img-responsive"
+                                                                        [src]="reply.user_profile_picture_link_given_by"
+                                                                        alt=""> {{reply.app_user_first_name_given_by}}
+                                                                    {{reply.app_user_last_name_given_by}} says
+                                                                </a>
+                                                                <div class="media-body">
+                                                                    <p [innerHTML]="reply.cust_gear_review_desc"></p>
+                                                                    <div class="comment-date">
+                                                                        {{reply.cust_gear_review_date | date}} </div>
+                                                                    <div class="clearfix"></div>
+                                                                </div>
+                                                            </div> -->
+
+                                                                <div class="user-response">
+                                                                    <img class=" img-responsive" [src]="reply.user_profile_picture_link_given_by" alt="">
+                                                                    <div class="writereview-notifcation">
+                                                                        <p>
+                                                                            <a class="user-responsename">
+                                                                                Response from
+                                                                                {{reply.app_user_first_name_given_by}}:
+                                                                                <!-- {{reply.app_user_last_name_given_by}} -->
+                                                                            </a>
+                                                                        </p>
+
+                                                                        <div class="media-body">
+                                                                            <p class="response-description" [innerHTML]="reply.cust_gear_review_desc">
+                                                                            </p>
+                                                                            <div class="comment-date">
+                                                                                {{reply.cust_gear_review_date | date}}
+                                                                            </div>
+                                                                            <div class="clearfix"></div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+
+                                                            </div>
+                                                        </ng-container>
+
+
+                                                    </div>
+                                                </div>
+                                            </ng-container>
+                                            <!-- Reviews from owners ends here -->
+                                        </div>
+                                    </div>
+                                    <div class="completed_review_tab" *ngIf="!isTabActive">
+                                        <div class="prof-user-listings__heading reviews_sec">
+                                            <h2>Reviews From Owners</h2>
+                                        </div>
+                                        <div id="start_reviews" class="clearfix"></div>
+                                        <ng-container *ngFor="let eachReview of reviewLists | ownerreviews;">
+                                            <app-review-dashboard [eachReview]="eachReview"></app-review-dashboard>
+                                        </ng-container>
+
+                                        <p class="No-Reviewblock" *ngIf="reviewLists.length === 0">
+                                            <img src="../../../assets/images/no_data_found.png" alt="nodata" width="250" />
+                                            No Reviews Found
+                                        </p>
+
+                                        <div class="prof-user-listings__heading reviews_sec">
+                                            <h2>Reviews From Renters</h2>
+                                        </div>
+                                        <div id="start_reviews" class="clearfix"></div>
+                                        <ng-container *ngFor="let eachReview of reviewLists | renterreviews;">
+                                            <app-review-dashboard [eachReview]="eachReview"></app-review-dashboard>
+                                        </ng-container>
+
+                                        <p class="No-Reviewblock" *ngIf="reviewLists.length === 0">
+                                            <img src="../../../assets/images/no_data_found.png" alt="nodata" width="250" />
+                                            No Reviews Found
+                                        </p>
+
+                                        <ng-container *ngIf="totalItems > 10">
+                                            <pagination [totalItems]="totalItems" [maxSize]="5" [(ngModel)]="PageNumber" (pageChanged)="pageNumberChanged($event)" nextText=">" previousText="<" lastText=">>" firstText="<<"></pagination>
+                                        </ng-container>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<!-- Review Modal -->
+<div id="reviewModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title"><b>Write a Review</b></h4>
+                <button type="button" class="close" #closeSubmitReviewModal data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label class="text-right">Rating</label>
+                        </div>
+                        <div class="col-md-9" *ngIf="reset_review">
+                            <!-- <star-rating [starType]="'icon'" [numOfStars]="5" staticColor="ok" [showHalfStars]="true" (starClickChange)="onClickStar($event)"></star-rating> -->
+                            <kit-rating-decimal [currentRate]="1" [disabled]="false" (starClickChange)="onClickStar($event)"></kit-rating-decimal>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="col-md-3">
+                            <label class="text-right">Comment</label>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                <textarea rows="3" name="cust_gear_review_desc" class="form-control" placeholder="Write a review..." [(ngModel)]="cust_gear_review_desc"></textarea>
+                            </div>
+                            <p>If you have any negative comments, please contact the other party first and try to
+                                resolve any issue or disputes as no one likes having a stain next to their name.</p>
+                            <!-- <div class="checkbox">
+                         <input type="checkbox"> Keep this comment private
+                         </div> -->
+                            <br>
+                            <!--p>Only the other party will be able to see what you have written</p> -->
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="review-submit pull-right btn sk-button--size-lg btn-block" (click)="submitReview()">Submit Review</button>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>

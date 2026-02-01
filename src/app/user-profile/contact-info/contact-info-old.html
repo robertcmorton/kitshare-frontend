@@ -1,0 +1,583 @@
+<section class="dashboard_bodynew">
+    <div class="top_bresdcum">
+        <div class="container">
+            <div class="col-md-12">
+                Profile Settings
+            </div>
+        </div>
+    </div>
+    <div id="contact_form_list">
+        <div class="container">
+            <div class="row">
+                <app-left-sidebar></app-left-sidebar>
+                <div class="col-md-9 col-sm-9">
+                    <div class="col-md-12">
+                        <div class="contact_info_heading">
+                            <h2>Address Settings</h2>
+                            <p>Select Primary address as your billing address. If you are a buisness or rental house, add another address to make your listings visible at those locations too (This information is kept private)</p>
+                        </div>
+                    </div>
+                    <div class="container-contact100 box_shadow_form">
+                        <div class="wrap-contact100">
+                            <form name="contact-info-form " class="contact100-form validate-form ">
+                                <!-- <div class="row">
+                           <div class="col-md-12 col-sm-12">
+
+
+
+                             <div class="wrap-input100 validate-input" data-validate="Name is required">
+
+
+
+                               <span class="label-input100">Street address 1</span>
+
+
+
+                               <input [(ngModel)]="contactInfoData[0].street_address_line1" class="input100" name="street_address_line1" placeholder="Street"
+
+
+
+                                 type="text">
+
+
+
+                               <span class="focus-input100"></span>
+
+
+
+                             </div>
+
+
+
+                           </div>
+
+
+
+                           <div class="col-md-12 col-sm-12">
+
+
+
+                             <div class="wrap-input100 validate-input" data-validate="Name is required">
+
+
+
+                               <span class="label-input100">Street address 2</span>
+
+
+
+                               <input class="input100" [(ngModel)]="contactInfoData[0].street_address_line2" name="street_address_line2" placeholder="Street"
+
+
+
+                                 type="text">
+
+
+
+                               <span class="focus-input100"></span>
+
+
+
+                             </div>
+
+
+
+                           </div>
+
+
+
+                           <div class="col-md-12 col-sm-12">
+
+
+
+                             <div class="wrap-input100 validate-input" data-validate="Name is required">
+
+
+
+                               <span class="label-input100">Country</span>
+
+
+
+                               <input class="input100"  name="country_id" placeholder="Country"
+
+
+
+                                 type="text" value="Australia" readonly="readonly">
+
+
+
+                               <span class="focus-input100"></span>
+
+
+
+                             </div>
+
+
+
+                           </div>
+
+
+
+                           <div class="col-md-4 col-sm-4">
+
+
+
+                             <div class="wrap-input100 input100-select">
+
+
+
+                               <span class="label-input100">State</span>
+
+
+
+                               <div>
+
+
+
+                                 <select [(ngModel)]="contactInfoData[0].ks_state_id" (change)="stateChangeHandler($event.target.value, 'suburbListOption_1')"
+
+
+
+                                   class="selection-2" name="ks_state_id1">
+
+
+
+                                   <option selected="selected" value="0">Select</option>
+
+
+
+                                   <option *ngFor="let eachState of stateListOption_1" [value]="eachState.state_id">{{ eachState.ks_state_name }}</option>
+
+
+
+                                 </select>
+
+
+
+                               </div>
+
+
+
+                               <span class="focus-input100"></span>
+
+
+
+                             </div>
+
+
+
+                           </div>
+
+
+
+                           <div class="col-md-4 col-sm-4">
+
+
+
+                             <div class="wrap-input100 input100-select">
+
+
+
+                               <span class="label-input100">Suburbs</span>
+
+
+
+                               <div>
+
+
+
+                                 <select class="selection-2" [(ngModel)]="contactInfoData[0].ks_suburb_id" (change)="suburbChangeHandler($event.target.value, suburbListOption_1, 0)"
+
+
+
+                                   name="ks_suburb_id1">
+
+
+
+                                   <option selected="selected" value="0">Select</option>
+
+
+
+                                   <option *ngFor="let eachSuburb of suburbListOption_1" [value]="eachSuburb.ks_suburb_id">{{ eachSuburb.suburb_name }}</option>
+
+
+
+                                 </select>
+
+
+
+                               </div>
+
+
+
+                               <span class="focus-input100"></span>
+
+
+
+                             </div>
+
+
+
+                           </div>
+
+
+
+                           <div class="col-md-4 col-sm-4">
+
+
+
+                             <div class="wrap-input100 validate-input" data-validate="Name is required">
+
+
+
+                               <span class="label-input100">Post code</span>
+
+
+
+                               <input class="input100" [(ngModel)]="contactInfoData[0].postcode" name="ks_postcode_1" placeholder="Post code" type="text">
+
+
+
+                               <span class="focus-input100"></span>
+
+
+
+                             </div>
+
+
+
+                           </div>
+
+
+
+                           <ng-container *ngIf="show2ndSlot === true">
+
+
+
+                             <div class="col-md-12">
+
+
+
+                               <div class="next_back_btns">
+
+
+
+                                 <button type="button" (click)="toggle2ndSlot(false)" class="btn pull-right delete_btn">Delete</button>
+
+
+
+                               </div>
+
+
+
+                             </div>
+
+
+
+                             <div class="col-md-12 col-sm-12">
+
+
+
+                               <div class="wrap-input100 validate-input" data-validate="Name is required">
+
+
+
+                                 <span class="label-input100">Street Address 1</span>
+
+
+
+                                 <input [(ngModel)]="contactInfoData[1].street_address_line1" class="input100" name="street_address_line3" placeholder="Buisness"
+
+
+
+                                   type="text">
+
+
+
+                                 <span class="focus-input100"></span>
+
+
+
+                               </div>
+
+
+
+                             </div>
+
+
+
+                             <div class="col-md-12 col-sm-12">
+
+
+
+                               <div class="wrap-input100 validate-input" data-validate="Name is required">
+
+
+
+                                 <span class="label-input100">Street Address 2</span>
+
+
+
+                                 <input class="input100" [(ngModel)]="contactInfoData[1].street_address_line2" name="street_address_line4" placeholder="Street"
+
+
+
+                                   type="text">
+
+
+
+                                 <span class="focus-input100"></span>
+
+
+
+                               </div>
+
+
+
+                             </div>
+
+
+
+                             <div class="col-md-12 col-sm-12">
+
+
+
+                               <div class="wrap-input100 validate-input" data-validate="Name is required">
+
+
+
+                                 <span class="label-input100">Country</span>
+
+
+
+                                 <input class="input100" name="country1" placeholder="Country"
+
+
+
+                                   type="text" value="Australia" readonly="readonly">
+
+
+
+                                 <span class="focus-input100"></span>
+
+
+
+                               </div>
+
+
+
+                             </div>
+
+
+
+                             <div class="col-md-4 col-sm-4">
+
+
+
+                               <div class="wrap-input100 input100-select">
+
+
+
+                                 <span class="label-input100">State</span>
+
+
+
+                                 <div>
+
+
+
+                                   <select [(ngModel)]="contactInfoData[1].ks_state_id" (change)="stateChangeHandler($event.target.value, 'suburbListOption_2')"
+
+
+
+                                     class="selection-2" name="ks_state_id2">
+
+
+
+                                     <option selected="selected" value="0">Select</option>
+
+
+
+                                     <option *ngFor="let eachState of stateListOption_1" [value]="eachState.state_id">{{ eachState.ks_state_name }}</option>
+
+
+
+                                   </select>
+
+
+
+                                 </div>
+
+
+
+                                 <span class="focus-input100"></span>
+
+
+
+                               </div>
+
+
+
+                             </div>
+
+
+
+                             <div class="col-md-4 col-sm-4">
+
+
+
+                               <div class="wrap-input100 input100-select">
+
+
+
+                                 <span class="label-input100">Suburbs</span>
+
+
+
+                                 <div>
+
+
+
+                                   <select class="selection-2" [(ngModel)]="contactInfoData[1].ks_suburb_id" (change)="suburbChangeHandler($event.target.value,suburbListOption_2, 1)"
+
+
+
+                                     name="ks_suburb_id2">
+
+
+
+                                     <option selected="selected" value="0">Select</option>
+
+
+
+                                     <option *ngFor="let eachSuburb of suburbListOption_2" [value]="eachSuburb.ks_suburb_id">{{ eachSuburb.suburb_name }}</option>
+
+
+
+                                   </select>
+
+
+
+                                 </div>
+
+
+
+                                 <span class="focus-input100"></span>
+
+
+
+                               </div>
+
+
+
+                             </div>
+
+
+
+                             <div class="col-md-4 col-sm-4">
+
+
+
+                               <div class="wrap-input100 validate-input" data-validate="Name is required">
+
+
+
+                                 <span class="label-input100">Post code</span>
+
+
+
+                                 <input class="input100" [(ngModel)]="contactInfoData[1].postcode" name="ks_postcode_2" placeholder="Post code" type="text">
+
+
+
+                                 <span class="focus-input100"></span>
+
+
+
+                               </div>
+
+
+
+                             </div>
+
+
+
+                           </ng-container>
+
+
+
+                           </div>
+
+
+
+                           <div class="clearfix"></div>
+
+
+
+
+
+
+
+                           <div class="row">
+
+
+
+                             <div class="col-md-12 text-center">
+
+
+
+                               <button type="button" *ngIf="!show2ndSlot" (click)="toggle2ndSlot(true)" class="btn btn-default unavailable_btn1 pull-left">{{ actionTitle }} Another address</button>
+
+
+
+                             </div>
+
+
+
+                           </div> -->
+                                <ng-container *ngFor="let address of contactInfoCountArray; let i=index; let lastItem = last;">
+                                    <div class="col-md-12">
+                                        <div>
+                                            <div class=" checkbox">
+                                                <app-address (updatedValue)="updatedValueHandler($event)" [defaultValue]="contactInfoData[i]" [index]="i"></app-address>
+                                            </div>
+                                        </div>
+                                        <div class="add_img" *ngIf="contactInfoData[i].user_address_id != ''">
+                                            <img (click)="addOrRemoveHandler({action: 'remove', index: i, user_address_id: contactInfoData[i].user_address_id})" src="assets/images/remove.png">
+                                        </div>
+                                        <div class="add_img" *ngIf="contactInfoData[i].user_address_id == ''">
+                                            <img (click)="addOrRemoveHandler({action: 'remove', index: i})" src="assets/images/remove.png">
+                                        </div>
+                                    </div>
+                                </ng-container>
+                                <div class="row">
+                                    <div class="clearfix"></div>
+                                    <div class="col-md-12 text-center">
+                                        <button type="button" (click)="addOrRemoveHandler({action: 'add'})" class="btn btn-default col-md-12 unavailable_btn1">Add another Address</button>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="map_new" style="display: block;">
+                                            <ngui-map zoom="4" center="Australia">
+                                                <!-- (initialized$)="onMarkerInit($event)" -->
+                                                <marker *ngFor="let pos of positions" [position]="pos"></marker>
+                                            </ngui-map>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="clearfix"></div>
+                                    <div class="col-md-12 text-center">
+                                        <button type="button" (click)="updateProfile()" class="btn btn-default unavailable_btn1">Save
+                      Profile</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div id="dropDownSelect1"></div>
+            </div>
+        </div>
+    </div>
+</section>

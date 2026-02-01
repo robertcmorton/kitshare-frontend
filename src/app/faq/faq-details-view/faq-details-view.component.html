@@ -1,0 +1,73 @@
+<!-- faq header -->
+<section class="faq">
+  <div class="container">
+
+    <div class="col-md-12">
+      <div class="goto"><a routerLink="/"><span class="glyphicon glyphicon-new-window" aria-hidden="true"></span>Go to
+          Kitshare</a></div>
+      <div class="logo3 animated bounceInDown">
+        <img src="assets/images/logo.png" class="img-responsive">
+      </div>
+      <h1>Advice and answers from the kitshare Team</h1>
+    </div>
+    <div class="row">
+      <div id="custom-search-input">
+
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- faq body -->
+<section class="faq_sec">
+  <div class="container">
+    <div class="content educate_content">
+      <section class="section section__article">
+        <div class="breadcrumb" dir="ltr">
+          <div class="link__arrow o__ltr">
+            <a [routerLink]="[ '/faq' ]">All Collections</a>
+          </div>
+
+          <div class="link__arrow o__ltr">
+            <a [routerLink]="'/faq/list/' + faqCategoryNameSlug">{{faqCategoryName}}</a>
+          </div>
+
+          <div class="faq_question">{{title}}</div>
+        </div>
+
+        <div class="paper paper__large">
+          <div class="content content__narrow">
+            <div class="article intercom-force-break">
+              <div class="article__meta" dir="ltr">
+                <h1 class="t__h1">{{ title }}</h1>
+                <!--div class="article__desc"> {{ title }}</div-->
+                <div class="avatar">
+                  <div class="avatar__photo o__ltr">
+                    <img *ngIf="image !== ''" [src]="image?image:''" class="avatar__image">
+                    <img *ngIf="image === ''" src="assets/images/fullsizeoutput.jpeg" class="avatar__image">
+                  </div>
+                  <div class="avatar__info">
+                    <div>
+                      Written by <span class="c__darker"> {{ writer_name }}</span>
+                      <br> Updated on {{ updated_date !== '0000-00-00' ? updated_date :
+                      created_date | date:'MMM d, y' }}
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+              <article dir="ltr" [innerHTML]="description"></article>
+            </div>
+          </div>
+
+
+        </div>
+
+      </section>
+    </div>
+  </div>
+
+
+
+</section>

@@ -1,0 +1,106 @@
+<div class="col-md-3 col-sm-3">
+    <div class="btn-group show-on-hover hidden-sm hidden-lg hidden-md Category_full_width_btn">
+        <button type="button" class="btn btn-default dropdown-toggle Category_full_width_btn1" data-toggle="dropdown" aria-expanded="false">
+            Menu
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu dropdown-menu_full_width" role="menu">
+            <li>
+                <a [routerLink]="['/profile/edit']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Profile Information</a>
+            </li>
+            <li>
+                <a [routerLink]="['/profile/address-details']" routerLinkActive="active">Address Settings</a>
+            </li>
+            <li>
+                <a [routerLink]="['/profile/account-settings']" routerLinkActive="active">Account Settings</a>
+            </li>
+            <!-- <li>
+        <a [routerLink]="['/profile/notification']" routerLinkActive="active">Notifications Settings</a>
+      </li> -->
+            <li>
+                <a [routerLink]="['/profile/connect-payouts']" routerLinkActive="active">Bank Account Details</a>
+            </li>
+            <li>
+                <a [routerLink]="['/profile/insurance']" routerLinkActive="active">Add Insurance Policy</a>
+            </li>
+            <li>
+                <a [routerLink]="['/profile/digital-id']" routerLinkActive="active">Digital ID</a>
+            </li>
+            <!-- <li>
+        <a [routerLink]="['/profile/connect-social']" routerLinkActive="active">Connect Socials</a>
+      </li> -->
+            <li>
+                <a [routerLink]="['/rentals/dashboard']" routerLinkActive="active">Rental History</a>
+            </li>
+            <li>
+                <a [routerLink]="['/profile']" class="ViewProfile-LinkMob">
+                    <button class="btn cart_btns50 ViewProf-ButMob">View Profile</button>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="edit_profile_info hidden-xs">
+        <ul>
+            <li>
+                <a routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" [routerLink]="['/profile/edit']" class="LeftSidebar-Button">
+                    <span class="material-icons LeftSideBar-Icons">
+                        manage_accounts
+                    </span>
+                    Profile Information</a>
+            </li>
+            <li>
+                <a routerLinkActive="active" [routerLink]="['/profile/address-details']" class="LeftSidebar-Button">
+                    <span class="material-icons LeftSideBar-Icons">
+                        contact_mail
+                    </span>
+                    Address Details</a>
+            </li>
+            <li>
+                <a routerLinkActive="active" [routerLink]="['/profile/account-settings']" class="LeftSidebar-Button">
+                    <span class="material-icons LeftSideBar-Icons">
+                        admin_panel_settings
+                    </span>
+                    Account Settings</a>
+            </li>
+            <!-- <li>
+        <a routerLinkActive="active" [routerLink]="['/profile/notification']">Notification Settings</a>
+      </li> -->
+            <li>
+                <a [routerLink]="['/profile/connect-payouts']" routerLinkActive="active" class="LeftSidebar-Button">
+                    <span class="material-icons LeftSideBar-Icons">
+                        account_balance
+                    </span>
+                    Bank Account Details</a>
+            </li>
+            <li>
+                <a routerLinkActive="active" [routerLink]="['/profile/insurance']" class="LeftSidebar-Button">
+                    <span class="material-icons LeftSideBar-Icons">
+                        policy
+                    </span>
+                    Add Insurance Policy</a>
+            </li>
+            <li>
+                <a routerLinkActive="active" [routerLink]="['/profile/digital-id']" class="LeftSidebar-Button">
+                    <span class="material-icons LeftSideBar-Icons">
+                        how_to_reg
+                    </span>
+                    Digital ID</a>
+            </li>
+            <!-- <li>
+        <a routerLinkActive="active" [routerLink]="['/profile/connect-social']">Connect Socials</a>
+      </li> -->
+            <li>
+                <a routerLinkActive="active" [routerLink]="['/rentals/dashboard']" class="LeftSidebar-Button">
+                    <span class="material-icons LeftSideBar-Icons">
+                        dashboard
+                    </span>
+                    Rental History</a>
+            </li>
+        </ul>
+        <button [routerLink]="['/profile']" class="btn cart_btns50 ViewProfile-Button">
+            <span class="material-icons SideBar-Icons">
+                account_box
+            </span>
+            View Profile</button>
+    </div>
+</div>

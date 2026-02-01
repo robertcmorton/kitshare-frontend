@@ -1,0 +1,44 @@
+<div [ngClass]="filterClass" (resize)="onResize($event)" #container>
+  <kit-category-select>
+  </kit-category-select>
+
+  <!-- <kit-multiple-select [items]="brands$ | async" [itemIdField]="fieldNames.brands.id"
+                       [itemNameField]="fieldNames.brands.name"
+                       [searchParamName]="fieldNames.brands.searchParamName"
+                       [multiple]="true"
+                       displayString="Brand"
+                       *ngIf="!topMenu || container.offsetWidth > triggerWidths[triggerWidths.length - 4]"
+  ></kit-multiple-select> RM @ 07.10.20 ADD BACK IN WHEN DATA IS PULLING FROM API ONLY --> 
+
+  <kit-multiple-select [items]="gearTypes$ | async" [itemIdField]="fieldNames.gear_type.id"
+                       [itemNameField]="fieldNames.gear_type.name"
+                       [searchParamName]="fieldNames.gear_type.searchParamName"
+                       [multiple]="true"
+                       displayString="Listing Type"
+                       *ngIf="!topMenu || container.offsetWidth > triggerWidths[triggerWidths.length - 3]"
+  ></kit-multiple-select>
+
+  <kit-multiple-select [items]="ownerTypes$ | async" [itemIdField]="fieldNames.owner_type.id"
+                       [itemNameField]="fieldNames.owner_type.name"
+                       [searchParamName]="fieldNames.owner_type.searchParamName"
+                       [multiple]="true"
+                       displayString="Owner Type"
+                       *ngIf="!topMenu || container.offsetWidth > triggerWidths[triggerWidths.length - 2]"
+  ></kit-multiple-select>
+
+  <kit-dropdown [items]="sortOptions" (valueChanged)="sortOrderChanged($event)"
+                displayString="Sort: {{ sortOptions[currentSortOptionIndex].name }}"
+                [itemIdGetter]="getSortOptionValue"
+                [itemNameGetter]="getSortOptionName"
+                *ngIf="!topMenu || container.offsetWidth > triggerWidths[triggerWidths.length - 1]"
+  ></kit-dropdown>
+
+  <kit-dropdown [items]="availableLimits" (valueChanged)="limitChanged($event)"
+                displayString="Show: {{ currentLimit }}" [itemNameGetter]="getLimit" [itemIdGetter]="getLimit"
+    *ngIf="!topMenu || container.offsetWidth > triggerWidths[triggerWidths.length - 1]">
+  </kit-dropdown>
+
+  <kit-all-filters *ngIf="topMenu && container.offsetWidth < triggerWidths[triggerWidths.length - 1]"
+                displayString="All filters">
+  </kit-all-filters>
+</div>

@@ -1,0 +1,25 @@
+<div class="profile-listing col-md-4 col-sm-4">
+  <div class="listing-btn-container">
+    <div class="listing-btn listing-154231">
+
+
+      <div class="fill">
+        <a [routerLink]="['/gear/view-gear/' + eachGear.gear_slug_name ]">
+          <img class="listing-btn-image center-block " alt="" src="{{eachGear.gear_display_image}}"> </a>
+      </div>
+
+
+      <div class="listing-btn-info">
+        <a class="gear-info-container-link" [routerLink]="['/gear/view-gear/' + eachGear.gear_slug_name ]">
+          <div class="gear-info-container">
+            <h4 class="listing-btn-name">{{eachGear.gear_name }}</h4>
+            <div class="listing-btn-price"> {{ eachGear.per_day_cost_aud_inc_gst | currency }} <span class="per-day">day{{eachGear.ks_gear_type_id !== '1' ? '/wknd' : ''}}</span>
+            </div>
+          </div>
+        </a>
+      </div>
+
+
+    </div>
+  </div>
+</div>

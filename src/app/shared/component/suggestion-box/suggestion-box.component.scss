@@ -1,0 +1,30 @@
+input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  border-radius: 3px;
+}
+
+:host {
+  position: relative;
+  display: block;
+  .highlight-input {
+    position: absolute;
+    left: 0;
+    width: 0;
+    // height: 1px;
+    background: #0747A6;
+    bottom: 0;
+    transition: all 0.3s ease;
+    border-radius: 5px;
+  }
+  & input:focus {
+    & + .highlight-input {
+      width: 100%;
+    }
+    & ~ .highlight-input {
+      width: 100%;
+    }
+  }
+}

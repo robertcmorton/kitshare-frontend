@@ -1,0 +1,58 @@
+<div class="items-list-container" [ngStyle]="getListStyle(filter.offsetHeight)" [ngClass]="{'not-visible': mapVisible}">
+  <div class="filter-container" [ngClass]="{'top-of-all': dataService.dropdownsOpenedCount > 0}" [ngStyle]="getContainerStyle(list.offsetWidth, filter.offsetHeight)" #filter>
+    <kit-search-filter></kit-search-filter>
+  </div>
+  <div class="items-list" #list>
+    <!-- <div class="beta">
+      <p><strong>Kitshare has Officially Launched!</strong></p>
+      <p>List and rent equipment. For a limited time, renters will receive 15% off their rental at checkout.</p>
+    </div> -->
+
+    <ng-container *ngIf="error; else searchResults">
+      <div class="no-items">
+        An error occurred during search. Try again later.
+      </div>
+    </ng-container>
+    <ng-template #searchResults>
+      <ng-container *ngIf="items.length; else noItems">
+        <div class="item" *ngFor="let item of items; let i = index">
+          <div class="item-inner" [ngClass]="{hover: isHover(i)}" (mouseenter)="hover(i)" (mouseleave)="hoverOut()">
+
+            <a class="gear-link" [routerLink]="['/gear/view-gear/' + item.gear_slug_name]">
+              <div class="item-img-container" [ngStyle]=getBackgroundStyle(item)>
+              </div>
+
+              <div class="item-name">
+                {{item.gear_name}}
+              </div>
+
+              <div class="item-price-container">
+                <span class="item-price">{{item.per_day_cost_aud_inc_gst | currency}}</span>
+                <span class="gst-perday">day{{item.ks_gear_type_id !== '1' ? '/wknd' : ''}}</span>
+              </div>
+            </a>
+
+            <hr class="hr-item">
+            <a class="user-link" [routerLink]="['/profile/' + item.app_username ]">
+              <div class="user-container">
+                <div class="user-img-container">
+                  <img class="user-img" alt="{{item.app_user_last_name}}" src="{{item.user_profile_picture_link}}">
+                </div>
+                <div class="user-name">
+                  {{item.app_user_first_name}}&nbsp;{{item.app_user_last_name}}<br>
+                  <kit-rating-decimal [currentRate]="item.rating" [disabled]="true"></kit-rating-decimal>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </ng-container>
+      <ng-template #noItems>
+        <div class="no-items">
+          <!-- No listings found. Try to change search request or search in another place. -->
+          Your search did not match any listings in the area. Email us at hello@kitshare.com.au to help find what you are looking for.
+        </div>
+      </ng-template>
+    </ng-template>
+  </div>
+</div>

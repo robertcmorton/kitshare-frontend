@@ -1,0 +1,31 @@
+<div class="btns_fb">
+    <!-- <a (click)="signInWithFB()" class="btn btn-block btn-social btn-facebook"> -->
+
+    <a (click)="signInWithFB()" class="btn-facebook">
+        <!-- <i class="fa fa-facebook"></i> -->
+        <div class="logo-image">
+            <img src="https://www.kitshare.com.au/backend/assets/images/Facebook-logo.svg" alt style="height: 18px; margin-right: 8px; width: 18px">
+        </div>
+
+        <div class="login-text">
+            <span *ngIf="routerUrl == '/login'">Continue with Facebook</span>
+            <span *ngIf="routerUrl != '/login'">Continue with Facebook</span>
+        </div>
+    </a>
+
+    <div class="google-button">
+    <!-- <a id="googleBtmn" (click)="signInWithGoogle()" class="btn btn-block btn-social btn-google-plus"> -->
+        <a id="googleBtmn" (click)="signInWithGoogle()" class="btn-google-plus">
+        <!-- <i class="fa fa-google-plus"></i> -->
+        <div class="logo-image">
+            <img src="https://www.kitshare.com.au/backend/assets/images/google-logo.svg" alt style="height: 18px; margin-right: 8px; width: 18px">
+        </div>
+        
+        <div class="login-text">
+            <span *ngIf="routerUrl == '/login'">Continue with Google</span>
+            <span *ngIf="routerUrl != '/login'">Continue with Google</span>
+        </div>
+
+        </a>
+    </div>
+</div>

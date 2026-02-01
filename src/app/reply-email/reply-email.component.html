@@ -1,0 +1,22 @@
+<section class="dashboard_bodynew">  
+  <div id="contact_form_list">
+      <div class="container">
+          <div class="row">
+              <div class="col-md-8 col-sm-8">                  
+                  <div class="container-contact100">
+                     <p>Message: {{mail_text}}</p>                     
+                  </div>
+                  <form>
+                    <div class="form-group">
+                       <label>Enter your reply</label>
+                       <textarea name="reply_mail_text" [(ngModel)]="reply_mail_text" rows="3" class="form-control" placeholder="Enter your Messages"></textarea>
+                    </div>
+                    <div class="form-group">
+                       <button class="reply_btn" type="button" [disabled]="is_message_sent" (click)="sendMessage()">Send</button>
+                    </div>
+                 </form>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>

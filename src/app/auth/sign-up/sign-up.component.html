@@ -1,0 +1,48 @@
+<section class="sign_background">
+    <div class="container">
+        <div class="auth-box">
+            <form class="sign_up" id="panel" autocomplete="off">
+                <h2>Join Now</h2>
+                <div class="group">
+                    <input name="first" [(ngModel)]="registrationData.app_user_first_name" type="text" required>
+                    <label class="input-label">First Name</label>
+                </div>
+                <div class="group">
+                    <input name="last" [(ngModel)]="registrationData.app_user_last_name" type="text" required>
+                    <label class="input-label">Last Name</label>
+                </div>
+                <div class="group">
+                    <input name="email" (blur)="checkUniqueEmail()" type="email" autocomplete="off" [(ngModel)]="registrationData.primary_email_address" required>
+                    <label class="input-label">Email address</label>
+                </div>
+                <div class="group group1">
+                    <input name="password" [(ngModel)]="registrationData.app_password" type="password" autocomplete="off" required>
+                    <label class="input-label">Create Password</label>
+                    <div class="password-message">Password must have at least 6 Characters</div>
+                </div>
+                <div class="checkbox checkbox-primary signupCheck">
+                    <input name="check" [(ngModel)]="terms_and_condition" id="checkbox2" type="checkbox">
+                    <label for="signed-terms">By signing up, I accept Kitshare's Terms & Conditions and acknowledge the Privacy Policy</label>
+                </div>
+                <div class="clearfix"></div>
+                <div class="terms-condition">
+                    <a class="terms-link" [routerLink]="['/cms/terms-and-conditions']"> Terms & Conditions</a><a class="privacy-link" [routerLink]="['/privacy-policy']"> Privacy Policy</a>
+                </div>
+                <button class="btn join-btn" (click)="submitForm()">Join Now</button>
+                <div class="clearfix"></div>
+                <div class="or-social">OR</div>
+                <app-social-login></app-social-login>
+                <div class="clearfix"></div>
+                <div class="group group1">
+                    <div class="text-center">
+                        <p>Already have an account?
+                            <a routerLink="/login" class="text-info m-l-5">
+                                <b class="account-sign">Sign In</b>
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>

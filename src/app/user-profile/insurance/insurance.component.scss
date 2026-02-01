@@ -1,0 +1,296 @@
+.container {
+  width: 100%;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+// .right-column {
+//   padding: 0;
+// }
+
+// @media (min-width: 768px){
+//   .container {
+//     width: 100%;
+//   }
+// }
+
+// @media (min-width: 692px){
+//   .container {
+//     width: 100%;
+//   }
+// }
+
+.profileSettings {
+  padding-left: 30px;
+  margin: auto;
+  max-width: 1200px;
+  // display: flex;
+  // justify-content: space-between;
+  // align-items: center;
+
+}
+.fixed-pos {
+  position: fixed;
+  z-index: 1;
+  width: 100%;
+}
+
+.SaveProfile {
+  float: right;
+  background-color: #0052CC;
+  color: #fff !important;
+  padding: 11px 19px;
+  width: 180px;
+  &:hover {
+      background-color: #0065FF;
+  }
+}  
+
+@media screen and (max-width:691px) {
+  .profileSettings {
+      // width: none;
+      // padding-left: 0px !important;
+      // margin: auto;
+      // text-align: center;
+      h3 {
+        font-size: 18px;
+      }
+  }
+  .button {
+    width: 120px;
+  }
+  .insurance_wrapper {
+    margin-top: 0 !important;
+  }
+}
+
+.insurance_box {
+  display: flex;
+}
+
+.row {
+  margin-bottom: 2rem;
+  width: 100%;
+  margin-left: 0px;
+  margin-right: 0px;
+  margin-top: 90px;
+}
+
+.insurance_wrapper {
+  flex: 1 1 auto;
+  padding: 15px;
+  overflow: hidden;
+}
+
+.form_group {
+  display: flex;
+    flex-flow: column wrap;
+    border-radius: 3px;
+    // padding: 1.5rem;
+    margin-bottom: 2.5rem;
+    input {
+      padding: 1.25rem;
+      border: 2px solid #f3f3f3 !important;
+    }
+}
+
+.form_box {
+  display: flex;
+    flex-flow: column wrap;
+    border-radius: 3px;
+    padding: 1.5rem;
+    margin-bottom: 2.5rem;
+    input {
+      padding: 1.25rem;
+      border: 2px solid #f3f3f3 !important;
+    }
+}
+
+.two-parts {
+  display: flex;
+    flex-flow: row wrap;
+
+    &.jc-sb {
+      justify-content: space-between;
+    }
+}
+
+.part1, .part2 {
+  display: flex;
+    flex-flow: column wrap;
+    flex: 0 0 47%;
+}
+
+.desc_strip {
+  margin-top: 25px;
+}
+
+mat-slide-toggle {
+  margin-right: 40px;
+}
+
+.button {
+  padding: 10px 10px;
+    background-color: #0747A6;
+    border: none;
+    border-color: #0747A6;
+    color: #fff !important;
+    width: 200px;
+    height: 40px;
+    border-radius: 4px;
+    font-family: sans-serif;
+    &:hover {
+      background: #0d77da !important;
+      border-color: #0d77da;
+    }
+}
+
+button.btn.btn-default {
+  border-radius: 5px;
+  width: fit-content;
+  width: 180px;
+  border-style: none !important;
+  border-color: none !important;
+}
+
+.instructions {
+  ul {
+    margin: 0.5rem 0 2rem 0;
+    padding-left: 3rem;
+    font-size: 14px;
+    list-style-type: disc;
+    li {
+      list-style-type: disc;
+    }
+  }
+  strong {
+    margin: 1rem 0 2rem 0;
+    display: block;
+  }
+}
+h1 {
+  margin-bottom: 2rem;
+}
+
+.imageBox {
+  width: 150px;
+  height: 150px;
+  margin-top: 2rem;
+  border-radius: 3px;
+  box-shadow: 1px 2px 4px rgba(0,0,0,0.4);
+  img {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.ngx-file-drop__drop-zone {
+  // width: 100px;
+  // margin-right: 30px;
+  margin: 0 20px 0px 0px;
+}
+
+.has-error {
+  background: #f8d7da !important;
+  label {
+    color: #721c24;
+  }
+}
+
+.custom-err {
+  margin-top: 5px;
+    display: inline-block;
+    color: #721c24;
+    font-size: 1.25rem;
+    text-align: right;
+    width: 100%;
+}
+
+.inst_text  {
+  margin: 0 0 10px 0;
+  font-size: 14px;
+}
+
+.headline  {
+  margin: 0 0 10px 0;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.headline_area {
+  padding: 0 0 20px 0px !important;
+  margin-bottom: 6px;
+}
+
+.no-form-bg {
+  border: 2px solid #e5e5e5 !important;
+  border-radius: 10px;
+  margin-bottom: 2.5rem;
+  .form_group {
+    background: transparent;
+    &:nth-child(1) {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.split-two {
+  display: flex;
+  justify-content: space-between;
+  & .form_group:nth-child(1) {
+    flex: 1 1 45%;
+    margin-right: 2.5%;
+  }
+  & .form_group:nth-child(2) {
+    flex: 1 1 45%;
+    margin-left: 2.5%;
+  }
+}
+
+hr {
+  margin-top: 15px;
+  margin-bottom: 20px;
+  border: 0;
+  border-top: 1px solid #eee;
+}
+
+#contact_form_list input:focus {
+  border: 1px solid #0065FF !important;
+  height: 49px;
+  padding: 1.34rem;
+}
+
+.insurance_description, .start_date, .expire_date, .renter_insurance_amount, .owner_insurance_amount:focus {
+  border: 1px solid #0065FF !important;
+  height: 49px;
+}
+
+.Policy-Delete {
+  width: 160px;
+  height: 40px;
+  background: red;
+  text-transform: capitalize;
+  color: white;
+  background-image: none !important;
+  border: none !important;
+  text-shadow: none !important;
+  border-radius: 5px;
+  &:hover {
+    background: maroon;
+    text-transform: capitalize;
+    color: white;
+    background-image: none !important;
+    border: none !important;
+    text-shadow: none !important;
+  }
+}
+
+.Policy-Cancel {
+  margin: 0 10px 0 0px;
+  width: 100px;
+  height: 40px;
+  background-color: #EBECF0;
+  &:hover {
+    background-color: #DFE1E6;
+  }
+}

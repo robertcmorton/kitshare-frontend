@@ -1,0 +1,568 @@
+<div class="cart_sec">
+    <div *ngFor="let app_users_detail of cartArr.app_users_details" class="back_cartpage">
+        <div class="container cart-header">
+            <!-- <button type="button" class="owner-button" data-toggle="modal" data-target="#contactTheOwner">Contact the Owner</button> -->
+            <div class="rental_cart row">Your rental cart</div>
+            <div class="date-details row">{{reFormatDate(this.from_date) | date}} - {{reFormatDate(this.to_date) |
+                date}}</div>
+        </div>
+    </div>
+
+    <!------------------------------------------------------ START LEFT HAND COLUMN  --------------------------------------------------------------------------->
+    <div *ngIf="!has_item_in_cart" class="emptyImg-Containter">
+        <img src="assets/images/empty_cart.png" class="empty-img">
+    </div>
+
+    <div class="container cart-body">
+        <div class="row">
+            <div class="col-md-8 col-sm-8 leftDetails">
+                <!-----------------------------mobile view--------------------------->
+                <!-- <div id="listing-message-links" class="hidden-sm hidden-md hidden-lg">
+                    <form action="#" id="listing_rental_request_form">
+                        <div class="relative" id="from_date_picker">
+                            <div class="datepicker" data-picker="#from_date">
+                                <kit-calendar
+                    [prefix]="'Pick-up afternoon'"
+                    [dateFilter]="myFilter"
+                    [minDate]="today"
+                    [fromDate]="from_date"
+                    [placeholderDate]="from_date"
+                    (dateSelect)="onDateSelection('from', $event)"
+                    ></kit-calendar>
+
+                            </div>
+                        </div>
+                        <div class="relative" id="to_date_picker">
+                            <div class="datepicker" data-picker="#to_date" *ngIf="showPicker">
+                                <kit-calendar
+                                          [prefix]="'Return Morning'"
+                                          [dateFilter]="myFilter"
+                                          [minDate]="from_date"
+                                          [toDate]="to_date"
+                                          [placeholderDate]="minForReturn"
+                                          (dateSelect)="onDateSelection('to', $event)"
+                                          ></kit-calendar>
+                            </div>
+                        </div>
+                    </form>
+                </div> -->
+
+                <!-- <div class="row-with-divider request-summary hidden-sm hidden-md hidden-lg hide-on-mobile">
+                    <div class="col-m-12">
+                        <div class="title">
+                            <div class="text-part">Order Summary</div>
+                        </div>
+                        <div class="">
+                            <div class="col-12">
+                                <div class="detail">
+
+                                    <div class="field">
+                                        <div class="field-name text-right">Subtotal</div>
+                                        <div class="field-value">- ( {{cart_summery.total_rent_amount_ex_gst | currency }} )</div>
+                                    </div>
+                                    <div class="field">
+                                        <div class="field-name text-right"><a href="#" target="_blank">Beta Discount</a></div>
+                                        <div class="field-value">- ( {{cart_summery.beta_discount | currency}} )</div>
+                                    </div>
+                                    <div class="field">
+                                        <div class="field-name text-right"><a href="#" target="_blank">Insurance Fee</a></div>
+                                        <div class="field-value">{{cart_summery.insurance_fee | currency}}</div>
+                                    </div>
+                                    <div class="field">
+                                        <div class="field-name text-right"><a href="#" target="_blank"> Community Fee</a></div>
+                                        <div class="field-value">{{cart_summery.community_fee | currency}}</div>
+                                    </div>
+                                    <div class="field">
+                                        <div class="field-name text-right">Total ex GST</div>
+                                ``        <div class="field-value">{{cart_summery.sub_total | currency}}</div>
+                                    </div>
+                                    <div class="field">
+                                        <div class="field-name text-right">GST (10%)</div>
+                                        <div class="field-value"> {{cart_summery.gst_amount | currency}} </div>
+                                    </div>
+                                    <div class="field">
+                                        <div class="field-name text-right">Total inc GST </div>
+                                        <div class="field-value">{{cart_summery.total_rent_amount | currency}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+
+                <!-----------------------------mobile view end--------------------------->
+
+
+                <!-- <div *ngIf="!has_item_in_cart">
+    <img src="assets/images/empty_cart.png">
+    No item's in the cart
+</div> -->
+
+                <div *ngFor="let app_users_detail of cartArr.app_users_details">
+                    <div class="row listing-author  listing-author_new">
+
+                        <!------------------------------------------------------ START OWNER PROFILE BOX  --------------------------------------------------------------------------->
+                        <div class="col-md-8 avatarBox">
+                            <div class="listing-author-avatar">
+                                <a [routerLink]="['/profile/' + app_users_detail.app_username ]" title="{{app_users_detail.app_username}}">
+                                    <img src="{{app_users_detail.user_profile_picture_link}}" alt="{{app_users_detail.app_username}}" class="listing-author-avatar-image">
+                                </a>
+                            </div>
+                            <div class="listing-author-details">
+                                <div class="listing-author-name for-cart">
+                                    <a [routerLink]="['/profile/' + app_users_detail.app_username ]" title="{{app_users_detail.app_username}}">
+                                        <span class="owner-name">{{app_users_detail.app_user_first_name}}&nbsp;{{app_users_detail.app_user_last_name}}</span>
+                                    </a>
+
+                                    <div class="lower-owner">
+                                        <kit-rating-decimal [currentRate]="avg_rating" [disabled]="true"></kit-rating-decimal>
+                                        <span class="number-reviews">({{ reviews }})</span>
+                                        <!-- <button type="button" class="owner-button" data-toggle="modal" data-target="#contactTheOwner">Contact the Owner</button> -->
+                                    </div>
+                                </div>
+                                <div class="listing-author-activity-item">
+                                    <div class="listing-author-activity-value">
+                                        <button type="button" class="owner-button" data-toggle="modal" data-target="#contactTheOwner">Contact the Owner</button>
+                                        <!-- <button type="hidden" id="open_owner_verify_id" class="owner-button hidden" data-toggle="modal" data-target="#renterVerifyDAM">Owner verification</button> -->
+                                        <!-- <button type="hidden" id="open_owner_verify_id1" class="owner-button" (click)="openUserVerificationDialog()" >Owner verification</button> -->
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- CONTACT THE OWNER
+<div class="col-sm-12 col-md-4 contact-button">
+    <button type="button" class="owner-button" data-toggle="modal" data-target="#contactTheOwner">Contact the Owner</button>
+</div> -->
+
+
+                        <!-- ITEMS IN YOUR CART -->
+                        <div class="clearfix"></div>
+                        <div class="items-inCart">
+                            <!-- <span class="float-left"> <b class="listing-title1">Items in your cart from {{app_users_detail.app_user_first_name}}&nbsp;{{app_users_detail.app_user_last_name}} </b></span> -->
+                            <span class="float-left"> <b class="listing-title1">Choose your Pickup / Return
+                                    location:</b></span>
+                            <span class="float-right">
+                                <!-- <a id="clear-all-cart-items" (click)="deleteAll()">Delete</a> -->
+                            </span>
+                            <div class="clear-float"></div>
+                        </div>
+                        <div class="clearfix"></div>
+
+
+                        <!-- PICKUP AND DROPOFF BUTTON / EMPTY CART -->
+                        <div class="pick_up_btns">
+                            <select class="cart-location" (change)="selectPickDrop($event)" [ngStyle]="{'background-color': !selected_addess_id ? '#FFBDAD':'none','color': !selected_addess_id ? 'white':'#696b82'}">
+                                <option value="">Select Pickup / Return </option>
+                                <option value="{{item.user_address_id}}" *ngFor="let item of cartGearAddress" [selected]="item.user_address_id == cart_summery.user_address_id">
+                                    {{item.suburb_name}}, {{item.ks_state_name}}</option>
+                            </select>
+
+                            <!--  DISPLAY THE ADDRESS ERROR TEXT -->
+                            <span style="color:#DE350B;font-weight: 300;" *ngIf="!selected_addess_id">Please select
+                                address</span>
+
+
+                            <!-- <div class="empty-cart">
+        <button type="button" class="emptycart-button" (click)="deleteAllUsingForkJoin()">Empty Cart</button>
+    </div> -->
+                        </div>
+
+                        <!-- <div class="empty-cart">
+    <button type="button" class="btn btn-ask-question category-btn btn-ask-question_fullwidth" (click)="deleteAllUsingForkJoin()">Empty Cart</button>
+</div>   -->
+
+                        <!------------------------------------------------------ END OWNER PROFILE BOX  --------------------------------------------------------------------------->
+
+                        <!------------------------------------------------------ START LISTINGS IN CART  --------------------------------------------------------------------------->
+                        <div class="grey-divider first"></div>
+                        <ng-container *ngIf="displayCart">
+                            <div class="listing-body" *ngFor="let cart of cartArr.cart">
+                                <div *ngIf="cart.app_user_id == app_users_detail.app_user_id">
+                                    <div>
+                                        <div class="cart-item-wrap">
+                                            <div class="row cart-item">
+
+                                                <!-- LISTING TITLE -->
+                                                <div class="cart-item-header">
+                                                    <span class="listing-title">
+                                                        <a target="_self" [routerLink]="['/gear/view-gear/' + cart.gear_slug_name]" class="listing-title-link">{{cart.gear_name}}</a></span>
+                                                    <div class="clear-float"></div>
+                                                </div>
+
+                                                <!-- ITEM IMAGE -->
+                                                <div class="col-xs-3 left-column-image">
+                                                    <a target="_self" [routerLink]="['/gear/view-gear/' + cart.gear_slug_name]" class="listing-title-link">
+                                                        <img class="full-width" style="width: 100%; height: 100%;" src="{{cart.gear_display_image}}" alt="{{cart.gear_name}}">
+                                                    </a>
+                                                </div>
+
+                                                <!-- PRICE PER DAY DESKTOP-->
+                                                <div class="col-xs-9 left-column-listing">
+                                                    <div class="hidden-xs price-per-day">
+                                                        <span class="float-left price-text">Daily Rate</span>
+                                                        <span class="float-right price-text">{{cart.per_day_cost_aud_ex_gst
+                                                            | currency }} ex GST</span>
+                                                        <br>
+                                                        <div class="clear-float"></div>
+                                                    </div>
+
+                                                    <!-- PRICE PER DAY MOBILE-->
+                                                    <div class="hidden-sm hidden-lg hidden-md price-per-day-mob">
+                                                        <div class="price-text-mob">Daily Rate</div>
+                                                        <div class="price-text-mob">{{cart.per_day_cost_aud_ex_gst |
+                                                            currency }} ex GST</div>
+                                                        <div class="clear-float"></div>
+                                                    </div>
+
+                                                    <!-- REPLACEMENT VALUE DESKTOP -->
+                                                    <div class="hidden-xs replacement">
+                                                        <span class="float-left replace-text">Replacement Value</span>
+                                                        <span class="float-right replace-text">{{cart.replacement_value_aud_ex_gst
+                                                            | currency }} ex GST</span>
+                                                        <div class="clear-float"></div>
+                                                    </div>
+
+                                                    <!-- REPLACEMENT VALUE MOBILE -->
+                                                    <div class="hidden-sm hidden-lg hidden-md replacement-mob">
+                                                        <div class="replace-text-mob">Replacement Value</div>
+                                                        <div class="replace-text-mob">
+                                                            {{cart.replacement_value_aud_ex_gst | currency }} ex GST
+                                                        </div>
+                                                        <div class="clear-float"></div>
+                                                    </div>
+                                                </div>
+
+                                                <!-- INSURANCE DROP DOWN MENU-->
+                                                <div class="top-20">
+                                                    <div class="row">
+                                                        <div class="col-md-7 insurance-container">
+                                                            <span class="float-left">
+                                                                <div>
+                                                                    <div class="inline-block insurance-dropdown">
+                                                                        <select name="" id="" class="cart-detail-app" (change)="triggerReplacementValue(cart.user_gear_desc_id, $event.target.value)" *ngIf="cart.insurance_type.length > 0" [ngStyle]="{'background-color': cart.ks_insurance_category_type_id =='0' ? '#FFBDAD':'none','color': cart.ks_insurance_category_type_id =='0' ? 'white':'#696b82'}">
+                                                                            <option value="0">Select </option>
+                                                                            <option [selected]="opt.ks_insurance_category_type_id == cart.ks_insurance_category_type_id" value="{{ opt.ks_insurance_category_type_id }}" *ngFor="let opt of cart.insurance_type">
+                                                                                {{ opt.name }}</option>
+                                                                        </select>
+
+                                                                        <!--  DISPLAY THE INSURANCE ERROR TEXT -->
+                                                                        <span style="color:#DE350B;font-weight: 300;" *ngIf="cart.insurance_type.length > 0 && cart.ks_insurance_category_type_id =='0' ">Please
+                                                                            select insurance</span>
+
+
+                                                                        <!--  DISPLAY THE INSURANCE AMOUNT -->
+                                                                        <div class="listing-insuranceamount">
+                                                                            <!-- <span *ngIf="cart.insurance_amount !== '0'">Insurance Amount:</span> -->
+                                                                            <!-- <span *ngIf="cart.insurance_amount !== '0'"> {{cart.insurance_amount | currency}} ex GST</span> -->
+                                                                            <strong *ngIf="cart.insurance_amount !== '0'">
+                                                                                {{cart.insurance_amount |
+                                                                                currency}}</strong>
+                                                                        </div>
+
+                                                                    </div>
+                                                                </div>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <!-- DISPLAY INSURANCE MESSAGE BELOW DROPDOWN-->
+                                                <div class="insurance-description">
+                                                    <div class="insurance-option-pre">
+                                                        <!-- <h3>{{cart.insurance_type_name}}</h3> -->
+                                                        <p><strong>{{cart.description.message}}</strong>
+                                                            <!-- take this insurance page-->
+                                                            <span class="error" *ngIf="cart.description.error">
+                                                                <a [routerLink]="['/profile/insurance']">
+                                                                    {{cart.description.error}}</a>
+                                                            </span>
+                                                        </p>
+                                                    </div>
+                                                </div>
+
+                                                <!-- DISPLAY ERROR IF NO LOCATION SELECTED -->
+                                                <div class="errorBox" *ngIf="displayLocationError">
+                                                    <p>Please Select Location</p>
+                                                </div>
+
+                                                <div class="col-12 remove-listing-block">
+                                                    <span class="remove-listing">
+                                                        <span class="link remove-cart-item" (click)="removeFromCart(cart.user_gear_desc_id)"> Remove
+                                                        </span></span>
+                                                </div>
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="grey-divider"></div>
+                                </div>
+                            </div>
+                        </ng-container>
+
+                        <div class="empty-cart">
+                            <button type="button" class="emptycart-button" (click)="deleteAllUsingForkJoin()">Empty
+                                Cart</button>
+                            <!-- <button type="button" class="btn btn-ask-question category-btn btn-ask-question_fullwidth" (click)="deleteAllUsingForkJoin()">Empty Cart</button> -->
+                        </div>
+                        <!------------------------------------------------------ END LISTINGS IN CART  --------------------------------------------------------------------------->
+
+                        <!-- TEXT BELOW LISTINGS INC ID VERIFICATION AND SECURITY DEPOSIT -->
+                        <!-- <div style="text-align:left;">
+                        A Deposit of {{total_insurance_security_amount | currency}} inc GST will be Authorised separately on your card. It will not be charged unless the owner makes a claim.
+                    </div> -->
+                        <!-- <div class="verify_text">
+    <div class="security_text">Identification Verification</div>
+        <p>In order to proceed to checkout, verify your <a [routerLink]="[ '/profile/account-settings' ]">Mobile Number</a>, <a [routerLink]="[ '/profile/address-details' ]">Address</a> and <a [routerLink]="[ '/profile/digital-id' ]">Digital ID</a>.</p>
+</div> -->
+
+                        <div class="checkbox_sec" *ngIf="total_insurance_security_amount">
+                            <div class="security_text">Security Deposit</div>
+                            <p>A Deposit of {{total_insurance_security_amount | currency }} inc GST will be Authorised
+                                separately on your card. It will not be charged unless the owner makes a claim.</p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!------------------------------------------------------ END LEFT HAND COLUMN  --------------------------------------------------------------------------->
+
+
+            <!------------------------------------------------------ START RIGHT HAND COLUMN ------------------------------------------------------------------------->
+
+            <!-- START DATE PICKER MOBILE -->
+            <!-- PICKUP -->
+            <div *ngIf="has_item_in_cart" id="listing-message-links" class="hidden-sm hidden-md hidden-lg">
+                <form action="#" id="listing_rental_request_form">
+                    <div class="relative" id="from_date_picker">
+                        <div class="datepicker" data-picker="#from_date">
+                            <kit-calendar [prefix]="'Pickup Afternoon'" [dateFilter]="myFilter" [minDate]="today" [fromDate]="from_date" [placeholderDate]="from_date" (dateSelect)="onDateSelection('from', $event)"></kit-calendar>
+
+                        </div>
+                    </div>
+
+                    <!-- RETURN-->
+                    <div class="relative" id="to_date_picker">
+                        <div class="datepicker" data-picker="#to_date" *ngIf="showPicker">
+                            <kit-calendar [prefix]="'Return Morning'" [dateFilter]="myFilter" [minDate]="from_date" [toDate]="to_date" [placeholderDate]="minForReturn" (dateSelect)="onDateSelection('to', $event)"></kit-calendar>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <!-- START MOBILE ORDER SUMMARY -->
+            <div *ngIf="has_item_in_cart" class="row-with-divider request-summary hidden-sm hidden-md hidden-lg">
+                <div class="col-m-12 order-summary-mobile">
+                    <div class="title">
+                        <div class="text-part">Order Summary</div>
+                    </div>
+                    <div class="">
+                        <div class="col-12">
+                            <div class="detail">
+                                <!-- <div class="field" *ngFor="let eachCart of this.cartArr.cart">
+                                        <div class="field-name text-right">{{eachCart.per_day_cost_aud_ex_gst | currency}} x {{eachCart.total_rent_days}} rented days</div>
+                                        <div class="field-value">{{eachCart.total_rent_amount_ex_gst | currency }}</div>
+                                    </div> -->
+                                <div class="field">
+                                    <div class="field-name text-left">Subtotal</div>
+                                    <div class="field-value">{{cart_summery.total_rent_amount_ex_gst | currency }}</div>
+                                </div>
+                                <div class="field">
+                                    <div class="field-name text-left">Discount (15%)</div>
+                                    <div class="field-value">- ( {{cart_summery.beta_discount | currency}} )</div>
+                                </div>
+                                <div class="field">
+                                    <div class="field-name text-left">Insurance Fee</div>
+                                    <div class="field-value">{{cart_summery.insurance_fee | currency}}</div>
+                                </div>
+                                <div class="field" [ngClass]="{'disabled': cart_summery.owner_insurance_amount == 0}">
+                                    <div class="field-name text-left">Owner Insurance Fee</div>
+                                    <div class="field-value">{{cart_summery.owner_insurance_amount | currency}}</div>
+                                </div>
+                                <div class="field">
+                                    <div class="field-name text-left">Community Fee</div>
+                                    <div class="field-value">{{cart_summery.community_fee | currency}}</div>
+                                </div>
+                                <div class="field">
+                                    <div class="field-name text-left">Total ex GST</div>
+                                    <div class="field-value">{{cart_summery.sub_total | currency}}</div>
+                                </div>
+                                <div class="field">
+                                    <div class="field-name text-left">GST (10%)</div>
+                                    <div class="field-value"> {{cart_summery.gst_amount | currency}} </div>
+                                </div>
+                                <div class="field">
+                                    <div class="field-name text-left text-bold">Total inc GST </div>
+                                    <div class="field-value text-bold">{{cart_summery.total_rent_amount | currency}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- START RIGHT HAND COLUMN DESKTOP -->
+            <!-- PICKUP -->
+            <div class="cart-meta col-md-4 col-sm-4" *ngIf="has_item_in_cart && displayCart">
+                <div id="listing-message-link" class="hidden-xs">
+                    <form action="#" id="listing_rental_request_form">
+                        <div class="relative" id="from_date_picker">
+                            <div class="datepicker" data-picker="#from_date">
+                                <kit-calendar [prefix]="'Pickup Afternoon'" [dateFilter]="myFilter" [minDate]="today" [fromDate]="from_date" [placeholderDate]="from_date" (dateSelect)="onDateSelection('from', $event)"></kit-calendar>
+
+                            </div>
+                        </div>
+
+                        <!-- RETURN-->
+                        <div class="relative" id="to_date_picker" *ngIf="showPicker">
+                            <div class="datepicker" data-picker="#to_date">
+                                <kit-calendar [prefix]="'Return Morning'" [dateFilter]="myFilter" [minDate]="from_date" [toDate]="to_date" [placeholderDate]="minForReturn" (dateSelect)="onDateSelection('to', $event)"></kit-calendar>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- START DESKTOP ORDER SUMMARY -->
+                <div class="row-with-divider request-summary hidden-xs">
+                    <div class="col-m-12 order-summary-desktop">
+                        <div class="title">
+                            <div class="text-part">Order Summary</div>
+                        </div>
+                        <div class="">
+                            <div class="col-12">
+                                <div class="detail">
+                                    <div class="field">
+                                        <div class="field-name text-right">Subtotal</div>
+                                        <div class="field-value">{{cart_summery.total_rent_amount_ex_gst | currency }}
+                                        </div>
+                                    </div>
+                                    <div class="field">
+                                        <div class="field-name text-right">Discount (15%)</div>
+                                        <div class="field-value">- ( {{cart_summery.beta_discount | currency}} )</div>
+                                    </div>
+                                    <div class="field" [ngClass]="{'disabled': cart_summery.insurance_fee == 0}">
+                                        <div class="field-name text-right">Insurance Fee</div>
+                                        <div class="field-value">{{cart_summery.insurance_fee | currency}}</div>
+                                    </div>
+                                    <div class="field" [ngClass]="{'disabled': cart_summery.owner_insurance_amount == 0}">
+                                        <div class="field-name text-right">Owner Insurance Fee</div>
+                                        <div class="field-value">{{cart_summery.owner_insurance_amount | currency}}
+                                        </div>
+                                    </div>
+                                    <div class="field">
+                                        <div class="field-name text-right">Community Fee</div>
+                                        <div class="field-value">{{cart_summery.community_fee | currency}}</div>
+                                    </div>
+                                    <div class="field">
+                                        <div class="field-name text-right">Total ex GST</div>
+                                        <div class="field-value">{{cart_summery.sub_total | currency}}</div>
+                                    </div>
+                                    <div class="field">
+                                        <div class="field-name text-right">GST (10%)</div>
+                                        <div class="field-value"> {{cart_summery.gst_amount | currency}} </div>
+                                    </div>
+                                    <div class="field">
+                                        <div class="field-name text-right text-bold">Total inc GST </div>
+                                        <div class="field-value text-bold">{{cart_summery.total_rent_amount | currency}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- PROJECT NAME / DESCRIBE PROJECT / CHECKOUT BUTTON -->
+                <div class="clearfix"></div>
+                <!-- <div class="grey-divider"></div> -->
+
+                <div class="message-box"><label>Project Name</label>
+                    <textarea id="message" name="project_name" [(ngModel)]="project_name" class="project-field" rows="2"></textarea>
+                </div>
+
+
+                <div class="message-box"><label> Describe your project... </label>
+                    <textarea id="message" name="project_description" [(ngModel)]="project_description" class="message-field"></textarea>
+                </div>
+
+
+                <div class="hint" *ngIf="insuranceTypeIsInvalid || !selected_addess_id || !project_name">
+                    <div class="PleaseCheck"> Please Check:</div>
+                    <ul>
+                        <li *ngIf="insuranceTypeIsInvalid">
+                            <mat-icon>error_outline</mat-icon> Insurance has been selected for all listings
+                        </li>
+                        <li *ngIf="!selected_addess_id">
+                            <mat-icon>error_outline</mat-icon> Pickup Address has been selected
+                        </li>
+                        <li *ngIf="!project_name">
+                            <mat-icon>error_outline</mat-icon> Project Name has been entered
+                        </li>
+                    </ul>
+                </div>
+
+
+                <button *ngIf="mad_verified" [disabled]="project_name == '' || !userAllowedToCheckOut" href="#" class="book-button button-processing top-10 inline-display" id="submit-rental-request" rel="nofollow" (click)="verifyBeforegoToCheckout()">
+                    <div class="content">Proceed to Checkout</div>
+                </button>
+                <button *ngIf="!mad_verified" href="#" class="book-button button-processing top-10 inline-display disabled_cls" id="submit-rental-request1" rel="nofollow" (click)="verifyBeforegoToCheckout()">
+                    <div class="content">Proceed to Checkout</div>
+                </button>
+
+
+                <!-- <div class="hint" *ngIf="insuranceTypeIsInvalid || !selected_addess_id || !project_name">
+                    <strong> Please Check If:</strong>
+                    <ul>
+                        <li *ngIf="insuranceTypeIsInvalid">*Insurnace is selected for all listings</li>
+                        <li *ngIf="!selected_addess_id">*Pickup?Return address selected
+                        </li>
+                        <li *ngIf="!project_name">*Project Name is present</li>
+                    </ul>
+                </div> -->
+
+
+            </div>
+        </div>
+    </div>
+    <!------------------------------------------------------ END RIGHT HAND COLUMN ------------------------------------------------------------------------->
+
+    <!------------------------------------------------------ CONTACT THE OWNER POP UP BOX / MODAL ----------------------------------------------------------->
+    <div id="contactTheOwner" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Contact The Owner</h4>
+                    <button type="button" class="close" #closeContactOwnerModal data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="col-md-12">
+
+                        <!-- <div class="chatView">
+                  <img class="img-circle center-block res-listing-img" alt="{{ gearDetails.app_user_first_name + ' ' + gearDetails.app_user_last_name }} Avatar"
+                  src="{{ gearDetails.user_profile_picture_link}}">
+                     <div class="chatDetails">
+                         <h3>{{ gearDetails.app_user_first_name + ' ' + gearDetails.app_user_last_name }} <span>10 min ago</span></h3>
+                         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised</p>
+                     </div>
+                 </div> -->
+                        <form>
+                            <div class="form-group">
+                                <label></label>
+                                <textarea name="message_with_owner" [(ngModel)]="message_with_owner" rows="3" class="form-control" placeholder="Enter your Message"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <button class="contactowner-send" type="button" [disabled]="is_message_sent" (click)="sendMessageToOwner()">Send</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>

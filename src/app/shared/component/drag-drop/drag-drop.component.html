@@ -1,0 +1,16 @@
+<div class="dragdrop-container" cdkDropListGroup>
+    <div *ngFor="let image of list; let i = index" cdkDropList [cdkDropListData]="i">
+        <div cdkDrag [cdkDragData]="i" (cdkDragEntered)="dragEntered($event)" class="dragdrop-box">
+            <div class="upload_img">
+                <img [src]="image.src" />
+                <span (click)="remove(i, image)">
+                    <i class="fa fa-times-circle" aria-hidden="true"></i>
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="upload_img img_view">
+        <img width="50px" height="50px" src="assets/images/add_img.svg" />
+        <input type="file" name="gearImageUpload" (change)="onFileChanged($event)" class="filt_upload" />
+    </div>
+</div>

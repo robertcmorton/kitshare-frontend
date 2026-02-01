@@ -1,0 +1,40 @@
+.logo-desktop {
+    margin-left: 20px;
+  }
+
+  .logo-mobile {
+      // margin-left: 15px;
+      width: 30px;
+  }
+  
+  // .mobilelogo-container {
+  //   padding: 0;
+  //   padding: 4px 0 0 0;
+  // }
+
+  mat-icon {
+      z-index: 9;
+  }
+
+// img {
+//   width: 85px;
+//   margin: 0 !important;
+// }
+
+// @media (max-width: 767px) {
+//   .logo {
+//     font-size: 3vh;
+//     font-weight: bold;
+//   }
+// }
+
+// .logo {
+//   color: white;
+//   font-family: Roboto;
+//   font-size: 3vh;
+//   font-weight: 800;
+//   line-height: 0;
+//   &:focus {
+//     outline: none !important;
+//     }
+// }

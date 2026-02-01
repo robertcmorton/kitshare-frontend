@@ -1,0 +1,328 @@
+:host {
+  display: block;
+}
+
+.section-container {
+  padding: 0 0 0 0;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+// SUB-HEADER TITLES //
+.service_title .landing-subheader {
+  // font-family: sans-serif;
+  // font-size: 16px;
+  // line-height: 23px;
+  // font-weight: 400;
+  // color: #172B4D;
+  color: #5E6C84;
+  font-size: 14px;
+  // line-height: 23px;
+  // font-family: sans-serif;
+  font-family: system-ui;
+}
+
+
+// FIND EQUIPMENT PERFECT FOR YOUR NEXT SHOOT //
+.text_info {
+  // margin: 175px 10px 48px 10px;
+  margin: 270px 10px 48px 10px;
+}
+
+.landing_image {
+  height: 569px;
+  padding: 50px 0;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  background: no-repeat center center;
+  background-size: cover;
+  z-index: 0;
+  background-position-y: 25%;
+  position:relative;
+}
+
+.sub-headline {
+  font-size: 21px;
+  font-family: system-ui;
+}
+
+
+// HOW KITSHARE WORKS //
+section.our_service_area {
+  // margin-top: 22px;
+  padding: 60px 15px 60px 15px;
+  background-color: white;
+}
+
+.our_service_area .service_title {
+  padding-bottom: 15px;
+  font-family: system-ui;
+}
+
+.service_inner .media .media-body p {
+  color: #5E6C84;
+  font-size: 14px;
+  line-height: 23px;
+  margin-top: 5px;
+  font-family: system-ui;
+}
+
+.service_title h1 {
+  font-size: 24px;
+  color: #344563;
+  text-transform: uppercase;
+  letter-spacing: .20px;
+  position: relative;
+  display: inline-block;
+  font-weight: 600;
+  margin-bottom: 11px;
+  // font-family: 'sans-serif';
+  font-family: system-ui;
+}
+
+.click-compare, .book-insure, .meet-shoot {
+  padding: 0;
+  margin: 0;
+}
+
+
+// DISCOVER THE BEST EQUIPMENT LOCALLY //
+section.rental_c {
+  background-color: #F4F5F7;
+  // margin-top: 30px;
+  // margin-bottom: 30px;
+  padding: 60px 15px 30px 15px;
+}
+
+.landing-carousel {
+  margin: 0;
+}
+
+.listing-owner-img {
+  border-radius: 4px;
+  height: 40px;
+  margin: 0 8px 0 0;
+  overflow: hidden;
+  width: 40px !important;
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+
+.listing-owner-name a {
+  // color: #20152E !important;
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
+  // font-family: "lato";
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.listing-btn-name {
+  font-size: 18px;
+  line-height: 1;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
+  font-weight: 600;
+  margin-bottom: 0px;
+  color: #222222;
+  line-height: normal;
+  overflow: hidden;
+  font-family: sans-serif;
+}
+
+.listing-btn-price {
+  /* color: black;
+  font-size: 18px;
+  font-weight: 500; */
+  color: rgb(34, 34, 34);
+  font-weight: 800;
+  font-size: 16px !important;
+  line-height: 24px !important;
+  font-family: sans-serif;
+  -webkit-font-smoothing: antialiased;
+  margin-top: 0px;
+}
+
+.per-day {
+  color: #8993A4;
+  font-size: 12px !important;
+  line-height: 24px !important;
+  font-family: sans-serif;
+  -webkit-font-smoothing: antialiased;
+  margin-top: 2px;
+}
+
+.fill {
+  height: 0;
+  padding-bottom: 200px;
+  position: relative;
+  width: 100%;
+  border-radius: 10px 10px 0 0;
+}
+
+.fill img {
+  display: block;
+  height: auto;
+  max-height: none;
+  width: 100%;
+  height: 200px;
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+
+.gear-info-container {
+  padding: 10px 15px 5px 15px;
+}
+
+.listing-btn-info {
+  // border-top: 1px solid #DDE0E5;
+  border-top: none;
+  border-radius: 0 0 10px 10px;
+}
+
+.listing-btn-image {
+  border-radius: 10px 10px 0 0;
+}
+
+.owl-theme .owl-dots .owl-dot:active {
+  outline:none;
+}
+
+// OUR INVENTORY IS CONTINUALLY GROWING TO PROVIDE YOU WITH THE WIDEST CHOICE OF GEAR //
+section.inventory {
+  padding: 60px 15px 30px 15px;
+  background-color: white;
+}
+
+.inventory-row {
+  margin: 0;
+  padding: 0;
+}
+
+.inventory-container {
+  padding: 0;
+}
+
+
+// CATEGORY ICONS // 
+section.icon_panel {
+  padding: 0px 15px 60px 15px;
+  background-color: white;
+}
+
+section.icon_panel ul li {
+  width: 11.11111%;
+  vertical-align: top;
+}
+
+section.icon_panel ul li a span {
+  color: #000;
+  text-transform: uppercase;
+  font-size: 11px;
+  text-align: center;
+  font-family: sans-serif;
+  font-weight: 300;
+}
+
+section.icon_panel ul .more_img a img {
+  background-color: #0052CC;
+  color: #fff;
+  border: 10px solid white;
+  // padding: 5px;
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+}
+
+@media only screen and (max-width: 767px) {
+  section.icon_panel ul li {
+    width: 30%;
+  }
+}
+
+.category-link {
+  cursor: pointer
+}
+
+
+// A COMMUNITY OF FILMMAKERS AND CREATIVE PROFESSIONALS //
+section.filmmaker {
+  // background-color: #f6f4f4;
+  background-color: #F4F5F7;
+  padding: 60px 15px 60px 15px;
+}
+
+.filmmaker-row {
+  // max-width: max-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.filmmaker-container {
+  padding: 5px;
+}
+
+figure {
+  margin: 10px 0 10px 0;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  border: 5px solid #fff;
+  box-shadow: 0 0 5px #ddd;
+  border: none;
+  box-shadow: none;
+  // margin: 1em;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+// GET STARTED //
+.get-started {
+  margin-top: 30px;
+}
+
+.service_title p {
+  margin-bottom: 30px;
+  font-family: system-ui;
+}
+
+.btn-group .btn {
+  margin-left: -1px;
+  background: #0747A6;
+  text-transform: capitalize;
+  color: white;
+  border-style: solid;
+  border-width: 1px;
+  border-color: lightgray;
+  background-image: none;
+  border: none;
+  text-shadow: none;
+  // box-shadow: 0px 5px 5px 0px #C1C7D0;
+  &:hover {
+    background-color: #0065FF !important;
+    display: inline-block;
+    vertical-align: middle;
+    transform: perspective(1px) translateZ(1) !important;
+    // box-shadow: 0 0 1px transparent;
+    transition-duration: 0.3s;
+    transition-property: transform;
+  }
+}
+
+.landing-image {
+  border-radius: 10px;
+}
+
+.figer_caption {
+  border-radius: 10px;
+  font-family: system-ui;
+}

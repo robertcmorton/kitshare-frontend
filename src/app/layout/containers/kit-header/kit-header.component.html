@@ -1,0 +1,17 @@
+<div class="kit-wrapper">
+  <div class="isMobile" *ngIf="currentSize <= desktop">
+    <kit-logo-container></kit-logo-container>
+    <kit-navigation-triggers *ngIf="auth.isLoggedIn"></kit-navigation-triggers>
+    <kit-search [currentSize]="currentSize"></kit-search>
+    <kit-user-menu [loggedIn]="auth.isLoggedIn" [avatar]="user_profile_picture_link"></kit-user-menu>
+    <app-kit-primary-nav></app-kit-primary-nav>
+  </div>
+  <div class="isDesktop" *ngIf="currentSize > desktop">
+    <kit-logo-container></kit-logo-container>
+    <kit-search [currentSize]="currentSize"></kit-search>
+    <kit-desktop-navigation-triggers [loggedIn]="auth.isLoggedIn" [avatar]="user_profile_picture_link"></kit-desktop-navigation-triggers>
+    <a class="gear_button" *ngIf="auth.isLoggedIn" [routerLinkActive]="['active']" routerLink="/gear/gear-list">List your Gear</a>
+    <app-kit-primary-nav></app-kit-primary-nav>
+  </div>
+
+</div>

@@ -1,0 +1,11 @@
+<div class="category-wrapper">
+  <kit-dropdown [items]="categories$ | async" [displayString]="getCurrentCategoryName()"
+                (valueChanged)="categoryChanged($event)" [itemNameGetter]="getCategoryName"
+                [itemIdGetter]="getCategoryId" [defaultValue]="defaultCategory"
+                [inUse]="!!currentCategory"></kit-dropdown>
+
+  <kit-dropdown [items]="currentSubcategories" [displayString]="getCurrentSubCategoryName()"
+                [itemNameGetter]="getSubCategoryName" [itemIdGetter]="getSubCategoryId" [disabled]="!currentCategory"
+                [defaultValue]="defaultSubCategory" (valueChanged)="subcategoryChanged($event)"
+                [inUse]="!!currentSubCategory"></kit-dropdown>
+</div>

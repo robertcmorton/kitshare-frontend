@@ -1,0 +1,7 @@
+<ul *ngIf="shouldShowErrors()">
+	<li *ngFor="let error of listOfErrors()">{{error}}</li>
+</ul>
+
+<ul *ngIf="type =='typeahead'">
+	<li>Este campo es requerido</li>
+</ul>

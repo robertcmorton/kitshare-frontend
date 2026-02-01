@@ -1,0 +1,125 @@
+.container {
+    width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.profileSettings {
+    padding-left: 30px;
+    margin: auto;
+    max-width: 1200px;
+    // display: flex;
+    // justify-content: space-between;
+    // align-items: center;
+}
+
+// .contact_info_heading {
+//     margin-top: 72px;
+//   }
+
+.fixed-pos {
+    position: fixed;
+    width: 100%;
+    z-index: 1;
+  }
+  .btn-default {
+    margin: 0px;
+    background-image: none !important;
+    border: none !important;
+    border-style: none !important;
+    border-color: none !important;
+    border-width: 1px !important;
+    text-shadow: none !important;
+  }
+
+.SaveProfile {
+    float: right;
+    background-color: #0052CC;
+    color: #fff !important;
+    padding: 11px 19px;
+    &:hover {
+        background-color: #0065FF;
+    }
+}  
+
+@media screen and (max-width:691px) {
+    .profileSettings {
+        // width: none;
+        // padding-left: 0px !important;
+        // margin: auto;
+        // text-align: center;
+        h3 {
+            font-size: 18px;
+          }
+    }
+    button.btn.btn-default {
+        width: 112px !important;
+      }
+      .contact_info_heading {
+        margin-top: -10px;
+      }
+}
+
+.box_shadow_form {
+    padding: none !important;
+    border-bottom: none !important;
+}
+
+button.btn.btn-default {
+    border-radius: 5px;
+    width: fit-content;
+    width: 180px;
+    border-style: none !important;
+    border-color: none !important;
+}
+
+.contact_info_heading h2 {
+    padding: 15px 0px !important;
+    display: inline-block;
+    width: 100%;
+    border-bottom: none;
+    font-size: 30px;
+}
+
+select {
+    border: 1px solid #ccc !important;
+    height: 40px;
+    margin-top: 5px;
+    padding-left: 15px;
+    background-color: white;
+    width: 100%;
+}
+
+.right_column {
+    padding: 0 0 0 0;
+}
+
+hr {
+    margin-top: 15px;
+    margin-bottom: 20px;
+    border: 0;
+    border-top: 1px solid #eee;
+}
+
+#contact_form_list .label-input100 {
+    padding-left: 0;
+    text-transform: none;
+    font-weight: 700;
+}
+
+.input100 {
+    padding-left: 15px !important;
+}
+
+
+
+#contact_form_list .input100:focus {
+    border: 1px solid  #0065FF !important;
+}
+.row {
+    margin-bottom: 2rem;
+    width: 100%;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: 90px;
+  }

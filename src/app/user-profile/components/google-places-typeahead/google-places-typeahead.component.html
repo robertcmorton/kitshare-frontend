@@ -1,0 +1,9 @@
+<div class="address_block">
+  <input #address ngx-google-places-autocomplete [options]='options' #placesRef="ngx-places" (onAddressChange)="handleAddressChange($event)"/>
+  <div class="form-block">
+    <input [disabled]="true" type="number" placeholder="unit/suite" #floor>
+  </div>
+</div>
+
+<kit-address-error *ngIf="!addressState?.status" [state]="addressState"></kit-address-error>
+

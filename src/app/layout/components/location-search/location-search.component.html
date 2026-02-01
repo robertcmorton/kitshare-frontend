@@ -1,0 +1,14 @@
+<div class="location_search">
+  <div>
+    <button mat-icon-button disabled class="btn_disabled_solid">
+      <mat-icon class="icon-blue">room</mat-icon>
+    </button>
+  </div>
+  <div class="input_container">
+    <input class="location_input" name="search2" type="text" #mapAutocomplete
+           [value]="address$ | async"
+           (change)="handleAddressChange($event)" placeholder="Australia">
+  </div>
+</div>
+
+

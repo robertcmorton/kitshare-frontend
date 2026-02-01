@@ -1,0 +1,25 @@
+image: node:14.15.4
+
+pipelines:
+  branches:
+    master:
+      - step:
+          caches:
+            - node
+          script:
+            - apt-get update && apt-get install rsync -y
+            - npm install -g @angular/cli@13.2.2
+            - npm install
+            - npm run build
+            - rsync -r -v -e ssh dist/* kitshare_main@35.201.7.47:/var/www/vhosts/kitshare.com.au/httpdocs --exclude '*.yml'
+    development:
+      - step:
+          caches:
+            - node
+          script:
+            - apt-get update && apt-get install rsync -y
+            - npm install -g @angular/cli@10.2.0
+            - npm install
+            - ng build --prod=false
+            - ssh -i ~/.ssh/config kitshare_main@35.189.57.196 'sudo setfacl -R -m u:kitshare_main:rwx /var/www/html/kitshare/public'
+            - rsync -r -v -e ssh dist/* kitshare_main@35.189.57.196:/var/www/html/kitshare/public --exclude '*.yml'

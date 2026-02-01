@@ -1,0 +1,675 @@
+// RM 19.02.20
+// .tabbable-line1 {
+//     margin: 0px -15px 0px -15px;
+// }
+.Dashboard-container {
+  padding: 0 10px 0 10px;
+}
+
+.container {
+  width: 100%;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.col-md-12 .col-sm-12 {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.Manage_Border {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.row {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.nav-tabs {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  border-bottom: none;
+}
+.calander_btn .input100.input1000 {
+  border: none;
+  background: transparent;
+  color: #000;
+  font-size: 1.2rem;
+  font-weight: bold;
+  // text-align: center;
+  cursor: not-allowed;
+}
+
+.writereview-notifcation {
+  margin-bottom: auto;
+  margin-left: 15px;
+}
+
+/* style */
+
+.address_list .address_checkbox {
+  margin-bottom: 20px;
+  display: flex;
+  border: 1px solid #ccc;
+  padding: 10px !important;
+  border-radius: 5px !important;
+  -webkit-border-radius: 5px !important;
+  -moz-border-radius: 5px !important;
+  -ms-border-radius: 5px !important;
+  -o-border-radius: 5px !important;
+}
+
+/* Rentals and Manage Listings flexible width */
+
+// RM 19.02.20
+// .dashboard_body.bckd_c {
+//     padding-left: 0px !important;
+//     padding-right: 0px !important;
+//     margin-left: 0px !important;
+//     margin-right: 0px !important;
+//     margin-bottom: -1px;
+// }
+
+/* .nav.nav-tabs {
+    width: 90vw;
+
+ }
+
+ .search_rental {
+    margin-top: 33px;
+    text-align: center;
+    width: 90vw;
+} */
+
+.new_panel {
+  /*    margin-top: 33px;
+    text-align: center;
+    width: 100%; */
+  width: 90vw;
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+  margin-left: 0px !important;
+  margin-right: 0px !important;
+}
+
+.inactive_btns {
+  background: white;
+  &:active {
+    outline: 0;
+    box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  }
+  &:hover {
+    background-color: #f0f0f0;
+    color: black !important;
+  }
+  &:focus {
+    color: black !important;
+  }
+}
+
+.rentyear-selector:focus {
+  border: 1px solid #ccc !important;
+  &:hover {
+    background-color: #f4f5f7;
+  }
+}
+.tab_review {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+  margin: 12px 0;
+}
+
+.tab_review button.tablinks {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
+}
+
+.tab_review button.tablinks:hover {
+  background-color: #ddd;
+}
+
+.tab_review button.tablinks.active {
+  background-color: #ccc;
+}
+.listing {
+  margin-top: 17px;
+  width: 90vw;
+  padding: 0px 0px 0px 5%;
+}
+
+.search_rental.search_rentalnew {
+  padding-bottom: 20px;
+  margin-left: 4%;
+  margin-right: 4%;
+}
+
+.search_rental {
+  margin-top: 20px;
+  text-align: center;
+  padding-bottom: 20px;
+}
+
+.search_rental1 {
+  padding-bottom: 10px;
+  padding-top: 0px;
+  margin-top: 0px;
+  text-align: center;
+}
+
+/* .button_dropdown {
+    width: 50px;
+    border-color: lightgrey;
+    background-color: #f0f0f0;
+    font-weight: 600;
+} */
+
+.table-responsive.points_table1 {
+  width: 100%;
+  margin-bottom: 15px;
+  overflow-y: hidden;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+  border-bottom: 1px solid #ddd;
+  margin: 15px auto 0;
+  border: 0px solid #ddd;
+}
+
+.points_table {
+  margin-top: 15px;
+  margin-bottom: 39px;
+  /*    padding-left: 40px;
+    padding-right: 40px;    */
+  width: 90vw;
+  margin: 0px auto 0;
+}
+
+.payment-status {
+  text-transform: uppercase;
+}
+
+.order-status {
+  text-transform: uppercase;
+}
+
+.check {
+  display: block;
+  position: relative;
+  padding-left: 25px;
+  /* margin-bottom: 12px; */
+  /*    padding-right: 15px;  */
+  cursor: pointer;
+  font-size: 13px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  /* font-size: 14px; */
+}
+
+.checkmark1 {
+  position: absolute;
+  top: 16px !important;
+  left: 10px;
+  height: 18px;
+  width: 18px;
+  background-color: #fff;
+  border-color: #0747a6;
+  border-style: solid;
+  border-width: 2px;
+}
+
+.checkmark0 {
+  position: absolute;
+  top: 16px !important;
+  left: 10px;
+  height: 18px;
+  width: 18px;
+  background-color: #fff;
+  border-color: #0747a6;
+  border-style: solid;
+  border-width: 2px;
+}
+
+.all_btns {
+  float: none;
+  margin-top: 5px;
+}
+
+.category-btn {
+  width: 156px;
+  margin: 5px 5px 0 5px;
+}
+
+.button,
+select {
+  border: 1px solid #ccc;
+  background-color: #f0f0f0;
+  height: 34px;
+  vertical-align: top;
+  font-size: 14px;
+  color: #555;
+  border-radius: 4px;
+  width: 72px;
+  margin: 5px 5px 0px 0px;
+}
+
+.tr {
+  padding: 10px;
+}
+
+.glyphicon {
+  float: right;
+  padding: 3px 0 0 0px;
+}
+
+.manage-details {
+  max-width: 285px;
+  padding: 10px 0px 10px 0px;
+}
+
+.manage-gearname {
+  font-weight: bold;
+}
+
+.margin_new {
+  margin: 0px 0;
+  font-weight: bold;
+}
+
+.manage_address {
+  margin: 0px 0;
+}
+
+.btn-pubpriv {
+  display: inline-block;
+  padding: 6px 12px;
+  margin: 25px 0 0 0;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.42857143;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background-image: none;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+
+// .modal-dangerButton {
+//     width: 49% !important;
+//     float: right;
+//     margin: 0;
+//     &:hover {
+//         background-color: #FAFBFC;
+//     }
+// }
+
+.modal-primaryButton {
+  width: 49% !important;
+  float: left;
+  margin: 0 !important;
+}
+/* REVIEW SECTION */
+
+.Reviews-Container {
+  padding: 0 0 0 0;
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 1200px;
+}
+
+.Review-Response {
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 50px;
+  // margin: 0 0 0 0;
+  padding: 0 0 0 0;
+  max-width: 1200px;
+}
+
+.write_reviews {
+  font-size: 18px;
+  font-weight: 500;
+  margin: 30px 0px 20px 0;
+  font-family: system-ui;
+}
+
+.text_reviews {
+  font-size: 18px;
+  font-weight: 500;
+  margin: 20px 0px 15px 0;
+  font-family: system-ui;
+}
+
+.Project-name-review {
+  color: black;
+  font-size: 16px;
+  font-weight: 600;
+  font-family: system-ui;
+}
+
+.user-responsename {
+  color: black;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: system-ui;
+}
+
+.Review-Details {
+  color: #0065ff;
+  font-size: 14px;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.review_templ {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-bottom: 15px;
+  border: 1px solid #dadada;
+  padding: 10px;
+  border-radius: 5px;
+  margin: 0 0 10px 0;
+  background-color: white;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.review_templ img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  // border-radius: 4px;
+  object-fit: cover;
+  margin-right: 15px;
+}
+
+.user-response {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  // border: 1px solid #dadada;
+  // border-radius: 5px;
+  padding: 20px 0px 10px 10px;
+  margin: 0 0 0px 0;
+  background-color: white;
+}
+
+.user-response img {
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  // border-radius: 4px;
+  object-fit: cover;
+  margin-right: 15px;
+  padding: 0;
+  display: block;
+  max-width: 100%;
+  outline: none;
+  border: none;
+  vertical-align: middle;
+  margin: 0;
+}
+
+.prof-user-listings__heading {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  padding-top: 12px;
+  padding-bottom: 0px;
+}
+
+.prof-user-listings__heading h2 {
+  margin: 0 0 0% 0;
+}
+
+.media.comment-author {
+  margin: 0% 0 0% 0;
+  border: 1px solid #dfe1e6;
+  background-color: white;
+  border-radius: 4px;
+  padding: 10px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.media.comment-author a img {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 10px;
+  // border-radius: 4px;
+  border-radius: 50%;
+}
+
+@media screen and (max-width: 767px) {
+  .comment-author .media-body p {
+    font-size: 14px;
+    font-family: inherit;
+    line-height: 21px;
+    margin-bottom: 15px;
+    margin-top: 0 !important;
+  }
+}
+
+.review {
+  color: black;
+}
+
+.submitresponse-container {
+  padding: 0 10px 0 10px;
+}
+
+.reviewWrap {
+  margin-bottom: 15px;
+}
+
+.review-response {
+  padding: 10px;
+}
+
+.write-reviewbox {
+  margin-bottom: 0;
+}
+
+.img-responsive {
+  padding: 0 0 0 0;
+  margin: none;
+}
+
+.media-body {
+  line-height: 21px;
+  // margin-bottom: 15px;
+  // margin-top: 15px;
+  letter-spacing: 0.2px;
+  // padding-top: 20px;
+}
+
+.comment-author .media-body p {
+  font-size: 14px;
+  font-family: inherit;
+  line-height: 7px;
+  margin-bottom: 0px;
+  // margin-top: 15px;
+  line-height: 2rem;
+}
+
+.response-description {
+  color: #6b778c;
+}
+
+.replyForm {
+  clear: both;
+  margin-left: 0px !important;
+  margin: 15px 0 10px 0;
+}
+
+.form-control {
+  display: block;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #555;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #dfe1e6;
+  border-radius: 4px;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  margin-top: 5px;
+}
+
+div#reviewModal label {
+  text-align: right;
+  display: block;
+  margin-bottom: 0px;
+  padding: 0px 25px 18px 0px;
+  float: left;
+}
+
+.rating {
+  margin-bottom: none;
+  padding: 6px 0 0px 0px;
+  margin: 4px !important;
+}
+
+.noreview {
+  margin: 0px 0px 0px 5%;
+  font-size: 13px;
+}
+
+.review-project {
+  font-weight: 500;
+  font-family: system-ui;
+  line-height: 1;
+}
+
+.owner-descdate {
+  padding: 0 0 0px 10px;
+  font-family: "Open Sans";
+}
+
+.reviewdesc {
+  font-size: 14px;
+  color: #6b778c;
+  margin-bottom: 5px;
+}
+
+.review-name {
+  font-weight: 500;
+  font-family: system-ui;
+}
+
+.comment-date {
+  // padding: 5px 0;
+  color: #97a0af;
+  font-size: 10px;
+}
+
+.ng-container {
+  float: right;
+}
+
+.body.isDesktop.content_area {
+  margin-top: 64px;
+  margin-bottom: -31px;
+}
+
+body.isMobile .content_area {
+  margin-top: 55px;
+  margin-bottom: -31px;
+}
+
+.mat-button-wrapper span.count {
+  color: white;
+  position: absolute;
+  background: red;
+  font-size: 10px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  top: 0;
+  right: -3px;
+  -webkit-box-shadow: 0 0 5px #06070a47;
+  box-shadow: 0 0 5px #06070a47;
+}
+
+// BUTTONS //
+.btn_new {
+  display: inline-block;
+  padding: 6px 34px;
+  margin-right: 10px;
+  border-style: solid !important;
+  border-color: lightgrey !important;
+  border-width: 1px !important;
+  min-width: 100px;
+  margin-top: 5px;
+  &:hover {
+    background-color: rgb(240, 240, 240);
+    color: black;
+  }
+  &:inactive {
+    background-color: white;
+  }
+  &:focus {
+    color: white;
+  }
+}
+
+.response-container {
+  padding: 0px 10px 0px 10px;
+}
+
+.media-left {
+  padding-right: 15px;
+}
+
+.review-submit {
+  margin-top: 20px;
+  padding: 0 10px 0 10px;
+  font-family: system-ui !important;
+}
+
+@media (max-width: 991px) {
+  .review-submit {
+    margin-top: 10px;
+  }
+}
+
+///RESPONSIVENESS///
+
+@media screen and (max-width: 767px) {
+  .media-body,
+  .media-left,
+  .media-right {
+    display: block;
+    width: auto;
+  }
+}

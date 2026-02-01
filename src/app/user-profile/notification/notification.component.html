@@ -1,0 +1,123 @@
+<section class="dashboard_bodynew">
+    <div class="top_bresdcum">
+        <div class="container">
+            <div class="col-md-12">
+                Profile Settings
+            </div>
+        </div>
+    </div>
+    <div id="contact_form_list">
+        <div class="container">
+            <div class="row">
+                <app-left-sidebar></app-left-sidebar>
+                <div class="col-md-9 col-sm-9">
+                    <div class="col-md-12">
+                        <div class="contact_info_heading">
+                            <h2>Notification Settings</h2>
+                            <hr/>
+                        </div>
+                    </div>
+                    <div class="container-contact100 box_shadow_form">
+                        <div class="col-md-12">
+                            <div class="notification_panrl">
+                                <h3>I want to get an sms message when</h3>
+                                <div class="checkbox checkbox-primary checkbox50">
+                                    <input id="checkbox1" type="checkbox"  [(ngModel)]="notificationData.rental_message"
+                                        name="rental_message" >
+                                    <label for="checkbox1">
+                                        I get an important message about a rental
+                                    </label>
+                                </div>
+                                <br><br>
+                                <h3>
+                                    I want to get an email notification when
+                                </h3>
+                                <div class="checkbox checkbox-primary checkbox50">
+                                    <input id="checkbox2" type="checkbox" [(ngModel)]="notificationData.send_message"
+                                        name="send_message">
+                                    <label for="checkbox2">
+                                        somebody sends me a message
+                                    </label>
+                                </div>
+                                <div class="checkbox checkbox-primary checkbox50">
+                                    <input id="checkbox3" type="checkbox" [(ngModel)]="notificationData.comment_on_offer"
+                                        name="comment_on_offer">
+                                    <label for="checkbox3">
+                                        somebody comments my offer or request
+                                    </label>
+                                </div>
+                                <div class="checkbox checkbox-primary checkbox50">
+                                    <input id="checkbox4" type="checkbox" [(ngModel)]="notificationData.accept_offer"
+                                        name="accept_offer">
+                                    <label for="checkbox4">
+                                        somebody accepts my offer or request
+                                    </label>
+                                </div>
+                                <div class="checkbox checkbox-primary checkbox50">
+                                    <input id="checkbox5" type="checkbox" [(ngModel)]="notificationData.reject_offer"
+                                        name="reject_offer">
+                                    <label for="checkbox5">
+                                        somebody rejects my offer or request
+                                    </label>
+                                </div>
+                                <div class="checkbox checkbox-primary checkbox50">
+                                    <input id="checkbox6" type="checkbox" [(ngModel)]="notificationData.review" name="review">
+                                    <label for="checkbox6">
+                                        somebody gives me a review
+                                    </label>
+                                </div>
+                                <div class="checkbox checkbox-primary checkbox50">
+                                    <input id="checkbox7" type="checkbox" [(ngModel)]="notificationData.forget_to_aceept_offer"
+                                        name="forget_to_aceept_offer">
+                                    <label for="checkbox7">
+                                        I have forgotten to accept an offer or a request
+                                    </label>
+                                </div>
+                                <div class="checkbox checkbox-primary checkbox50">
+                                    <input id="checkbox7" type="checkbox" [(ngModel)]="notificationData.forget_to_aceept_offer" name="forget_to_aceept_offer">
+                                    <label for="checkbox7">
+                                        i have forgotten to confirm a request as started
+                                    </label>
+                                </div>
+                                <div class="checkbox checkbox-primary checkbox50">
+                                    <input id="checkbox7" type="checkbox" [(ngModel)]="notificationData.forget_to_aceept_offer" name="forget_to_aceept_offer">
+                                    <label for="checkbox7">
+                                        i have forgotten to confirm a request as completed
+                                    </label>
+                                </div>                                
+
+                                <div class="checkbox checkbox-primary checkbox50">
+                                    <input id="checkbox7" type="checkbox" [(ngModel)]="notificationData.forget_to_aceept_offer" name="forget_to_aceept_offer">
+                                    <label for="checkbox7">
+                                        i have forgotten to give a review on an event
+                                    </label>
+                                </div>
+                                <div class="checkbox checkbox-primary checkbox50">
+                                    <input id="checkbox7" type="checkbox" [(ngModel)]="notificationData.forget_to_aceept_offer" name="forget_to_aceept_offer">
+                                    <label for="checkbox7">
+                                     someone marks my offer or request as completed
+                                    </label>
+                                </div>
+                                <div class="checkbox checkbox-primary checkbox50">
+                                    <input id="checkbox7" type="checkbox" [(ngModel)]="notificationData.forget_to_aceept_offer" name="forget_to_aceept_offer">
+                                    <label for="checkbox7">
+                                        i recieve a new payment
+                                    </label>
+                                </div>
+                                <div class="checkbox checkbox-primary checkbox50">
+                                    <input id="checkbox7" type="checkbox" [(ngModel)]="notificationData.forget_to_aceept_offer" name="forget_to_aceept_offer">
+                                    <label for="checkbox7">
+                                         i have forgotton to pay
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <button (click)="updateNotificationSettings()" class="btn cart_btns55">Save information</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

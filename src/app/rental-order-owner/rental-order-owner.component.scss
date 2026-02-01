@@ -1,0 +1,618 @@
+.back_cartpage {
+        // padding-left: 15px;
+        font-size: 16px;
+}
+
+.summary-item-header {
+    font-size: 16px;
+    color: #696b82;
+}
+
+.rental_cart.row {
+    padding-left: 15px;
+}
+
+    .cart_sec {
+        margin-top: 57px;
+    }
+
+// @media (max-width: 1320px) {
+//     .back_cartpage {
+//         padding-left: 0;
+//     }
+// }
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+}
+
+.Left-Block {
+    text-align: center;
+    width: none;
+}
+
+// .Right-Block {
+
+// }
+
+.content_sec_info {
+    margin-top: 23px;
+    margin-bottom: 50px
+}
+
+.content_sec_info p {
+    font-size: 12px;
+    color: #808080;
+}
+
+/* h3 {
+    text-align: center;
+
+} 
+
+.date_box .pull-right {
+    max-width: 450px;
+
+}
+
+.date_box ul li {
+    display: inline-block;
+    margin-right: 32px;
+} */
+
+/* PROFILE IMAGE AND TEXT */
+
+.order_date {
+    color: #0065FF;
+    font-size: 18px;
+    margin-right: 8px;
+    font-weight: 600;
+    float: left;
+}
+
+.profile_sec {
+    border: 2px solid #e0e4e4;
+    padding: 10px 10px 10px 10px;
+    margin: 25px 0px 0 0px;
+    // display: inline-block;
+    // max-width: none !important;
+    float: left;
+    width: 98%;
+    background-color: white;
+}
+
+.date_box {
+    padding: 30px 25px 30px 25px;
+    // display: inline-block;
+    // margin-right: 65px;
+    border: 2px solid #e0e4e4;
+    padding: 30px;
+    margin-top: 25px;
+    width: 100%;
+    float: right;
+    background-color: white;
+
+}
+
+.date_box ul li {
+    display: inline-block;
+    // margin-right: 65px;
+}
+
+.image_sec {
+    // float: left;
+    // margin-right: 0px;
+    margin-bottom: 15px;
+    // margin-right: 49px;
+    margin-bottom: 15px;
+}
+
+.image_sec img {
+    width: 100% !important;
+    height: 255px;
+    object-fit: cover;
+    border-radius: 5px;
+    // min-width: 450px;
+}
+
+.fa-angle-right {
+    margin: 10px;
+
+}
+
+// BUTTONS
+
+.form-btn {
+    border-radius: 8px;
+    width: 180px;
+}
+
+.accept_rental_btns {
+    background-color: #00875A;
+    color: #fff;
+    padding: 11px 19px;
+    border: none;
+    float: left;
+    font-size: 15px;
+    border-radius: 5px;
+    margin: 30px 5px 30px 5px;
+    &:focus {
+        outline: none;
+    }
+    &:hover {
+        background-color: #36B37E;
+        // border-color: #00ff00 !important;
+    }
+}
+
+.decline_rental_btns {
+    background-color: #ff0000;
+    color: #fff;
+    padding: 11px 19px;
+    border: none;
+    float: left;
+    font-size: 15px;
+    border-radius: 5px;
+    margin: 30px 5px 30px 5px;
+    &:focus {
+        outline: none;
+    }
+    &:hover {
+        background-color: #aa0000;
+        color: #fff;
+    }
+}
+
+// .decline_rental_btns:hover {
+//     background-color: #aa0000;
+//     color: #fff;
+// }
+
+.end_rental_btns {
+    background-color: #ff0000;
+    color: #fff;
+    padding: 11px 19px;
+    border: none;
+    float: right;
+    font-size: 15px;
+    border-radius: 5px;
+    margin: 30px 5px 30px 5px;
+    &:focus {
+        outline: none;
+    }
+    &:hover {
+        background-color: #aa0000;
+        color: #fff;
+    }
+}
+
+// .end_rental_btns:hover {
+//     background-color: #aa0000;
+//     color: #fff;
+// }
+
+.cancel_rental_btns {
+    width: 160px;
+    background-color: #ff0000;
+    color: #fff;
+    padding: 11px 19px;
+    border: none;
+    float: right;
+    font-size: 15px;
+    border-radius: 5px;
+    margin: 30px 5px 30px 5px;
+    &:focus {
+        outline: none;
+    }
+    &:hover {
+        background-color: #aa0000;
+        color: #fff;
+    }
+}
+
+// .cancel_rental_btns:hover {
+//     background-color: #aa0000;
+//     color: #fff;
+// }
+
+.submit_review_btns {
+    width: 160px;
+    background-color: #0065FF;
+    color: #fff;
+    padding: 11px 19px;
+    border: none;
+    float: right;
+    font-size: 15px;
+    border-radius: 5px;
+    margin: 30px 0px 30px 0px;
+    width: 100%;
+    &:focus {
+        outline: none;
+    }
+    &:hover {
+        background-color: #0747A6;
+        color: #fff;
+    }
+}
+
+// .submit_review_btns:hover {
+//     background-color: #0747A6;
+//     color: #fff;
+// }
+
+.submit_issue_btns {
+    width: 160px;
+    background-color: #0065FF;
+    color: #fff;
+    padding: 11px 19px;
+    border: none;
+    float: right;
+    font-size: 15px;
+    border-radius: 5px;
+    margin: 10px 0px 30px 0px;
+    width: 100%;
+    &:focus {
+        outline: none;
+    }
+    &:hover {
+        background-color: #0747A6;
+        color: #fff;
+    }
+}
+
+// .submit_issue_btns:hover {
+//     background-color: #0747A6;
+//     color: #fff;
+// }
+
+
+/* DATE BLOCK AND TEXT */
+
+.date_box {
+    margin: 25px 0px 0px 0px;
+
+}
+
+.date_block {
+    text-align: center;
+}
+
+.pick_date {
+    font-size: 17px;
+    font-weight: bolder;
+}
+
+.shoot_days {
+    margin-top: 30px;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.icon {
+    font-size: 39px;
+    margin: 0 55px 0 55px;
+}
+
+/* DAMAGE / ISSUES */
+
+.cart-detail-app {
+    border-radius: 0.1875em;
+    height: 40px;
+    border: none;
+    color: #696b82;
+    background: #ececec;
+    width: 200px;
+    padding: 0px 8px;
+    
+}
+
+.issueWrap {
+    margin: 15px 3px;
+}
+
+.issueWrap textarea {
+    resize: none;
+}
+
+.issueWrap .unavailable_btn1 {
+    margin-bottom: 15px;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+
+/* HELP / FAQ */
+
+.help_sec.damageView {
+    border-top: none;
+}
+
+.help_leftside[_ngcontent-c15] h4[_ngcontent-c15] {
+    margin-bottom: 4px;
+}
+
+.help_leftside h4 {
+    margin-bottom: 10px;
+}
+
+.help_leftside p {
+    font-size: 15px;
+    color: #545454;
+}
+
+/* DAMAGE / ISSUE ICON */
+
+.glyphicon {
+    position: relative;
+    top: 1px;
+    display: inline-block;
+    font-family: 'Glyphicons Halflings';
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1;
+    margin: 6px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* DISCLAIMERS */
+
+.content_sec h3 {
+    font-size: 19px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    clear: both;
+    display: block;
+}
+
+.security_text {
+    padding: 0px;
+    font-weight: bolder;
+    padding-top: 10px;
+
+}
+
+.headings_new {
+    padding: 0px;
+    font-weight: bolder;
+    padding-top: 15px;
+}
+
+.checkbox_sec {
+    font-size: 16px;
+  }
+
+/* ACCEPT / DECLINE / CANCEL / END RENTAL BUTTON */
+
+// .btn-default {
+//     background-image: none !important;
+//     border: none !important;
+//     border-style: solid !important;
+//     border-color: none !important;
+//     border-width: none !important;
+//     text-shadow: none !important;
+// }
+
+/* RESPONSIVE */
+
+@media only screen and (max-width: 1200px) {
+    // .rental_cart.row {
+    //     font-size: 16px;
+    //     margin-left: 0px;
+    // }
+
+    .cart_sec {
+        margin-top: 57px;
+        margin-bottom: 52px;
+    }
+
+    .icon {
+        font-size: 39px;
+        margin: 0 55px 0 55px;
+    }
+
+}
+
+@media only screen and (max-width: 1100px) {
+    // .rental_cart.row {
+    //     font-size: 16px;
+    //     margin-left: 0px;
+    // }
+
+    // .cart_sec {
+    //     margin-top: 57px;
+    // }
+
+    .icon {
+        font-size: 39px;
+        margin: 0 55px 0 55px;
+    }
+
+
+
+}
+
+@media only screen and (max-width: 991px) {
+    // .rental_cart.row {
+    //     font-size: 16px;
+    //     margin-left: 0px;
+    // }
+
+    // .cart_sec {
+    //     margin-top: 57px;
+    // }
+
+    .icon {
+        font-size: 39px;
+        margin: 0 55px 0 55px;
+    }
+
+    .profile_sec {
+        // float: left;
+        width: 100%;
+    }
+
+    .date_box {
+        // float: left;
+        width: 100%;
+    }
+
+    .cart-detail-app {
+        margin: 0;
+    }
+
+}
+
+@media (min-width: 992px) and (max-width: 1105px) {
+    .date_box ul li {
+        display: block;
+        margin-right: 7px;
+        text-align: center;
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 892px) {
+    // .rental_cart.row {
+    //     font-size: 16px;
+    //     margin-left: 0px;
+    // }
+
+    // .cart_sec {
+    //     margin-top: 57px;
+    // }
+
+    .icon {
+        font-size: 39px;
+        margin: 0 55px 0 55px;
+    }
+
+    .profile_sec {
+        // padding: 10px;
+        // margin-top: 25px;
+        // display: inline-block;
+        width: 100%;
+    }
+
+    .date_box {
+        // float: left;
+        width: 100%;
+    }
+
+}
+
+@media only screen and (max-width: 767px) {
+    .help_rightside {
+        float: left;
+        text-align: left;
+        margin-top: 20px;
+    }
+
+    .help_leftside {
+        float: none;
+    }
+
+    .myproject_details h2 {
+        font-size: 18px;
+    }
+
+    .profile_sec {
+        // padding: 10px;
+        // // margin-top: 25px;
+        // display: inline-block;
+        width: 100%;
+    }
+    .date_box ul li {
+        display: block;
+        margin-right: 7px;
+        text-align: center;
+        width: 100%;
+    }
+
+}
+
+/* MODAL FOR REVIEWS */
+
+div#reviewModal label {
+    text-align: left;
+    display: block;
+    margin-bottom: 20px;
+}
+
+/*--thank you pop starts here--*/
+.thank-you-pop{
+    width:100%;
+    // padding:20px;
+    text-align:center;
+}
+.thank-you-pop img{
+    width:76px;
+    height:auto;
+    margin:0 auto;
+    display:block;
+    margin-bottom:25px;
+}
+
+.thank-you-pop h1{
+    font-size: 36px;
+    margin-bottom: 25px;
+    color:#5C5C5C;
+}
+.thank-you-pop p{
+    font-size: 18px;
+    margin-bottom: 27px;
+    color:#5C5C5C;
+}
+.thank-you-pop h3.cupon-pop{
+    font-size: 25px;
+    margin-bottom: 40px;
+    color:#222;
+    display:inline-block;
+    text-align:center;
+    padding:10px 20px;
+    border:2px dashed #222;
+    clear:both;
+    font-weight:normal;
+}
+.thank-you-pop h3.cupon-pop span{
+    color:#03A9F4;
+}
+.thank-you-pop a{
+    display: inline-block;
+    margin: 0 auto;
+    padding: 9px 20px;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 14px;
+    background-color: #8BC34A;
+    border-radius: 17px;
+}
+.thank-you-pop a i{
+    margin-right:5px;
+    color:#fff;
+}
+#ignismyModal .modal-header{
+    border:0px;
+}
+.btn_ok{
+    margin-top:15px;
+}
+/*--thank you pop ends here--*/
+
+.success-buttonclose {
+    margin-top: 30px;
+    width: 160px;
+    background-color: #00875A;
+    color: white;
+    border: none;
+    height: 40px;
+    border-radius: 5px;
+    &:hover {
+        background-color: #36B37E;
+    }
+}
+
+.cupon-pop {
+    font-size: 18px;
+}

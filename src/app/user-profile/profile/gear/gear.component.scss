@@ -1,0 +1,69 @@
+.profile-listing {
+    padding: 0 5px 0 5px;
+}
+
+.listing-btn-price {
+    font-size: 14px;
+}
+
+.listing-btn-name {
+    margin: 0;
+}
+
+.gear-info-container {
+    padding: 20px 15px 20px 15px;
+}
+
+.per-day, .listing-btn-price {
+    /* color: black;
+    font-size: 18px;
+    font-weight: 500; */
+    color: rgb(34, 34, 34);
+    font-weight: 800;
+    font-size: 16px !important;
+    // line-height: 24px !important;
+    font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
+.per-day {
+    color: #8993A4;
+    font-size: 12px !important;
+    line-height: 24px !important;
+    font-family: sans-serif;
+    -webkit-font-smoothing: antialiased;
+    margin-top: 2px;
+  }
+
+.day-weekend {
+    /* color: #42526E;
+    font-size: 14px;
+    font-weight: 300; */
+    color: rgb(34, 34, 34) !important;
+    font-size: 12px;
+    font-weight: 500;
+    flex: 1 1 0% !important;
+    line-height: 18px !important;
+    max-height: 18px !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+}
+
+.listing-btn, .listing-154231 {
+    border-radius: 10px;
+}
+
+.fill img {
+    height: 200px;
+    border-radius: 5px 5px 0 0;
+}
+
+.fill {
+    height: 0;
+    padding-bottom: 200px;
+    position: relative;
+    width: 100%;
+}

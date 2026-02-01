@@ -1,0 +1,301 @@
+<section class="dashboard_body">
+    <div class="container">
+        <div class="info page-info">
+            <div class="prof-wrapper">
+                <div class="row">
+                    <div class="profile-left col-lg-3 col-md-4">
+                        <div id="user" class="space-4 ">
+                            <div>
+                                <div class="space-2" id="user-media-container">
+                                    <img src="{{ userProfileData.user_profile_picture_link }}" class="img-responsive">
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="space-4">
+                            <div class="profile_details hidden-lg hidden-md">
+
+                                <h1>
+                                    <strong>{{ userProfileData.app_user_first_name }}
+                                        <!-- {{userProfileData.app_user_last_name }}  -->
+                                    </strong>
+                                </h1>
+
+                                <div class="profession-state">
+                                    <span class="profile-profession" *ngIf="userProfileData.profession_name != 'Other'">{{userProfileData.profession_name}}</span>
+                                    <span class="profile-state" *ngIf="userProfileData.profession_name == 'Other'">{{userProfileData.other_profession}}</span>
+                                    <br />
+                                    <span class="profile-state"> {{profile_address_state}}... </span>
+                                    <span class="text-normal">Joined {{ userProfileData.create_date | date : 'MMM d, y'
+                                        }}</span>
+                                </div>
+
+                                <div class="text-muted space-top-2">
+                                    <kit-rating-decimal [currentRate]="avg_rating" [disabled]="true"></kit-rating-decimal>
+
+                                </div>
+
+
+                                <div class="own_info">
+                                    <p [innerHTML]="userProfileData.user_description"></p>
+                                </div>
+
+
+                                <!---  Mobile social icon section -->
+
+                                <kit-social-links [userdata]="userProfileData"></kit-social-links>
+
+                            </div>
+                        </div>
+
+
+                        <div class="panel space-4">
+                            <div class="panel-header">
+                                Verified Info
+                            </div>
+                            <div class="panel-body">
+                                <ul class="list-unstyled space-3" title="Verified info">
+
+
+                                    <!-- <li>
+                                        <a [routerLink]="[ '/profile/address-details' ]">
+                                            <span *ngIf="address_found" style="color:none;">Address</span>
+                                            <span *ngIf="!address_found">Address</span>
+                                            <span class="pull-right">
+                                                <i class="" aria-hidden="true">
+                                                    <img *ngIf="address_found" src="assets/images/tick.png">
+                                                </i>
+                                            </span>
+                                        </a>
+                                    </li> -->
+
+                                    <li>
+                                        <a [routerLink]="[ '/profile/digital-id' ]">
+                                            <span *ngIf="digital_id_verified" style="color:none;">Digital ID</span>
+                                            <span *ngIf="!digital_id_verified">Digital ID</span>
+                                            <span class="pull-right">
+                                                <i class="" aria-hidden="true">
+                                                    <img *ngIf="address_found" src="assets/images/tick.png">
+                                                </i>
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a [routerLink]="[ '/profile/account-settings' ]">
+                                            <span *ngIf="is_mobile_verified" style="color:none;">Phone Number</span>
+                                            <span *ngIf="!is_mobile_verified">Phone Number</span>
+                                            <span class="pull-right">
+                                                <i class="" aria-hidden="true">
+                                                    <img *ngIf="is_mobile_verified" src="assets/images/tick.png">
+                                                </i>
+                                            </span>
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a [routerLink]="[ '/profile/account-settings' ]" style="color:none;">Email
+                                            <span class="pull-right">
+                                                <i class="" aria-hidden="true">
+                                                    <img src="assets/images/tick.png">
+                                                </i>
+                                            </span>
+                                        </a>
+                                    </li>
+
+
+                                    <li>
+                                        <a [routerLink]="[ '/profile/address-details' ]">
+                                            <span *ngIf="address_found" style="color:none;">Address</span>
+                                            <span *ngIf="!address_found">Address</span>
+                                            <span class="pull-right">
+                                                <i class="" aria-hidden="true">
+                                                    <img *ngIf="address_found" src="assets/images/tick.png">
+                                                </i>
+                                            </span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+
+                        <div class="clearfix"></div>
+                        <!-- <div class="panel space-4">
+                            <div class="panel-header">
+                                My Community
+                            </div>
+                            <div class="panel-body network">
+                                <span>
+                                    <img src="assets/images/network_image.png">
+                                    </span>
+                                                    <span>
+                                    <img src="assets/images/network_image.png">
+                                    </span>
+                                                    <span>
+                                    <img src="assets/images/network_image.png">
+                                    </span>
+                                                    <span>
+                                    <img src="assets/images/network_image.png">
+                                    </span>
+                                                    <span>
+                                    <img src="assets/images/network_image.png">
+                                    </span>
+                                                    <span>
+                                    <img src="assets/images/network_image.png">
+                                    </span>
+                                                    <span>
+                                    <img src="assets/images/network_image.png">
+                                    </span>
+                                                    <span>
+                                    <img src="assets/images/network_image.png">
+                                    </span>
+                                                    <span>
+                                    <img src="assets/images/network_image.png">
+                                    </span>
+                                                    <span>
+                                    <img src="assets/images/network_image.png">
+                                    </span>
+                            </div>
+                        </div> -->
+                        <!-- <div class="panel space-4">
+                            <div class="panel-header">
+                                Availabilty and Use
+                            </div>
+                            <div class="panel-body info_panel">
+                                <p> 24 hrs Response time
+                                    <br> 100% Acceptance Rate
+                                    <br> 59 Reviewa
+                                    <br> 3 References
+                                </p>
+                            </div>
+                        </div> -->
+
+                        <div class="ProfileEdit-Container" *ngIf="app_user_id == 0">
+                            <a class="ProfileEdit-Button" [routerLink]="['edit']">
+                                <span class="material-icons material-edit">
+                                    manage_accounts
+                                </span>
+                                Edit profile
+                            </a>
+                        </div>
+
+                    </div>
+
+                    <!-- START RIGHT COLUMN -->
+                    <div class="profile-right col-lg-9 col-md-8 col-sm-12">
+                        <div class="">
+                            <div class="profile_details hidden-xs  hidden-sm">
+                                <h1>
+                                    <strong>{{ userProfileData.app_user_first_name }}
+                                        <!-- {{userProfileData.app_user_last_name }}  -->
+                                    </strong>
+                                </h1>
+
+                                <div class="text-muted space-top-2">
+                                    <kit-rating-decimal [currentRate]="avg_rating" [disabled]="true"></kit-rating-decimal>
+
+                                </div>
+
+
+                                <div class="h5 profession-state">
+                                    <span class="profile-profession" *ngIf="userProfileData.profession_name != 'Other'">{{userProfileData.profession_name}}</span>
+                                    <span class="profile-state" *ngIf="userProfileData.profession_name == 'Other'">{{userProfileData.other_profession}}</span>
+                                    <br />
+                                    <span class="profile-state"> {{profile_address_state}}... </span>
+                                    <span class="profile-state">Joined {{ userProfileData.create_date | date : 'd MMMM,
+                                        y' }}</span>
+                                </div>
+
+
+                                <div class="own_info">
+                                    <p [innerHTML]="userProfileData.user_description"></p>
+                                </div>
+                                <kit-social-links [userdata]="userProfileData"></kit-social-links>
+                            </div>
+                            <div class="clearfix"></div>
+                            <div class="prof-user-listings__heading">
+                                <h2>
+                                    {{ totalItems === 0 ? 'No' : totalItems }} Listings
+                                    <select *ngIf="app_user_id == 0" class="form-control" (change)="onChangePublicPrivate($event.target.value)">
+                                        <option value="all">All</option>
+                                        <option value="public">Public</option>
+                                        <option value="private">Private</option>
+                                    </select>
+                                </h2>
+                            </div>
+                            <div class="select-Category col-md-4 col-sm-4 col-xs-12">
+                                <div class="category_btn">
+                                    <select class="form-control category_lable" (change)="onChange($event.target.value)">
+                                        <option value="">Select Category</option>
+                                        <ng-container *ngFor="let eachCategory of gearCategries ">
+                                            <option value="{{ eachCategory.gear_category_id}}" [selected]="eachCategory.gear_category_id ==cat_id">{{
+                                                eachCategory.gear_category_name}}</option>
+                                        </ng-container>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="select-Category col-md-8 col-sm-8 col-xs-12">
+                                <div class="search_btns">
+                                    <form class="examplenew" action="/action_page.php">
+                                        <input type="text" placeholder="Search your gear.." [(ngModel)]="searchgear" name="searchgear">
+                                        <button type="submit" (click)="clickSearchGear()">
+                                            <!-- <i class="fa fa-search"></i> -->
+                                            <span class="material-icons">
+                                                search
+                                            </span>
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                            <div class="profle_product_details" *ngIf="gearLists.length">
+                                <ng-container *ngFor="let eachGear of gearLists">
+                                    <app-gear [eachGear]="eachGear"></app-gear>
+                                </ng-container>
+                                <ng-container *ngIf="gearLists.length === 0">
+                                    <p>No Listings Found</p>
+                                </ng-container>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+
+                        <ng-container *ngIf="gearLists.length">
+                            <pagination [totalItems]="totalItems" itemsPerPage="12" [(ngModel)]="currentPage" (pageChanged)="pageChanged($event)" nextText=">" previousText="<" lastText=">>" firstText="<<"></pagination>
+                        </ng-container>
+                        <div *ngIf="reviewLists.length">
+                            <div class="prof-user-listings__heading reviews_sec">
+                                <h2>Reviews From Owners</h2>
+                            </div>
+                            <div id="start_reviews" class="clearfix"></div>
+                            <ng-container *ngFor="let eachReview of reviewLists | ownerreviews;">
+                                <app-review [eachReview]="eachReview"></app-review>
+                            </ng-container>
+
+                            <p class="No-Reviewblock" *ngIf="reviewLists.length === 0">
+                                No Reviews Found
+                            </p>
+
+                            <div class="prof-user-listings__heading reviews_sec">
+                                <h2>Reviews From Renters</h2>
+                            </div>
+                            <div id="start_reviews" class="clearfix"></div>
+                            <ng-container *ngFor="let eachReview of reviewLists | renterreviews;">
+                                <app-review [eachReview]="eachReview"></app-review>
+                            </ng-container>
+
+                            <p class="No-Reviewblock" *ngIf="reviewLists.length === 0">
+                                No Reviews Found
+                            </p>
+                        </div>
+                        <ng-container *ngIf="totalReviews > 10">
+                            <pagination [totalItems]="totalReviews" [maxSize]="5" [(ngModel)]="PageNumber" (pageChanged)="pageNumberChanged($event)" nextText=">" previousText="<" lastText=">>" firstText="<<"></pagination>
+                        </ng-container>
+                    </div>
+                </div>
+            </div>
+            <!-- FOLLOWERS MODAL -->
+        </div>
+
+    </div>
+</section>

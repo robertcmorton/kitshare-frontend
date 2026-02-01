@@ -1,0 +1,28 @@
+.subcat-list {
+  display: inline;
+}
+.subcat-item {
+  text-decoration: none;
+  border-radius: 5px;
+  display: inline-block;
+  min-width: 10px;
+  padding: 3px 7px;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1;
+  color: #fff;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  background-color: #777;
+  margin: 5px;
+  cursor: pointer;
+}
+
+.active {
+  background-color: #0f62b1;
+}
+
+.category-wrapper {
+  display: flex;
+}

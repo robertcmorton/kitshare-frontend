@@ -1,0 +1,16 @@
+<ul>
+  <li>
+    <button mat-icon-button class="only-icon" (click)="goToMessage()">
+      <mat-icon class="icon-white">chat_bubble</mat-icon>
+      <span class="count" *ngIf="no_of_unread_messages > '0'">{{no_of_unread_messages}}</span>
+    </button>
+    </li>
+  <li>
+    <button mat-icon-button class="only-icon" (click)="goToCart()">
+      <mat-icon class="icon-white">shopping_cart</mat-icon>
+      <span class="count" *ngIf="no_of_cart_items > '0'">{{no_of_cart_items}}</span>
+    </button>
+    </li>
+</ul>
+
+

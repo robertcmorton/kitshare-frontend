@@ -1,0 +1,138 @@
+// .checkbox.checkbox-primary.signupCheck a {
+//     text-transform: none;
+//     font-size: 14px;
+//     margin-top: -27px;
+//     display: block;
+//     margin-left: 26px;
+//     margin-bottom: 15px;
+// }
+#panel  {
+    display: flex;
+    flex-direction: column;
+    // width: 400px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 10px;
+    box-sizing: border-box;
+    color: rgb(94, 108, 132);
+    margin: 0px auto 24px;
+    // padding: 32px 40px;
+    background: rgb(255, 255, 255);
+    border-radius: 3px;
+}
+
+#panel h2 {
+        padding: 0;
+        margin-bottom: 23px;
+        margin-top: 11px;
+        font-size: 20px;
+        color: #455a64;
+        color: rgb(94, 108, 132);
+        text-align: center;
+}
+
+.sign_background input {
+    font-size: 18px;
+    // padding: 5px 10px 10px 5px;
+    display: block;
+    width: 100%;
+    border: none;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    background: transparent;
+    height: 40px;
+    padding: 0 0px 0 10px;
+    &:focus {
+        border: 1px solid #0065FF;
+    }
+}
+
+.input-label {
+    color: darkgrey;
+    padding: 0 0px 0 10px;
+}
+
+.notification_panrl input:focus ~ label, input:valid ~ label {
+    text-transform: none;
+}
+
+.sign_background .login_background {
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+}
+
+.container {
+    width: 100%;
+
+}
+
+.auth-box {
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+}
+
+.text-info {
+    font-weight: 500;
+    color: #0065FF !important;
+    &:hover {
+      color: #0747A6;
+    }
+    &:focus {
+        color: #0747A6;
+      }
+    &:active {
+      color: #0747A6;
+      }
+  }
+
+.join-btn {
+    font-size: 14px;
+    // padding: 14px 12px;
+    height: 40px;
+    width: 100%;
+    background: rgb(0, 82, 204);
+    color: white;
+    &:hover {
+        background: #0065FF;
+    }
+}
+
+  .or-social {
+    text-align: center;
+    margin: 10px 0px 10px 0;
+    color: #67757c;
+    font-size: 12px;
+    margin: 15px 0 15px 0px;
+  }
+
+  .account-sign {
+    font-weight: 400;
+  }
+
+  .signupCheck {
+      margin-bottom: 0;
+  }
+
+  .terms-condition {
+      text-align: center;
+      margin: 0 0 15px 0;
+  }
+
+  .password-message {
+    text-align: center;
+    font-size: 10px;
+  }
+
+  .terms-link {
+    float: left;
+    margin-left: 15px;
+  }
+  .privacy-link {
+    float: right;
+    margin-right: 15px;
+  }
+
+  .checkbox input[type="checkbox"] {
+    height: 30px;
+    width: 20px;
+    margin: 0;
+    float: left;
+  }

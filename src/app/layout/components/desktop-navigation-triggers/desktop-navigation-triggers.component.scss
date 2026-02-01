@@ -1,0 +1,38 @@
+:host {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  & > ul {
+    display: flex;
+    color: white;
+    font-size: 1.35rem;
+    li.login {
+      margin-right: 20px;
+      outline: none;
+    }
+  }
+}
+
+.cart-item {
+  margin-right: 3px;
+}
+
+.notuser li {
+  margin-right: 20px;
+  cursor: pointer;
+  outline: none;
+}
+
+button.mat-menu-item {
+  padding: 0 30px 0 20px;
+}
+
+button.mat-menu-item a {
+  display: inline;
+  padding: 0;
+  padding: 0 30px 0 20px;
+}
+
+// .mat-menu-content {
+//   padding: 15px 30px 15px 30px;
+// }

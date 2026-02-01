@@ -1,0 +1,100 @@
+<section class="dashboard_bodynew">
+  <div class="top_bresdcum">
+    <div class="container">
+      <div class="col-md-12 Fav-Header">
+        My favourites
+      </div>
+    </div>
+  </div>
+
+  <div class="Page-container">
+    <!-- <div class="col-md-12"> -->
+    <div class="SearchBar-Container">
+      <div class="search_btnsd">
+        <form class="example3" action="/action_page.php" style="margin:auto;">
+          <input type="text" placeholder="Search your favourites" name="search_fav" [(ngModel)]="search_fav">
+          <button type="submit" (click)="searchFavourite()"><i class="fa fa-search"></i></button>
+        </form>
+      </div>
+    </div>
+
+    <!-- <div class="col-md-12"> -->
+    <div class="FavList-Container">
+      <div class="next_back_btns">
+        <!-- <button type="button" class="btn back_btn nobackground_backbtns">Back</button>
+        <button type="button" class="btn pull-right delete_btn nobackground_backbtns1">Delete</button> -->
+
+      </div>
+    </div>
+    <div *ngIf="my_favourite_array?.length">
+      <div class="col-md-4 col-sm-4" *ngFor="let item of my_favourite_array">
+        <div class="listing-btn-container">
+          <div class="listing-btn listing-154231">
+
+            <button class="Fav-AddtoCart" *ngIf="!item.added_to_cart" (click)="addtoCart(item)">Add to
+              cart</button>
+            <button class="Fav-AddedtoCart" *ngIf="item.added_to_cart">Added to cart</button>
+
+
+            <div class="fill">
+              <a [routerLink]="[ '/gear/view-gear/' + item.gear_slug_name]">
+                <img class="listing-btn-image center-block " alt="" src="{{item.gear_display_image}}">
+              </a>
+              <span style="margin-left:5%;"><i class="fa fa-times delete-fav" aria-hidden="true" (click)="removeFromCart(item.ks_favourite_id)"></i> </span>
+            </div>
+
+
+
+
+            <div class="listing-btn-info">
+              <div class="gear-info-container-link" [routerLink]="[ '/gear/view-gear/' + item.gear_slug_name]">
+                <div class="gear-info-container">
+                  <div class="listing-btn-name">{{item.gear_name}}
+                    <div class="listing-btn-price">{{item.per_day_cost_aud_inc_gst | currency}}
+                      <span class="per-day">day{{item.ks_gear_type_id !== '1' ? '/wknd' : ''}}</span>
+                      <!-- <a class="gear-info-container-link" [routerLink]="[ '/gear/view-gear/' + item.gear_slug_name]">{{item.gear_name}}</a> -->
+                    </div>
+                  </div>
+
+
+                  <!-- <div class="listing-btn-price">
+                    <a class="gear-info-container-link" [routerLink]="[ '/gear/view-gear/' + item.gear_slug_name]">
+                      <div class="listing-btn-price"> ${{item.per_day_cost_aud_inc_gst}}
+                        <span class="per-day">day{{item.ks_gear_type_id !== '1' ? '/wknd' : ''}}</span>
+                      </div>
+                    </a>
+                  </div> -->
+                </div>
+              </div>
+
+
+              <div class="user-info-container">
+                <a [routerLink]="['/profile/' + item.app_username ]"> <img class="listing-owner-img" alt="" src="{{item.user_profile_picture_link}}"> </a>
+                <div class="listing-owner-info-container">
+                  <p class="listing-owner-name"> <a [routerLink]="['/profile/' + item.app_username ]">{{item.app_user_first_name}}&nbsp;{{item.app_user_last_name}}</a>
+                  </p>
+                  <div class="listing-owner-rating">
+                    <a [routerLink]="['/profile/' + item.app_username ]">
+                      <kit-rating-decimal [currentRate]="item.rating" [disabled]="true"></kit-rating-decimal>
+                    </a>
+                  </div>
+                </div>
+
+                <!-- <button class="Fav-AddtoCart" *ngIf="!item.added_to_cart" (click)="addtoCart(item.user_gear_desc_id)">Add to cart</button>
+                <button class="Fav-AddedtoCart" *ngIf="item.added_to_cart" >Added to cart</button> -->
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+    <div *ngIf="!my_favourite_array?.length" class="no-data-found">
+      <img width="20%" height="20%" src="assets/images/no-favlarge.png">
+      <div class="FavHeader">No Favourites Yet</div>
+      <div class="FavText">Start adding to your favourites by selecting the <mat-icon>favorite_border</mat-icon> icon
+      </div>
+    </div>
+  </div>
+</section>

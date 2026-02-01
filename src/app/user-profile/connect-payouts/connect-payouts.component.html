@@ -1,0 +1,80 @@
+<section class="dashboard_bodynew">
+    <div class="top_bresdcum fixed-pos">
+        <div class="container">
+            <div class="col-md-12">
+                <div class="profileSettings">
+                    Profile Settings
+                    <button type="button" class="btn btn-default SaveProfile"
+                        (click)="connectYourAccount()">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="contact_form_list">
+        <div class="container">
+            <div class="row">
+                <app-left-sidebar></app-left-sidebar>
+                <div class="col-md-9 col-sm-9">
+                    <div class="Profile_RightColumn">
+                        <div class="wrap-contact100">
+                            <form class="contact100-form validate-form">
+                                <div class="col-md-12 right_column">
+                                    <div class="contact_info_heading">
+                                        <h2>Bank Account Details</h2>
+                                        <hr />
+                                        <p>Enter your Bank account details to get paid once your rental is completed.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 col-sm-12 right_column">
+                                    <div class="wrap-input100 validate-input" data-validate="Name is required">
+                                        <span class="label-input100">Account Name</span>
+                                        <input class="input100" name="account_name" [(ngModel)]="account_name"
+                                            placeholder="Add Account Name" type="text">
+                                        <!-- <span class="highlight-input"></span> -->
+                                    </div>
+                                </div>
+                                <div class="col-md-12 col-sm-12 right_column">
+                                    <div class="wrap-input100 validate-input" data-validate="Name is required">
+                                        <span class="label-input100">BSB Number</span>
+                                        <input class="input100" name="bsb_name" [(ngModel)]="bsb_name"
+                                            placeholder="BSB Number" type="text">
+                                        <!-- <span class="focus-input100"></span> -->
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12 col-sm-12 right_column">
+                                    <div class="wrap-input100 validate-input" data-validate="Name is required">
+                                        <span class="label-input100">Account Number</span>
+                                        <input class="input100" name="account_number" [(ngModel)]="account_number"
+                                            placeholder="Account Number" type="text">
+                                        <!-- <span class="focus-input100"></span> -->
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12 col-sm-12 right_column">
+                                    <div class="wrap-input100 validate-input" data-validate="Bank required">
+                                        <span class="label-input100">Bank Name</span>
+                                        <br>
+                                        <select name="bank_name" [(ngModel)]="bank_name">
+                                            <option *ngFor="let item of bank_list" value="{{item.bank_id}}"
+                                                [selected]="item.bank_id == selected_bank_id">{{item.bank_name}}
+                                            </option>
+                                        </select>
+                                        <span class="focus-input100"></span>
+                                    </div>
+                                </div>
+
+                                <div class="clearfix"></div>
+                                <div class="col-md-12 text-center right_column">
+                                    <!-- <button type="button" class="btn btn-default unavailable_btn1 pull-left" (click)="connectYourAccount()">Save</button> -->
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div id="dropDownSelect1"></div>
+            </div>
+        </div>
+    </div>
+</section>

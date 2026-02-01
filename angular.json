@@ -1,0 +1,213 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "kitshare": {
+      "root": "",
+      "sourceRoot": "src",
+      "projectType": "application",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "allowedCommonJsDependencies": [
+              "lodash",
+              "rxjs-compat",
+              "@angularclass/hmr",
+              "moment",
+              "moment/locale/zh-cn",
+              "jquery",
+              "handsontable",
+              "@feathersjs/socketio-client",
+              "@feathersjs/rest-client",
+              "@feathersjs/feathers",
+              "@feathersjs/authentication-client",
+              "socket.io-client",
+              "xlsx",
+              "rxjs",
+              "pikaday",
+              "ng2-flatpickr",
+              "ngx-google-places-autocomplete",
+              "rxjs/internal/observable/of",
+              "rxjs/add/observable/throw",
+              "ngx-owl-carousel",
+              "ng2-ion-range-slider",
+              "angular2-flash-messages",
+              "ngx-google-places-autocomplete"
+            ],
+            "outputPath": "dist",
+            "index": "src/index.html",
+            "main": "src/main.ts",
+            "tsConfig": "src/tsconfig.app.json",
+            "polyfills": "src/polyfills.ts",
+            "assets": ["src/assets", "src/favicon.ico"],
+            "styles": [
+              "src/assets/css/bootstrap.min.css",
+              "src/assets/css/style.scss",
+              "src/assets/css/animate.css",
+              "src/assets/css/font-awesome.min.css",
+              "src/assets/css/skdslider.css",
+              "src/assets/css/responsive.css",
+              "src/assets/css/hover.css",
+              "src/assets/css/default.css",
+              "src/assets/css/component.css",
+              "src/assets/css/bootstrap-theme.css",
+              "src/assets/css/jtab.min.css",
+              "src/assets/css/flexslider.css",
+              "node_modules/owl.carousel/dist/assets/owl.carousel.css",
+              "node_modules/owl.carousel/dist/assets/owl.theme.default.css",
+              "src/assets/css/main.css"
+            ],
+            "scripts": [
+              "src/assets/js/jquery.1.11.1.js",
+              "node_modules/jquery/dist/jquery.min.js",
+              "src/assets/js/jtab.jquery.js",
+              "src/assets/js/bootstrap.min.js",
+              "src/assets/js/skdslider.js",
+              "src/assets/js/main.js",
+              "node_modules/owl.carousel/dist/owl.carousel.js",
+              "src/assets/js/modalEffects.js",
+              "src/assets/js/npm.js",
+              "src/assets/js/classie.js",
+              "src/assets/js/flexslider.js",
+              "src/assets/js/custom.js"
+            ],
+            "aot": false,
+            "vendorChunk": true,
+            "extractLicenses": false,
+            "buildOptimizer": false,
+            "sourceMap": true,
+            "optimization": false,
+            "namedChunks": true
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          },
+          "defaultConfiguration": ""
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "kitshare:build"
+          },
+          "allowedCommonJsDependencies": [
+            "@angularclass/hmr",
+            "moment",
+            "moment/locale/zh-cn",
+            "jquery",
+            "handsontable",
+            "@feathersjs/socketio-client",
+            "@feathersjs/rest-client",
+            "@feathersjs/feathers",
+            "@feathersjs/authentication-client",
+            "socket.io-client",
+            "xlsx",
+            "rxjs",
+            "pikaday",
+            "ng2-flatpickr",
+            "ngx-google-places-autocomplete",
+            "rxjs/internal/observable/of",
+            "rxjs/add/observable/throw",
+            "ngx-owl-carousel",
+            "ng2-ion-range-slider",
+            "angular2-flash-messages",
+            "ngx-google-places-autocomplete"
+          ],
+          "configurations": {
+            "production": {
+              "browserTarget": "kitshare:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "kitshare:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "src/test.ts",
+            "karmaConfig": "./karma.conf.js",
+            "polyfills": "src/polyfills.ts",
+            "tsConfig": "src/tsconfig.spec.json",
+            "scripts": [
+              "src/assets/js/jquery.1.11.1.js",
+              "node_modules/jquery/dist/jquery.min.js",
+              "src/assets/js/jtab.jquery.js",
+              "src/assets/js/bootstrap.min.js",
+              "src/assets/js/skdslider.js",
+              "src/assets/js/main.js",
+              "node_modules/owl.carousel/dist/owl.carousel.js",
+              "src/assets/js/modalEffects.js",
+              "src/assets/js/npm.js",
+              "src/assets/js/classie.js",
+              "src/assets/js/flexslider.js",
+              "src/assets/js/custom.js"
+            ],
+            "styles": [
+              "src/assets/css/bootstrap.min.css",
+              "src/assets/css/style.scss",
+              "src/assets/css/animate.css",
+              "src/assets/css/font-awesome.min.css",
+              "src/assets/css/skdslider.css",
+              "src/assets/css/responsive.css",
+              "src/assets/css/hover.css",
+              "src/assets/css/default.css",
+              "src/assets/css/component.css",
+              "src/assets/css/bootstrap-theme.css",
+              "src/assets/css/jtab.min.css",
+              "src/assets/css/flexslider.css",
+              "node_modules/owl.carousel/dist/assets/owl.carousel.css",
+              "node_modules/owl.carousel/dist/assets/owl.theme.default.css",
+              "src/assets/css/main.css"
+            ],
+            "assets": ["src/assets", "src/favicon.ico"]
+          }
+        }
+      }
+    },
+    "kitshare-e2e": {
+      "root": "e2e",
+      "sourceRoot": "e2e",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "./protractor.conf.js",
+            "devServerTarget": "kitshare:serve"
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "kitshare",
+  "schematics": {
+    "@schematics/angular:component": {
+      "skipTests": true,
+      "prefix": "kit",
+      "style": "scss"
+    },
+    "@schematics/angular:directive": {
+      "prefix": "kit"
+    }
+  }
+}

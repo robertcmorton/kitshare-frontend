@@ -1,0 +1,78 @@
+<div class="border-box pos_rel">
+    <div class="box1 mob-box hidden-lg">
+      <div class="box mob-box hidden-lg" [ngClass]="{'inactive': !data.is_active}">
+
+      <span class="nameBox">
+          <span><strong>{{ data.policy_name }}</strong></span>
+          <span> <strong>Start:</strong> {{ data.start_date }} </span>
+          <span> <strong>Expires:</strong> {{ data.expiry_date }} </span>
+            <!-- <div class="status"> -->
+          <br>
+          <span class="policy-row" *ngIf="data.renters_insurance.amount">
+            <span class="s-label">Renter provided Insurance:</span>
+            <span class="value">${{ data.renters_insurance.amount }}</span>
+            <span class="status" [ngStyle]="{color: getStatusClass(data.renters_insurance.status)}">{{ data.renters_insurance.status }}</span>
+          </span>
+          <span class="policy-row" *ngIf="data.owners_insurance.amount">
+            <span class="s-label">Owner provided Insurance:</span>
+            <span class="value">${{ data.owners_insurance.amount }}</span>
+            <span class="status"  [ngStyle]="{color: getStatusClass(data.owners_insurance.status)}">{{ data.owners_insurance.status }}</span>
+          </span>
+          <br>
+          <button type="button" class="triggerImageModal" data-toggle="modal"
+                  data-target="#imageModal">View Policy</button>
+        </span>
+      </div>
+      <span title="Remove dates" class="cross-abs unset-date" (click)="deleteInsurance(data.insurance_id)">X</span>
+    </div>
+
+    <div class="box1 hidden-xs hidden-sm hidden-md">
+      <div class="box hidden-xs hidden-sm hidden-md" [ngClass]="{'inactive': !data.is_active}">
+
+      <div class="nameBox">
+          <span><strong>{{ data.policy_name }}</strong></span>
+          <span> <strong>Start:</strong> {{ data.start_date }} </span>
+          <span> <strong>Expires:</strong> {{ data.expiry_date }} </span>
+      </div>
+      <div class="status">
+        
+        <div class="row" *ngIf="data.renters_insurance.amount">
+          <div *ngIf="data.insurance_image_link.includes('.pdf')">
+            <img src="assets/images/hasimage.png" height="50px" width="50px" style="padding-right:10px"/>
+          </div>
+            <span class="s-label">Renter provided Insurance:</span>
+            <span class="value">${{ data.renters_insurance.amount }}</span>
+            <span class="status" [ngStyle]="{color: getStatusClass(data.renters_insurance.status)}">{{ data.renters_insurance.status }}</span>
+        </div>
+        
+        <div class="row" *ngIf="data.owners_insurance.amount">
+          <span class="s-label">Owner provided Insurance:</span>
+            <span class="value">${{ data.owners_insurance.amount }}</span>
+            <span class="status"  [ngStyle]="{color: getStatusClass(data.owners_insurance.status)}">{{ data.owners_insurance.status }}</span>
+        </div>
+        
+      </div>
+      <div class="viewBox">
+        <button *ngIf="!data.insurance_image_link.includes('.pdf')" type="button" class="triggerImageModal" data-toggle="modal"
+                                  [attr.data-target]="'#imageModal'+data.insurance_id">View Policy</button>
+        <a target="_blank" [attr.href]="data.insurance_image_link" *ngIf="data.insurance_image_link.includes('.pdf')" type="button" class="triggerImageModal">View Policy</a>
+      </div>
+      </div>
+      <span title="Remove dates" class="cross-abs unset-date" (click)="deleteInsurance(data.insurance_id)">X</span>
+    </div>
+  <!--span *ngIf="data.is_active" class="cancel" (click)="makeInactive()">X</span-->
+</div>
+
+<div *ngIf="!data.insurance_image_link.includes('.pdf')" id="{{'imageModal'+data.insurance_id}}" class="modal fade image-policy-modal" role="dialog">
+  <div class="modal-dialog">
+     <!-- Modal content-->
+     <div class="modal-content">
+        <div class="modal-body">
+            <button type="button" class="close" #closeimageModal data-dismiss="modal">&times;</button>
+          <div class="img-wrapper">
+            <img [attr.src]="data.insurance_image_link" alt="">
+          </div>
+        </div>
+     </div>
+  </div>
+</div>

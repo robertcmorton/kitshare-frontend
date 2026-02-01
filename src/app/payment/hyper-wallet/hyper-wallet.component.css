@@ -1,0 +1,60 @@
+.wallel_wrap .input100 {
+    display: block;
+    width: 100%;
+    background: transparent;
+    font-size: 14px;
+    color: #676767;
+    line-height: 23px;
+    padding: 0 0px;
+}
+
+.wallel_wrap input.input100, .wallel_wrap select.input100 {
+    height: 46px;
+}
+
+.wallel_wrap textarea.input100 {
+    height: auto;
+}
+
+.wallel_wrap input, .wallel_wrap textarea, .wallel_wrap select {
+    outline: none;
+    border: none;
+}
+
+.wallel_wrap .wrap-input100 {
+    width: 100%;
+    position: relative;
+    border-bottom: 2px solid #d9d9d9;
+    margin-bottom: 27px;
+}
+
+.wallel_wrap .focus-input100 {
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+}
+
+.wallel_wrap .focus-input100::before {
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    -webkit-transition: all 0.4s;
+    transition: all 0.4s;
+    background: #0747A6;
+}
+
+.wallel_wrap textarea:focus, input:focus {
+    border-color: transparent !important;
+}
+
+.wallel_wrap .input100:focus+.focus-input100::before {
+    width: 100%;
+}

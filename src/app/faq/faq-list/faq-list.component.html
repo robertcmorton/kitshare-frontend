@@ -1,0 +1,88 @@
+<!-- faq header -->
+<section class="faq">
+  <div class="container">
+
+    <div class="col-md-12">
+      <div class="goto"><a routerLink="/"><span class="glyphicon glyphicon-new-window" aria-hidden="true"></span>Go to
+          Kitshare</a></div>
+      <div class="logo3 animated bounceInDown">
+        <img src="assets/images/logo.png" class="img-responsive">
+      </div>
+      <h1>Advice and answers from the kitshare Team</h1>
+    </div>
+    <div class="row">
+      <div id="custom-search-input">
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- faq body -->
+<section class="faq_sec">
+  <div class="container">
+    <div class="content educate_content">
+      <section class="content section">
+        <div class="breadcrumb" dir="ltr">
+          <div class="link__arrow o__ltr">
+            <a [routerLink]="[ '/faq' ]">All Collections</a>
+          </div>
+
+
+          <div class="link__arrow link__arrow1 o__ltr">{{faqCategory}}</div>
+        </div>
+
+        <div class="section__bg">
+          <div class="paper g__space collection__headline">
+            <div class="collection o__ltr">
+              <div class="collection__photo">
+                <svg role="img" viewBox="0 0 48 48">
+                  <g id="chat-question" fill="none" fill-rule="evenodd">
+                    <path d="M47 21.268c0 10.363-10.297 18.765-23 18.765-2.835 0-5.55-.418-8.058-1.184L2.725 45 7.9 34.668c-4.258-3.406-6.9-8.15-6.9-13.4C1 10.904 11.297 2.502 24 2.502s23 8.402 23 18.766z" stroke-width="2" stroke-linejoin="round"></path>
+                    <path d="M25 28.502a2 2 0 1 0 0 4 2 2 0 0 0 0-4" fill="#231F1F"></path>
+                    <path d="M19 17.75c0-3.312 2.686-6.124 6-6.124 3.313 0 6 2.626 6 5.938 0 3.315-2.687 5.938-6 5.938V26" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                  </g>
+                </svg>
+              </div>
+              <div class="collection__meta intercom-force-break" dir="ltr">
+                <h2 class="t__h1">{{faqCategory}}</h2>
+                <p class="paper__preview">{{faqTitle}}</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="g__space">
+            <a *ngFor="let eachList of faqListNew" [routerLink]="'/faq/details/' + eachList.permalink" class="t__no-und paper paper__article-preview">
+              <div class="article__preview intercom-force-break" dir="ltr">
+                <h2 class="t__h3"><span class="c__primary">{{ eachList.title }}</span></h2>
+                <span class="paper__preview c__body">{{ eachList.faq_question }}</span>
+                <div class="avatar">
+                  <div class="avatar__photo o__ltr">
+                    <img *ngIf="eachList.image.length" [src]="eachList.image" class="avatar__image">
+                    <img *ngIf="eachList.image.length === 0" src="assets/images/fullsizeoutput.jpeg" class="avatar__image">
+
+                  </div>
+                  <div class="avatar__info">
+                    <div>
+                      Written by <span class="c__darker"> {{ eachList.writer_name }}</span>
+                      <br> Updated on {{ eachList.updated_date !== '0000-00-00' ? eachList.updated_date :
+                      eachList.create_date | date:'MMM d, y' }}
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+            </a>
+          </div>
+
+
+        </div>
+      </section>
+    </div>
+
+
+
+  </div>
+</section>

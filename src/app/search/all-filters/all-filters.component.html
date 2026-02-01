@@ -1,0 +1,21 @@
+<div class="dropdown-container">
+  <div class="btn-group" dropdown #dropdown="bs-dropdown" [insideClick]="true"
+       (onShown)="onShown()" (onHidden)="onClose()" [isDisabled]="disabled">
+    <button id="dropdown-button" dropdownToggle type="button" class="dropdown-button"
+            [ngClass]="{ opened: opened, disabled: disabled }" aria-controls="dropdown-basic">
+      {{displayString}}
+    </button>
+    <ul id="dropdown" *dropdownMenu class="dropdown-menu select-dropdown all-filters"
+        role="menu" aria-labelledby="dropdown-button-limit">
+      <li class="menu-item close-menu">
+        <button mat-icon-button (click)="dropdown.hide()">
+          <mat-icon class="icon-close">close</mat-icon>
+        </button>
+      </li>
+      <li class="divider dropdown-divider close-menu"></li>
+      <li role="menuitem">
+        <kit-filter [filterClass]="'all-options-wrapper'"></kit-filter>
+      </li>
+    </ul>
+  </div>
+</div>

@@ -1,0 +1,11 @@
+<div class="col-md-12 col-sm-12">
+    <div class="gear_address">
+        <p>{{defaultValue.street_address_line1}} {{defaultValue.street_address_line2}} {{defaultValue.route}}</p>
+        <ngx-select class="disabled-selectbox select_ad" name="ks_suburb_id" disabled="true" optionValueField="ks_suburb_id" optionTextField="suburb_name" [items]="suburbList" [(ngModel)]="defaultValue.ks_suburb_id" placeholder="No Suburb selected"></ngx-select>
+        <ngx-select class="disabled-selectbox select_ad" name="ks_state_id" disabled="true" optionValueField="state_id" optionTextField="ks_state_name" [items]="stateList" [(ngModel)]="defaultValue.ks_state_id" placeholder="No State selected"></ngx-select>
+        <p>{{defaultValue.postcode}}</p>
+        <!-- <p>{{defaultValue.ks_state_id}}</p>
+    <p>{{defaultValue.ks_suburb_id}}</p> -->
+ 
+    </div>
+</div>

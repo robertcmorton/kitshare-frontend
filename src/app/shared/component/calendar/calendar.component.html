@@ -1,0 +1,17 @@
+<div class="trigger" [owlDateTimeTrigger]="dt1">
+  <div class="kit-prefix" *ngIf="prefix">{{ prefix }}</div>
+  <span class="disabled_strip" *ngIf="disabled">{{fromDate || toDate | date: "mediumDate"}}</span>
+
+  <owl-date-time #dt1 [startAt]="startDate" [pickerMode]="'popup'" [pickerType]="'calendar'"></owl-date-time>
+  <input class="kit-input" *ngIf="!disabled" [placeholder]="conditionalPlaceholder" [owlDateTime]="dt1" [min]="minimumDate" [owlDateTimeFilter]="dateFilter" [disabled]="disabled" (dateTimeChange)="onDateSelection($event)" />
+
+  <div class="kit-surfix" *ngIf="prefix">
+    <i class="fa fa-caret-down"></i>
+  </div>
+</div>
+
+
+
+<!-- <input [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1" placeholder="Date Time" [min]="today">
+<owl-date-time #dt1 [pickerMode]="'popup'"
+[pickerType]="'calendar'"></owl-date-time> -->

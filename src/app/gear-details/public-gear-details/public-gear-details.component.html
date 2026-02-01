@@ -1,0 +1,918 @@
+<section class="rental_listing_sec">
+    <div class="back_cartpage">
+        <div class="container">
+            <div class="col-md-12 header-row">
+                <div class="rental_cart row"></div>
+                <h1>{{ gearDetails.gear_name }}</h1>
+                <h3>{{ gearDetails.gear_category_name }} > {{ gearDetails.gear_sub_category_name }} > {{
+                    gearDetails.manufacturer_name }} > {{ gearDetails.model_name }}</h3>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container">
+        <div class="row listing-page space-above-20">
+
+            <!------------------------------------------------------------------->
+            <!----------------------------LEFT COLUMN---------------------------->
+            <!------------------------------------------------------------------->
+            <div class="left-column col-md-7">
+                <div class="request-panel ">
+                    <div id="carousel-example-generic" class="carousel private-listing-slider slide carousel20" data-ride="carousel">
+                        <div *ngIf="token" class="favorites-shortcut-icons slider_f" data-listing-id="157278" [class.disabled-contenct]="is_favourite">
+                            <div class="favorite-heart" (click)="addToFavourite(gearDetails.user_gear_desc_id)">
+                                <a class="listing-fav-icon-link">
+                                    <i class="fa" [class.fa-heart]="is_favourite" [class.fa-heart-o]="!is_favourite"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="carousel-inner">
+                            <div *ngFor="let eachImage of gearDetails.images; let i = index" class="item {{ i==0 ? 'active' : ''}} reduce_image">
+                                <img src="{{ eachImage.gear_display_image }}" class="img-responsive" alt="...">
+                            </div>
+                        </div>
+                        <ol class="carousel-indicators" *ngIf="gearDetails.images.length>1">
+                            <li *ngFor="let eachImage of gearDetails.images; let i = index" data-target="#carousel-example-generic" [attr.data-slide-to]="i" ngClass="i == 0 ? 'active' : ''">
+                                <img src="{{ eachImage.gear_display_image }}" class="img-responsive" alt="...">
+                            </li>
+                        </ol>
+                        <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev" *ngIf="gearDetails.images.length>1">
+                            <span class="glyphicon_arrow glyphicon-chevron-left"></span>
+                        </a>
+                        <a class="right carousel-control" href="#carousel-example-generic" data-slide="next" *ngIf="gearDetails.images.length>1">
+                            <span class="glyphicon_arrow glyphicon-chevron-right"></span>
+                        </a>
+                    </div>
+
+                    <!------------------------------------------------------------------->
+                    <!----------------MOBILE PRICE / EDIT / CALENDAR--------------------->
+                    <!------------------------------------------------------------------->
+                    <div class="clearfix"></div>
+                    <div class="panel-prices hidden-lg hidden-md">
+                        <div class="prices-section">
+                            <div class="price-per-day-btn-container">
+                                <div class="row">
+                                    <div class="col-xs-6 col-sm-6 price-block">
+                                        <span class="listing-price"> {{ gearDetails.per_day_cost_aud_inc_gst | currency
+                                            }} </span>
+                                        <span class="price-info">inc GST</span>
+                                        <p>
+                                            <span class="price-info" *ngIf="gearDetails.gear_category_name !='Creative Spaces'">/ per day or
+                                                weekend</span>
+                                            <span class="price-info" *ngIf="gearDetails.gear_category_name =='Creative Spaces'">/ per
+                                                day</span>
+                                            <a class="detailsInfo" href="javascript:void(0);">
+                                                <!-- <span class="glyphicon glyphicon-info-sign smaller" title=""
+                                                    *ngIf="!isCreativeSpace"></span> -->
+                                                <span class="material-icons information-window" *ngIf="!isCreativeSpace">
+                                                    info
+                                                </span>
+                                                <div class="infoView" style="display:none;">
+                                                    Pick up and Return days are <strong>free</strong> <br /> Weekends
+                                                    count as <strong>one day</strong>
+                                                    <br /> <strong>One day</strong> minimum <br /> Rent 5-7 days per
+                                                    week, <strong>pay only for 3! </strong>
+                                                </div>
+                                            </a>
+
+                                        </p>
+                                    </div>
+                                    <div class="col-xs-6 col-sm-6 price-block" *ngIf="gearDetails.gear_category_name !='Creative Spaces'">
+                                        <span class="listing-price"> {{ gearDetails.per_week_cost_aud_inc_gst | currency
+                                            }} </span>
+                                        <span class="price-info">inc GST</span>
+                                        <p>
+                                            <span class="price-info">/ week</span>
+                                            <a class="detailsInfo" href="javascript:void(0);">
+                                                <!-- <span class="glyphicon glyphicon-info-sign smaller" title=""></span> -->
+                                                <span class="material-icons information-window">
+                                                    info
+                                                </span>
+                                                <div class="infoView" style="display:none;">
+                                                    Pick up and Return days are <strong>free</strong> <br /> Weekends
+                                                    count as <strong>one day</strong>
+                                                    <br /> <strong>One day</strong> minimum <br /> Rent 5-7 days per
+                                                    week, <strong>pay only for 3! </strong>
+                                                </div>
+                                            </a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="info calendar-section listing-modifcation" *ngIf="is_my_gear">
+                            <div class="icon_box">
+                                <ul>
+                                    <li class="edit-listing" (click)="goToEditPage(gearDetails.user_gear_desc_id)">
+                                        <!-- <span><i class="fa fa-pencil fa-icon" aria-hidden="true"></i></span> -->
+                                        <span class="material-icons">
+                                            edit
+                                        </span>
+
+                                        <span class="listing-edits">Edit Listing</span>
+                                    </li>
+
+                                    <li class="edit-listing" data-toggle="modal" data-target="#confirmClosingList">
+                                        <!-- <span><i class="fa fa-lock fa-icon" aria-hidden="true"></i></span> -->
+                                        <span class="material-icons">
+                                            delete
+                                        </span>
+                                        <span class="listing-edits">Delete Listing</span>
+                                    </li>
+
+                                    <li class="edit-listing" data-toggle="modal" *ngIf="gear_list_delist_flag == 'N'" (click)="makeGearPublicPrivate(gearDetails.user_gear_desc_id, 'Y')">
+                                        <!-- <span><i class="fa fa-users fa-icon" aria-hidden="true"></i></span> -->
+                                        <span class="material-icons">
+                                            public
+                                        </span>
+                                        <span class="listing-edits">Make Public</span>
+                                    </li>
+
+                                    <li class="edit-listing" data-toggle="modal" *ngIf="gear_list_delist_flag == 'Y'" (click)="makeGearPublicPrivate(gearDetails.user_gear_desc_id, 'N')">
+                                        <!-- <span><i class="fa fa-users fa-icon" aria-hidden="true"></i></span> -->
+                                        <span class="material-icons">
+                                            lock
+                                        </span>
+                                        <span class="listing-edits">Make Private</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+
+                        <!-- This if/else statement wont show calendar IF and only if the listing belongs to the owner -->
+                        <div class="info calendar-section" *ngIf="!is_my_gear">
+                            <div class="calendar-input-container">
+                                <form action="#" id="listing_rental_request_form">
+                                    <div class="relative" id="from_date_picker">
+                                        <div class="datepicker" data-picker="#from_date">
+
+                                            <kit-calendar [ngClass]="{'is-disabled': calender_disabled}" [prefix]="'Pick-up afternoon'" [disabled]="calender_disabled" [dateFilter]="myFilter" [minDate]="today" [fromDate]="from_date" (dateSelect)="onDateSelection('from', $event)"></kit-calendar>
+                                        </div>
+                                    </div>
+                                    <div class="relative" id="to_date_picker">
+                                        <div class="datepicker" data-picker="#to_date">
+                                            <kit-calendar [prefix]="'Return Morning'" [ngClass]="{'is-disabled': calender_disabled}" [disabled]="calender_disabled" [dateFilter]="myFilter" [minDate]="minToDate" [toDate]="to_date" (dateSelect)="onDateSelection('to', $event)"></kit-calendar>
+                                        </div>
+                                    </div>
+                                </form>
+
+
+                                <!-- <div *ngIf="has_item_in_cart" class="row-with-divider request-summary hidden-sm hidden-md hidden-lg"> -->
+                                <div *ngIf="summaryDetails" class="row-with-divider request-summary  hidden-md hidden-lg">
+                                    <div class="col-m-12 order-summary-mobile">
+
+                                        <div class="title">
+                                            <div class="text-part">Rental Summary</div>
+                                        </div>
+
+                                        <div class="">
+                                            <div class="col-12">
+                                                <div class="detail">
+
+                                                    <!-- <div class="field">
+                                                            <div class="field-name text-left">Rented Days</div>
+                                                            <div class="field-value">{{summaryDetails?.rent_days}}
+                                                            </div>
+                                                        </div> -->
+
+                                                    <div class="field">
+                                                        <div class="field-name text-left">
+                                                            {{summaryDetails?.day_rate_ex_gst | currency}} ex GST x
+                                                            {{summaryDetails?.rent_days}} Rented Days</div>
+                                                        <!-- <div class="field-value">{{summaryDetails?.total_cost_non_gst | 
+                                                                currency}} -->
+                                                        <div class="field-value">${{summaryDetails?.subtotal}}
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="field">
+                                                        <div class="field-name text-left">Discount</div>
+                                                        <div class="field-value">- ({{summaryDetails?.beta_discount |
+                                                            currency}})
+                                                        </div>
+                                                    </div>
+
+                                                    <!-- <div class="field">
+                                                        <div class="field-name text-left">Insurance Fee</div>
+                                                        <div class="field-value">{{summaryDetails?.insurance_fee |
+                                                            currency}}</div>
+                                                    </div> -->
+
+                                                    <!-- <div class="field">
+                                                        <div class="field-name text-left">Security Deposit</div>
+                                                        <div class="field-value">{{summaryDetails?.security_deposit |
+                                                            currency}}
+                                                        </div>
+                                                    </div> -->
+
+                                                    <div class="field">
+                                                        <div class="field-name text-left">Community Fee</div>
+                                                        <div class="field-value">{{summaryDetails?.community_fee |
+                                                            currency}}</div>
+                                                    </div>
+
+                                                    <div class="field">
+                                                        <div class="field-name text-left">Total ex GST</div>
+                                                        <div class="field-value">${{summaryDetails?.total_cost_non_gst
+                                                            }}
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="field">
+                                                        <div class="field-name text-left">GST </div>
+                                                        <div class="field-value"> ${{summaryDetails?.total_gst }} </div>
+                                                    </div>
+
+                                                    <div class="field">
+                                                        <div class="field-name text-left text-bold blue-text">Total inc
+                                                            GST
+                                                        </div>
+                                                        <div class="field-value text-bold blue-text">
+                                                            ${{summaryDetails?.total_cost_with_gst }} </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="row" *ngIf="!is_my_gear">
+                                    <div class="col-xs-12 text-center">
+                                        <!-- {{ disableAddToCart }} -->
+                                        <span class="unavailable_strip" *ngIf="!has_item_in_cart && disableAddToCart">Listing unavailable for
+                                            selected dates</span>
+                                        <input *ngIf="!has_item_in_cart && !disableAddToCart && token" name="commit" value="Add To Cart" class="top_to_add" type="button" (click)="addtoCart()">
+                                        <button type="button" id="open_addmoremodal_btn" class="btn btn-secondary category-btn hidden_all" data-toggle="modal" data-target="#addmoremodal">Add To Cart</button>
+                                        <input *ngIf="has_item_in_cart" name="commit" value="Added to your cart" class="top_to_added" type="button" disabled>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="info_text">
+                    <p><strong *ngIf="has_description">Product Description:</strong></p>
+                    <h2 *ngIf="has_description" [innerHTML]="gearDetails.gear_description_1"></h2>
+
+                    <p class="condation_text"><strong>Owner Note:</strong></p>
+                    <h4 [innerHTML]="gearDetails.owners_remark"></h4>
+
+                    <!--p><strong *ngIf="gearDetails.gear_category_name =='Creative Spaces'">Sphere Image:</strong></p>
+                                                 <p *ngIf="gearDetails.gear_category_name =='Creative Spaces'">{{ gearDetails.google_360_link }}</p-->
+
+                    <p class="condation_text"><strong>Condition:</strong>
+                        {{ gearDetails.ks_user_gear_condition }}</p>
+
+                    <p class="condation_text"><strong>Replacement value:</strong>
+                        {{ gearDetails.replacement_value_aud_inc_gst | currency }}</p>
+                    <hr>
+                    <p class="condation_text"><strong>Cancellations</strong><br>
+                        Cancel before a request is accepted, or within 2 hours of making the request and your
+                        cancellation is FREE. Cancel within 48 hours of your rental start date and you will receive a
+                        50% refund. Cancel within 24 hours of your rental
+                        start date and the rental may be non-refundable.<b> Cancellation fees are imposed at owner's
+                            discretion.</b></p>
+                </div>
+
+
+                <hr>
+                <kit-author-card class="hidden-lg hidden-md author_card" [my_gear]="is_my_gear" [data]="gearDetails" [ratings]="gearDetailsAvgRating" (contactClick)="onContactClick(contactTheOwner)"></kit-author-card>
+
+
+                <!------------------------------------------------------------------->
+                <!-------------------------SIMILAR LISTINGS-------------------------->
+                <!------------------------------------------------------------------->
+                <div class="list-info row related-listings col-md-12">
+                    <h5 class="listing_headings">Similar Listings:</h5>
+                    <div class="items-wrapper hidden-sm hidden-lg hidden-md" *ngIf="related_list.length && tabletCarosal">
+                        <div id="testimonial-slider3" class="owl-carousel">
+                            <owl-carousel [options]="{
+                                singleItem:true, 
+                                items: 1, 
+                                dots: true, 
+                                loop: true, 
+                                nav: false, 
+                                autoWidth: true, 
+                                autoHeight: true, 
+                                margin: 0, 
+                                autoPlay: false, 
+                                autoplayTimeout: 3000, 
+                                autoplayHoverPause: true,
+                                lazyLoad: true, 
+                                navigation: true }" [carouselClasses]="['owl-theme']" #owlElement>
+                                <div class="item listing-btn-container" *ngFor="let related_item of related_list">
+
+                                    <div class="listing-container additional-listings">
+                                        <div class="fill">
+                                            <a [routerLink]="['/gear/view-gear/' + related_item.gear_slug_name]">
+                                                <img class="listing-btn-image center-block " alt="{{related_item.gear_name}}" src="{{related_item.gear_display_image}}">
+                                            </a>
+                                        </div>
+
+
+                                        <div class="listing-btn-info">
+                                            <a class="gear-info-container-link" [routerLink]="['/gear/view-gear/' + related_item.gear_slug_name]">
+                                                <div class="gear-info-container">
+                                                    <h5 class="listing-btn-name"> {{related_item.gear_name}} </h5>
+                                                    <h6 class="listing-btn-price">
+                                                        {{related_item.per_day_cost_aud_inc_gst | currency}}
+                                                        <span class="per-day">day{{related_item.ks_gear_type_id !== '1'
+                                                            ? '/wknd' : ''}}</span>
+                                                    </h6>
+                                                </div>
+                                            </a>
+
+
+                                            <div class="user-info-container">
+                                                <a [routerLink]="['/profile/' + related_item.app_username]">
+                                                    <img class="listing-owner-img" alt="{{related_item.app_user_first_name}}" src="{{related_item.user_profile_picture_link}}">
+                                                </a>
+                                                <div class="listing-owner-info-container">
+                                                    <p class="listing-owner-name">
+                                                        <a [routerLink]="['/profile/' + related_item.app_username]">{{related_item.app_user_first_name}}
+                                                            {{related_item.app_user_last_name}}</a>
+                                                    </p>
+                                                    <kit-rating-decimal [currentRate]="related_item.rating" [disabled]="true"></kit-rating-decimal>
+                                                </div>
+
+
+                                                <!-- <div class="fave-listing-container" (click)="addToFavourite(related_item.user_gear_desc_id)">
+                                                    <div class="favorites-shortcut-icons" data-listing-id="157278">
+                                                        <div class="favorite-heart">
+                                                            <a class="listing-fav-icon-link">
+                                                                <i class="fa fa-heart-o"></i>
+                                                                <span class="within-lists-count hidden">0</span>
+                                                            </a>
+                                                        </div>                                        
+                                                    </div>
+                                                </div> -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </owl-carousel>
+                        </div>
+                    </div>
+
+
+                    <div class="items-wrapper1 hidden-xs desktop" style="overflow-x: hidden;">
+                        <div class="owl-carousel" id="similar_slider">
+
+                            <div class="item listing-btn-container post-slide" *ngFor="let related_item of related_list">
+                                <div class="listing-container additional-listings">
+                                    <div class="fill">
+                                        <a [routerLink]="['/gear/view-gear/' + related_item.gear_slug_name]">
+                                            <img class="listing-btn-image center-block " alt="{{related_item.gear_name}}" src="{{related_item.gear_display_image}}">
+                                        </a>
+                                    </div>
+
+                                    <div class="listing-btn-info">
+                                        <a class="gear-info-container-link" [routerLink]="['/gear/view-gear/' + related_item.gear_slug_name]">
+                                            <div class="gear-info-container">
+                                                <h4 class="listing-btn-name"> {{related_item.gear_name}} </h4>
+                                                <h5 class="listing-btn-price"> {{related_item.per_day_cost_aud_inc_gst |
+                                                    currency}}
+                                                    <span class="per-day">day{{related_item.ks_gear_type_id !== '1' ?
+                                                        '/wknd' : ''}}</span>
+                                                </h5>
+                                            </div>
+                                        </a>
+
+                                        <div class="user-info-container">
+                                            <a [routerLink]="['/profile/' + related_item.app_username]">
+                                                <img class="listing-owner-img" alt="{{related_item.app_user_first_name}}" src="{{related_item.user_profile_picture_link}}">
+                                            </a>
+
+                                            <div class="listing-owner-info-container">
+                                                <p class="listing-owner-name">
+                                                    <a [routerLink]="['/profile/' + related_item.app_username]">{{related_item.app_user_first_name}}
+                                                        {{related_item.app_user_last_name}}</a>
+                                                </p>
+                                                <kit-rating-decimal [currentRate]="related_item.rating" [disabled]="true"></kit-rating-decimal>
+
+                                            </div>
+
+                                            <!-- <div class="fave-listing-container" (click)="addToFavourite(related_item.user_gear_desc_id)" style="cursor:pointer;">
+                                                <div class="favorites-shortcut-icons" data-listing-id="157278">
+                                                    <div class="favorite-heart">
+                                                        <a class="listing-fav-icon-link">
+                                                            <i class="fa fa-heart-o"></i>
+                                                            <span class="within-lists-count hidden">0</span>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div> -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <!------------------------------------------------------------------->
+                <!-------------------------MORE LISTINGS FROM------------------------>
+                <!------------------------------------------------------------------->
+                <div class="col-md-12 list-info row related-listings landing-carousel">
+                    <h5 class="listing_headings" *ngIf="other_list.length>0">More listings from {{other_name}}:</h5>
+                    <div class="items-wrapper hidden-sm hidden-lg hidden-md" *ngIf="other_list.length && tabletCarosal">
+                        <div id="testimonial-slider2" class="owl-carousel">
+                            <owl-carousel [options]="{
+                                singleItem:true, 
+                                items: 1, 
+                                dots: true, 
+                                loop: true, 
+                                nav: false, 
+                                autoWidth: true, 
+                                autoHeight: true, 
+                                margin: 0, 
+                                autoPlay: false, 
+                                autoplayTimeout: 3000, 
+                                autoplayHoverPause: true,
+                                lazyLoad: true, 
+                                navigation: true }" [carouselClasses]="['owl-theme']" #owlElement>
+                                <div class="item listing-btn-container" *ngFor="let other_item of other_list">
+                                    <div class="listing-container additional-listings">
+                                        <div class="fill">
+                                            <a [routerLink]="['/gear/view-gear/' + other_item.gear_slug_name]">
+                                                <img class="listing-btn-image center-block " alt="{{other_item.gear_name}}" src="{{other_item.gear_display_image}}">
+                                            </a>
+                                        </div>
+
+                                        <div class="listing-btn-info">
+                                            <a class="gear-info-container-link" target="_self" href="#">
+                                                <div class="gear-info-container">
+                                                    <h5 class="listing-btn-name"> {{other_item.gear_name}} </h5>
+                                                    <h6 class="listing-btn-price"> {{other_item.per_day_cost_aud_inc_gst
+                                                        | currency}}
+                                                        <span class="per-day">day{{other_item.ks_gear_type_id !== '1' ?
+                                                            '/wknd' : ''}}</span>
+                                                    </h6>
+                                                </div>
+                                            </a>
+
+                                            <div class="user-info-container">
+                                                <a [routerLink]="['/profile/' + other_item.app_username]">
+                                                    <img class="listing-owner-img" alt="{{other_item.app_user_first_name}}" src="{{other_item.user_profile_picture_link}}">
+                                                </a>
+
+                                                <div class="listing-owner-info-container">
+                                                    <p class="listing-owner-name">
+                                                        <a [routerLink]="['/profile/' + other_item.app_username]">{{other_item.app_user_first_name}}
+                                                            {{other_item.app_user_last_name}}</a>
+                                                    </p>
+
+                                                    <div class="listing-owner-rating">
+                                                        <div class="rating-stars">
+                                                            <kit-rating-decimal [currentRate]="4" [disabled]="true"></kit-rating-decimal>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </owl-carousel>
+                        </div>
+                        <div class="show-all-button-container" style="width:100%">
+                            <a class="see-all-button" [routerLink]="['/profile/' + app_username]"> See all listings </a>
+                        </div>
+                    </div>
+
+
+                    <div class="items-wrapper1 hidden-xs desktop">
+                        <div class="owl-carousel" id="users_listings">
+                            <div class="item listing-btn-container post-slide" *ngFor="let other_item of other_list">
+                                <div class="listing-container additional-listings">
+                                    <div class="fill">
+                                        <a [routerLink]="['/gear/view-gear/' + other_item.gear_slug_name]">
+                                            <img class="listing-btn-image center-block " alt="{{other_item.gear_name}}" src="{{other_item.gear_display_image}}">
+                                        </a>
+                                    </div>
+
+                                    <div class="listing-btn-info">
+                                        <a class="gear-info-container-link" [routerLink]="['/gear/view-gear/' + other_item.gear_slug_name]">
+                                            <div class="gear-info-container">
+                                                <h5 class="listing-btn-name"> {{other_item.gear_name}} </h5>
+                                                <h6 class="listing-btn-price"> {{other_item.per_day_cost_aud_inc_gst |
+                                                    currency}}
+                                                    <span class="per-day">day{{other_item.ks_gear_type_id !== '1' ?
+                                                        '/wknd' : ''}}</span>
+                                                </h6>
+                                            </div>
+                                        </a>
+
+                                        <div class="user-info-container">
+                                            <a [routerLink]="['/profile/' + other_item.app_username]">
+                                                <img class="listing-owner-img" alt="{{other_item.app_user_first_name}}" src="{{other_item.user_profile_picture_link}}">
+                                            </a>
+
+                                            <div class="listing-owner-info-container">
+                                                <p class="listing-owner-name">
+                                                    <a [routerLink]="['/profile/' + other_item.app_username]">{{other_item.app_user_first_name}}
+                                                        {{other_item.app_user_last_name}}</a>
+                                                </p>
+                                                <kit-rating-decimal [currentRate]="other_item.rating" [disabled]="true"></kit-rating-decimal>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="show-all-button-container" style="width:100%">
+                            <!-- <a class="see-all-button" [routerLink]="['/profile', {id : other_id}]"> See all listings </a> -->
+                            <a class="see-all-button" [routerLink]="['/profile/' + app_username]"> See all listings </a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <!------------------------------------------------------------------->
+            <!----------------------DESKTOP RIGHT COLUMN------------------------->
+            <!------------------------------------------------------------------->
+            <div class="col-md-5 Right-column">
+                <div class="panel-prices hidden-xs hidden-sm">
+                    <div class="prices-section">
+                        <div class="price-per-day-btn-container">
+                            <div class="row">
+                                <div class="col-xs-6 col-sm-6 price-block">
+                                    <span class="listing-price"> {{ gearDetails.per_day_cost_aud_inc_gst | currency }}
+                                    </span>
+                                    <span class="price-info">inc GST</span>
+                                    <p>
+                                        <span class="price-info" *ngIf="gearDetails.gear_category_name !='Creative Spaces'">/ per day or
+                                            weekend</span>
+                                        <span class="price-info" *ngIf="gearDetails.gear_category_name =='Creative Spaces'">/ per day</span>
+                                        <a class="detailsInfo" href="javascript:void(0);">
+                                            <!-- <span class="glyphicon glyphicon-info-sign smaller" title=""
+                                                *ngIf="!isCreativeSpace"></span> -->
+                                            <span class="material-icons information-window" *ngIf="!isCreativeSpace">
+                                                info
+                                            </span>
+                                            <div class="infoView" style="display:none;">
+                                                Pick up and Return days are <strong>free</strong> <br /> Weekends count
+                                                as
+                                                <strong>one day</strong>
+                                                <br /> <strong>One day</strong> minimum <br /> Rent 5-7 days per week,
+                                                <strong>pay only for 3! </strong>
+                                            </div>
+                                        </a>
+                                    </p>
+                                </div>
+                                <div class="col-xs-6 col-sm-6 price-block" *ngIf="gearDetails.gear_category_name !='Creative Spaces'">
+                                    <span class="listing-price"> {{ gearDetails.per_week_cost_aud_inc_gst | currency }}
+                                    </span>
+                                    <span class="price-info">inc GST</span>
+                                    <p>
+                                        <span class="price-info">/ week</span>
+                                        <a class="detailsInfo" href="javascript:void(0);">
+                                            <!-- <span class="glyphicon glyphicon-info-sign smaller" title=""></span> -->
+                                            <span class="material-icons information-window">
+                                                info
+                                            </span>
+                                            <div class="infoView" style="display:none;">
+                                                Pick up and Return days are <strong>free</strong> <br /> Weekends count
+                                                as
+                                                <strong>one day</strong>
+                                                <br /> <strong>One day</strong> minimum <br /> Rent 5-7 days per week,
+                                                <strong>pay only for 3! </strong>
+                                            </div>
+                                        </a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="info calendar-section listing-modifcation" *ngIf="is_my_gear">
+                        <div class="icon_box">
+                            <ul>
+                                <li class="edit-listing" (click)="goToEditPage(gearDetails.user_gear_desc_id)">
+                                    <!-- <span><i class="fa fa-pencil fa-icon" aria-hidden="true"></i></span> -->
+                                    <span class="material-icons">
+                                        edit
+                                    </span>
+
+                                    <span class="listing-edits">Edit Listing</span>
+                                </li>
+
+                                <li class="edit-listing" data-toggle="modal" data-target="#confirmClosingList">
+                                    <!-- <span><i class="fa fa-lock fa-icon" aria-hidden="true"></i></span> -->
+                                    <span class="material-icons">
+                                        delete
+                                    </span>
+                                    <span class="listing-edits">Delete Listing</span>
+                                </li>
+
+                                <li class="edit-listing" data-toggle="modal" *ngIf="gear_list_delist_flag == 'N'" (click)="makeGearPublicPrivate(gearDetails.user_gear_desc_id, 'Y')">
+                                    <!-- <span><i class="fa fa-users fa-icon" aria-hidden="true"></i></span> -->
+                                    <span class="material-icons">
+                                        public
+                                    </span>
+                                    <span class="listing-edits">Make Public</span>
+                                </li>
+
+                                <li class="edit-listing" data-toggle="modal" *ngIf="gear_list_delist_flag == 'Y'" (click)="makeGearPublicPrivate(gearDetails.user_gear_desc_id, 'N')">
+                                    <!-- <span><i class="fa fa-users fa-icon" aria-hidden="true"></i></span> -->
+                                    <span class="material-icons">
+                                        lock
+                                    </span>
+                                    <span class="listing-edits">Make Private</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- This if/else statement wont show calendar IF and only if the listing belongs to the owner -->
+                    <div class="info calendar-section" *ngIf="!is_my_gear">
+                        <div class="calendar-input-container">
+
+                            <!--<form action="#" id="listing_rental_request_form">-->
+                            <div class="relative" id="from_date_picker">
+                                <div class="datepicker" data-picker="#from_date">
+                                    <kit-calendar [ngClass]="{'is-disabled': calender_disabled}" [prefix]="'Pick-up afternoon'" [disabled]="calender_disabled" [dateFilter]="myFilter" [minDate]="today" [fromDate]="from_date" (dateSelect)="onDateSelection('from', $event)"></kit-calendar>
+                                </div>
+                            </div>
+                            <div class="relative" id="to_date_picker" *ngIf="showPicker">
+
+                                <div class="datepicker" data-picker="#to_date">
+
+                                    <kit-calendar [prefix]="'Return Morning'" [ngClass]="{'is-disabled': calender_disabled}" [disabled]="calender_disabled" [dateFilter]="myFilter" [minDate]="minToDate" [toDate]="to_date" (dateSelect)="onDateSelection('to', $event)"></kit-calendar>
+                                </div>
+                            </div>
+
+
+                            <!--</form>-->
+                            <div class="row-with-divider request-summary hidden-xs" *ngIf="summaryDetails">
+                                <div class="col-m-12 order-summary-desktop">
+
+                                    <div class="title">
+                                        <div class="text-part">Rental Summary</div>
+                                    </div>
+
+                                    <div class="">
+                                        <div class="col-12">
+                                            <div class="detail">
+
+                                                <!-- <div class="field">
+                                                    <div class="field-name text-right">Rented Days</div>
+                                                    <div class="field-value">{{summaryDetails?.rent_days}}
+                                                    </div>
+                                                </div> -->
+
+                                                <div class="field">
+                                                    <div class="field-name text-left">
+                                                        {{summaryDetails?.day_rate_ex_gst | currency}} ex GST x {{summaryDetails?.rent_days}} Rented Days
+                                                    </div>
+                                                    <div class="field-value">${{summaryDetails?.subtotal}}
+                                                    </div>
+                                                </div>
+
+                                                <div class="field">
+                                                    <div class="field-name text-right">Discount</div>
+                                                    <div class="field-value">- ({{summaryDetails?.beta_discount |
+                                                        currency}})
+                                                    </div>
+                                                </div>
+
+                                                <!-- <div class="field">
+                                                    <div class="field-name text-right">Insurance Fee</div>
+                                                    <div class="field-value">{{summaryDetails?.insurance_fee |
+                                                        currency}}</div>
+                                                </div> -->
+
+                                                <!-- <div class="field">
+                                                    <div class="field-name text-right">Security Deposit</div>
+                                                    <div class="field-value">{{summaryDetails?.security_deposit |
+                                                        currency}}</div>
+                                                </div> -->
+
+                                                <div class="field">
+                                                    <div class="field-name text-right">Community Fee</div>
+                                                    <div class="field-value">{{summaryDetails?.community_fee |
+                                                        currency}}</div>
+                                                </div>
+
+                                                <div class="field">
+                                                    <div class="field-name text-right">Total ex GST</div>
+                                                    <div class="field-value"> ${{summaryDetails?.total_cost_non_gst }}
+                                                    </div>
+                                                </div>
+
+                                                <div class="field">
+                                                    <div class="field-name text-right">GST </div>
+                                                    <div class="field-value"> ${{summaryDetails?.total_gst }}
+                                                    </div>
+                                                </div>
+
+                                                <div class="field">
+                                                    <div class="field-name text-right text-bold blue-text">Total inc GST
+                                                    </div>
+                                                    <div class="field-value text-bold blue-text">
+                                                        ${{summaryDetails?.total_cost_with_gst }} </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="row" *ngIf="!is_my_gear">
+                                <div class="col-xs-12 text-center">
+                                    <!-- {{ disableAddToCart }} -->
+                                    <span class="unavailable_strip" *ngIf="!has_item_in_cart && disableAddToCart">Listing
+                                        unavailable for selected
+                                        dates</span>
+                                    <input *ngIf="!has_item_in_cart && !disableAddToCart && token" name="commit" value="Add To Cart" class="top_to_add" type="button" (click)="addtoCart()">
+                                    <!-- <button type="button" class="btn btn-secondary category-btn" data-toggle="modal" data-target="#addmoremodal">Add To Cart</button> -->
+                                    <input *ngIf="has_item_in_cart" name="commit" value="Added to your cart" class="top_to_added" type="button" disabled>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <kit-author-card class="hidden-sm hidden-xs author_card" [my_gear]="is_my_gear" [data]="gearDetails" [ratings]="gearDetailsAvgRating" (contactClick)="onContactClick(contactTheOwner)"></kit-author-card>
+
+                <div class="map-panel hidden-sm hidden-xs">
+                    <div class="info">
+                        <div id="map-canvas">
+                            <div #gmap style="height:300px; width: 100%"></div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="listing-details">
+                    <ul>
+                        <li><span><i class="fa fa-calendar-check-o detail-icon" aria-hidden="true"></i></span>Listing
+                            Created {{ gearDetails.create_date | date :'d MMMM, y' }}</li>
+                        <li><span><i class="fa fa-eye detail-icon" aria-hidden="true"></i></span>{{view_count}} Views
+                        </li>
+                    </ul>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!------------------------------------------------------------------->
+<!------------------------------MODALS------------------------------->
+<!------------------------------------------------------------------->
+<div id="edit_privet" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Edit Listing</h4>
+            </div>
+            <div class="modal-body">
+                <div class="col-md-8 col-md-offset-2">
+                    <form>
+
+                        <div class="form-group">
+                            <label>Name</label>
+                            <input type="text" class="form-control" placeholder="enter you keyword">
+                        </div>
+
+                        <div class="form-group">
+                            <button class="sk-button top_to_btn" type="button">Save</button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>
+
+
+<ng-template #contactTheOwner>
+    <div class="modal-header">
+        <h4 class="modal-title">Contact The Owner</h4>
+        <button type="button" class="close" #closeContactOwnerModal data-dismiss="modal" (click)="modalRef.hide()">&times;</button>
+    </div>
+
+    <div class="modal-body">
+        <div>
+            <form>
+                <div class="form-group">
+                    <textarea name="message_with_owner" [(ngModel)]="message_with_owner" rows="3" class="form-control" placeholder="Enter your Message"></textarea>
+                </div>
+                <div class="form-group">
+                    <button class="send_btn" type="button" [disabled]="is_message_sent" (click)="sendMessageToOwner()">Send</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</ng-template>
+
+
+<div id="confirmClosingList" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h5 class="modal-title">Delete listing</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <p>Are you sure you want to delete this listing?</p>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="delete_btn" data-dismiss="modal" (click)="deleteItem()">Delete</button>
+                <button type="button" class="cancel_btn" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- address modal -->
+<div id="addmoremodal" class="modal fade" role="dialog">
+    <div class="modal-dialog" style="max-width: 700px !important; margin-top: 90px;">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+
+                <div class="user-info-container" *ngIf="other_list.length>0">
+                    <a [routerLink]="['/profile/' + other_list[0].app_username]">
+                        <img class="listing-owner-img" alt="{{other_list[0].app_user_first_name}}" src="{{other_list[0].user_profile_picture_link}}">
+                    </a>
+
+                    <div class="listing-owner-info-container">
+                        <p class="listing-owner-name">
+                            <a [routerLink]="['/profile/' + other_list[0].app_username]">{{other_list[0].app_user_first_name}}
+                                {{other_list[0].app_user_last_name}}</a>
+                        </p>
+                    </div>
+                </div>
+                <button id="closeCartModalButton" type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+
+            <div class="modal-body modal-primarycontainer" style="max-height: 347px; overflow-y: auto;">
+                <div class="each_listing" *ngFor="let other_item of owner_other_list">
+                    <div class="item listing-btn-container col-xs-12 col-sm-6 listing-container modal-listing" *ngIf="other_item.gear_type != 1">
+                        <div class="fill">
+                            <a [routerLink]="['/gear/view-gear/' + other_item.gear_slug_name]">
+                                <img class="listing-btn-image center-block " alt="{{other_item.gear_name}}" src="{{other_item.gear_display_image}}">
+                            </a>
+                        </div>
+
+                        <div class="listing-btn-info">
+                            <a class="gear-info-container-link" [routerLink]="['/gear/view-gear/' + other_item.gear_slug_name]">
+                                <div class="gear-info-container">
+                                    <h5 class="listing-btn-name"> {{other_item.gear_name}} </h5>
+                                    <h6 class="listing-btn-price"> {{other_item.per_day_cost_aud_inc_gst | currency}}
+                                        <span class="per-day">day{{other_item.ks_gear_type_id !== '1' ? '/wknd' :
+                                            ''}}</span>
+                                    </h6>
+                                </div>
+                            </a>
+                            <div class="atc_btn_wpr">
+                                <button *ngIf="!other_item.is_added" type="button" class="btn Modal-AddCart btn-primary modal-primaryButton" (click)="addMoretoCart(other_item.user_gear_desc_id)">Add To Cart</button>
+                                <button *ngIf="other_item.is_added" type="button" class="btn Modal-AddCart btn-primary modal-primaryButton" [disabled]="true">Added To
+                                    Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer modal-pagination">
+                <ng-container>
+                    <!-- <pagination [totalItems]="totalItems" [(ngModel)]="currentPage" (pageChanged)="pageChanged($event)"></pagination> ORIGINAL-->
+                    <!-- <pagination [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" [maxSize]="5" [(ngModel)]="currentPage" (pageChanged)="pageChanged($event)" nextText=">" previousText="<" lastText=">>"firstText="<<"></pagination> RM MOD BEFORE 20.03.20 INCLUDES LIMIT ITEMS PER PAGE-->
+                    <pagination [totalItems]="totalItems" [maxSize]="5" [(ngModel)]="currentPage" (pageChanged)="pageChanged($event)" nextText=">" previousText="<" lastText=">>" firstText="<<">
+                    </pagination>
+                </ng-container>
+                <!-- <button type="button" class="btn btn-primary modal-primaryButton" (click)="addtoCart()" data-dismiss="modal">Add Address</button> -->
+            </div>
+        </div>
+    </div>
+</div>

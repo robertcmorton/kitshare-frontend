@@ -1,0 +1,96 @@
+.Category_full_width_btn {
+    text-align: center;
+    position: relative;
+    
+}
+
+.dropdown-menu .dropdown-menu_full_width {
+    position: relative !important;
+    z-index: 8;
+    // position: absolute !important;
+    // width: 340px;
+    // box-shadow: 0 6px 12px rgba(0,0,0,.175);
+    // left: none;
+
+}
+
+.open>.dropdown-menu {
+    // position: relative;
+    position: absolute !important;
+    // width: 340px !important;
+    width: calc(100% - 40px) !important;
+    box-shadow: 0 6px 12px rgba(0,0,0,.175);
+    padding: 15px 0 15px 0;
+    margin: 0 20px 0 20px;
+    border-radius: 0 0 10px 10px;
+}
+
+.dropdown-menu li > a {
+    place-content: center;
+}
+
+.btn-default.active, .btn-default:active, .btn-default.active.focus, .btn-default.active:focus, .btn-default.active:hover, .btn-default:active.focus, .btn-default:active:focus, .btn-default:active:hover, .open>.dropdown-toggle.btn-default, .open>.dropdown-toggle.btn-default.focus, .open>.dropdown-toggle.btn-default:focus, .open>.dropdown-toggle.btn-default:hover {
+    color: white !important;
+    background-color: #d4d4d4;
+    border-color: #8c8c8c;
+}
+
+// .dropdown-menu {
+//     position: relative !important;
+//     top: 100%;
+//     left: 0;
+//     z-index: 1000;
+//     display: none;
+//     float: left;
+//     min-width: 160px;
+//     padding: 5px 0;
+//     margin: 2px 0 0;
+//     font-size: 14px;
+//     text-align: left;
+//     list-style: none;
+//     background-color: #fff;
+//     background-clip: padding-box;
+//     border: 1px solid #ccc;
+//     border: 1px solid rgba(0,0,0,.15);
+//     border-radius: 4px;
+//     -webkit-box-shadow: 0 6px 12px rgba(0,0,0,.175);
+//     box-shadow: 0 6px 12px rgba(0,0,0,.175);
+// }
+
+.SideBar-Icons {
+    padding-right: 10px;
+    font-size: 20px;
+}
+
+.ViewProfile-Button {
+    height: 40px;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    padding: 8px 15px;
+    font-size: 14px;
+
+}
+
+.LeftSidebar-Button {
+    padding: 8px 15px;
+    height: 40px;
+}
+
+.LeftSideBar-Icons {
+    padding-right: 5px;
+    font-size: 20px;
+    vertical-align: text-bottom;
+}
+
+.dropdown-menu > li > a:hover {
+    background-color: none;
+}
+
+.ViewProf-ButMob {
+    margin-top: 0;
+}
+
+.ViewProfile-LinkMob:hover {
+    background-color: white;
+}

@@ -1,0 +1,86 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "project": {
+    "name": "kitshare"
+  },
+  "apps": [
+    {
+      "root": "src",
+      "outDir": "dist",
+      "assets": ["assets", "favicon.ico"],
+      "index": "index.html",
+      "main": "main.ts",
+      "polyfills": "polyfills.ts",
+      "test": "test.ts",
+      "tsconfig": "tsconfig.app.json",
+      "testTsconfig": "tsconfig.spec.json",
+      "prefix": "kit",
+      "styles": [
+        "assets/css/bootstrap.min.css",
+        "assets/css/style.scss",
+        "assets/css/animate.css",
+        "assets/css/font-awesome.min.css",
+        "assets/css/skdslider.css",
+        "assets/css/responsive.css",
+        "assets/css/hover.css",
+        "assets/css/default.css",
+        "assets/css/component.css",
+        "assets/css/bootstrap-theme.css",
+        "assets/css/jtab.min.css",
+        "assets/css/flexslider.css",
+        "../node_modules/owl.carousel/dist/assets/owl.carousel.css",
+        "../node_modules/owl.carousel/dist/assets/owl.theme.default.css",
+        "assets/css/main.css"
+      ],
+      "scripts": [
+        "assets/js/jquery.1.11.1.js",
+        "../node_modules/jquery/dist/jquery.min.js",
+        "assets/js/jtab.jquery.js",
+        "assets/js/bootstrap.min.js",
+        "assets/js/skdslider.js",
+        "assets/js/main.js",
+        "../node_modules/owl.carousel/dist/owl.carousel.js",
+        "assets/js/modalEffects.js",
+        "assets/js/npm.js",
+        "assets/js/classie.js",
+        "assets/js/flexslider.js",
+        "assets/js/custom.js"
+      ],
+      "environmentSource": "environments/environment.ts",
+      "environments": {
+        "dev": "environments/environment.ts",
+        "prod": "environments/environment.prod.ts"
+      }
+    }
+  ],
+  "e2e": {
+    "protractor": {
+      "config": "./protractor.conf.js"
+    }
+  },
+  "lint": [
+    {
+      "project": "src/tsconfig.app.json",
+      "exclude": "**/node_modules/**"
+    },
+    {
+      "project": "src/tsconfig.spec.json",
+      "exclude": "**/node_modules/**"
+    },
+    {
+      "project": "e2e/tsconfig.e2e.json",
+      "exclude": "**/node_modules/**"
+    }
+  ],
+  "test": {
+    "karma": {
+      "config": "./karma.conf.js"
+    }
+  },
+  "defaults": {
+    "styleExt": "scss",
+    "component": {
+      "spec": false
+    }
+  }
+}

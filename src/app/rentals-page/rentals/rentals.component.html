@@ -1,0 +1,262 @@
+<section class="dashboard_body bckd_c">
+    <div class="tabbable-line1">
+        <div class="container">
+            <ul class="nav nav-tabs">
+                <li class="active">
+                    <a [routerLink]="['/rentals']" class="Dash-Nav" routerLinkActive="active">Rentals</a>
+                </li>
+                <li>
+                    <a [routerLink]="['/rentals/messaging']" class="Dash-Nav" routerLinkActive="active">Messaging</a>
+                </li>
+                <li>
+                    <a [routerLink]="['/rentals/manage-listing']" class="Dash-Nav" routerLinkActive="active">Manage listing</a>
+                </li>
+                <li>
+                    <a [routerLink]="['/rentals/reviews']" class="Dash-Nav" routerLinkActive="active">Reviews</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 Dashboard-container">
+                <div class="tabbable-panel">
+                    <div class="tabbable-line">
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="tab_default_1">
+                                <div class="row">
+
+
+                                    <div class="col-md-12 col-sm-12">
+                                        <div class="renter_owner_buttn">
+                                            <!-- <button type="button" (click)="showRenterDashboard()"
+                                                [ngClass]="{'inactive_btns': !renter_dashboard,'active_btns':renter_dashboard}"
+                                                class="btn btn_new one ">Renter ({{ActiveRentalCount}})</button>
+                                            <button type="button" (click)="showOwnerDashboard()"
+                                                [ngClass]="{'inactive_btns': !owner_dashboard,'active_btns':owner_dashboard}"
+                                                class="btn btn_new two">Owner ({{ActiveOwnerCount}})</button> -->
+                                            <!-- <mat-radio-group color="primary" (change)="selectOption($event)">
+                                                <mat-radio-button class="radio-rental-owner"
+                                                    [checked]="renter_dashboard" value="1">Renter
+                                                    ({{ActiveRentalCount}})
+                                                </mat-radio-button>
+                                                <mat-radio-button class="radio-rental-owner" [checked]="owner_dashboard"
+                                                    value="2">Owner
+                                                    ({{ActiveOwnerCount}})
+                                                </mat-radio-button>
+                                            </mat-radio-group> -->
+                                            <mat-checkbox class="radio-rental-owner" color="primary" (change)="selectOption($event,'renter_dashboard')" [checked]="renter_dashboard" [value]="renter_dashboard">
+                                                Renter
+                                                <!-- <span class="ActiveRenter-Count">{{ActiveRentalCount}}</span> -->
+                                                <span class="ActiveRenter-Count" *ngIf="ActiveRentalCount">{{ActiveRentalCount}}</span>
+                                            </mat-checkbox>
+
+                                            <mat-checkbox (change)="selectOption($event,'owner_dashboard')" color="primary" class="radio-rental-owner" [checked]="owner_dashboard" [value]="owner_dashboard">
+                                                Owner
+                                                <!-- <span class="ActiveOwner-Count"> {{ActiveOwnerCount}} </span> -->
+                                                <span class="ActiveOwner-Count" *ngIf="ActiveOwnerCount">{{ActiveOwnerCount}}</span>
+                                            </mat-checkbox>
+
+                                            <select class="form-control rentyear-selector" id="sel1" (change)="onChangeYear($event.target.value)">
+                                                <option *ngFor="let item of all_rental_year_array" value="{{item}}">
+                                                    {{item}}
+                                                </option>
+                                            </select>
+
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-md-12 col-sm-12 hidden-xs Rental-Selector">
+                                        <div class="search_rental">
+                                            <div class="btn-dash hidden-xs">
+
+
+                                                <button (click)="getRentalList()" class="sort-button" type="button" [ngClass]="all ? 'btn new active' : 'btn new'">
+                                                    <!-- <span><i class="fa fa-files-o"aria-hidden="true"></i></span> -->
+                                                    <span class="material-icons">content_copy</span>
+                                                    <span class="sort-text">All</span>
+                                                </button>
+
+                                                <button (click)="fetchActiveList()" class="sort-button" type="button" [ngClass]="active ? 'btn new active' : 'btn new'">
+                                                    <!-- <span><i class="fa fa-bolt"aria-hidden="true"></i></span> -->
+                                                    <span class="material-icons">bolt</span>
+                                                    <span class="sort-text">Active</span>
+                                                </button>
+
+                                                <button (click)="fetchCompletedList()" class="sort-button" type="button" [ngClass]="completed ? 'btn new active' : 'btn new'">
+                                                    <!-- <span><i class="fa fa-check-square"aria-hidden="true"></i></span> -->
+                                                    <span class="material-icons">check_box</span>
+                                                    <span class="sort-text">Completed</span>
+                                                </button>
+
+                                                <button (click)="fetchCanceledList()" class="sort-button" type="button" [ngClass]="canceled ? 'btn new active' : 'btn new'">
+                                                    <!-- <span><i class="fa fa-times"aria-hidden="true"></i></span> -->
+                                                    <span class="material-icons">close</span>
+                                                    <span class="sort-text">Cancelled</span>
+                                                </button>
+
+                                                <button (click)="fetchRejectedList()" class="sort-button" type="button" [ngClass]="rejected ? 'btn new active' : 'btn new'">
+                                                    <!-- <span><i class="fa fa-ban"aria-hidden="true"></i></span> -->
+                                                    <span class="material-icons">block</span>
+                                                    <span class="sort-text">Declined</span>
+                                                </button>
+
+                                                <!-- <button (click)="fetchArchivedList()" type="button" [ngClass]="archive ? 'btn new active' : 'btn new'"><span><i class="fa fa-archive"
+                                        aria-hidden="true"></i></span>Archive</button> -->
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <!-- START MOBILE SELECTION OF RENTALS TAB -->
+                                    <div class="col-md-12 col-sm-12 Rental-Selector">
+                                        <div class="search_rental1">
+                                            <div class="btn-dash hidden-sm hidden-md hidden-lg">
+                                                <select class=" rentyear-selector" id="sel2" (change)="onRentalTypeChange($event.target.value)">
+                                                    <option value="1" [selected]="all">All </option>
+                                                    <option value="2" [selected]="active">Active</option>
+                                                    <option value="3" [selected]="completed">Completed</option>
+                                                    <option value="4" [selected]="canceled">Cancelled</option>
+                                                    <option value="5" [selected]="rejected">Declined</option>
+                                                </select>
+                                                <!--<button (click)="getRentalList()" class="sort-button" type="button"
+                                                    [ngClass]="all ? 'btn new active' : 'btn new'">
+                                                    <span class="material-icons">content_copy</span>
+                                                </button>
+
+                                                <button (click)="fetchActiveList()" class="sort-button" type="button"
+                                                    [ngClass]="active ? 'btn new active' : 'btn new'">
+                                                    <span class="material-icons">bolt</span>
+                                                </button>
+
+                                                <button (click)="fetchCompletedList()" class="sort-button" type="button"
+                                                    [ngClass]="completed ? 'btn new active' : 'btn new'">
+                                                    <span class="material-icons">check_box</span>
+                                                </button>
+
+                                                <button (click)="fetchCanceledList()" class="sort-button" type="button"
+                                                    [ngClass]="canceled ? 'btn new active' : 'btn new'">
+                                                    <span class="material-icons">close</span>
+                                                </button>
+
+                                                <button (click)="fetchRejectedList()" class="sort-button" type="button"
+                                                    [ngClass]="rejected ? 'btn new active' : 'btn new'">
+                                                    <span class="material-icons">block</span>
+                                                </button> -->
+                                                <!-- <button (click)="fetchArchivedList()" type="button" [ngClass]="archive ? 'btn new active' : 'btn new'"><span><i class="fa fa-archive"
+                                        aria-hidden="true"></i></span></button> -->
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <!-- START MOBILE VERSION OF RENTALS TAB -->
+                                <div class="row hidden-sm hidden-md hidden-lg" *ngIf="!is_messaging">
+                                    <div class="table-responsive points_table1">
+                                        <table *ngIf="rental_data && rental_data.length" summary="This table shows how to create responsive tables using Bootstrap's default functionality" class="table table-hover">
+                                            <tbody class="new_panel1">
+                                                <tr *ngFor="let item of rental_data">
+                                                    <td>
+                                                        <a href="javascript:void(0);" aria-haspopup="true" aria-expanded="false" role="button" data-toggle="dropdown"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+                                                        </a>
+                                                        <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
+                                                            <a href="javascript:void(0);" (click)="messageWith(item.renter_id, item.user_gear_desc_id, item.app_user_first_name, item.user_profile_picture_link, item.order_id, item.project_name)"><strong>Messages</strong></a>
+                                                        </ul>
+                                                        <p><a (click)="orderSummary(item)"><strong>{{item.order_id}}</strong></a>
+                                                        </p>
+
+                                                        <p *ngIf="renter_dashboard"><strong> Name:
+                                                            </strong>{{item.app_user_first_name}}
+                                                            {{item.app_user_last_name}}</p>
+
+                                                        <p><strong>Project Name: </strong>{{item.project_name}}</p>
+                                                        <p><strong>Payment Status: </strong>{{item.payment_status}}</p>
+                                                        <p><strong>Order Status: </strong>{{item.order_status}}</p>
+                                                        <p><strong>Cost: </strong>{{item.total_rent_amount | currency}}
+                                                        </p>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <ng-container *ngIf="rental_data && rental_data.length">
+                                            <pagination [totalItems]="totalItemsRental" [itemsPerPage]="limitRental" [maxSize]="5" [(ngModel)]="currentPageRental" (pageChanged)="pageChangedRental($event)" nextText=">" previousText="<" lastText=">>" firstText="<<"></pagination>
+                                        </ng-container>
+                                        <div *ngIf="rental_data && !rental_data.length" style="text-align:center;padding: 12px;">
+                                            <img src="../../../assets/images/no_data_found.png" alt="nodata" width="250" />
+                                            <p>No Active Rentals</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- START DESKTOP VERSION OF RENTALS TAB -->
+                                <div class="row hidden-xs" *ngIf="!is_messaging">
+                                    <div class="table-responsive points_table">
+                                        <table summary="This table shows how to create responsive tables using Bootstrap's default functionality" class="table table-hover">
+                                            <thead class="new_panel">
+                                                <tr>
+                                                    <th>Order Number</th>
+                                                    <th>Name</th>
+                                                    <th>Project Name</th>
+                                                    <th>Payment Status</th>
+                                                    <th>Order Status</th>
+                                                    <th>Cost</th>
+                                                    <th>Pickup Date</th>
+                                                    <th>Return Date</th>
+                                                    <th></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="new_panel1" *ngIf="rental_data && rental_data.length">
+                                                <tr *ngFor="let item of rental_data">
+                                                    <td><a (click)="orderSummary(item)">{{item.order_id}}</a>
+                                                    </td>
+                                                    <td>{{item.app_user_first_name}} {{item.app_user_last_name}}</td>
+                                                    <td>{{item.project_name}}</td>
+                                                    <td class="payment-status">{{item.payment_status}}</td>
+                                                    <td class="order-status">{{item.order_status}}</td>
+                                                    <td>{{item.total_rent_amount | currency}}</td>
+                                                    <td>
+                                                        <div class="">
+                                                            {{reFormatDate(item.gear_rent_start_date) | date :
+                                                            'mediumDate' : 'UTC'}}
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="">
+                                                            {{reFormatDate(item.gear_rent_end_date) | date :
+                                                            'mediumDate' : 'UTC' }}
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <a href="javascript:void(0);" aria-haspopup="true" aria-expanded="false" role="button" data-toggle="dropdown"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span></a>
+                                                        <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
+                                                            <li><a href="javascript:void(0);" (click)="messageWith(item.renter_id, item.user_gear_desc_id, item.app_user_first_name, item.user_profile_picture_link, item.order_id, item.project_name)"><strong>Messages</strong></a>
+                                                            </li>
+                                                            <li *ngIf="renter_dashboard && item.payment_status == 'Contract'">
+                                                                <a (click)="seeInvoice(item.user_gear_desc_id)" href="javascript://;">Tax Invoice</a>
+                                                            </li>
+                                                        </ul>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+
+                                        </table>
+                                        <ng-container *ngIf="rental_data && rental_data.length">
+                                            <pagination [totalItems]="totalItemsRental" [itemsPerPage]="limitRental" [maxSize]="5" [(ngModel)]="currentPageRental" (pageChanged)="pageChangedRental($event)" nextText=">" previousText="<" lastText=">>" firstText="<<"></pagination>
+                                        </ng-container>
+                                        <div *ngIf="rental_data && !rental_data.length" style="text-align:center;padding: 12px;">
+                                            <img src="../../../assets/images/no_data_found.png" alt="nodata" width="250" />
+                                            <p>No Active Rentals</p>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
